@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 import Translate from './components/Translate.jsx';
+import Farmersignup from "./Farmersignup";
+import Doctorsignup from "./Doctorsignup.jsx";
+import Login from "./login.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <Translate />
-    </>
-  )
+    return (
+        <div>
+          <Login/>
+          <Translate />
+        </div>
+    );
 }
 
-export default App
+export default App;
