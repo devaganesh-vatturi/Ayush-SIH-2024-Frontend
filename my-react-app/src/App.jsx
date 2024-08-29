@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Translate from './components/Translate.jsx';
-import Farmersignup from "./Farmersignup";
-import Doctorsignup from "./Doctorsignup.jsx";
-import Login from "./login.jsx";
+import Login from "./components/Login.jsx";
 
 function App() {
     return (
