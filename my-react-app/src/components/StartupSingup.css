@@ -1,5 +1,10 @@
+.ld20{
+  margin-bottom: 30px;
+}
+
 body{
-    background-color: rgb(202, 246, 247);
+    background-color: rgb(18, 18, 18);
+    color:white;
    } 
   .ld1{
     border: 1px solid black;
@@ -117,3 +122,4 @@ body{
     border-radius: 7px;
     color: white;
   }
+  

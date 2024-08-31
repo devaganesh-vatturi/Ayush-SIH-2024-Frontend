@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './StartupSingup.css';
-
 function StartupSingup() {
     // State to manage input values and error messages
     const [pan, setPan] = useState('');
@@ -9,6 +8,38 @@ function StartupSingup() {
     const [panError, setPanError] = useState('');
     const [gstError, setGstError] = useState('');
     const[pincodeerror,setpincodeerror]=useState('');
+    const [captcha, setCaptcha] = useState('');
+const [userCaptcha, setUserCaptcha] = useState('');
+const [captchaError, setCaptchaError] = useState('');
+
+useEffect(() => {
+  generateCaptcha();
+}, []);
+
+const generateCaptcha = () => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const captchaLength = 6;
+  let randomCaptcha = '';
+  for (let i = 0; i < captchaLength; i++) {
+    randomCaptcha += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  setCaptcha(randomCaptcha);
+};
+
+const handleCaptchaChange = (event) => {
+  setUserCaptcha(event.target.value);
+};
+
+const validateCaptcha = () => {
+  if (userCaptcha !== captcha) {
+    setCaptchaError('Invalid captcha. Please try again.');
+    return false;
+  } else {
+    setCaptchaError('');
+    return true;
+  }
+};
+
     // PAN validation function
     const validatePAN = (pan) => {
         const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
@@ -25,7 +56,7 @@ function StartupSingup() {
     const pin=/^[0-9]{6}$/;
     return pin.test(pincode);
    }
-    const handleSubmit = (event) => {
+    const handleSubmit= (event) => {
         event.preventDefault();
         let isValid = true;
 
@@ -59,8 +90,14 @@ function StartupSingup() {
         else{
             console.log("form in not valid");
         }
-    };
+        let isValids = true;
+  // ... (rest of your validation logic remains the same)
+  if (!validateCaptcha()) {
+    isValids = false;
+  }
 
+    }
+    
     return (
         <>
             <div className="lmain">
@@ -69,10 +106,6 @@ function StartupSingup() {
                 </div>
                 <div className="ld2">
                     <form className="Lfrom" onSubmit={handleSubmit}>
-                        <div className="ld3">
-                            <button id="lb1">State</button>
-                            <button id="lb2">ANDHRA PRADESH</button>
-                        </div>
                         <div className="ld4">
                             <label id="ll1">1. Details of Manufacturer</label>
                             <label id="ll2">(All fields Marked* are Mandatory)</label>
@@ -81,62 +114,13 @@ function StartupSingup() {
                             <label id="ll3">(i) Name of the Company/Firm*</label>
                             <input id="li1" type="text" placeholder="Name of the company/Firm.." />
                         </div>
-                        <div className="ld6">
-                            <div className="ld7">
-                                <label id="ll4">(ii) Address of Corporate Office</label>
-                            </div>
-                            <div className="ld8">
-                                <label id="ll5">Address Line 1</label>
-                                <input id="li2" type="text" placeholder="Address Line 1.." />
-                            </div>
-                            <div className="ld9">
-                                <label id="ll6">Address Line 2</label>
-                                <input id="li3" type="text" placeholder="Address Line 2.." />
-                            </div>
-                            <div className="ld10">
-                                <label id="ll7">Address Line 3</label>
-                                <input id="li4" type="text" placeholder="Address Line 3.." />
-                            </div>
-                            <div className="ld11">
-                                <label id="ll8">Village/Town/City</label>
-                                <input id="li5" type="text" />
-                            </div>
-                            <div className="ld12">
-                                <label id="ll9">Pin Code</label>
-                                <input id="li6" type="text" />
-                            </div>
-                            <div className="ld13">
-                                <label id="ll10">State</label>
-                                <select id="ls1">
-                                    <option>-select-</option>
-                                    <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
-                                    <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
-                                </select>
-                            </div>
-                            <div className="ld14">
-                                <label id="ll11">District</label>
-                                <select id="ls2">
-                                    <option>- please-select-</option>
-                                    <option value="NICOBARS">NICOBARS</option>
-                                    <option value="we change">we change</option>
-                                </select>
-                            </div>
-                        </div>
                         <div className="ld15">
                             <div className="ld16">
-                                <label id="ll12">(iii) Address of Premises</label>
-                            </div>
-                            <div className="ld16">
-                                <label id="ll13">Address Line 1</label>
-                                <input id="li7" type="text" placeholder="Address Line 1.." />
-                            </div>
-                            <div className="ld17">
-                                <label id="ll14">Address Line 2</label>
-                                <input id="li8" type="text" placeholder="Address Line 2.." />
+                                <label id="ll12">(ii) Address of Startup</label>
                             </div>
                             <div className="ld18">
-                                <label id="ll15">Address Line 3</label>
-                                <input id="li9" type="text" placeholder="Address Line 3.." />
+                                <label id="ll15">Address Line</label>
+                                <input id="li9" type="text" placeholder="Address Line .." />
                             </div>
                             <div className="ld19">
                                 <label id="ll16">Village/Town/City</label>
@@ -153,7 +137,7 @@ function StartupSingup() {
                                  />
                                
                             </div>
-                         {pincodeerror && <p className="error">{pincodeerror}</p>}
+                            {pincodeerror && <p className="error">{pincodeerror}</p>}
                             <div className="ld21">
                                 <label id="ll18">State</label>
                                 <select id="ls3">
@@ -170,9 +154,6 @@ function StartupSingup() {
                                     <option value="we change">we change</option>
                                 </select>
                             </div>
-                        </div>
-                        <div className="ld23">
-                            <label id="ll20">Note : The verification mail and all communications will be sent to the Primary Authorized Signatory</label>
                         </div>
                         <div className="ld24">
                             <label id="ll21">(v) PAN No. of the company/ Firm</label>
@@ -195,10 +176,6 @@ function StartupSingup() {
                                 onChange={(e) => setGst(e.target.value)} 
                             />
                             {gstError && <p className="error">{gstError}</p>}
-                        </div>
-                        <div className="ld26">
-                            <label id="ll23">(vii) Website Address</label>
-                            <input id="li14" type="text" placeholder="Website Address.." />
                         </div>
                         <div className="ld27">
                             <label id="ll24">2. Company Certification Details (If Any)</label><br />
@@ -227,17 +204,16 @@ function StartupSingup() {
                             <label id="ll31">(b) Date of Issue</label>
                             <input id="li19" type="date" />
                         </div>
-                        <div className="ld34">
-                            <label id="ll32">3. Purpose of Applying*</label>
-                            <select id="ls5">
-                                <option>please select..</option>
-                                <option value="NEW">NEW</option>
-                                <option value="EXISTING">EXISTING</option>
-                            </select>
-                        </div>
-                        <div className="ld35">
-                            <input id="li20" type="text" placeholder="Enter Captcha" />
-                        </div>
+                        
+                    {/* add captcha here */}
+                    <div className="ld34">
+    <label id="ll32">Captcha</label>
+    <span id="captcha">{captcha}</span>
+    <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
+    <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
+    {captchaError && <p className="error">{captchaError}</p>}
+  </div>
+
                         <button className="lbl" type="submit">Submit</button>
                     </form>
                 </div>
@@ -245,5 +221,6 @@ function StartupSingup() {
         </>
     );
 }
+
 
 export default StartupSingup;
