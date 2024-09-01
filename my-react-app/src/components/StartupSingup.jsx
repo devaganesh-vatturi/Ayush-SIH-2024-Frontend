@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StartupSingup.css';
 
 function StartupSingup() {
@@ -8,7 +8,37 @@ function StartupSingup() {
   const [panError, setPanError] = useState('');
   const [gstError, setGstError] = useState('');
   const [pincodeError, setPincodeError] = useState('');
-
+  const [captcha, setCaptcha] = useState('');
+  const [userCaptcha, setUserCaptcha] = useState('');
+  const [captchaError, setCaptchaError] = useState('');
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+  
+  const generateCaptcha = () => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const captchaLength = 6;
+    let randomCaptcha = '';
+    for (let i = 0; i < captchaLength; i++) {
+      randomCaptcha += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    setCaptcha(randomCaptcha);
+  };
+  
+  const handleCaptchaChange = (event) => {
+    setUserCaptcha(event.target.value);
+  };
+  
+  const validateCaptcha = () => {
+    if (userCaptcha !== captcha) {
+      setCaptchaError('Invalid captcha. Please try again.');
+      return false;
+    } else {
+      setCaptchaError('');
+      return true;
+    }
+  };
+  
   const validatePAN = (pan) => {
     const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
     return panPattern.test(pan);
@@ -50,6 +80,9 @@ function StartupSingup() {
           } else {
             setPincodeError('');
           }
+          if (!validateCaptcha()) {
+            isValid = false;
+          }
       
           if (isValid) {
             console.log('Form is valid and ready for submission');
@@ -80,12 +113,8 @@ function StartupSingup() {
                 </div>
                 <div className="form-group">
                     <label>(ii) Address of Corporate Office</label>
-                    <label>Address Line 1</label>
+                    <label>Address Line</label>
                     <input type="text" placeholder="Address Line 1.." />
-                    <label>Address Line 2</label>
-                    <input type="text" placeholder="Address Line 2.." />
-                    <label>Address Line 3</label>
-                    <input type="text" placeholder="Address Line 3.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -109,40 +138,7 @@ function StartupSingup() {
                         <option value="we change">we change</option>
                     </select>
                 </div>
-                <div className="form-group">
-                    <label>(iii) Address of Premises</label>
-                    <label>Address Line 1</label>
-                    <input type="text" placeholder="Address Line 1.." />
-                    <label>Address Line 2</label>
-                    <input type="text" placeholder="Address Line 2.." />
-                    <label>Address Line 3</label>
-                    <input type="text" placeholder="Address Line 3.." />
-                    <label>Village/Town/City</label>
-                    <input type="text" />
-                    <label>Pin Code</label>
-                    <input 
-                        type="text"  
-                        placeholder="Pin code of place" 
-                        value={pincode}  
-                        onChange={(e) => setPincode(e.target.value)} 
-                    />
-{pincodeError && <p className="error">{pincodeError}</p>}
-                    <label>State</label>
-                    <select>
-                        <option>-select-</option>
-                        <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
-                        <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
-                    </select>
-                    <label>District</label>
-                    <select>
-                        <option>- please-select-</option>
-                        <option value="NICOBARS">NICOBARS</option>
-                        <option value="we change">we change</option>
-                    </select>
-                </div>
-                <div >
-                    <label className="note">Note: The verification mail and all communications will be sent to the Primary Authorized Signatory</label>
-                </div>
+               
                 <div className="form-group">
                     <label>(v) PAN No. of the company/Firm</label>
                     <input 
@@ -203,7 +199,13 @@ function StartupSingup() {
                     </select>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Captcha" />
+                    <label id="ll32">Captcha</label>
+    <span id="captcha">{captcha}</span>
+    <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
+    <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
+    {captchaError && <p className="error">{captchaError}</p>}
+                      
+                      
                 </div>
                 <button type="submit">Submit</button>
             </form>
