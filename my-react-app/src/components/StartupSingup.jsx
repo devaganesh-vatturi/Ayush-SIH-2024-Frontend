@@ -4,10 +4,10 @@ function StartupSingup() {
     // State to manage input values and error messages
     const [pan, setPan] = useState('');
     const [gst, setGst] = useState('');
-    const [pincode,setpincode]=useState('');
+    const [pincode,setPincode]=useState('');
     const [panError, setPanError] = useState('');
     const [gstError, setGstError] = useState('');
-    const[pincodeerror,setpincodeerror]=useState('');
+    const[pincodeError,setPincodeError]=useState('');
     const [captcha, setCaptcha] = useState('');
 const [userCaptcha, setUserCaptcha] = useState('');
 const [captchaError, setCaptchaError] = useState('');
@@ -55,25 +55,34 @@ const validateCaptcha = () => {
     const pin = /^[0-9]{6}$/;
     return pin.test(pincode);
   };
-    const handleSubmit= (event) => {
+
+    const handleSubmit= (event) =>{
         event.preventDefault();
         let isValid = true;
-
+          // Validate PAN
+          if (!validatePAN(pan)) {
+            setPanError('Invalid PAN format.');
+            isValid = false;
+        } else {
+            setPanError('');
         }
-
         // Validate GST
-        if (!validateGST(gst)) {
+          if (!validateGST(gst)) {
             setGstError('Invalid GST format.');
             isValid = false;
           } else {
             setGstError('');
           }
-      
+         //Validate PINCODE
           if (!validatePincode(pincode)) {
             setPincodeError('Invalid pin code.');
             isValid = false;
           } else {
             setPincodeError('');
+          }
+          // ... (rest of your validation logic remains the same)
+          if (!validateCaptcha()) {
+            isValid = false;
           }
       
           if (isValid) {
@@ -81,18 +90,15 @@ const validateCaptcha = () => {
           } else {
             console.log('Form is not valid');
           }
-        };
-        let isValids = true;
-  // ... (rest of your validation logic remains the same)
-  if (!validateCaptcha()) {
-    isValids = false;
-  }
+        
+    
+}
 
-    }
+    
     
     return (
         <>
-            </div>
+        <div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <button type="button">State</button>
