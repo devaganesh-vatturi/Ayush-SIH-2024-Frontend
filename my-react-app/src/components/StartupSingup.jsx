@@ -114,8 +114,6 @@ const validateCaptcha = () => {
                 </div>
                 <div>
                     <label>(ii) Address of Corporate Office</label>
-                    <label>Address Line</label>
-                    <input type="text" placeholder="Address Line 1.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -139,7 +137,34 @@ const validateCaptcha = () => {
                         <option value="we change">we change</option>
                     </select>
                 </div>
-                   
+                <div>
+                    <label>(iii) Address of Premises</label>
+                    <label>Address Line 1</label>
+                    <input type="text" placeholder="Address Line 1.." />
+                    <label>Village/Town/City</label>
+                    <input type="text" />
+                    <label>Pin Code</label>
+                    <input 
+                        type="text"  
+                        placeholder="Pin code of place" 
+                        value={pincode}  
+                        onChange={(e) => setPincode(e.target.value)} 
+                    />
+{pincodeError && <p className="error">{pincodeError}</p>}
+                    <label>State</label>
+                    <select>
+                        <option>-select-</option>
+                        <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
+                        <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
+                    </select>
+                    <label>District</label>
+                    <select>
+                        <option>- please-select-</option>
+                        <option value="NICOBARS">NICOBARS</option>
+                        <option value="we change">we change</option>
+                    </select>
+           
+
                 <div>
                     <label>(v) PAN No. of the company/Firm</label>
                     <input 
@@ -215,6 +240,5 @@ const validateCaptcha = () => {
         </>
     );
 }
-
 
 export default StartupSingup;
