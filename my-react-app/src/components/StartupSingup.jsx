@@ -1,50 +1,18 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import './StartupSingup.css';
+
 function StartupSingup() {
-    // State to manage input values and error messages
-    const [pan, setPan] = useState('');
-    const [gst, setGst] = useState('');
-    const [pincode,setPincode]=useState('');
-    const [panError, setPanError] = useState('');
-    const [gstError, setGstError] = useState('');
-    const[pincodeError,setPincodeError]=useState('');
-    const [captcha, setCaptcha] = useState('');
-const [userCaptcha, setUserCaptcha] = useState('');
-const [captchaError, setCaptchaError] = useState('');
+  const [pan, setPan] = useState('');
+  const [gst, setGst] = useState('');
+  const [pincode, setPincode] = useState('');
+  const [panError, setPanError] = useState('');
+  const [gstError, setGstError] = useState('');
+  const [pincodeError, setPincodeError] = useState('');
 
-useEffect(() => {
-  generateCaptcha();
-}, []);
-
-const generateCaptcha = () => {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const captchaLength = 6;
-  let randomCaptcha = '';
-  for (let i = 0; i < captchaLength; i++) {
-    randomCaptcha += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  setCaptcha(randomCaptcha);
-};
-
-const handleCaptchaChange = (event) => {
-  setUserCaptcha(event.target.value);
-};
-
-const validateCaptcha = () => {
-  if (userCaptcha !== captcha) {
-    setCaptchaError('Invalid captcha. Please try again.');
-    return false;
-  } else {
-    setCaptchaError('');
-    return true;
-  }
-};
-
-    // PAN validation function
-    const validatePAN = (pan) => {
-        const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-        return panPattern.test(pan);
-    };
+  const validatePAN = (pan) => {
+    const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    return panPattern.test(pan);
+  };
 
   const validateGST = (gst) => {
     const gstPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}$/;
@@ -56,33 +24,31 @@ const validateCaptcha = () => {
     return pin.test(pincode);
   };
 
-    const handleSubmit= (event) =>{
-        event.preventDefault();
-        let isValid = true;
-          // Validate PAN
-          if (!validatePAN(pan)) {
-            setPanError('Invalid PAN format.');
-            isValid = false;
-        } else {
-            setPanError('');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let isValid = true;
+
+    if (!validatePAN(pan)) {
+      setPanError('Invalid PAN format.');
+      isValid = false;
+    } else {
+      setPanError('');
+
         }
+
         // Validate GST
-          if (!validateGST(gst)) {
+        if (!validateGST(gst)) {
             setGstError('Invalid GST format.');
             isValid = false;
           } else {
             setGstError('');
           }
-         //Validate PINCODE
+      
           if (!validatePincode(pincode)) {
             setPincodeError('Invalid pin code.');
             isValid = false;
           } else {
             setPincodeError('');
-          }
-          // ... (rest of your validation logic remains the same)
-          if (!validateCaptcha()) {
-            isValid = false;
           }
       
           if (isValid) {
@@ -90,30 +56,36 @@ const validateCaptcha = () => {
           } else {
             console.log('Form is not valid');
           }
-        
-    
-}
+        };
+      
 
-    
-    
     return (
         <>
-        <div>
+             <div className="container">
+            <div className="header">
+                <p>Applicant Registration Form</p>
+            </div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <button type="button">State</button>
                     <button type="button">ANDHRA PRADESH</button>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>1. Details of Manufacturer</label>
                     <label>(All fields Marked* are Mandatory)</label>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(i) Name of the Company/Firm*</label>
                     <input type="text" placeholder="Name of the company/Firm.." />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(ii) Address of Corporate Office</label>
+                    <label>Address Line 1</label>
+                    <input type="text" placeholder="Address Line 1.." />
+                    <label>Address Line 2</label>
+                    <input type="text" placeholder="Address Line 2.." />
+                    <label>Address Line 3</label>
+                    <input type="text" placeholder="Address Line 3.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -137,9 +109,14 @@ const validateCaptcha = () => {
                         <option value="we change">we change</option>
                     </select>
                 </div>
+                <div className="form-group">
                     <label>(iii) Address of Premises</label>
                     <label>Address Line 1</label>
                     <input type="text" placeholder="Address Line 1.." />
+                    <label>Address Line 2</label>
+                    <input type="text" placeholder="Address Line 2.." />
+                    <label>Address Line 3</label>
+                    <input type="text" placeholder="Address Line 3.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -162,9 +139,11 @@ const validateCaptcha = () => {
                         <option value="NICOBARS">NICOBARS</option>
                         <option value="we change">we change</option>
                     </select>
-           
-
-                <div>
+                </div>
+                <div >
+                    <label className="note">Note: The verification mail and all communications will be sent to the Primary Authorized Signatory</label>
+                </div>
+                <div className="form-group">
                     <label>(v) PAN No. of the company/Firm</label>
                     <input 
                         type="text" 
@@ -174,7 +153,7 @@ const validateCaptcha = () => {
                     />
                     {panError && <p className="error">{panError}</p>}
                 </div>
-                <div>
+                <div className="form-group">
                 <label>(vi) GST No. of the company/Firm</label>
                     <input 
                         type="text" 
@@ -184,38 +163,38 @@ const validateCaptcha = () => {
                     />
                     {gstError && <p className="error">{gstError}</p>}
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(vii) Website Address</label>
                     <input type="text" placeholder="Website Address.." />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>2. Company Certification Details (If Any)</label><br />
                     <label>(i) Company Incorporation Certification Details</label>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(a) Certificate No.</label>
                     <input type="text" />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(b) Date of Issue</label>
                     <input type="date" />
                 </div>
-                <div>
+                <div  className="form-group">
                     <label>(c) Issuing Authority</label>
                     <input type="text" />
                     </div>
-                <div>
+                <div className="form-group">
                     <label>(ii) Details of IE Code by DGFT</label>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(a) IE Code</label>
                     <input type="text" />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>(b) Date of Issue</label>
                     <input type="date" />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>3. Purpose of Applying*</label>
                     <select>
                         <option>please select..</option>
@@ -224,18 +203,11 @@ const validateCaptcha = () => {
                     </select>
                 </div>
                 <div>
-                    <label id="ll32">Captcha</label>
-    <span id="captcha">{captcha}</span>
-    <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
-    <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
-    {captchaError && <p className="error">{captchaError}</p>}
-                      
-                      
+                    <input type="text" placeholder="Enter Captcha" />
                 </div>
                 <button type="submit">Submit</button>
             </form>
         </div>
-
         </>
     );
 }
