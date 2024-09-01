@@ -114,12 +114,6 @@ const validateCaptcha = () => {
                 </div>
                 <div>
                     <label>(ii) Address of Corporate Office</label>
-                    <label>Address Line 1</label>
-                    <input type="text" placeholder="Address Line 1.." />
-                    <label>Address Line 2</label>
-                    <input type="text" placeholder="Address Line 2.." />
-                    <label>Address Line 3</label>
-                    <input type="text" placeholder="Address Line 3.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -147,10 +141,6 @@ const validateCaptcha = () => {
                     <label>(iii) Address of Premises</label>
                     <label>Address Line 1</label>
                     <input type="text" placeholder="Address Line 1.." />
-                    <label>Address Line 2</label>
-                    <input type="text" placeholder="Address Line 2.." />
-                    <label>Address Line 3</label>
-                    <input type="text" placeholder="Address Line 3.." />
                     <label>Village/Town/City</label>
                     <input type="text" />
                     <label>Pin Code</label>
@@ -173,10 +163,8 @@ const validateCaptcha = () => {
                         <option value="NICOBARS">NICOBARS</option>
                         <option value="we change">we change</option>
                     </select>
-                </div>
-                <div>
-                    <label className="note">Note: The verification mail and all communications will be sent to the Primary Authorized Signatory</label>
-                </div>
+           
+
                 <div>
                     <label>(v) PAN No. of the company/Firm</label>
                     <input 
@@ -252,6 +240,5 @@ const validateCaptcha = () => {
         </>
     );
 }
-
 
 export default StartupSingup;
