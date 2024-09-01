@@ -146,8 +146,7 @@ function StartupSingup() {
                                 <label id="ll17">Pin Code</label>
                                 <input
                                 id="li11" 
-                                type="text" 
-                                placeholder="Pin code of place" 
+                                type="text" placeholder="Pin code of the place" 
                                 value={pincode} 
                                 onChange={(e) => setpincode(e.target.value)}
                                  />
