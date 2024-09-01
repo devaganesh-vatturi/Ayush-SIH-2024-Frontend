@@ -137,7 +137,6 @@ const validateCaptcha = () => {
                         <option value="we change">we change</option>
                     </select>
                 </div>
-                <div>
                     <label>(iii) Address of Premises</label>
                     <label>Address Line 1</label>
                     <input type="text" placeholder="Address Line 1.." />
