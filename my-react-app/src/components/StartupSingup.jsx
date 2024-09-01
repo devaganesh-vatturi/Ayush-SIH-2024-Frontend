@@ -1,18 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './StartupSingup.css';
-
 function StartupSingup() {
-  const [pan, setPan] = useState('');
-  const [gst, setGst] = useState('');
-  const [pincode, setPincode] = useState('');
-  const [panError, setPanError] = useState('');
-  const [gstError, setGstError] = useState('');
-  const [pincodeError, setPincodeError] = useState('');
+    // State to manage input values and error messages
+    const [pan, setPan] = useState('');
+    const [gst, setGst] = useState('');
+    const [pincode,setpincode]=useState('');
+    const [panError, setPanError] = useState('');
+    const [gstError, setGstError] = useState('');
+    const[pincodeerror,setpincodeerror]=useState('');
+    const [captcha, setCaptcha] = useState('');
+const [userCaptcha, setUserCaptcha] = useState('');
+const [captchaError, setCaptchaError] = useState('');
 
-  const validatePAN = (pan) => {
-    const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-    return panPattern.test(pan);
-  };
+useEffect(() => {
+  generateCaptcha();
+}, []);
+
+const generateCaptcha = () => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const captchaLength = 6;
+  let randomCaptcha = '';
+  for (let i = 0; i < captchaLength; i++) {
+    randomCaptcha += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  setCaptcha(randomCaptcha);
+};
+
+const handleCaptchaChange = (event) => {
+  setUserCaptcha(event.target.value);
+};
+
+const validateCaptcha = () => {
+  if (userCaptcha !== captcha) {
+    setCaptchaError('Invalid captcha. Please try again.');
+    return false;
+  } else {
+    setCaptchaError('');
+    return true;
+  }
+};
+
+    // PAN validation function
+    const validatePAN = (pan) => {
+        const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+        return panPattern.test(pan);
+    };
 
   const validateGST = (gst) => {
     const gstPattern = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}$/;
@@ -23,16 +55,9 @@ function StartupSingup() {
     const pin = /^[0-9]{6}$/;
     return pin.test(pincode);
   };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    let isValid = true;
-
-    if (!validatePAN(pan)) {
-      setPanError('Invalid PAN format.');
-      isValid = false;
-    } else {
-      setPanError('');
+    const handleSubmit= (event) => {
+        event.preventDefault();
+        let isValid = true;
 
         }
 
@@ -57,13 +82,16 @@ function StartupSingup() {
             console.log('Form is not valid');
           }
         };
-      
+        let isValids = true;
+  // ... (rest of your validation logic remains the same)
+  if (!validateCaptcha()) {
+    isValids = false;
+  }
 
+    }
+    
     return (
         <>
-             <div className="container">
-            <div className="header">
-                <p>Applicant Registration Form</p>
             </div>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -203,7 +231,13 @@ function StartupSingup() {
                     </select>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Captcha" />
+                    <label id="ll32">Captcha</label>
+    <span id="captcha">{captcha}</span>
+    <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
+    <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
+    {captchaError && <p className="error">{captchaError}</p>}
+                      
+                      
                 </div>
                 <button type="submit">Submit</button>
             </form>
@@ -212,5 +246,6 @@ function StartupSingup() {
         </>
     );
 }
+
 
 export default StartupSingup;
