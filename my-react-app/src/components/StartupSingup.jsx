@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './StartupSingup.css';
-
+import axios from 'axios';
 function StartupSingup() {
-  const [pan, setPan] = useState('');
-  const [gst, setGst] = useState('');
-  const [pincode, setPincode] = useState('');
+  //declaration of basic functions
+  const [startupdata, setStartupdata] = useState({
+     email:"",password:"",companyname:"",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
+     website:"",cerno:"",cdate:"",issueauthority:"",iecode:"",issuedate:"",purpose:""
+  });
+  function handleChange(e)
+  {
+    e.preventDefault();
+    const {name,value}=e.target;
+    setStartupdata({...startupdata,[name]:value});
+  }
+  //declaration of features
+  const [passerror, setPasserror] = useState();
+  let isValid = true;
   const [panError, setPanError] = useState('');
   const [gstError, setGstError] = useState('');
   const [pincodeError, setPincodeError] = useState('');
@@ -49,16 +60,20 @@ function StartupSingup() {
     return gstPattern.test(gst);
   };
 
-  const validatePincode = (pincode) => {
+  const validatePincode=(pincode)=>{
     const pin = /^[0-9]{6}$/;
     return pin.test(pincode);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    let isValid = true;
-
-    if (!validatePAN(pan)) {
+ 
+    if(startupdata.password.length<6)
+    {
+      isValid=false;
+    }
+    isValid ? setPasserror("") : setPasserror("Password must contain 6 letters") ;
+    if (!validatePAN(startupdata.pan)) {
       setPanError('Invalid PAN format.');
       isValid = false;
     } else {
@@ -67,14 +82,14 @@ function StartupSingup() {
         }
 
         // Validate GST
-        if (!validateGST(gst)) {
+        if (!validateGST(startupdata.gst)) {
             setGstError('Invalid GST format.');
             isValid = false;
           } else {
             setGstError('');
           }
       
-          if (!validatePincode(pincode)) {
+          if (!validatePincode(startupdata.pincode)) {
             setPincodeError('Invalid pin code.');
             isValid = false;
           } else {
@@ -86,9 +101,20 @@ function StartupSingup() {
       
           if (isValid) {
             console.log('Form is valid and ready for submission');
+            try{
+            let response= await axios.post("",startupdata);
+            if(response.data.success)
+              alert("Successfully Signed Up")
+            else
+            alert("please try again");
+            }
+            catch(error){
+              console.log("the error is",error);
+            }
           } else {
             console.log('Form is not valid');
           }
+         
         };
       
 
@@ -99,40 +125,44 @@ function StartupSingup() {
                 <p>Applicant Registration Form</p>
             </div>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <button type="button">State</button>
-                    <button type="button">ANDHRA PRADESH</button>
-                </div>
+              <div className="form-group">
+                <label>1. Basic details</label><br/>
+                <label>(i) Email Id </label>
+                <input type="email" name="email" onChange={handleChange} placeholder='Enter Email'/><br/>
+                <label>(ii) Password</label>
+                <input type="password" name="password" onChange={handleChange} placeholder="Enter password"/>
+                {passerror&&<p>{passerror}</p>}
+              </div>
                 <div className="form-group">
                     <label>1. Details of Manufacturer</label>
                     <label>(All fields Marked* are Mandatory)</label>
                 </div>
                 <div className="form-group">
                     <label>(i) Name of the Company/Firm*</label>
-                    <input type="text" placeholder="Name of the company/Firm.." />
+                    <input type="text" name="companyname" onChange={handleChange} placeholder="Name of the company/Firm.." />
                 </div>
                 <div className="form-group">
                     <label>(ii) Address of Corporate Office</label>
                     <label>Address Line</label>
-                    <input type="text" placeholder="Address Line 1.." />
+                    <input type="text" name="address" onChange={handleChange} placeholder="Enter Address Line" />
                     <label>Village/Town/City</label>
-                    <input type="text" />
+                    <input type="text" name="city" onChange={handleChange} placeholder="Enter name of village/town/city"/>
                     <label>Pin Code</label>
                     <input 
                         type="text" 
                         placeholder="Pin code of place" 
-                        value={pincode}  
-                        onChange={(e) => setPincode(e.target.value)} 
+                        name="pincode" 
+                        onChange={handleChange} 
                     />
  {pincodeError && <p className="error">{pincodeError}</p>}
                     <label>State</label>
-                    <select>
+                    <select name="state" onChange={handleChange}>
                         <option>-select-</option>
                         <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
                         <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
                     </select>
                     <label>District</label>
-                    <select>
+                    <select name="district" onChange={handleChange}>
                         <option>- please-select-</option>
                         <option value="NICOBARS">NICOBARS</option>
                         <option value="we change">we change</option>
@@ -144,8 +174,8 @@ function StartupSingup() {
                     <input 
                         type="text" 
                         placeholder="PAN No. of the company/Firm"  
-                        value={pan} 
-                        onChange={(e) => setPan(e.target.value)} 
+                        name="pan"
+                        onChange={handleChange} 
                     />
                     {panError && <p className="error">{panError}</p>}
                 </div>
@@ -154,14 +184,14 @@ function StartupSingup() {
                     <input 
                         type="text" 
                         placeholder="GST No. of the company/Firm" 
-                        value={gst} 
-                        onChange={(e) => setGst(e.target.value)} 
+                        name="gst"
+                        onChange={handleChange} 
                     />
                     {gstError && <p className="error">{gstError}</p>}
                 </div>
                 <div className="form-group">
                     <label>(vii) Website Address</label>
-                    <input type="text" placeholder="Website Address.." />
+                    <input type="text"name="website" onChange={handleChange} placeholder="Website Address.." />
                 </div>
                 <div className="form-group">
                     <label>2. Company Certification Details (If Any)</label><br />
@@ -169,30 +199,30 @@ function StartupSingup() {
                 </div>
                 <div className="form-group">
                     <label>(a) Certificate No.</label>
-                    <input type="text" />
+                    <input type="text" name="cerno" onChange={handleChange} placeholder="Enter company certificate no"/>
                 </div>
                 <div className="form-group">
                     <label>(b) Date of Issue</label>
-                    <input type="date" />
+                    <input type="date" name="cdate" onChange={handleChange}/>
                 </div>
                 <div  className="form-group">
                     <label>(c) Issuing Authority</label>
-                    <input type="text" />
+                    <input type="text" name="issueauthority" onChange={handleChange} placeholder="Enter name of issuing authority" />
                     </div>
                 <div className="form-group">
                     <label>(ii) Details of IE Code by DGFT</label>
                 </div>
                 <div className="form-group">
                     <label>(a) IE Code</label>
-                    <input type="text" />
+                    <input type="text" name="iecode" onChange={handleChange} placeholder='Enter IE Code' />
                 </div>
                 <div className="form-group">
                     <label>(b) Date of Issue</label>
-                    <input type="date" />
+                    <input type="date" name="issuedate" onChange={handleChange}/>
                 </div>
                 <div className="form-group">
                     <label>3. Purpose of Applying*</label>
-                    <select>
+                    <select name="purpose" onChange={handleChange}>
                         <option>please select..</option>
                         <option value="NEW">NEW</option>
                         <option value="EXISTING">EXISTING</option>

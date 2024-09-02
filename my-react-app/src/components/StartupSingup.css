@@ -24,6 +24,8 @@
 
 .form-group input[type="text"],
 .form-group input[type="date"],
+.form-group input[type="email"],
+.form-group input[type="password"],
 .form-group select {
   width: 100%;
   padding: 10px;
@@ -33,6 +35,8 @@
 
 .form-group input[type="text"]:focus,
 .form-group input[type="date"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
 .form-group select:focus {
   border-color: #aaa;
 }
