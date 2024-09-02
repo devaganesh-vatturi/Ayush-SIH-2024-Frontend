@@ -6,6 +6,7 @@ import Doctorsignup from './components/Doctorsignup.jsx';
 import Home from './components/Home.jsx';
 import StartupSignup from './components/StartupSingup.jsx';
 import Farmersignup from './components/Farmersignup.jsx';
+import Startupdashboard from './components/Startupdashboard.jsx';
 function App() {
     return (
      <>
@@ -18,6 +19,7 @@ function App() {
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
    </Routes>
    </BrowserRouter> 
+   
 
      </>
     );
