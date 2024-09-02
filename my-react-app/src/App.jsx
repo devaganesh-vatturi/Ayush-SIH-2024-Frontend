@@ -6,6 +6,7 @@ import Doctorsignup from './components/Doctorsignup.jsx';
 import Home from './components/Home.jsx';
 import StartupSignup from './components/StartupSingup.jsx';
 import Farmersignup from './components/Farmersignup.jsx';
+
 import AiChatBot from './components/AiChatBot.jsx'
 function App() {
     return (
