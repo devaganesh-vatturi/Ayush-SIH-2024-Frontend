@@ -6,12 +6,10 @@ import Doctorsignup from './components/Doctorsignup.jsx';
 import Home from './components/Home.jsx';
 import StartupSignup from './components/StartupSingup.jsx';
 import Farmersignup from './components/Farmersignup.jsx';
-
-import AiChatBot from './components/AiChatBot.jsx'
 function App() {
     return (
      <>
-    {/* <BrowserRouter>
+    <BrowserRouter>
    <Routes>
     <Route path='/' element={<Home/>} />
     <Route path='/login' element={<Login/>}/>
@@ -19,8 +17,8 @@ function App() {
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
    </Routes>
-   </BrowserRouter>  */}
-   <AiChatBot />
+   </BrowserRouter> 
+
      </>
     );
 }
