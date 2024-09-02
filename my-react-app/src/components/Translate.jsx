@@ -4,7 +4,7 @@ import axios from 'axios';
 function Translate() {
     const [text, setText] = useState('');
     const [translatedText, setTranslatedText] = useState('');
-    const [language, setLanguage] = useState('hi'); // default to Hindi
+    const [language, setLanguage] = useState('en'); // default to english
 
     const handleTranslate = async () => {
         try {
@@ -18,6 +18,24 @@ function Translate() {
             console.error('Error translating text:', error);
         }
     };
+    const handleTranslatej = async () => {
+       const translateFrom = 'en'; // considering english is by default BASE language
+       // further modification is needed to store the current language before modifing it 
+       const translateTo = language;
+       console.log("translate To :  ",language);
+        if(!text) return;
+        // toText.setAttribute("placeholder", "Translating...");
+        let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+        fetch(apiUrl).then(res => res.json()).then(data => {
+             setTranslatedText(data.responseData.translatedText);
+            data.matches.forEach(data => {
+                if(data.id === 0) {
+                setTranslatedText(data.translation);
+                }
+            });
+            // toText.setAttribute("placeholder", "Translation");
+        });
+    }
 
     return (
         <div className="App">
@@ -39,11 +57,11 @@ function Translate() {
                     <option value="pa">Punjabi</option>
                     {/* Add more languages as needed */}
                 </select>
-                <button onClick={handleTranslate}>Translate</button>
+                <button onClick={handleTranslatej}>Translate</button>
             </div>
             <div>
                 <h2>Translated Text:</h2>
-                <p>{translatedText}</p>
+                <h3>{translatedText}</h3>
             </div>
         </div>
     );
