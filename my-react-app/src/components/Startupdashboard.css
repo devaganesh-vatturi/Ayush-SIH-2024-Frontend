@@ -1,0 +1,9 @@
+
+/* miniheader */
+.stp-dsh-minhed{
+   display: flex;
+   flex-direction: row;
+   gap:30px;
+   font-weight:bold;
+   font-size: 1.3rem;
+}
