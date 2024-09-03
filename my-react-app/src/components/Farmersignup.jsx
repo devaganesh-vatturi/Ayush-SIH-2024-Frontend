@@ -1,11 +1,20 @@
 import './Farmersignup.css';
 import React,{ useState } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 function Farmersignup() {
-  const [farmerdata, setFarmerdata] = useState({name:"",district:"",state:"",cropname:"",
-    phno:"",email:"",password:""});
+  const [farmerdata, setFarmerdata] = useState(
+    {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
     const [passerror, setPasserror] = useState("");
     let invalid=false;
+    useEffect( 
+      ()=>{
+        fetchDistricts();
+        return ()=>{
+          // empty the district list
+          setDistrictsList([]);
+           }
+      },[farmerdata.state]);
     const handleChange=(e)=>
     {
       e.preventDefault();
@@ -23,7 +32,7 @@ function Farmersignup() {
         }
         invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
         try{
-        const response= await axios.post("",farmerdata);
+        const response= await axios.post("http://localhost:5002/api/farmer-reg",farmerdata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -37,23 +46,72 @@ function Farmersignup() {
         console.log("the error is",error);
       }
     }
+    const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
+    const [districtsList, setDistrictsList] = useState([]);
+    const fetchDistricts = async () => {
+      try {
+          const response = await fetch('http://localhost:5002/api/districts', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ stateName : farmerdata.state}),
+          });
+
+          if (!response.ok) {
+              throw new Error('State not found or other error');
+          }
+
+          const data = await response.json();
+          setDistrictsList(data.districts);
+      } catch (error) {
+          console.error('Error fetching districts:', error);
+      }
+  };
+
     return (
       <form onSubmit={handleSubmit}>
         <div className="container">
       <label className="label">Enter the name:</label><br />
       <input type="text" name="name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter district name:</label><br />
-      <input type="text" name="district" onChange={handleChange}  className="input" /><br />
       <label className="label">Enter the state:</label><br />
-      <input type="text" name="state" onChange={handleChange}  className="input" /><br />
+      <select value={farmerdata.state} name="state" onChange={handleChange} className="input">
+                <option value="" disabled>Select a state</option>
+                {indian_states.map((state, index) => (
+                    <option key={index} value={state}>
+                        {state}
+                    </option>
+                ))}
+            </select>
+      <br />
+      <label className="label">Enter district name:</label><br />
+      <select value={farmerdata.district} name="district" onChange={handleChange} className="input">
+                <option value="" disabled>Select a district</option>
+                {districtsList.map((district, index) => (
+                    <option key={index} value={district}>
+                        {district}
+                    </option>
+                ))}
+            </select>
+     <br />
       <label className="label">Enter crop name:</label><br />
-      <input type="text" name="cropname" onChange={handleChange} className="input" /><br />
+      <input type="text" name="crop_name" onChange={handleChange} className="input" /><br />
       <label className="label">Enter phone number:</label><br />
-      <input type="number" name="phno" onChange={handleChange} className="input" />
-      <label className="label">Enter the emailid:</label>
-      <input type="text"name="email" onChange={handleChange} className="input" /><br />
+      <input type="number" name="phone_number" onChange={handleChange} className="input" />
+      <label className="label">Enter the language :</label>
+      <select  name="language" onChange={handleChange} className="input">
+                    <option value="hi">Hindi</option>
+                    <option value="bn">Bengali</option>
+                    <option value="te">Telugu</option>
+                    <option value="ta">Tamil</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="kn">Kannada</option>
+                    <option value="mr">Marathi</option>
+                    <option value="pa">Punjabi</option>
+                    {/* Add more languages as needed */}
+                </select><br />
       <label className="label">Enter the password:</label>
-      <input type="text" name="password" onChange={handleChange} className="input" /><br />
+      <input type="password" name="password" onChange={handleChange} className="input" /><br />
     {passerror&&<p>{passerror}</p>}
     </div>
     <button className="button">submit</button>
