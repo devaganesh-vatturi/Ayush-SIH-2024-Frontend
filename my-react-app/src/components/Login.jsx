@@ -2,6 +2,7 @@ import './Login.css';
 import React,{ useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Header from './Header';
 function Login(){
   const [logit, setLogit] = useState({username:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
@@ -35,6 +36,7 @@ const handelSubmit =async(e)=>{
 }
     return(
       <>
+      <Header/>
       <form onSubmit={handelSubmit}>
         <p>Hey {usertype} </p>
         <div className="container">

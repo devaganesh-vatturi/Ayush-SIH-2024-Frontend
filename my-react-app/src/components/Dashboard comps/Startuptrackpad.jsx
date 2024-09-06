@@ -16,7 +16,7 @@ const Startuptrackpad = () => {
 
   return (
     <>
-    <p>the appication status</p>
+  
     <div className="trackpad">
       {stages.map((stage, index) => (
         <div

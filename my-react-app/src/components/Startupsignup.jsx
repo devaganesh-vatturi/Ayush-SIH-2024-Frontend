@@ -75,8 +75,8 @@ function Doctorsignup() {
     return ( 
       <>
       <Header/>
-      <form onSubmit={onSubmit} className="container">
-        
+      <form onSubmit={onSubmit}>
+        <div className="container">
       <label className="label">Enter the name:</label>
       <input type="text" className="input" name="name" onChange={handelChange}/><br />
       
@@ -103,14 +103,14 @@ function Doctorsignup() {
       
       <label className="label" >Enter the phone number:</label>
       <input type="text" className="input" name="phone_number" onChange={handelChange}/><br />
-      <label className="label">Upload a PDF file:</label>
-      <input type="file" accept=".pdf" className="input" onChange={handelChange}/><br/>
       <label className="label">Enter the emailid:</label>
       <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
       <label className="label">Enter the password:</label>
       <input type="text" className="input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
       <button className="button">submit</button>
+    </div>
+   
     </form>
     </>
     );

@@ -1,6 +1,7 @@
 import './Home.css';
 import startup from '../assets/startup.svg';
 import drugins from '../assets/drugins.svg';
+import Header from './Header';
 function Home()
 {
     let startupqr='startup';
@@ -25,10 +26,7 @@ function Home()
     
     return(
         <>
-       <div className="home-head">
-        <p>Aayush 2.0</p>
-        <button>Chat Bot</button>
-       </div>
+       <Header/>
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>

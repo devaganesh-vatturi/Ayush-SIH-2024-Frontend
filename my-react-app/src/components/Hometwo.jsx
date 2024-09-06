@@ -1,6 +1,7 @@
 import './Home.css';
 import doctor from '../assets/doctor.svg';
 import farmer from '../assets/farmer.svg';
+import Header from './Header';
 function Home()
 {
     
@@ -26,10 +27,7 @@ function Home()
     
     return(
         <>
-       <div className="home-head">
-        <p>Aayush 2.0</p>
-        <button>Chat Bot</button>
-       </div>
+    <Header/>
         <div className="home-main">
         
            <div className="home-main-farmer">

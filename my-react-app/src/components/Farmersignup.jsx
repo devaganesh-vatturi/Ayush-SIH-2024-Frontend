@@ -2,6 +2,7 @@ import './Farmersignup.css';
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
+import Header from './Header';
 function Farmersignup() {
   const [farmerdata, setFarmerdata] = useState(
     {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
@@ -70,6 +71,8 @@ function Farmersignup() {
   };
 
     return (
+      <>
+      <Header/>
       <form onSubmit={handleSubmit}>
         <div className="container">
       <label className="label">Enter the name:</label><br />
@@ -113,10 +116,11 @@ function Farmersignup() {
       <label className="label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className="input" /><br />
     {passerror&&<p>{passerror}</p>}
-    </div>
     <button className="button">submit</button>
+    </div>
+   
     </form>
-
+    </>
     );
 }
 

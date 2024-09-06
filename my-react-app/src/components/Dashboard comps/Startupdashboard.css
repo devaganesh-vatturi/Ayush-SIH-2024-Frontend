@@ -1,6 +1,6 @@
 
 /* miniheader */
-.stp-dsh-minhed{
+.startup-dsh-head{
    display: flex;
    flex-direction: row;
    gap:30px;

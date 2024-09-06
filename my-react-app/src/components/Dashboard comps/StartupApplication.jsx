@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './StartupSingup.css';
+import './StartupApplication.css';
 import axios from 'axios';
 function StartupSingup() {
   //declaration of basic functions
   const [startupdata, setStartupdata] = useState({
-     email:"",password:"",companyname:"",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
+    companyname:"",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
      website:"",cerno:"",cdate:"",issueauthority:"",iecode:"",issuedate:"",purpose:""
   });
   function handleChange(e)
@@ -14,7 +14,6 @@ function StartupSingup() {
     setStartupdata({...startupdata,[name]:value});
   }
   //declaration of features
-  const [passerror, setPasserror] = useState();
   let isValid = true;
   const [panError, setPanError] = useState('');
   const [gstError, setGstError] = useState('');
@@ -67,12 +66,6 @@ function StartupSingup() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
- 
-    if(startupdata.password.length<6)
-    {
-      isValid=false;
-    }
-    isValid ? setPasserror("") : setPasserror("Password must contain 6 letters") ;
     if (!validatePAN(startupdata.pan)) {
       setPanError('Invalid PAN format.');
       isValid = false;
@@ -120,19 +113,11 @@ function StartupSingup() {
 
     return (
         <>
-             <div className="container">
+             <div className="container-application">
             <div className="header">
                 <p>Applicant Registration Form</p>
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>1. Basic details</label><br/>
-                <label>(i) Email Id </label>
-                <input type="email" name="email" onChange={handleChange} placeholder='Enter Email'/><br/>
-                <label>(ii) Password</label>
-                <input type="password" name="password" onChange={handleChange} placeholder="Enter password"/>
-                {passerror&&<p>{passerror}</p>}
-              </div>
                 <div className="form-group">
                     <label>1. Details of Manufacturer</label>
                     <label>(All fields Marked* are Mandatory)</label>

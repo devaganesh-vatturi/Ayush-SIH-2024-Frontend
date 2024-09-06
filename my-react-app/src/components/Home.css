@@ -6,15 +6,14 @@ body{
     margin:0px;
     border:none;
 }
-.home-head{
+/* .home-head{
     display:flex;
     flex-direction:row;
     justify-content: space-between;
     color:black;
     border: 4px solid pink;
     align-items: center;
-    
-}
+} */
 .home-head p{
     font-size:1.5rem;
 }
