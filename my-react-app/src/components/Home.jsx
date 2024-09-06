@@ -1,14 +1,10 @@
 import './Home.css';
 import startup from '../assets/startup.svg';
-import doctor from '../assets/doctor.svg';
 import drugins from '../assets/drugins.svg';
-import farmer from '../assets/farmer.svg';
 function Home()
 {
     let startupqr='startup';
     let druginspectorqr='druginspector';
-    let farmerqr='farmer';
-    let doctorqr='doctor';
     function startupLogin()
     {
         window.location.href = `/login?value=${startupqr}`;
@@ -17,26 +13,15 @@ function Home()
     {
         window.location.href = `/login?value=${druginspectorqr}`;
     }
-    function farmerLogin()
-    {
-        window.location.href = `/login?value=${farmerqr}`;
-    }
-     function doctorLogin()
-    {
-        window.location.href = `/login?value=${doctorqr}`;
-    }
     function goStartup()
     {
         window.location.href=`/signupstartup`;
     }
-    function gofarmer()
+    function gohometwo()
     {
-        window.location.href=`/signupfarmer`;
+        window.location.href=`/hometwo`;
     }
-    function godoctor()
-    {
-        window.location.href=`/signupdoctor`;
-    }
+    
     
     return(
         <>
@@ -56,19 +41,8 @@ function Home()
                <p>Drug Inspector</p>
                <button id="home-main-login" onClick={druginsLogin}>Login</button>
            </div>
-           <div className="home-main-farmer">
-           <img id="home-main-img" src={farmer}/>
-               <p>Farmer</p>
-               <button id="home-main-signin" onClick={gofarmer}>Sign Up</button>
-               <button id="home-main-login" onClick={farmerLogin}>Login</button>
            </div>
-           <div className="home-main-doctor">
-           <img id="home-main-img" src={doctor}/>
-               <p>Doctor</p>
-               <button id="home-main-signin" onClick={godoctor}>Sign Up</button>
-               <button id="home-main-login" onClick={doctorLogin}>Login</button>
-           </div>
-        </div>
+           <center><button id="gohometwo" onClick={gohometwo}>Are you a Farmer/doctor Wanna collaborate?</button></center>
         <div className="home-faq">
              <p>the FAQ's will be written here!</p>
         </div>
