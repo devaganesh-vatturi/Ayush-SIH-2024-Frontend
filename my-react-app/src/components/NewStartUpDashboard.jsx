@@ -7,7 +7,7 @@ const NewStartUpDashboard = () => {
   const ayushtabs = ['Near by farmer', 'Near by doctor', 'Drug inspector communication'];
   const [activeAyushTab, setActiveAyushTab] = useState('Near by farmer');
 
-  const renderContentAyush30 = () => {
+  const renderContentAyush30 = () => { 
     switch (activeAyushTab) {
         case 'Near by farmer':
           return <div>Near by farmer jsx component here</div>;
