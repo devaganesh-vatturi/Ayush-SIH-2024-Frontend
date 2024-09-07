@@ -6,10 +6,12 @@ import { useEffect } from 'react';
 import Header from './Header';
 
 function Startupsignup() {
-  const [doctordata, setDoctordata] = useState(
-    {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:"" });
+  const [startUpdata, setStartUpdata] = useState(
+    {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
+      state:"",district:"",phone_number:null });
   const [passerror, setPasserror] = useState("");
   let invalid=false;
+  
   useEffect( 
     ()=>{
       fetchDistricts();
@@ -17,28 +19,29 @@ function Startupsignup() {
         // empty the district list
         setDistrictsList([]);
          }
-    },[doctordata.state]);
-  const handelChange=(e)=>{
+    },[startUpdata.state]);
+  
+    const handelChange=(e)=>{
      e.preventDefault();
      const {name,value}=e.target;
-     setDoctordata({...doctordata,[name]:value});
+     setStartUpdata({...startUpdata,[name]:value});
   }
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(doctordata.password.length<6)
+     if(startUpdata.password.length<6)
      {
         invalid=true;
      }
      invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
      try{
-     const response = await axios.post("http://localhost:5002/api/doctor-reg",doctordata);
+     const response = await axios.post("http://localhost:5002/api/startup-reg",startUpdata);
      if(response.data.success)
      {
       alert("Successfully Signed Up");
      }
      else{
-      alert("please try again!");
+      alert("Invalid Details.Please try again!");
      }
      }
      catch(error)
@@ -59,7 +62,7 @@ function Startupsignup() {
               headers: {
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ stateName : doctordata.state}),
+              body: JSON.stringify({ stateName : startUpdata.state}),
           });
 
           if (!response.ok) {
@@ -78,11 +81,11 @@ function Startupsignup() {
       <Header/>
       <form onSubmit={onSubmit}>
         <div className="container">
-      <label className="label">Enter the name:</label>
-      <input type="text" className="input" name="name" onChange={handelChange}/><br />
+      <label className="label">Name of the Company/Firm :</label>
+      <input type="text" className="input" name="companyName" onChange={handelChange}/><br />
       
-      <label className="label">Enter the state:</label><br />
-      <select value={doctordata.state} name="state" onChange={handelChange} className="input">
+      <label className="label">State :</label><br />
+      <select value={startUpdata.state} name="state" onChange={handelChange} className="input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -91,8 +94,8 @@ function Startupsignup() {
                 ))}
             </select>
       <br />
-      <label className="label">Enter district name:</label><br />
-      <select value={doctordata.district} name="district" onChange={handelChange} className="input">
+      <label className="label">District :</label><br />
+      <select value={startUpdata.district} name="district" onChange={handelChange} className="input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -101,13 +104,18 @@ function Startupsignup() {
                 ))}
             </select>
      <br />
-      
-      <label className="label" >Enter the phone number:</label>
-      <input type="text" className="input" name="phone_number" onChange={handelChange}/><br />
-      <label className="label">Enter the emailid:</label>
+     <label className="label">Address :</label>
+     <input type="text" className="input" name="address" onChange={handelChange}/><br />
+     <label className="label">City :</label>
+      <input type="text" className="input" name="city" onChange={handelChange}/><br />
+      <label className="label">PinCode :</label>
+      <input type="number" className="input" name="pinCode" onChange={handelChange}/><br />
+      <label className="label" >Contact number:</label>
+      <input type="number" className="input" name="phone_number" onChange={handelChange}/><br />
+      <label className="label">Email Address :</label>
       <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
-      <label className="label">Enter the password:</label>
-      <input type="text" className="input" name="password" onChange={handelChange}/><br />
+      <label className="label">Password:</label>
+      <input type="password" className="input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
       <button className="button">submit</button>
     </div>

@@ -12,7 +12,7 @@ import Startupdashboard from './components/Dashboard comps/Startupdashboard.jsx'
 function App() {
     return (
      <>
-    {/* <BrowserRouter>
+    <BrowserRouter>
    <Routes>
     <Route path='/' element={<Home/>} />
     <Route path='/hometwo' element={<Hometwo/>}/>
@@ -21,10 +21,8 @@ function App() {
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
     <Route path='/sdash' element={<Startupdashboard/>}/>
-  
    </Routes>
-   </BrowserRouter>  */}
-<Startupdashboard/>
+   </BrowserRouter>  
 </>
     );
 }

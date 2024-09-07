@@ -6,7 +6,7 @@ import FAQ from './FAQs';
 function Home()
 {
     let startupqr='startup';
-    let druginspectorqr='druginspector';
+    let druginspectorqr='drugInspector';
     function startupLogin()
     {
         window.location.href = `/login?value=${startupqr}`;

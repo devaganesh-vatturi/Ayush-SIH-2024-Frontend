@@ -34,5 +34,7 @@
   .button:hover {
     background-color: #3e8e41;
   }
-  
-  
+
+  #hey-tag{
+    font-size: 2rem;
+  }
