@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Filterdoctor from './Filterdoctor';
 import Filterfarmer from './Filterfarmer';
-import './Extrafeatures.css';
+import '../styles/Extrafeatures.css';
 export default function Extrafeatures() {
   const [screen, setScreen] = useState(1);
   function godoctor()

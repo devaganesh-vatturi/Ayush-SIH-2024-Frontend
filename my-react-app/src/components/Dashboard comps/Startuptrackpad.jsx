@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Startuptrackpad.css';
+import '../styles/Startuptrackpad.css';
 
 const Startuptrackpad = () => {
   const [currentStage, setCurrentStage] = useState(5); // Change this value to update the progress
