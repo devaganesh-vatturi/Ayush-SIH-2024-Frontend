@@ -22,7 +22,9 @@ function App() {
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
     <Route path='/sdash' element={<Startupdashboard/>}/>
    </Routes>
+
    </BrowserRouter>  
+
 </>
     );
 }
