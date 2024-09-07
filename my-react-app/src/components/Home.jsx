@@ -1,4 +1,4 @@
-import './Home.css';
+import './styles/Home.css';
 import startup from '../assets/startup.svg';
 import drugins from '../assets/drugins.svg';
 import Header from './Header';

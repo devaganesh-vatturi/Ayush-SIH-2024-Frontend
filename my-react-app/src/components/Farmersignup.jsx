@@ -1,4 +1,4 @@
-import './Farmersignup.css';
+import './styles/Farmersignup.css';
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
