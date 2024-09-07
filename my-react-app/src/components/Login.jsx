@@ -30,6 +30,10 @@ const handelSubmit =async(e)=>{
     const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
     if (response.data.success) {
       alert("Logged in successfully!");
+      if(usertype==="startup")
+      {
+        window.location.href=`/sdash?email=${Email_ID}`;
+      }
     } 
   } 
   catch (error) {

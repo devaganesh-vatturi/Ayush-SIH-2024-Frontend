@@ -8,6 +8,7 @@ import Startupsignup from './components/Startupsignup.jsx';
 import Farmersignup from './components/Farmersignup.jsx';
 import Hometwo from './components/Hometwo.jsx';
 import Startupdashboard from './components/Dashboard comps/Startupdashboard.jsx';
+import Druginsdash from './components/Dashboard comps/Druginsdash.jsx';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
     <Route path='/sdash' element={<Startupdashboard/>}/>
+    <Route path='/ddash' element={<Druginsdash/>}/>
    </Routes>
 
    </BrowserRouter>  
