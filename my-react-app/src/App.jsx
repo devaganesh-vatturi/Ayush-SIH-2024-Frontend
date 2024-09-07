@@ -19,7 +19,8 @@ function App() {
     <Route path='/signupstartup' element={<Startupsignup/>}/>
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
-    
+    <Route path='/sdash' element={<Startupdashboard/>}/>
+  
    </Routes>
    </BrowserRouter> 
 </>
