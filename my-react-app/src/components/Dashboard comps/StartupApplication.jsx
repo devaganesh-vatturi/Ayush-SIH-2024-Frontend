@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './StartupApplication.css';
+import '../styles/StartupApplication.css';
 import axios from 'axios';
 function StartupSingup() {
   //declaration of basic functions

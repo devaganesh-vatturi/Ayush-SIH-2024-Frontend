@@ -7,11 +7,12 @@ import Home from './components/Home.jsx';
 import Startupsignup from './components/Startupsignup.jsx';
 import Farmersignup from './components/Farmersignup.jsx';
 import Hometwo from './components/Hometwo.jsx';
-import Startupdashboard from './components/Dashboard comps/Startupdashboard.jsx'
+import Startupdashboard from './components/Dashboard comps/Startupdashboard.jsx';
+
 function App() {
     return (
      <>
-    <BrowserRouter>
+    {/* <BrowserRouter>
    <Routes>
     <Route path='/' element={<Home/>} />
     <Route path='/hometwo' element={<Hometwo/>}/>
@@ -22,7 +23,8 @@ function App() {
     <Route path='/sdash' element={<Startupdashboard/>}/>
   
    </Routes>
-   </BrowserRouter> 
+   </BrowserRouter>  */}
+<Startupdashboard/>
 </>
     );
 }

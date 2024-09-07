@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import './Startupdashboard.css';
+import '../styles/Startupdashboard.css';
 import Startuptrackpad from './Startuptrackpad';
 import StartupApplication from './StartupApplication';
 import Header from '../Header';
@@ -8,7 +8,7 @@ import Extrafeatures from './Extrafeatures';
 export default function Startupdashboard() {
     //1 is doctor
     //2 is farmer
-    const [value, setvalue] = useState(3);
+    const [value, setvalue] = useState(1);
   
     function goStatus(e)
     {

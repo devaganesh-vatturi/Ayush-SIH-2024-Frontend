@@ -1,10 +1,11 @@
-// import './Doctorsignup.css';
+import './styles/Startupsignup.css';
+
 import React,{useState} from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 
-function Doctorsignup() {
+function Startupsignup() {
   const [doctordata, setDoctordata] = useState(
     {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:"" });
   const [passerror, setPasserror] = useState("");
@@ -116,4 +117,4 @@ function Doctorsignup() {
     );
 }
 
-export default Doctorsignup;
+export default Startupsignup;
