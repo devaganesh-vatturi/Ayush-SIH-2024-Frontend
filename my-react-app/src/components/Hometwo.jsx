@@ -1,4 +1,4 @@
-import './Home.css';
+import './styles/Home.css';
 import doctor from '../assets/doctor.svg';
 import farmer from '../assets/farmer.svg';
 import Header from './Header';
