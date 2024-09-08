@@ -16,7 +16,7 @@ const Startuptrackpad = () => {
 
   return (
     <>
-  
+   <div className='trck-container'>
     <div className="trackpad">
       {stages.map((stage, index) => (
         <div
@@ -27,6 +27,7 @@ const Startuptrackpad = () => {
           <p>{isCancelled && index === stages.length - 1 ? 'Your certification has been canceled.' : stage.description}</p>
         </div>
       ))}
+    </div>
     </div>
     </>
   );

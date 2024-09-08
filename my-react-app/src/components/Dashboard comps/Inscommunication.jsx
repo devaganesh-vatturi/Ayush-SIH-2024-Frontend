@@ -20,7 +20,7 @@ export default function Inscommunication() {
     }
   return (
    <>
-
+   <div className='ins-cont'>
    <div className="ins-main">
     <p className="ins-head">Communication with Drug Inspector</p>
     <p className="ins-feed">Feedback</p>
@@ -37,10 +37,11 @@ export default function Inscommunication() {
 
     {isEnabled && clicks && (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Enter something" className="input-field" />
+            <input type="text" placeholder="What do you wanna say to the inspector ?" className="input-field" />
             <button type="submit" className="submit-button">Submit</button>
         </form>
     )}
+</div>
 </div>
  </>
   )

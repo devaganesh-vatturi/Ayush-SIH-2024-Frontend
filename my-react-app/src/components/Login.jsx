@@ -32,19 +32,19 @@ const handelSubmit =async(e)=>{
       alert("Logged in successfully!");
       if(usertype==="startup")
       {
-        window.location.href=`/sdash?email=${Email_ID}`;
+        window.location.href=`/sdash?email=${logit.Email_ID}`;
       }
       else if(usertype==="drugInspector")
       {
-        window.location.href=`/ddash?email=${Email_ID}`;
+        window.location.href=`/ddash?email=${logit.Email_ID}`;
       }
       else if(usertype==="doctor")
         {
-          window.location.href=`/docdash?email=${Email_ID}`;
+          window.location.href=`/docdash?email=${logit.Email_ID}`;
         }
       else if(usertype==="farmer")
           {
-            window.location.href=`/fardash?email=${Email_ID}`;
+            window.location.href=`/fardash?email=${logit.phone_number}`;
           }
     } 
   } 

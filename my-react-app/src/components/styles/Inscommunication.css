@@ -1,14 +1,18 @@
+ .ins-cont{
+    width: 80%;
+    margin-left: 10%;
+ }
+
  .ins-main {
-    text-align: center;
+    /* text-align: center; */
     margin-top: 50px;
 }
 
 /* Styles for the <p> elements */
 .paragraph {
-    font-size: 16px;
+    font-size: 1.2rem;
     margin: 10px ;
     color: #333; /* Dark grey color for the text */
-    text-align: center;
 
 }
 
@@ -18,7 +22,7 @@
 
 .toggle-button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1.1rem;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -48,7 +52,7 @@
 .submit-button {
     margin-left: 10px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1rem;
     border: none;
     background-color: blue;
     color: white;
@@ -61,11 +65,14 @@
     background-color: darkblue;
 }
 .ins-head{
-  font-size: 1.5rem;
-  font-weight: bold;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin:40px;
+    color: rgb(6, 6, 87);
 }
 .ins-feed{
-  font-size:1.3rem;
+  font-size:2.3rem;
   font-weight:550;
   margin:20px;
 }
