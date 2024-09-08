@@ -5,6 +5,7 @@ import StartupApplication from './StartupApplication';
 import Header from '../Header';
 import Extrafeatures from './Extrafeatures';
 import { useLocation } from 'react-router-dom';
+import PeerForum from './PeerForum';
 export default function Startupdashboard() {
     //1 is doctor
     //2 is farmer
@@ -27,6 +28,11 @@ export default function Startupdashboard() {
         e.preventDefault();
         setvalue(3);
     }
+    function goPeerForum(e)
+    {
+        e.preventDefault();
+        setvalue(4);
+    }
   return (
     <div>
     <Header/>
@@ -35,11 +41,14 @@ export default function Startupdashboard() {
     <p onClick={goStatus}>Status Tracking</p>
     <p onClick={goApplication}>Fill Aplication</p>
     <p onClick={goAyush}>Ayush 3.0</p>
+    <p onClick={goPeerForum}>Peer Forum</p>
     </div>
     <div >
      {
-        value ===1 ? (<Startuptrackpad/>) : value === 2 ? (<StartupApplication/>) : 
-        value ===3 ? (<Extrafeatures/>) : (null)
+        value ===1 ? (<Startuptrackpad/>) :
+                (value === 2 ? (<StartupApplication/>) :
+                                    ( value ===3 ? (<Extrafeatures/>) : 
+                                            (value ===4 ? (<PeerForum/>) :  (null) ) ))
      }
      </div>
      </div>
