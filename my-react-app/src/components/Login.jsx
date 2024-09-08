@@ -38,6 +38,14 @@ const handelSubmit =async(e)=>{
       {
         window.location.href=`/ddash?email=${Email_ID}`;
       }
+      else if(usertype==="doctor")
+        {
+          window.location.href=`/docdash?email=${Email_ID}`;
+        }
+      else if(usertype==="farmer")
+          {
+            window.location.href=`/fardash?email=${Email_ID}`;
+          }
     } 
   } 
   catch (error) {
