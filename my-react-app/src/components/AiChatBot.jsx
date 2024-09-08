@@ -7,15 +7,16 @@ const systemMessage = {
   content: "Explain things like you're talking to a software professional with 2 years of experience."
 };
 
-function App() {
+function AiChatBot() {
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm a Aayush 2.0 ai chat-model (powered by Gemini Ai)! Ask me anything!",
+      message: "Hello, I'm an Aayush 2.0 AI chat-model (powered by Gemini AI)! Ask me anything. I am from India.",
       sentTime: 'just now',
-      sender: 'Gemini Ai',
+      sender: 'Gemini AI',
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
+  const [showLogo, setShowLogo] = useState(true); // For showing/hiding the logo initially
 
   const handleSend = async (message) => {
     const newMessage = {
@@ -25,11 +26,11 @@ function App() {
     };
 
     const newMessages = [...messages, newMessage];
-
     setMessages(newMessages);
     setIsTyping(true);
 
     await processMessageToBackend(newMessages);
+    setShowLogo(false); // Hide the logo after the first message
   };
 
   async function processMessageToBackend(chatMessages) {
@@ -37,7 +38,7 @@ function App() {
       role: messageObject.sender === 'Assistant' ? 'assistant' : 'user',
       content: messageObject.message,
     }));
-  
+
     try {
       const response = await fetch('http://localhost:5002/api/chat', {
         method: 'POST',
@@ -48,9 +49,9 @@ function App() {
           messagesreq: apiMessages,
         }),
       });
-  
+
       const data = await response.json();
-  
+
       setMessages([...chatMessages, {
         message: data.data,
         sender: 'Assistant',
@@ -61,11 +62,17 @@ function App() {
       setIsTyping(false);
     }
   }
-
+  const stylessminiContainer= {
+      width: "80%",
+      height: "95vh",
+      position: "relative",
+    };
+  
   return (
     <div className="App">
       <div style={{ position: 'relative', height: '800px', width: '700px' }}>
-        <MainContainer>
+    
+      <MainContainer>
           <ChatContainer>
             <MessageList
               scrollBehavior="smooth"
@@ -78,8 +85,10 @@ function App() {
             <MessageInput placeholder="Type message here" onSend={handleSend} />
           </ChatContainer>
         </MainContainer>
-      </div>
-    </div>
+       </div>
+    </div> 
+
   );
 }
-export default App;
+
+export default AiChatBot;
