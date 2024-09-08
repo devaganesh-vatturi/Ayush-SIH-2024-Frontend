@@ -28,7 +28,6 @@ body{
 }
 /* main section */
 .home-main{
-    border:5px solid pink;
     min-height: 500px;         
     max-height: 1000px;
     margin-top:10px;

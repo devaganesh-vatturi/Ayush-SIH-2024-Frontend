@@ -40,7 +40,7 @@ export default function Startupdashboard() {
   
     <p onClick={goStatus}>Status Tracking</p>
     <p onClick={goApplication}>Fill Aplication</p>
-    <p onClick={goAyush}>Ayush 3.0</p>
+    <p onClick={goAyush}>Aushadi3.0</p>
     <p onClick={goPeerForum}>Peer Forum</p>
     </div>
     <div >

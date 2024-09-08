@@ -1,7 +1,9 @@
 /* Root styling */
 :root {
-    --primary-color: #00c6ff;
-    --secondary-color: #0072ff;
+    /* --primary-color: #00c6ff; */
+    --primary-color: #094660;
+    /* --secondary-color: #0072ff; */
+    --secondary-color: #1777a0;
     --background-color: #f0f8ff;
     --text-color: #1f1f1f;
     --hover-color: #0062cc;
@@ -24,7 +26,8 @@
     font-size: 32px;
     margin-bottom: 30px;
     text-align: center;
-    color: rgb(33, 33, 33);
+    /* color: rgb(33, 33, 33); */
+    color:white;
     background: -webkit-linear-gradient(var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
   /* -webkit-text-fill-color: transparent; */

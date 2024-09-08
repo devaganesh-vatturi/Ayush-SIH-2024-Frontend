@@ -2,13 +2,20 @@
 
 .home-head{
     display:flex;
-    font-family: "Oleo Script", system-ui;
     flex-direction:row;
+    font-weight: bold;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     justify-content: space-between;
     color:black;
-    border: 4px solid pink;
+    /* border: 4px solid rgb(255, 255, 255); */
     height: 70px;
     align-items: center;
     font-weight: 400;
-    font-size: 2rem;
+    background-color: #094660;
+}
+.home-name{
+    margin-left:10px;
+    background-color: #094660;   
+    color:white;
+    font-size: 50px;
 }

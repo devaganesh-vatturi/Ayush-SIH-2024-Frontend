@@ -7,8 +7,8 @@ export default function Header() {
   }
   return (
     <div className="home-head">
-    <p>AUSHADI 2.0</p>
-    <button onClick={gochatbot}>Chat Bot</button>
+    <p className='home-name'>AUSHADI 2.0</p>
+    <button className='home-button' onClick={gochatbot}>Chat Bot</button>
    </div>
   )
 }
