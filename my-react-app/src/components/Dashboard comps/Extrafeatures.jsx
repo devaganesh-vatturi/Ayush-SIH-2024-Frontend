@@ -21,9 +21,9 @@ export default function Extrafeatures() {
   
     <>
     <div className='extra-head'>
-        <p onClick={godoctor}>Doctors Info</p>
-        <p onClick={gofarmer}>Farmers Info</p>
-        <p onClick={goinspector}>Drug inspector</p>
+        <p className='nav-link' onClick={godoctor}>Doctors Info</p>
+        <p className='nav-link' onClick={gofarmer}>Farmers Info</p>
+        <p className='nav-link' onClick={goinspector}>Drug inspector</p>
        
     </div>
     {

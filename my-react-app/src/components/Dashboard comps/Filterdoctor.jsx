@@ -1,6 +1,6 @@
 import PrintList from './PrintList.jsx';
 import React from 'react'
-
+import '../styles/Filterdoctor.css';
 export default function Filterdoctor() {
   const faqData = [
     {name:"raju",Email:"raj@gmail.com",phone:"9045643891",district:"west godavari"},
@@ -12,7 +12,7 @@ export default function Filterdoctor() {
 
   return (
     <> 
-    <div>Filterdoctor</div>
+    <p className='doctor-info'>Doctors Info</p>
 
     {faqData.map((obj,index) => (
         

@@ -4,12 +4,14 @@ import Startuptrackpad from './Startuptrackpad';
 import StartupApplication from './StartupApplication';
 import Header from '../Header';
 import Extrafeatures from './Extrafeatures';
-
+import { useLocation } from 'react-router-dom';
 export default function Startupdashboard() {
     //1 is doctor
     //2 is farmer
     const [value, setvalue] = useState(1);
-  
+   const params= useLocation();
+   let values=new URLSearchParams(params.search);
+   let email= values.get('email');
     function goStatus(e)
     {
         e.preventDefault();

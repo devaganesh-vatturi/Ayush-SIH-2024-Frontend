@@ -20,34 +20,28 @@ export default function Inscommunication() {
     }
   return (
    <>
-   <p>Communication with Drug Inspector</p>
-   <p>Feedback</p>
-   <br/>
-   <p>Resend IE certificate properly</p>  
-   <p>Reenter authorized GST number</p> 
+
    <div className="ins-main">
-      <button
-      
+    <p className="ins-head">Communication with Drug Inspector</p>
+    <p className="ins-feed">Feedback</p>
+    <p className="paragraph">Resend IE certificate properly</p>  
+    <p className="paragraph">Reenter authorized GST number</p> 
+
+    <button
         disabled={isEnabled}
-        className={`toggles-button ${isEnabled ? "active" : "inactive"}`}
+        className={`toggle-button ${isEnabled ? "active" : "inactive"}`}
         onClick={isclicked}
-      >
+    >
         Re-notify
-      </button>
+    </button>
 
-      {isEnabled && clicks && (
+    {isEnabled && clicks && (
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Enter something" className="input-field" />
-          <button type="submit" className="submits-button">Submit</button>
+            <input type="text" placeholder="Enter something" className="input-field" />
+            <button type="submit" className="submit-button">Submit</button>
         </form>
-      )}
-    </div>
-
-
-
-
-
-
-   </>
+    )}
+</div>
+ </>
   )
 }

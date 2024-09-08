@@ -34,6 +34,10 @@ const handelSubmit =async(e)=>{
       {
         window.location.href=`/sdash?email=${Email_ID}`;
       }
+      else if(usertype==="drugInspector")
+      {
+        window.location.href=`/ddash?email=${Email_ID}`;
+      }
     } 
   } 
   catch (error) {

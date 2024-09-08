@@ -1,38 +1,51 @@
-.ins-main {
+ .ins-main {
     text-align: center;
     margin-top: 50px;
-  }
-  
-  .toggle-button {
+}
+
+/* Styles for the <p> elements */
+.paragraph {
+    font-size: 16px;
+    margin: 10px ;
+    color: #333; /* Dark grey color for the text */
+    text-align: center;
+
+}
+
+.separator {
+    margin: 20px 0; /* Adding margin to separate sections */
+}
+
+.toggle-button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-  }
-  
-  .toggles-button.active {
+}
+
+.toggle-button.active {
     background-color: green;
     color: white;
-  }
-  
-  .toggle-button.inactive {
+}
+
+.toggle-button.inactive {
     background-color: rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.4);
     cursor: not-allowed;
-  }
-  
-  .input-field {
+}
+
+.input-field {
     margin-top: 20px;
     padding: 10px;
     font-size: 16px;
     width: 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  .submits-button {
+}
+
+.submit-button {
     margin-left: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -42,9 +55,17 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-  }
-  
-  .submits-button:hover {
+}
+
+.submit-button:hover {
     background-color: darkblue;
-  }
-  
+}
+.ins-head{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.ins-feed{
+  font-size:1.3rem;
+  font-weight:550;
+  margin:20px;
+}
