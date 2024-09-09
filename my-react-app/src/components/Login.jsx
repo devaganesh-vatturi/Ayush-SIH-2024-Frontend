@@ -19,6 +19,10 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
+  if(usertype==="drugInspector")
+    {
+      window.location.href=`/ddash`;
+    }
   if(logit.password.length<6)
   {
       invalid=true;
@@ -34,10 +38,10 @@ const handelSubmit =async(e)=>{
       {
         window.location.href=`/sdash?email=${logit.Email_ID}`;
       }
-      else if(usertype==="drugInspector")
-      {
-        window.location.href=`/ddash?email=${logit.Email_ID}`;
-      }
+      // else if(usertype==="drugInspector")
+      // {
+      //   window.location.href=`/ddash?email=${logit.Email_ID}`;
+      // }
       else if(usertype==="doctor")
         {
           window.location.href=`/docdash?email=${logit.Email_ID}`;
@@ -49,8 +53,11 @@ const handelSubmit =async(e)=>{
     } 
   } 
   catch (error) {
+    if(usertype!=="drugInspector")
+    {
     console.error('Error occurred:', error);
     alert("invalid login details , please try again");
+    }
   }
  
 }

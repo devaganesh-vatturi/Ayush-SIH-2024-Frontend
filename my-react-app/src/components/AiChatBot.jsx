@@ -62,14 +62,10 @@ function AiChatBot() {
       setIsTyping(false);
     }
   }
-  const stylessminiContainer= {
-      width: "80%",
-      height: "95vh",
-      position: "relative",
-    };
+
   
   return (
-    <div className="App">
+    <div className="Appjsl">
       <div style={{ position: 'relative', height: '800px', width: '1500px' }}>
     
       <MainContainer>
