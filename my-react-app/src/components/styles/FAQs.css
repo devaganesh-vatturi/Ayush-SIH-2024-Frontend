@@ -5,7 +5,8 @@
     /* --secondary-color: #0072ff; */
     --secondary-color: #1777a0;
     --background-color: #f0f8ff;
-    --text-color: #1f1f1f;
+    /* --text-color: #1f1f1f; */
+    --text-color:white;
     --hover-color: #0062cc;
     --accent-color: #4fc3f7;
   }
@@ -56,7 +57,7 @@
     margin-top: 10px;
     padding: 20px;
     font-size: 18px;
-    color: rgb(17, 17, 17);
+    color: rgb(255, 255, 255);
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.1);
