@@ -1,8 +1,15 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import "../styles/Inscommunication.css";
 export default function Inscommunication() {
     const [isEnabled, setIsEnabled] = useState(false); 
     const [clicks, setClicks] = useState(false);
+    const [feedback,setFeedback]=useState('');
+
+    useEffect(()=>{
+      const response = axios.get("http://localhost:5002/api/StartupFeedback-get");
+      setFeedback(response.feedback);
+      setIsEnabled(response.Finished);//finished is example varibale plz modify it.
+    },[])
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -23,7 +30,7 @@ export default function Inscommunication() {
    <div className='ins-cont'>
    <div className="ins-main">
     <p className="ins-head">Communication with Drug Inspector</p>
-    <p className="ins-feed">Feedback</p>
+    <p className="ins-feed">Feedback::{feedback}</p>
     <p className="paragraph">Resend IE certificate properly</p>  
     <p className="paragraph">Reenter authorized GST number</p> 
 

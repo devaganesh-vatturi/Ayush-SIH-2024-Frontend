@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-function Farmersignup() {
+function Farmersignup(){
   const [farmerdata, setFarmerdata] = useState(
     {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
     const [passerror, setPasserror] = useState("");
@@ -42,10 +42,20 @@ function Farmersignup() {
           alert("Please Try again")
         }
       }
-      catch(error)
-      {
-        console.log("the error is",error);
-      }
+      catch (error) {
+        // Log detailed error information
+        if (error.response) {
+          // The request was made and the server responded with a status code outside of the range of 2xx
+          console.error("Response error:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("No response received:", error.request);
+        } else {
+          // Something happened in setting up the request
+          console.error("Error setting up request:", error.message);
+        }
     }
     const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
     const [districtsList, setDistrictsList] = useState([]);
@@ -68,7 +78,8 @@ function Farmersignup() {
       } catch (error) {
           console.error('Error fetching districts:', error);
       }
-  };
+    }
+  }
 
     return (
       <>
