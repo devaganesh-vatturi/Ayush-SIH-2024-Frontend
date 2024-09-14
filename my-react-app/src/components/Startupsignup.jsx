@@ -10,7 +10,11 @@ function Startupsignup() {
     {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
       state:"",district:"",phone_number:null });
   const [passerror, setPasserror] = useState("");
-  let invalid=false;
+  const [pinerror,setPinerror]=useState("");
+  const [phnerror,setPhnerror]=useState("");
+  let passvalid=false;
+  let phnvalid=false;
+  let pinvalid=false;
   
   useEffect( 
     ()=>{
@@ -29,11 +33,24 @@ function Startupsignup() {
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(startUpdata.password.length<6)
+     if(startUpdata.password.length<=6)
      {
-        invalid=true;
+        passvalid=true;
      }
-     invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+
+     passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+     if(startUpdata.pinCode.length<=6)
+      {
+         pinvalid=true;
+      }
+ 
+      pinvalid ? setPinerror("Pincode  must contain 6 letters") : setPinerror("");
+      if(startUpdata.phone_number.length<=10)
+        {
+           phnvalid=true;
+        }
+   
+        phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
      try{
      const response = await axios.post("http://localhost:5002/api/startup-reg",startUpdata);
      if(response.data.success)
@@ -110,8 +127,10 @@ function Startupsignup() {
       <input type="text" className="input" name="city" onChange={handelChange}/><br />
       <label className="label">PinCode :</label>
       <input type="number" className="input" name="pinCode" onChange={handelChange}/><br />
+      {pinerror&&<p>{pinerror}</p>}
       <label className="label" >Contact number:</label>
       <input type="number" className="input" name="phone_number" onChange={handelChange}/><br />
+      {phnerror&&<p>{phnerror}</p>}
       <label className="label">Email Address :</label>
       <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
       <label className="label">Password:</label>

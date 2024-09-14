@@ -7,8 +7,12 @@ import Header from './Header';
 function Doctorsignup() {
   const [doctordata, setDoctordata] = useState(
     {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:"" });
-  const [passerror, setPasserror] = useState("");
-  let invalid=false;
+    const [passerror, setPasserror] = useState("");
+    const [pinerror,setPinerror]=useState("");
+    const [phnerror,setPhnerror]=useState("");
+    let passvalid=false;
+    let phnvalid=false;
+    let pinvalid=false;
   useEffect( 
     ()=>{
       fetchDistricts();
@@ -27,9 +31,15 @@ function Doctorsignup() {
      e.preventDefault();
      if(doctordata.password.length<6)
      {
-        invalid=true;
+        passvalid=true;
      }
-     invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+     passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+      if(doctordata.phone_number.length<=10)
+        {
+           phnvalid=true;
+        }
+   
+        phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
      try{
      const response = await axios.post("http://localhost:5002/api/doctor-reg",doctordata);
      if(response.data.success)
@@ -103,6 +113,7 @@ function Doctorsignup() {
       
       <label className="label" >Enter the phone number:</label>
       <input type="text" className="input" name="phone_number" onChange={handelChange}/><br />
+      {phnerror&&<p>{phnerror}</p>}
       <label className="label">Upload a PDF file:</label>
       <input type="file" accept=".pdf" className="input" onChange={handelChange}/><br/>
       <label className="label">Enter the emailid:</label>
