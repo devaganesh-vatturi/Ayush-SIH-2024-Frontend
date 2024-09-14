@@ -36,7 +36,8 @@ const handelSubmit =async(e)=>{
       alert("Logged in successfully!");
       if(usertype==="startup")
       {
-        window.location.href=`/sdash?email=${logit.Email_ID}`;
+        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+        window.location.href = `/sdash?email=${encodedEmail}`;
       }
       // else if(usertype==="drugInspector")
       // {

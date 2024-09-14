@@ -12,7 +12,13 @@ export default function Startupdashboard() {
     const [value, setvalue] = useState(1);
    const params= useLocation();
    let values=new URLSearchParams(params.search);
-   let email= values.get('email');
+   let decemail= values.get('email');
+   const email = atob(decemail);
+   console.log(email);  
+   if(!email.endsWith('@gmail.com'))
+   {
+   return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
+   }
     function goStatus(e)
     {
         e.preventDefault();
