@@ -45,7 +45,8 @@ const handelSubmit =async(e)=>{
       // }
       else if(usertype==="doctor")
         {
-          window.location.href=`/docdash?email=${logit.Email_ID}`;
+        window.location.href=`/docdash?email=${logit.Email_ID}`;
+        
         }
       else if(usertype==="farmer")
           {
