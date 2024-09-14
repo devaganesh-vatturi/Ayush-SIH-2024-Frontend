@@ -12,7 +12,7 @@ export default function Header() {
       <div className='home-img'>
       </div>
       
-    <p className='home-name'>AUSHADI 2.0</p>
+    <p className='home-name'>Aayush 2.0</p>
     </div>
     <button className='home-button' onClick={gochatbot}>Chat Bot</button>
    </div>

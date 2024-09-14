@@ -11,7 +11,7 @@ export default function Doctordash() {
     <>
     <Header/>
     <p className='farmer-dash-head'>Farmer Dashboard</p>
-    <Filterstartup/>
+    <Filterstartup name={farmer} email={email}/>
     </>
   )
 }

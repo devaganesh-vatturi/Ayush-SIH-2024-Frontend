@@ -1,9 +1,9 @@
-import './styles/DrugInspectorsignup.css';
+import './styles/Authoritysignup.css';
 import React,{ useState } from 'react';
 //import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-function DrugInspectorsignup() {
+function Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
     {name:"",email:"" ,password:"",district:"",state:"",pdf:""});
     const [passerror, setPasserror] = useState("");
@@ -113,4 +113,4 @@ function DrugInspectorsignup() {
     );
 }
 
-export default  DrugInspectorsignup;
+export default  Authoritysignup;

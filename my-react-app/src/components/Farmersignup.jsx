@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 function Farmersignup(){
+  const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
+  const [districtsList, setDistrictsList] = useState([]);
   const [farmerdata, setFarmerdata] = useState(
     {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
     const [passerror, setPasserror] = useState("");
@@ -79,8 +81,8 @@ function Farmersignup(){
           console.error("Error setting up request:", error.message);
         }
     }
-    const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
-    const [districtsList, setDistrictsList] = useState([]);
+   
+   
     const fetchDistricts = async () => {
       try {
           const response = await fetch('http://localhost:5002/api/districts', {
