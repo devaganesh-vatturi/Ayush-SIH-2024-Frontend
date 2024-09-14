@@ -13,6 +13,7 @@ function StartupSingup({email}) {
     e.preventDefault();
     const {name,value}=e.target;
     setStartupdata({...startupdata,[name]:value});
+    
   }
   useEffect(()=>{
      const fetchit = async(e)=>{
