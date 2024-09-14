@@ -20,7 +20,7 @@ function DrugInspectorsignup() {
     {
       e.preventDefault();
       const{name,value}=e.target;
-      setLicensedata({...farmerdata,[name]:value});
+      setLicensedata({...Licensedata,[name]:value});
 
     }
     const handleSubmit= async(e)=>
@@ -51,12 +51,12 @@ function DrugInspectorsignup() {
     const [districtsList, setDistrictsList] = useState([]);
     const fetchDistricts = async () => {
       try {
-          const response = await fetch(' ', {
+          const response = await fetch('http://localhost:5002/api/districts', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ stateName : farmerdata.state}),
+              body: JSON.stringify({ stateName : Licensedata.state}),
           });
 
           if (!response.ok) {

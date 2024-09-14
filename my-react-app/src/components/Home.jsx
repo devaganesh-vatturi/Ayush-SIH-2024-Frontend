@@ -23,6 +23,10 @@ function Home()
     {
         window.location.href=`/hometwo`;
     }
+    function godrug()
+    {
+        window.location.href='/signupauthority'
+    }
     
     const StartupFaqData = [
         { question: "What is AYUSH?", answer: "AYUSH stands for Ayurveda, Yoga & Naturopathy, Unani, Siddha, and Homeopathy. It refers to traditional Indian systems of medicine." },
@@ -49,6 +53,7 @@ function Home()
            <div className="home-main-drug">
                <img id="home-main-img" src={drugins}/>
                <p>Drug Inspector</p>
+               <button id="home-main-signin" onClick={godrug} >Sign Up</button>
                <button id="home-main-login" onClick={druginsLogin}>Login</button>
            </div>
            </div>

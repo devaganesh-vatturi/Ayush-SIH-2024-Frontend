@@ -1,7 +1,8 @@
 import PrintList from './PrintList.jsx';
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/Filterdoctor.css';
-export default function Filterdoctor() {
+import axios from 'axios';
+export default function Filterdoctor({email}) {
   const doctorData = [
     {name:"raju",Email:"raj@gmail.com",phone:"9045643891",district:"west godavari"},
     {  name:"giri",Email:"giri@gmail.com",phone:" 87345445897",district:"krishna" },
@@ -9,12 +10,24 @@ export default function Filterdoctor() {
     {  name:"venkat",Email:"venkat@gmail.com",phone:"9848162013",district:"east godavari" },
   ];
 
+  useEffect( ()=>{
+    const datafun= async(e)=>{
+      try{
+        const response= await axios.post('',email);
+      }
+      catch(error)
+      {
 
+      }
+    }
+    datafun();
+
+  },[]);
   return (
     <> 
     <p className='doctor-info'>Doctors Info</p>
     {doctorData.map((obj,index) => (
-      <PrintList   name1={obj.name} Email1={obj.Email} phone1={obj.phone} district1= {obj.district} ></PrintList>
+      <PrintList  key={index} name1={obj.name} Email1={obj.Email} phone1={obj.phone} district1= {obj.district} ></PrintList>
            ))}
    </>
   );
