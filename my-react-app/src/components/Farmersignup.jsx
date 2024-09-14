@@ -25,6 +25,19 @@ function Farmersignup(){
       e.preventDefault();
       const{name,value}=e.target;
       setFarmerdata({...farmerdata,[name]:value});
+      if(name==="password"&& value.length<6)
+        {
+         setPasserror("Password must contain 6 letters");
+        }
+        else if(name==="password"&&value.length>=6){
+         setPasserror("");
+        }
+        if(name==="phone_number"&&value.length<10){
+         setPhnerror("phone number must contains 10 number");
+        }
+        else if(name==="phone_number"&&value.length>=10){
+         setPhnerror("");
+        }
 
     }
     const handleSubmit= async(e)=>
