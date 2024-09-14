@@ -1,11 +1,7 @@
 .card {
     padding: 15px;
     border-radius: 8px; /* Soft rounded corners */
-<<<<<<< HEAD
-    background-color: #42a5cfca; /* White background */
-=======
     background-color: #4caad288; /* White background */
->>>>>>> 52e52704041e7d97997f7b71535c495d6c9a281b
     box-shadow:  10px 10px 15px #2d7c9e79; /* Subtle shadow effect */
     margin-bottom: 20px; /* Space between cards */
     max-width: 50vw;
