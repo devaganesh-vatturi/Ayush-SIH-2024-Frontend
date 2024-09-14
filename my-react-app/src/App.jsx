@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import './App.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 import Login from "./components/Login.jsx";
 import Doctorsignup from './components/Doctorsignup.jsx';
 import Home from './components/Home.jsx';
@@ -11,7 +11,9 @@ import Startupdashboard from './components/Dashboard comps/Startupdashboard.jsx'
 import Druginsdash from './components/Dashboard comps/Druginsdash.jsx';
 import Doctordash from './components/Dashboard comps/Doctordash.jsx';
 import Farmerdash from './components/Dashboard comps/Farmerdash.jsx';
-// import AiChatBot from './components/AiChatBot.jsx';
+import AiChatBot from './components/AiChatBot.jsx';
+
+
 function App() {
     return (
      <>
