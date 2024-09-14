@@ -15,6 +15,7 @@ function Farmersignup() {
           // empty the district list
           setDistrictsList([]);
            }
+           
       },[farmerdata.state]);
     const handleChange=(e)=>
     {
