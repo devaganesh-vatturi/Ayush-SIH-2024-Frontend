@@ -29,6 +29,29 @@ function Startupsignup() {
      e.preventDefault();
      const {name,value}=e.target;
      setStartUpdata({...startUpdata,[name]:value});
+     if(name==="password"&& value.length<6)
+      {
+       setPasserror("Password must contain 6 letters");
+      }
+      else if(name==="password"&&value.length>=6){
+       setPasserror("");
+      }
+      if(name==="phone_number"&&value.length<10){
+       setPhnerror("phone number must contains 10 number");
+      }
+      else if(name==="phone_number"&&value.length>=10){
+       setPhnerror("");
+      }
+      if(name==="pinCode"&& value.length<6)
+      {
+        setPinerror("pin number must contains 6 number ");
+      }
+      else if(name==="pinCode"&& value.length>=6)
+        {
+          setPinerror("");
+        }
+      
+
   }
 
   const onSubmit =async(e)=>{
