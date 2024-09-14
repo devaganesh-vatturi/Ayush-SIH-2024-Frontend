@@ -7,7 +7,10 @@ function Farmersignup() {
   const [farmerdata, setFarmerdata] = useState(
     {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
     const [passerror, setPasserror] = useState("");
-    let invalid=false;
+    const [phnerror,setPhnerror]=useState("");
+    let passvalid=false;
+    let phnvalid=false;
+    
     useEffect( 
       ()=>{
         fetchDistricts();
@@ -28,10 +31,15 @@ function Farmersignup() {
         e.preventDefault();
         if(farmerdata.password.length<6)
         {
-          invalid=true;
-          
+          passvalid=true;
         }
-        invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+        passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+          if(farmerdata.phone_number.length<=10)
+            {
+               phnvalid=true;
+            }
+       
+            phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         try{
         const response= await axios.post("http://localhost:5002/api/farmer-reg",farmerdata);
         if(response.data.success)
@@ -101,6 +109,7 @@ function Farmersignup() {
       <input type="text" name="crop_name" onChange={handleChange} className="input" /><br />
       <label className="label">Enter phone number:</label><br />
       <input type="number" name="phone_number" onChange={handleChange} className="input" />
+      {phnerror&&<p>{phnerror}</p>}
       <label className="label">Enter the language :</label>
       <select  name="language" onChange={handleChange} className="input">
                     <option value="hi">Hindi</option>
