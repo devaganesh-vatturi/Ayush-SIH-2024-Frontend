@@ -43,28 +43,28 @@ const handelSubmit =async(e)=>{
             if(usertype==="startup")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
+              window.location.href = `/sdash?email=${encodedEmail}&token=${token}`;
             }
             else if(usertype==="Licensee Authority")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/adash?email=${encodedEmail}?token=${token}`;
+              window.location.href=`/adash?email=${encodedEmail}&token=${token}`;
             }
             else if(usertype==="doctor")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
+              window.location.href=`/docdash?email=${encodedEmail}&token=${token}`;
               
             }
             else if(usertype==="drugInspector")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
+              window.location.href=`/ddash?email=${encodedEmail}&token=${token}`;
                   
             }
             else if(usertype==="farmer")
             { 
-                  window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
+                  window.location.href=`/fardash?phno=${logit.phone_number}&token=${token}`;
             }
       
          }else{

@@ -19,6 +19,12 @@ export default function Startupdashboard() {
    const params= useLocation();
    let values=new URLSearchParams(params.search);
    let decemail= values.get('email');
+   console.log(decemail);
+  let email= atob(decemail);
+   if(!email.endsWith('@gmail.com'))
+   {
+   return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
+   }
    let token= values.get('token');
 
     const theaders = {
@@ -54,7 +60,7 @@ export default function Startupdashboard() {
 //    if(tokenvalidation==false){
 //     return(<p>Error 404</p>)
 //    }
-   const email = atob(decemail);
+  
    console.log(email);  
    if(!email.endsWith('@gmail.com'))
    {

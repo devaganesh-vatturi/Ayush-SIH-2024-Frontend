@@ -78,7 +78,7 @@ function Startupsignup() {
      if(response.data.success)
      {
       alert("Successfully Signed Up");
-      window.location.href = `/login?value=${startupqr}`;
+      window.location.href = `/login?value=${'startup'}`;
      }
      else{
       alert("Invalid Details.Please try again!");
