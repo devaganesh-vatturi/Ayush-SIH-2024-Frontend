@@ -27,11 +27,11 @@ function Farmersignup(){
       e.preventDefault();
       const{name,value}=e.target;
       setFarmerdata({...farmerdata,[name]:value});
-      if(name==="password"&& value.length<6)
+      if(name==="password"&& value.length<8)
         {
-         setPasserror("Password must contain 6 letters");
+         setPasserror("Password must contain 8 letters");
         }
-        else if(name==="password"&&value.length>=6){
+        else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
         if (name === "phone_number" && value.length !== 10) {
@@ -43,11 +43,11 @@ function Farmersignup(){
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
-        if(farmerdata.password.length<6)
+        if(farmerdata.password.length<8)
         {
           passvalid=true;
         }
-        passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+        passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
           if(farmerdata.phone_number.length!=10)
             {
                phnvalid=true;

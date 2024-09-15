@@ -1,6 +1,6 @@
 import './styles/Authoritysignup.css';
 import React,{ useState } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 function Authoritysignup() {
@@ -26,12 +26,12 @@ function Authoritysignup() {
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
-        if(Licensedata.password.length<6)
+        if(Licensedata.password.length<8)
         {
           invalid=true;
           
         }
-        invalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+        invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
         try{
         const response= await axios.post(" ",Licensedata);
         if(response.data.success)

@@ -3,7 +3,7 @@ import React, {useEffect } from 'react'
 import axios from 'axios';
 import '../styles/Filterfarmer.css';
 export default function Filterfarmer({email}) {
-  const farmerData = [];
+  const [farmerData, setfarmerData] = useState();
 
   useEffect(()=>{  
     const fetchit = async(e)=>{
@@ -12,6 +12,7 @@ export default function Filterfarmer({email}) {
         if(response.data.success)
         {
           console.log(response.data);
+          setfarmerData(response.data.items);
         }
       }
       catch(error)

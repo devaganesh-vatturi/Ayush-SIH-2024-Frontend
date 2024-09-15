@@ -29,19 +29,18 @@ function Startupsignup() {
      e.preventDefault();
      const {name,value}=e.target;
      setStartUpdata({...startUpdata,[name]:value});
-     if(name==="password"&& value.length<6)
+     if(name==="password"&& value.length<8)
       {
-       setPasserror("Password must contain 6 letters");
+       setPasserror("Password must contain 8 letters");
       }
-      else if(name==="password"&&value.length>=6){
+      else if(name==="password"&&value.length>=8){
        setPasserror("");
       }
-      if(name==="phone_number"&&value.length<10){
-       setPhnerror("phone number must contains 10 number");
-      }
-      else if(name==="phone_number"&&value.length>=10){
-       setPhnerror("");
-      }
+      if (name === "phone_number" && value.length !== 10) {
+        setPhnerror("Phone number must contain exactly 10 digits");
+    } else if (name === "phone_number" && value.length === 10) {
+        setPhnerror("");
+    }
       if(name==="pinCode"&& value.length<6)
       {
         setPinerror("pin number must contains 6 number ");
@@ -56,19 +55,19 @@ function Startupsignup() {
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(startUpdata.password.length<=6)
+     if(startUpdata.password.length<=8)
      {
         passvalid=true;
      }
 
-     passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+     passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
      if(startUpdata.pinCode.length<=6)
       {
          pinvalid=true;
       }
  
       pinvalid ? setPinerror("Pincode  must contain 6 letters") : setPinerror("");
-      if(startUpdata.phone_number.length<=10)
+      if(startUpdata.phone_number.length!=10)
         {
            phnvalid=true;
         }
