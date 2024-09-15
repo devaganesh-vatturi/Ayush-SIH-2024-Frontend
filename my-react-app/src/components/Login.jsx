@@ -15,7 +15,13 @@ function Login(){
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLogit({ ...logit, [name]: value });
-    
+    if(name==="password"&& value.length<8)
+      {
+        setInvalidtext("Password must contain 8 letters");
+      }
+      else if(name==="password"&&value.length>=8){
+        setInvalidtext("");
+      }
 };
 
 const handelSubmit =async(e)=>{
