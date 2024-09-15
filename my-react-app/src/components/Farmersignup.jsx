@@ -102,16 +102,17 @@ function Farmersignup(){
       }
     }
   }
-
+ 
     return (
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="container">
-      <label className="label">Enter the name:</label><br />
-      <input type="text" name="name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter the state:</label><br />
-      <select value={farmerdata.state} name="state" onChange={handleChange} className="input">
+        <div className="farmer-sign-container">
+          <p className="farmer-sign-para">Farmersignup Details</p>
+      <label className="farmer-sign-label">Enter the name:</label> 
+      <input type="text" name="name" onChange={handleChange} className="farmer-sign-input" /><br />
+      <label className=" farmer-sign-label">Enter the state:</label> 
+      <select value={farmerdata.state} name="state" onChange={handleChange} className=" farmer-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -120,8 +121,8 @@ function Farmersignup(){
                 ))}
             </select>
       <br />
-      <label className="label">Enter district name:</label><br />
-      <select value={farmerdata.district} name="district" onChange={handleChange} className="input">
+      <label className=" farmer-sign-label">Enter district name:</label> 
+      <select value={farmerdata.district} name="district" onChange={handleChange} className=" farmer-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -130,13 +131,13 @@ function Farmersignup(){
                 ))}
             </select>
      <br />
-      <label className="label">Enter crop name:</label><br />
-      <input type="text" name="crop_name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter phone number:</label><br />
-      <input type="number" name="phone_number" onChange={handleChange} className="input" />
+      <label className=" farmer-sign-label">Enter crop name:</label> 
+      <input type="text" name="crop_name" onChange={handleChange} className=" farmer-sign-input" /><br />
+      <label className=" farmer-sign-label">Enter phone number:</label> 
+      <input type="number" name="phone_number" onChange={handleChange} className=" farmer-sign-input" />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Enter the language :</label>
-      <select  name="language" onChange={handleChange} className="input">
+      <label className=" farmer-sign-label">Enter the language :</label>
+      <select  name="language" onChange={handleChange} className=" farmer-sign-input">
                     <option value="hi">Hindi</option>
                     <option value="bn">Bengali</option>
                     <option value="te">Telugu</option>
@@ -147,10 +148,10 @@ function Farmersignup(){
                     <option value="pa">Punjabi</option>
                     {/* Add more languages as needed */}
                 </select><br />
-      <label className="label">Enter the password:</label>
-      <input type="password" name="password" onChange={handleChange} className="input" /><br />
+      <label className=" farmer-sign-label">Enter the password:</label>
+      <input type="password" name="password" onChange={handleChange} className=" farmer-sign-input" /><br />
     {passerror&&<p>{passerror}</p>}
-    <button className="button">submit</button>
+    <button className="farmer-sign-button">submit</button>
     </div>
    
     </form>

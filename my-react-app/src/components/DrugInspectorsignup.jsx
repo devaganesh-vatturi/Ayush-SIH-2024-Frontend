@@ -74,16 +74,17 @@ function DrugInspectorsignup() {
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="container">
-      <label className="label">Enter the name:</label><br />
-      <input type="text" name="name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter the Email:</label><br />
-      <input type="email" name="email" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter the password:</label><br />
-      <input type="password" name="password" onChange={handleChange} className="input" /><br />
+        <div className="DrugInspector-sign-container">
+          <p className="Drug-sign-para">DrugInspectorsignup Details</p>
+      <label className="Drug-sign-label">Enter the name:</label> 
+      <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
+      <label className=" Drug-sign-label">Enter the Email:</label> 
+      <input type="email" name="email" onChange={handleChange} className="Drug-sign-input" /><br />
+      <label className="Drug-sign-label">Enter the password:</label> 
+      <input type="password" name="password" onChange={handleChange} className="Drug-sign-input" /><br />
       {passerror&&<p>{passerror}</p>}
-      <label className="label">Enter the state:</label><br />
-      <select value={Licensedata.state} name="state" onChange={handleChange} className="input">
+      <label className="Drug-sign-label">Enter the state:</label> 
+      <select value={Licensedata.state} name="state" onChange={handleChange} className="Drug-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -92,8 +93,8 @@ function DrugInspectorsignup() {
                 ))}
             </select>
       <br />
-      <label className="label">Enter district name:</label><br />
-      <select value={Licensedata.district} name="district" onChange={handleChange} className="input">
+      <label className="Drug-sign-label">Enter district name:</label> 
+      <select value={Licensedata.district} name="district" onChange={handleChange} className="Drug-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -102,10 +103,10 @@ function DrugInspectorsignup() {
                 ))}
             </select>
      <br />
-     <label className="label">Add pdf:</label><br />
-     <input type="file" name="file" onChange={handleChange} className="input" /><br />
+     <label className="Drug-sign-label">Add pdf:</label> 
+     <input type="file" name="file" onChange={handleChange} className="Drug-sign-input" /><br />
        
-    <button className="button">submit</button>
+    <button className="Drug-sign-button">submit</button>
     </div>
    
     </form>
