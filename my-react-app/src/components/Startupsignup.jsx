@@ -119,12 +119,13 @@ function Startupsignup() {
       <>
       <Header/>
       <form onSubmit={onSubmit}>
-        <div className="container">
-      <label className="label">Name of the Company/Firm :</label>
-      <input type="text" className="input" name="companyName" onChange={handelChange}/><br />
+        <div className="start-up-container">
+          <p className="start-up-para">Startupsignup Details</p>
+      <label className="start-up-label">Name of the Company/Firm :</label>
+      <input type="text" className="start-up-input" name="companyName" onChange={handelChange}/><br />
       
-      <label className="label">State :</label><br />
-      <select value={startUpdata.state} name="state" onChange={handelChange} className="input">
+      <label className=" start-up-label">State :</label> 
+      <select value={startUpdata.state} name="state" onChange={handelChange} className=" start-up-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -133,8 +134,8 @@ function Startupsignup() {
                 ))}
             </select>
       <br />
-      <label className="label">District :</label><br />
-      <select value={startUpdata.district} name="district" onChange={handelChange} className="input">
+      <label className=" start-up-label">District :</label> 
+      <select value={startUpdata.district} name="district" onChange={handelChange} className="start-up-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -143,22 +144,22 @@ function Startupsignup() {
                 ))}
             </select>
      <br />
-     <label className="label">Address :</label>
-     <input type="text" className="input" name="address" onChange={handelChange}/><br />
-     <label className="label">City :</label>
-      <input type="text" className="input" name="city" onChange={handelChange}/><br />
-      <label className="label">PinCode :</label>
-      <input type="number" className="input" name="pinCode" onChange={handelChange}/><br />
+     <label className=" start-up-label">Address :</label>
+     <input type="text" className=" start-up-input" name="address" onChange={handelChange}/><br />
+     <label className=" start-up-label">City :</label>
+      <input type="text" className=" start-up-input" name="city" onChange={handelChange}/><br />
+      <label className=" start-up-label">PinCode :</label>
+      <input type="number" className=" start-up-input" name="pinCode" onChange={handelChange}/><br />
       {pinerror&&<p>{pinerror}</p>}
-      <label className="label" >Contact number:</label>
-      <input type="number" className="input" name="phone_number" onChange={handelChange}/><br />
+      <label className=" start-up-label" >Contact number:</label>
+      <input type="number" className=" start-up-input" name="phone_number" onChange={handelChange}/><br />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Email Address :</label>
-      <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
-      <label className="label">Password:</label>
-      <input type="password" className="input" name="password" onChange={handelChange}/><br />
+      <label className=" start-up-label">Email Address :</label>
+      <input type="email" className=" start-up-input" name="Email_ID" onChange={handelChange}/><br />
+      <label className=" start-up-label">Password:</label>
+      <input type="password" className=" start-up-input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
-      <button className="button">submit</button>
+      <button className="start-up-button">submit</button>
     </div>
    
     </form>
