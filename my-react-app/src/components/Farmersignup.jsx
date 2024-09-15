@@ -15,7 +15,8 @@ function Farmersignup(){
     
     useEffect( 
       ()=>{
-        fetchDistricts();
+
+       fetchDistricts();
         return ()=>{
           // empty the district list
           setDistrictsList([]);
@@ -81,6 +82,7 @@ function Farmersignup(){
           console.error("Error setting up request:", error.message);
         }
     }
+  }
    
    
     const fetchDistricts = async () => {
@@ -103,7 +105,7 @@ function Farmersignup(){
           console.error('Error fetching districts:', error);
       }
     }
-  }
+  
 
     return (
       <>
@@ -137,18 +139,7 @@ function Farmersignup(){
       <label className="label">Enter phone number:</label><br />
       <input type="number" name="phone_number" onChange={handleChange} className="input" />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Enter the language :</label>
-      <select  name="language" onChange={handleChange} className="input">
-                    <option value="hi">Hindi</option>
-                    <option value="bn">Bengali</option>
-                    <option value="te">Telugu</option>
-                    <option value="ta">Tamil</option>
-                    <option value="gu">Gujarati</option>
-                    <option value="kn">Kannada</option>
-                    <option value="mr">Marathi</option>
-                    <option value="pa">Punjabi</option>
-                    {/* Add more languages as needed */}
-                </select><br />
+    
       <label className="label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className="input" /><br />
     {passerror&&<p>{passerror}</p>}
