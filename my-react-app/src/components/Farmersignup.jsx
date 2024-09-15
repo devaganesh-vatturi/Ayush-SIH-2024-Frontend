@@ -15,7 +15,6 @@ function Farmersignup(){
     
     useEffect( 
       ()=>{
-
        fetchDistricts();
         return ()=>{
           // empty the district list
