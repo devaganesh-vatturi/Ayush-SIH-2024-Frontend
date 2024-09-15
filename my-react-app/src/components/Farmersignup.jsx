@@ -30,7 +30,7 @@ function Farmersignup(){
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
-        if(farmerdata.password.length<6)
+        if(farmerdata.password.length<6)//modified
         {
           passvalid=true;
         }
