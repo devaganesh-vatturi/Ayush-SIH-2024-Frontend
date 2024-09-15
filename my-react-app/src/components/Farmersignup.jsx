@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 function Farmersignup(){
+  const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
+  const [districtsList, setDistrictsList] = useState([]);
   const [farmerdata, setFarmerdata] = useState(
     {name:"",phone_number:"",password:"",district:"",state:"",crop_name:"",language:"en"});
     const [passerror, setPasserror] = useState("");
@@ -13,7 +15,7 @@ function Farmersignup(){
     
     useEffect( 
       ()=>{
-        fetchDistricts();
+       fetchDistricts();
         return ()=>{
           // empty the district list
           setDistrictsList([]);
@@ -25,6 +27,19 @@ function Farmersignup(){
       e.preventDefault();
       const{name,value}=e.target;
       setFarmerdata({...farmerdata,[name]:value});
+      if(name==="password"&& value.length<6)
+        {
+         setPasserror("Password must contain 6 letters");
+        }
+        else if(name==="password"&&value.length>=6){
+         setPasserror("");
+        }
+        if(name==="phone_number"&&value.length<10){
+         setPhnerror("phone number must contains 10 number");
+        }
+        else if(name==="phone_number"&&value.length>=10){
+         setPhnerror("");
+        }
 
     }
     const handleSubmit= async(e)=>
@@ -66,8 +81,9 @@ function Farmersignup(){
           console.error("Error setting up request:", error.message);
         }
     }
-    const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
-    const [districtsList, setDistrictsList] = useState([]);
+  }
+   
+   
     const fetchDistricts = async () => {
       try {
           const response = await fetch('http://localhost:5002/api/districts', {
@@ -88,7 +104,7 @@ function Farmersignup(){
           console.error('Error fetching districts:', error);
       }
     }
-  }
+  
 
     return (
       <>
@@ -122,18 +138,7 @@ function Farmersignup(){
       <label className="label">Enter phone number:</label><br />
       <input type="number" name="phone_number" onChange={handleChange} className="input" />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Enter the language :</label>
-      <select  name="language" onChange={handleChange} className="input">
-                    <option value="hi">Hindi</option>
-                    <option value="bn">Bengali</option>
-                    <option value="te">Telugu</option>
-                    <option value="ta">Tamil</option>
-                    <option value="gu">Gujarati</option>
-                    <option value="kn">Kannada</option>
-                    <option value="mr">Marathi</option>
-                    <option value="pa">Punjabi</option>
-                    {/* Add more languages as needed */}
-                </select><br />
+    
       <label className="label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className="input" /><br />
     {passerror&&<p>{passerror}</p>}

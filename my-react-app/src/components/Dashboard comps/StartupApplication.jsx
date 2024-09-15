@@ -4,8 +4,8 @@ import axios from 'axios';
 function StartupSingup({email}) {
   //declaration of basic functions
   const [startupdata, setStartupdata] = useState({
-    companyname:"",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
-     website:"",cerno:"",cdate:"",issueauthority:"",iecode:"",issuedate:"",purpose:""
+    companyname:"new",address:"new",city:"new",pincode:"789",state:"andhrapradesh",district:"east godavari",pan:"533212",gst:"bdrbf",
+     website:"bdher",cerno:"fbdfx",cdate:"dbdf",issueauthority:"fxt",iecode:"ssfnr",issuedate:"grbf",purpose:"vrehe"
   });
   console.log("the mail",email);//email from props
   function handleChange(e)
@@ -13,7 +13,28 @@ function StartupSingup({email}) {
     e.preventDefault();
     const {name,value}=e.target;
     setStartupdata({...startupdata,[name]:value});
+    
   }
+  useEffect(()=>{
+     const fetchit = async(e)=>{
+      try{
+        const response = await axios.post('',email);
+      }
+      catch(error)
+      {
+        console.log(error);
+      }
+      if(response.data.success)
+      {
+        setFormData(() => ({
+          ...response.data.data,  // Spread the incoming data
+        }));
+
+      }
+      
+     }
+     fetchit();
+  },[])
   //declaration of features
   let isValid = true;
   const [panError, setPanError] = useState('');
@@ -22,6 +43,7 @@ function StartupSingup({email}) {
   const [captcha, setCaptcha] = useState('');
   const [userCaptcha, setUserCaptcha] = useState('');
   const [captchaError, setCaptchaError] = useState('');
+  const [editing, setEditing] = useState(false);
   useEffect(() => {
     generateCaptcha();
   }, []);
@@ -39,7 +61,10 @@ function StartupSingup({email}) {
   const handleCaptchaChange = (event) => {
     setUserCaptcha(event.target.value);
   };
-  
+  function editit()
+  {
+    setEditing(true);
+  }
   const validateCaptcha = () => {
     if (userCaptcha !== captcha) {
       setCaptchaError('Invalid captcha. Please try again.');
@@ -118,6 +143,10 @@ function StartupSingup({email}) {
             <div className="header">
                 <p>Applicant Registration Form</p>
             </div>
+            <button className={`edit-button ${editing ? "editable" : ""}`} 
+            onClick={editit}
+            disabled={!startupdata.companyname}
+            >Edit</button>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>1. Details of Manufacturer</label>
@@ -125,30 +154,32 @@ function StartupSingup({email}) {
                 </div>
                 <div className="form-group">
                     <label>(i) Name of the Company/Firm*</label>
-                    <input type="text" name="companyname" onChange={handleChange} placeholder="Name of the company/Firm.." />
+                    <input type="text" name="companyname" readOnly={!editing} value={startupdata.companyname} onChange={handleChange} placeholder="Name of the company/Firm.." />
                 </div>
                 <div className="form-group">
                     <label>(ii) Address of Corporate Office</label>
                     <label>Address Line</label>
-                    <input type="text" name="address" onChange={handleChange} placeholder="Enter Address Line" />
+                    <input type="text" name="address"readOnly={!editing} value={startupdata.address} onChange={handleChange} placeholder="Enter Address Line" />
                     <label>Village/Town/City</label>
-                    <input type="text" name="city" onChange={handleChange} placeholder="Enter name of village/town/city"/>
+                    <input type="text" name="city"readOnly={!editing} onChange={handleChange} value={startupdata.city} placeholder="Enter name of village/town/city"/>
                     <label>Pin Code</label>
                     <input 
                         type="text" 
                         placeholder="Pin code of place" 
                         name="pincode" 
+                        readOnly={!editing}
+                        value={startupdata.pincode}
                         onChange={handleChange} 
                     />
  {pincodeError && <p className="error">{pincodeError}</p>}
                     <label>State</label>
-                    <select name="state" onChange={handleChange}>
+                    <select name="state"readOnly={!editing} value={startupdata.state} onChange={handleChange}>
                         <option>-select-</option>
                         <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
                         <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
                     </select>
                     <label>District</label>
-                    <select name="district" onChange={handleChange}>
+                    <select name="district"readOnly={!editing} value={startupdata.district}  onChange={handleChange}>
                         <option>- please-select-</option>
                         <option value="NICOBARS">NICOBARS</option>
                         <option value="we change">we change</option>
@@ -161,6 +192,8 @@ function StartupSingup({email}) {
                         type="text" 
                         placeholder="PAN No. of the company/Firm"  
                         name="pan"
+                        readOnly={!editing}
+                        value={startupdata.pan}
                         onChange={handleChange} 
                     />
                     {panError && <p className="error">{panError}</p>}
@@ -171,13 +204,15 @@ function StartupSingup({email}) {
                         type="text" 
                         placeholder="GST No. of the company/Firm" 
                         name="gst"
+                        readOnly={!editing}
+                        value={startupdata.gst}
                         onChange={handleChange} 
                     />
                     {gstError && <p className="error">{gstError}</p>}
                 </div>
                 <div className="form-group">
                     <label>(vii) Website Address</label>
-                    <input type="text"name="website" onChange={handleChange} placeholder="Website Address.." />
+                    <input type="text"name="website"readOnly={!editing} value={startupdata.website} onChange={handleChange} placeholder="Website Address.." />
                 </div>
                 <div className="form-group">
                     <label>2. Company Certification Details (If Any)</label><br />
@@ -185,30 +220,30 @@ function StartupSingup({email}) {
                 </div>
                 <div className="form-group">
                     <label>(a) Certificate No.</label>
-                    <input type="text" name="cerno" onChange={handleChange} placeholder="Enter company certificate no"/>
+                    <input type="text"readOnly={!editing} name="cerno" value={startupdata.cerno} onChange={handleChange} placeholder="Enter company certificate no"/>
                 </div>
                 <div className="form-group">
                     <label>(b) Date of Issue</label>
-                    <input type="date" name="cdate" onChange={handleChange}/>
+                    <input type="date"readOnly={!editing} name="cdate" value={startupdata.cdate} onChange={handleChange}/>
                 </div>
                 <div  className="form-group">
                     <label>(c) Issuing Authority</label>
-                    <input type="text" name="issueauthority" onChange={handleChange} placeholder="Enter name of issuing authority" />
+                    <input type="text" readOnly={!editing}name="issueauthority" value={startupdata.issueauthority}onChange={handleChange} placeholder="Enter name of issuing authority" />
                     </div>
                 <div className="form-group">
                     <label>(ii) Details of IE Code by DGFT</label>
                 </div>
                 <div className="form-group">
                     <label>(a) IE Code</label>
-                    <input type="text" name="iecode" onChange={handleChange} placeholder='Enter IE Code' />
+                    <input type="text" readOnly={!editing} name="iecode" value={startupdata.iecode} onChange={handleChange} placeholder='Enter IE Code' />
                 </div>
                 <div className="form-group">
                     <label>(b) Date of Issue</label>
-                    <input type="date" name="issuedate" onChange={handleChange}/>
+                    <input type="date" name="issuedate" readOnly={!editing} value={startupdata.issuedate} onChange={handleChange}/>
                 </div>
                 <div className="form-group">
                     <label>3. Purpose of Applying*</label>
-                    <select name="purpose" onChange={handleChange}>
+                    <select name="purpose" readOnly={!editing} value={startupdata.purpose} onChange={handleChange}>
                         <option>please select..</option>
                         <option value="NEW">NEW</option>
                         <option value="EXISTING">EXISTING</option>

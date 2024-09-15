@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
-import Drughome from './Drughome';
-import Drugnotification from './Drugnotification';
+import Authorityhome from './Authorityhome';
+import Authoritynotification from './Authoritynotfication';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
-import '../styles/Druginsdash.css';
+import '../styles/Authoritydash.css';
 export default function Druginsdash() {
      const [drugtab, Setdrugtab] = useState(1);
      const params= useLocation();
@@ -26,7 +26,7 @@ export default function Druginsdash() {
         <p className="drug-nav" onClick={gonotification}>Notifications</p>
     </div>
    {
-     drugtab === 1 ? (<Drughome/>) : drugtab === 2 ? (<Drugnotification/>) : (null)
+     drugtab === 1 ? (<Authorityhome/>) : drugtab === 2 ? (<Authoritynotification/>) : (null)
    }
     </>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
-import '../styles/Drugnotification.css';
-export default function Drugnotification() {
+import '../styles/Authoritynotification.css';
+export default function Authoritynotification() {
   return (
     <>
 <p className='drug-noti'>a notification from Ayurveda AP pvt ltd</p>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PrintList from './PrintList';
-export default function Drughome() {
+export default function Authorityhome() {
     const faqData = [
         {name:"raju",Email:"raj@gmail.com",phone:"9045643891",district:"west godavari"},
         {  name:"giri",Email:"giri@gmail.com",phone:" 87345445897",district:"krishna" },
