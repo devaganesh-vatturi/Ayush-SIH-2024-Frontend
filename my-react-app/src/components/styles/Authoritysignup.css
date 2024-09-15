@@ -1,4 +1,4 @@
-.DrugInspector-sign-container {
+.authority-sign-container {
   max-width: 400px;
   margin: 40px auto;
   padding: 40px;
@@ -7,7 +7,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Drug-sign-para{
+.authority-sign-para{
 margin-bottom: 20px;
 font-weight: bold ;
 font-size: 30px;
@@ -15,14 +15,14 @@ font-size: 30px;
  text-align: center;
 }
 
-.Drug-sign-label {
+.authority-sign-label {
   display: block;
   margin-bottom: 0;
   font-weight: bold;
   color: #333;
 }
 
-.Drug-sign-input{
+.authority-sign-input{
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -30,7 +30,7 @@ font-size: 30px;
   border-radius: 5px;
 }
 
-.input[type="number"] {
+.authority-sign-input[type="number"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -38,7 +38,7 @@ font-size: 30px;
   border-radius: 5px;
 }
 
-.Drug-sign-button {
+.authority-sign-button {
   background-color: #4CAF50;
   color: #fff;
   padding: 10px 20px;
@@ -47,7 +47,7 @@ font-size: 30px;
   cursor: pointer;
 }
 
-.Drug-sign-button:hover {
+.authority-sign-button:hover {
   background-color: #3e8e41;
 }
  

@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 //import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-function DrugInspectorsignup() {
+function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
     {name:"",email:"" ,password:"",district:"",state:"",pdf:""});
     const [passerror, setPasserror] = useState("");
@@ -74,17 +74,17 @@ function DrugInspectorsignup() {
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="DrugInspector-sign-container">
-          <p className="Drug-sign-para">DrugInspectorsignup Details</p>
-      <label className="Drug-sign-label">Enter the name:</label> 
-      <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
-      <label className=" Drug-sign-label">Enter the Email:</label> 
-      <input type="email" name="email" onChange={handleChange} className="Drug-sign-input" /><br />
-      <label className="Drug-sign-label">Enter the password:</label> 
-      <input type="password" name="password" onChange={handleChange} className="Drug-sign-input" /><br />
+        <div className="authority-sign-container">
+          <p className=" authority-sign-para">Authority-sign-up Details</p>
+      <label className=" authority-sign-label">Enter the name:</label> 
+      <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
+      <label className="  authority-sign-label">Enter the Email:</label> 
+      <input type="email" name="email" onChange={handleChange} className=" authority-sign-input" /><br />
+      <label className=" authority-sign-label">Enter the password:</label> 
+      <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
       {passerror&&<p>{passerror}</p>}
-      <label className="Drug-sign-label">Enter the state:</label> 
-      <select value={Licensedata.state} name="state" onChange={handleChange} className="Drug-sign-input">
+      <label className=" authority-sign-label">Enter the state:</label> 
+      <select value={Licensedata.state} name="state" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -94,7 +94,7 @@ function DrugInspectorsignup() {
             </select>
       <br />
       <label className="Drug-sign-label">Enter district name:</label> 
-      <select value={Licensedata.district} name="district" onChange={handleChange} className="Drug-sign-input">
+      <select value={Licensedata.district} name="district" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -103,10 +103,10 @@ function DrugInspectorsignup() {
                 ))}
             </select>
      <br />
-     <label className="Drug-sign-label">Add pdf:</label> 
-     <input type="file" name="file" onChange={handleChange} className="Drug-sign-input" /><br />
+     <label className=" authority-sign-label">Add pdf:</label> 
+     <input type="file" name="file" onChange={handleChange} className=" authority-sign-input" /><br />
        
-    <button className="Drug-sign-button">submit</button>
+    <button className=" authority-sign-button">submit</button>
     </div>
    
     </form>
@@ -114,4 +114,4 @@ function DrugInspectorsignup() {
     );
 }
 
-export default  DrugInspectorsignup;
+export default  Authoritysignup;
