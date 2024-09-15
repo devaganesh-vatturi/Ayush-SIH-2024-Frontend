@@ -97,7 +97,7 @@ function Farmersignup(){
       <Header/>
       <form onSubmit={handleSubmit}>
         <div className="farmer-sign-container">
-          <p className="farmer-sign-para">Farmersignup Details</p>
+          <p className="farmer-sign-para">Farmer Registration Form</p>
       <label className="farmer-sign-label">Enter the name:</label><br />
       <input type="text" name="name" onChange={handleChange} className="farmer-sign-input" /><br />
       <label className="farmer-sign-label">Enter the state:</label> 

@@ -20,10 +20,6 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  // if(usertype==="drugInspector")
-  //   {
-  //     window.location.href=`/ddash`;
-  //   }
   if(logit.password.length<6)
   {
       invalid=true;
@@ -73,6 +69,7 @@ const handelSubmit =async(e)=>{
       <form onSubmit={handelSubmit}>
         <p id='hey-tag'>Hey {usertype} </p>
         <div className="Login-container">
+        <p className="login-headin">{usertype.replace(/^./, str => str.toUpperCase())} Login</p>
         <label className="Login-label">Enter the {intake} </label>
         <input type="text" className="Login-input" name="Email_ID" required onChange={handleChange}/><br />
         <label className="Login-label">Enter the password</label>
