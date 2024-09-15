@@ -10,9 +10,34 @@ export default function Startupdashboard() {
     //1 is doctor
     //2 is farmer
     const [value, setvalue] = useState(1);
+    const [tokenvalidation, settokenvalidation] = useState();
    const params= useLocation();
    let values=new URLSearchParams(params.search);
    let decemail= values.get('email');
+   let token= values.get('token');
+   useEffect(()=>{
+    const fecthit = async(e)=>{
+        try{
+        const response= await axios.post('',token);
+        if(response.data.success)
+        {
+
+        }
+        else{
+            settokenvalidation(false);
+        }
+        }
+        catch(error)
+        {
+
+        }
+        fecthit();
+
+    }
+   },[]);
+//    if(tokenvalidation==false){
+//     return(<p>Error 404</p>)
+//    }
    const email = atob(decemail);
    console.log(email);  
    if(!email.endsWith('@gmail.com'))
