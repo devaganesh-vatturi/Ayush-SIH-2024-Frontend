@@ -19,10 +19,10 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  if(usertype==="drugInspector")
-    {
-      window.location.href=`/ddash`;
-    }
+  // if(usertype==="drugInspector")
+  //   {
+  //     window.location.href=`/ddash`;
+  //   }
   if(logit.password.length<6)
   {
       invalid=true;
@@ -39,10 +39,10 @@ const handelSubmit =async(e)=>{
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
         window.location.href = `/sdash?email=${encodedEmail}`;
       }
-      // else if(usertype==="drugInspector")
-      // {
-      //   window.location.href=`/ddash?email=${logit.Email_ID}`;
-      // }
+      else if(usertype==="drugInspector")
+      {
+        window.location.href=`/ddash?email=${logit.Email_ID}`;
+      }
       else if(usertype==="doctor")
         {
         window.location.href=`/docdash?email=${logit.Email_ID}`;
