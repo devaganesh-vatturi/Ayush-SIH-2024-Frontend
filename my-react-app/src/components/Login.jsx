@@ -19,10 +19,7 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  if(usertype==="drugInspector")
-    {
-      window.location.href=`/ddash`;
-    }
+  
   if(logit.password.length<6)
   {
       invalid=true;
@@ -34,22 +31,17 @@ const handelSubmit =async(e)=>{
     const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
     if (response.data.success) {
       alert("Logged in successfully!");
-      if(usertype==="startup")
-      {
+      if(usertype==="startup"){
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
         window.location.href = `/sdash?email=${encodedEmail}`;
       }
-      // else if(usertype==="drugInspector")
-      // {
-      //   window.location.href=`/ddash?email=${logit.Email_ID}`;
-      // }
-      else if(usertype==="doctor")
-        {
+      else if(usertype==="drugInspector"){
+        window.location.href=`/ddash?email=${logit.Email_ID}`;
+      }
+      else if(usertype==="doctor"){
         window.location.href=`/docdash?email=${logit.Email_ID}`;
-        
         }
-      else if(usertype==="farmer")
-          {
+      else if(usertype==="farmer"){
             window.location.href=`/fardash?email=${logit.phone_number}`;
           }
     } 
