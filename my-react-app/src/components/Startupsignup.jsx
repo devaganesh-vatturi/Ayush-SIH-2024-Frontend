@@ -55,7 +55,7 @@ function Startupsignup() {
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(startUpdata.password.length<=8)
+     if(startUpdata.password.length<8)
      {
         passvalid=true;
      }
@@ -78,6 +78,7 @@ function Startupsignup() {
      if(response.data.success)
      {
       alert("Successfully Signed Up");
+      window.location.href = `/login?value=${startupqr}`;
      }
      else{
       alert("Invalid Details.Please try again!");

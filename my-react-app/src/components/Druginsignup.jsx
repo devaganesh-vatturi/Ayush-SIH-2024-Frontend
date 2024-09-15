@@ -32,7 +32,11 @@ function Druginsignup(){
         else if(name==="password"&&value.length>=6){
          setPasserror("");
         }
-
+        if (name === "phone_number" && value.length !== 10) {
+          setPhnerror("Phone number must contain exactly 10 digits");
+      } else if (name === "phone_number" && value.length === 10) {
+          setPhnerror("");
+      }
     }
     const handleSubmit= async(e)=>
     {
@@ -53,22 +57,9 @@ function Druginsignup(){
         }
       }
       catch (error) {
-        // Log detailed error information
-        if (error.response) {
-          // The request was made and the server responded with a status code outside of the range of 2xx
-          console.error("Response error:", error.response.data);
-          console.error("Response status:", error.response.status);
-          console.error("Response headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("No response received:", error.request);
-        } else {
-          // Something happened in setting up the request
-          console.error("Error setting up request:", error.message);
-        }
+        console.log(error);
     }
   }
-   
    
     const fetchDistricts = async () => {
       try {
@@ -100,7 +91,7 @@ function Druginsignup(){
       <label className="label">Enter the name:</label><br />
       <input type="text" name="name" onChange={handleChange} className="input" /><br />
       <label className="label">Enter the state:</label><br />
-      <select value={farmerdata.state} name="state" onChange={handleChange} className="input">
+      <select value={drugindata.state} name="state" onChange={handleChange} className="input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -110,7 +101,7 @@ function Druginsignup(){
             </select>
       <br />
       <label className="label">Enter district name:</label><br />
-      <select value={farmerdata.district} name="district" onChange={handleChange} className="input">
+      <select value={drugindata.district} name="district" onChange={handleChange} className="input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>

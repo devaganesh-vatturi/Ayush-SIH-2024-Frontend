@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import '../styles/Startupdashboard.css';
 import Startuptrackpad from './Startuptrackpad';
 import StartupApplication from './StartupApplication';

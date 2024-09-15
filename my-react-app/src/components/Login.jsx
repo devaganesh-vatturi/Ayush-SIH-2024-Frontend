@@ -26,11 +26,11 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  if(logit.password.length<6)
+  if(logit.password.length<8)
   {
       invalid=true;
   }
-  invalid ? setInvalidtext("password must contain 6 letters") : setInvalidtext("");
+  invalid ? setInvalidtext("password must contain 8 letters") : setInvalidtext("");
   if(usertype ==="farmer")
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
   try{
@@ -43,22 +43,27 @@ const handelSubmit =async(e)=>{
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
         window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
       }
-      else if(usertype==="drugInspector")
+      else if(usertype==="Licensee Authority")
       {
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
+        window.location.href=`/adash?email=${encodedEmail}?token=${token}`;
       }
       else if(usertype==="doctor")
       {
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
         window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
         
-        }
+      }
+      else if(usertype==="drugInspector")
+      {
+        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+        window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
+            
+      }
       else if(usertype==="farmer")
-          {
-           
-            window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
-          }
+      {
+        window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
+      }
     } 
   } 
   catch (error) {

@@ -1,17 +1,17 @@
 import React,{useEffect} from 'react'
 import Filterstartup from './Filterstartup';
-import '../styles/Farmerdash.css';
+import '../styles/Drugindash.css';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
-export default function Doctordash() {
+export default function Drugindash() {
   const params= useLocation();
   let values=new URLSearchParams(params.search);
-  let email= values.get('phno');
+  let email= values.get('email');
   let token= values.get('token');
   useEffect(()=>{
     const fecthit = async(e)=>{
         try{
-        const response= await axios.post('',phno,token);
+        const response= await axios.post('',email,token);
         if(response.data.success)
         {
 
@@ -34,8 +34,8 @@ export default function Doctordash() {
   return (
     <>
     <Header/>
-    <p className='farmer-dash-head'>Farmer Dashboard</p>
-    <Filterstartup name={'farmer'} email={email}/>
+    <p className='drug-dash-head'>DrugInspector Dashboard</p>
+    <Filterstartup name={'drug inspector'} email={email}/>
     </>
   )
 }
