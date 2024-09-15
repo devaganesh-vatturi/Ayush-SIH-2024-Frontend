@@ -15,50 +15,63 @@ function Login(){
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLogit({ ...logit, [name]: value });
-    
+    if(name==="password"&& value.length<8)
+      {
+        setInvalidtext("Password must contain 8 letters");
+      }
+      else if(name==="password"&&value.length>=8){
+        setInvalidtext("");
+      }
 };
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  if(logit.password.length<6)
+  if(logit.password.length<8)
   {
       invalid=true;
   }
-  invalid ? setInvalidtext("password must contain 6 letters") : setInvalidtext("");
+  invalid ? setInvalidtext("password must contain 8 letters") : setInvalidtext("");
   if(usertype ==="farmer")
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
-  try{
-    const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
-    if (response.data.success) {
-      alert("Logged in successfully!");
-      settoken(response.data.token);
-      if(usertype==="startup")
+  try
+  {
+      const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
+      if (response.data.success) 
       {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
-      }
-      else if(usertype==="drugInspector")
-      {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
-      }
-      else if(usertype==="doctor")
-      {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
-        
+            alert("Logged in successfully!");
+            settoken(response.data.token);
+            if(usertype==="startup")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
+            }
+            else if(usertype==="Licensee Authority")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/adash?email=${encodedEmail}?token=${token}`;
+            }
+            else if(usertype==="doctor")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
+              
+            }
+            else if(usertype==="drugInspector")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
+                  
+            }
+            else if(usertype==="farmer")
+            { 
+                  window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
+            }
+      
+         }else{
+        console.log("thrown message from backend : ",response.data.message);
         }
-      else if(usertype==="farmer")
-          {
-           
-            window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
-          }
-    }else{
-      console.log(response.data.throwmsg);
-    }
-  } 
-  catch (error) {
-   
+  
+    } catch (error) {
     console.error('Error occurred:', error);
     alert("invalid login details , please try again");
   }

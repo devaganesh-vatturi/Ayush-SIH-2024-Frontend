@@ -6,14 +6,19 @@ import FAQ from './FAQs';
 function Home()
 {
     let startupqr='startup';
-    let druginspectorqr='drugInspector';
+    let druginspector='drugInspector';
+    let authority='Licensee Authority';
     function startupLogin()
     {
         window.location.href = `/login?value=${startupqr}`;
     }
-    function druginsLogin()
+    function authoriLogin()
     {
-        window.location.href = `/login?value=${druginspectorqr}`;
+        window.location.href = `/login?value=${authority}`;
+    }
+    function drugLogin()
+    {
+        window.location.href = `/login?value=${druginspector}`;
     }
     function goStartup()
     {
@@ -23,9 +28,13 @@ function Home()
     {
         window.location.href=`/hometwo`;
     }
-    function godrug()
+    function goauth()
     {
         window.location.href='/signupauthority'
+    }
+    function godrug()
+    {
+        window.location.href='/signupdrug'
     }
     
     const StartupFaqData = [
@@ -50,11 +59,17 @@ function Home()
                <button id="home-main-signin" onClick={goStartup} >Sign Up</button>
                <button id="home-main-login" onClick={startupLogin}>Login</button>
            </div>
-           <div className="home-main-drug">
+           <div className="home-main-auth">
                <img id="home-main-img" src={drugins}/>
                <p>Authority</p>
+               <button id="home-main-signin" onClick={goauth} >Sign Up</button>
+               <button id="home-main-login" onClick={authoriLogin}>Login</button>
+           </div>
+           <div className="home-main-drug">
+               <img id="home-main-img" src={drugins}/>
+               <p>Drug Inspector</p>
                <button id="home-main-signin" onClick={godrug} >Sign Up</button>
-               <button id="home-main-login" onClick={druginsLogin}>Login</button>
+               <button id="home-main-login" onClick={drugLogin}>Login</button>
            </div>
            </div>
            <center><button id="gohometwo" onClick={gohometwo}>Are you a Farmer/doctor Wanna collaborate?</button></center>

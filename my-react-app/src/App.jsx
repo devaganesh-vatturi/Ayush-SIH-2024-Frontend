@@ -13,7 +13,8 @@ import Doctordash from './components/Dashboard comps/Doctordash.jsx';
 import Farmerdash from './components/Dashboard comps/Farmerdash.jsx';
 import AiChatBot from './components/AiChatBot.jsx';
 import Authoritysignup from './components/Authoritysignup.jsx'
-
+import Druginsignup from './components/Druginsignup.jsx';
+import Drugindash from './components/Dashboard comps/Drugindash.jsx';
 function App() {
     return (
      <>
@@ -24,10 +25,12 @@ function App() {
     <Route path='/login' element={<Login/>}/>
     <Route path='/signupstartup' element={<Startupsignup/>}/>
     <Route path='/signupauthority' element={<Authoritysignup/>}/>
+    <Route path='/signupdrug' element={<Druginsignup/>}/>
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
     <Route path='/sdash' element={<Startupdashboard/>}/>
-    <Route path='/ddash' element={<Authoritydash/>}/>
+    <Route path='/adash' element={<Authoritydash/>}/>
+    <Route path='/ddash' element={<Drugindash/>}/>
     <Route path='/docdash' element={<Doctordash/>}/>
     <Route path='/fardash' element={<Farmerdash/>}/>
     <Route path='/chatbot' element={<AiChatBot/>}/>

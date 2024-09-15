@@ -22,6 +22,14 @@ function  Authoritysignup() {
       const{name,value}=e.target;
       setLicensedata({...Licensedata,[name]:value});
 
+      if(name==="password"&& value.length<8)
+        {
+         setPasserror("Password must contain 8 letters");
+        }
+        else if(name==="password"&&value.length>=8){
+         setPasserror("");
+        }
+
     }
     const handleSubmit= async(e)=>
     {
