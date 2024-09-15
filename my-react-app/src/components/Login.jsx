@@ -33,41 +33,45 @@ const handelSubmit =async(e)=>{
   invalid ? setInvalidtext("password must contain 8 letters") : setInvalidtext("");
   if(usertype ==="farmer")
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
-  try{
-    const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
-    if (response.data.success) {
-      alert("Logged in successfully!");
-      settoken(response.data.token);
-      if(usertype==="startup")
+  try
+  {
+      const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
+      if (response.data.success) 
       {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
-      }
-      else if(usertype==="Licensee Authority")
-      {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/adash?email=${encodedEmail}?token=${token}`;
-      }
-      else if(usertype==="doctor")
-      {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
-        
-      }
-      else if(usertype==="drugInspector")
-      {
-        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
-            
-      }
-      else if(usertype==="farmer")
-      {
-        window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
-      }
-    } 
-  } 
-  catch (error) {
-   
+            alert("Logged in successfully!");
+            settoken(response.data.token);
+            if(usertype==="startup")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
+            }
+            else if(usertype==="Licensee Authority")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/adash?email=${encodedEmail}?token=${token}`;
+            }
+            else if(usertype==="doctor")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
+              
+            }
+            else if(usertype==="drugInspector")
+            {
+              const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+              window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
+                  
+            }
+            else if(usertype==="farmer")
+            { 
+                  window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
+            }
+      
+         }else{
+        console.log("thrown message from backend : ",response.data.message);
+        }
+  
+    } catch (error) {
     console.error('Error occurred:', error);
     alert("invalid login details , please try again");
   }
@@ -78,15 +82,16 @@ const handelSubmit =async(e)=>{
       <>
       <Header/>
       <form onSubmit={handelSubmit}>
-        <p id='hey-tag'>Hey {usertype} </p>
+
         <div className="Login-container">
-        <p className="login-headin">{usertype.replace(/^./, str => str.toUpperCase())} Login</p>
-        <label className="Login-label">Enter the {intake} </label>
-        <input type="text" className="Login-input" name="Email_ID" required onChange={handleChange}/><br />
-        <label className="Login-label">Enter the password</label>
-        <input type="password" className="Login-input" name="password" onChange={handleChange}/><br />
-       { invalidtext && <p>{invalidtext}</p>}
-        <button className="Login-button">Submit</button>
+
+          <p className="login-headin">{usertype.replace(/^./, str => str.toUpperCase())} Login</p>
+          <label className="Login-label">Enter the {intake} </label>
+          <input type="text" className="Login-input" name="Email_ID" required onChange={handleChange}/><br />
+          <label className="Login-label">Enter the password</label>
+          <input type="password" className="Login-input" name="password" onChange={handleChange}/><br />
+          { invalidtext && <p>{invalidtext}</p>}
+          <button className="Login-button">Submit</button>
        
       </div>
       </form>
