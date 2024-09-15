@@ -1,34 +1,51 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import '../styles/Startupdashboard.css';
+
 import Startuptrackpad from './Startuptrackpad';
 import StartupApplication from './StartupApplication';
 import Header from '../Header';
 import Extrafeatures from './Extrafeatures';
-import { useLocation } from 'react-router-dom';
 import PeerForum from './PeerForum';
+
 export default function Startupdashboard() {
     //1 is doctor
     //2 is farmer
     const [value, setvalue] = useState(1);
     const [tokenvalidation, settokenvalidation] = useState();
+    const [farmersNOTFound,setFarmersNOTFound] = useState(false);
+    const [farmerData,setFarmerdata] = useState([]); 
    const params= useLocation();
    let values=new URLSearchParams(params.search);
    let decemail= values.get('email');
    let token= values.get('token');
+
+    const theaders = {
+        'authorization': `Bearer ${token}`,
+    }
+
    useEffect(()=>{
     const fecthit = async(e)=>{
         try{
-        const response= await axios.post('',token);
-        if(response.data.success)
-        {
-
-        }
-        else{
-            settokenvalidation(false);
-        }
-        }
-        catch(error)
-        {
+            const response= await axios.post('http://localhost:5002/api/farmertab-in-startup-and-token',decemail,{theaders}); // in startupf... f means farmer
+            
+            if(!response.data.tokenSuccess){
+                settokenvalidation(false);
+                alert("JWT token is invalid !");
+                // block the total website down !
+            }else{
+                console.log("JWT token is valid and true"); // for developer confirmation
+                settokenvalidation(true);
+                if(!response.data.farmerRetrievalSuccess){
+                    setFarmersNOTFound(true); // there are no farmers in THAT district
+                }else{
+                    // there ARE farmers in that district
+                    setFarmerdata(response.data.Farmerslist);
+                }
+            }
+        }catch(error){
 
         }
         fecthit();
@@ -78,7 +95,7 @@ export default function Startupdashboard() {
      {
         value ===1 ? (<Startuptrackpad email={email}/>) :
                 (value === 2 ? (<StartupApplication email={email}/>) :
-                                    ( value ===3 ? (<Extrafeatures email={email}/>) : 
+                                    ( value ===3 ? (<Extrafeatures email={email} farmerMatter={{farmersNOTFound,farmerData}}/>) : 
                                             (value ===4 ? (<PeerForum email={email}/>) :  (null) ) ))
      }
      </div>
