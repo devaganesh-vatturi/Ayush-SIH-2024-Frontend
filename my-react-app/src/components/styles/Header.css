@@ -5,29 +5,35 @@
     flex-direction:row;
     font-weight: bold;
    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     color:black;
-    /* border: 4px solid rgb(255, 255, 255); */
     height: 90px;
     align-items: center;
     font-weight: 400;
     background-color: #094660;
 }
 .home-name{
-    margin-left:10px;
+   
     background-color: #094660;   
     color:white;
     font-size: 50px;
 }
 .home-img{
-    height:80px;
-    width:100px;
+    
     background-image: url("./aushadi_logo.svg");
     background-size:cover;
     border-radius: 50%;
-    margin-left:20px;
+    height: 99%;
+    width:100px;
+    margin:10px;
 }
-#home-img-tag{}
+.home-first{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    width:20vw;
+    height:100%;
+}
 .home-button{
-  margin-left:1300px;
+  border:2px solid black;
 }

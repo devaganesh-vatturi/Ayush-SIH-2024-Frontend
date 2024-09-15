@@ -1,12 +1,13 @@
 import React ,{useState,useEffect}from 'react'
 import "../styles/Inscommunication.css";
+import axios from 'axios';
 export default function Inscommunication() {
     const [isEnabled, setIsEnabled] = useState(false); 
     const [clicks, setClicks] = useState(false);
     const [feedback,setFeedback]=useState('');
 
     useEffect(()=>{
-      const response = axios.get("http://localhost:5002/api/StartupFeedback-get");
+      const response = axios.post("",);
       setFeedback(response.feedback);
       setIsEnabled(response.Finished);//finished is example varibale plz modify it.
     },[])
@@ -15,7 +16,7 @@ export default function Inscommunication() {
       e.preventDefault();
       setIsEnabled(false);
       setClicks(false);   
-      
+
     };
   
     function isclicked() {

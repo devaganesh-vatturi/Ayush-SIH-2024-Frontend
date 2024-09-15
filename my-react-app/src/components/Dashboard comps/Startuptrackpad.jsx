@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Startuptrackpad.css';
 
-const Startuptrackpad = () => {
+const Startuptrackpad = ({email}) => {
   const [currentStage, setCurrentStage] = useState(3); // Change this value to update the progress
 
   const stages = [

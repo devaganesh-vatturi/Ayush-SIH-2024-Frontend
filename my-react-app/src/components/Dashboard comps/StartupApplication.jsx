@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/StartupApplication.css';
 import axios from 'axios';
-function StartupSingup() {
+function StartupSingup({email}) {
   //declaration of basic functions
   const [startupdata, setStartupdata] = useState({
     companyname:"",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
      website:"",cerno:"",cdate:"",issueauthority:"",iecode:"",issuedate:"",purpose:""
   });
+  console.log("the mail",email);//email from props
   function handleChange(e)
   {
     e.preventDefault();

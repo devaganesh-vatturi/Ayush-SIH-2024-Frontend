@@ -46,15 +46,15 @@ export default function Startupdashboard() {
   
     <p onClick={goStatus}>Status Tracking</p>
     <p onClick={goApplication}>Fill Aplication</p>
-    <p onClick={goAyush}>Aushadi3.0</p>
+    <p onClick={goAyush}>Aayush 3.0</p>
     <p onClick={goPeerForum}>Peer Forum</p>
     </div>
     <div >
      {
-        value ===1 ? (<Startuptrackpad/>) :
-                (value === 2 ? (<StartupApplication/>) :
-                                    ( value ===3 ? (<Extrafeatures/>) : 
-                                            (value ===4 ? (<PeerForum/>) :  (null) ) ))
+        value ===1 ? (<Startuptrackpad email={email}/>) :
+                (value === 2 ? (<StartupApplication email={email}/>) :
+                                    ( value ===3 ? (<Extrafeatures email={email}/>) : 
+                                            (value ===4 ? (<PeerForum email={email}/>) :  (null) ) ))
      }
      </div>
      </div>
