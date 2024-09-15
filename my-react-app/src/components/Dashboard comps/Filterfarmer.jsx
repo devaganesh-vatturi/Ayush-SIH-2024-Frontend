@@ -3,17 +3,17 @@ import React, {useEffect } from 'react'
 import axios from 'axios';
 import '../styles/Filterfarmer.css';
 export default function Filterfarmer({email}) {
-  const farmerData = [
-    {name:"deva",Email:"raj@gmail.com",phone:"9045643891",district:"west godavari"},
-    {  name:"ganesh",Email:"giri@gmail.com",phone:" 87345445897",district:"krishna" },
-    {  name:"sriram",Email:"venu@gmail.com",phone:"9947646747",district:" kadapa" },
-    {  name:"manikanta",Email:"venkat@gmail.com",phone:"9848162013",district:"east godavari" },
-  ];
+  const [farmerData, setfarmerData] = useState();
 
   useEffect(()=>{  
     const fetchit = async(e)=>{
       try{
-        const response= await axios.post(''.email);
+        const response= await axios.post('http://localhost:5002/api/startupf-dashboard'.email);
+        if(response.data.success)
+        {
+          console.log(response.data);
+          setfarmerData(response.data.items);
+        }
       }
       catch(error)
      {

@@ -29,19 +29,18 @@ function Startupsignup() {
      e.preventDefault();
      const {name,value}=e.target;
      setStartUpdata({...startUpdata,[name]:value});
-     if(name==="password"&& value.length<6)
+     if(name==="password"&& value.length<8)
       {
-       setPasserror("Password must contain 6 letters");
+       setPasserror("Password must contain 8 letters");
       }
-      else if(name==="password"&&value.length>=6){
+      else if(name==="password"&&value.length>=8){
        setPasserror("");
       }
-      if(name==="phone_number"&&value.length<10){
-       setPhnerror("phone number must contains 10 number");
-      }
-      else if(name==="phone_number"&&value.length>=10){
-       setPhnerror("");
-      }
+      if (name === "phone_number" && value.length !== 10) {
+        setPhnerror("Phone number must contain exactly 10 digits");
+    } else if (name === "phone_number" && value.length === 10) {
+        setPhnerror("");
+    }
       if(name==="pinCode"&& value.length<6)
       {
         setPinerror("pin number must contains 6 number ");
@@ -56,19 +55,19 @@ function Startupsignup() {
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(startUpdata.password.length<=6)
+     if(startUpdata.password.length<=8)
      {
         passvalid=true;
      }
 
-     passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+     passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
      if(startUpdata.pinCode.length<=6)
       {
          pinvalid=true;
       }
  
       pinvalid ? setPinerror("Pincode  must contain 6 letters") : setPinerror("");
-      if(startUpdata.phone_number.length<=10)
+      if(startUpdata.phone_number.length!=10)
         {
            phnvalid=true;
         }
@@ -120,12 +119,13 @@ function Startupsignup() {
       <>
       <Header/>
       <form onSubmit={onSubmit}>
-        <div className="container">
-      <label className="label">Name of the Company/Firm :</label>
-      <input type="text" className="input" name="companyName" onChange={handelChange}/><br />
+        <div className="start-up-container">
+          <p className="start-up-para">Startupsignup Details</p>
+      <label className="start-up-label">Name of the Company/Firm :</label>
+      <input type="text" className="start-up-input" name="companyName" onChange={handelChange}/><br />
       
-      <label className="label">State :</label><br />
-      <select value={startUpdata.state} name="state" onChange={handelChange} className="input">
+      <label className=" start-up-label">State :</label> 
+      <select value={startUpdata.state} name="state" onChange={handelChange} className=" start-up-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -134,8 +134,8 @@ function Startupsignup() {
                 ))}
             </select>
       <br />
-      <label className="label">District :</label><br />
-      <select value={startUpdata.district} name="district" onChange={handelChange} className="input">
+      <label className=" start-up-label">District :</label> 
+      <select value={startUpdata.district} name="district" onChange={handelChange} className="start-up-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -144,22 +144,22 @@ function Startupsignup() {
                 ))}
             </select>
      <br />
-     <label className="label">Address :</label>
-     <input type="text" className="input" name="address" onChange={handelChange}/><br />
-     <label className="label">City :</label>
-      <input type="text" className="input" name="city" onChange={handelChange}/><br />
-      <label className="label">PinCode :</label>
-      <input type="number" className="input" name="pinCode" onChange={handelChange}/><br />
+     <label className=" start-up-label">Address :</label>
+     <input type="text" className=" start-up-input" name="address" onChange={handelChange}/><br />
+     <label className=" start-up-label">City :</label>
+      <input type="text" className=" start-up-input" name="city" onChange={handelChange}/><br />
+      <label className=" start-up-label">PinCode :</label>
+      <input type="number" className=" start-up-input" name="pinCode" onChange={handelChange}/><br />
       {pinerror&&<p>{pinerror}</p>}
-      <label className="label" >Contact number:</label>
-      <input type="number" className="input" name="phone_number" onChange={handelChange}/><br />
+      <label className=" start-up-label" >Contact number:</label>
+      <input type="number" className=" start-up-input" name="phone_number" onChange={handelChange}/><br />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Email Address :</label>
-      <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
-      <label className="label">Password:</label>
-      <input type="password" className="input" name="password" onChange={handelChange}/><br />
+      <label className=" start-up-label">Email Address :</label>
+      <input type="email" className=" start-up-input" name="Email_ID" onChange={handelChange}/><br />
+      <label className=" start-up-label">Password:</label>
+      <input type="password" className=" start-up-input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
-      <button className="button">submit</button>
+      <button className="start-up-button">submit</button>
     </div>
    
     </form>

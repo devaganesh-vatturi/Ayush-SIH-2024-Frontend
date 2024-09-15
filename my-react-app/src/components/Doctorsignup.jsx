@@ -25,29 +25,28 @@ function Doctorsignup() {
      e.preventDefault();
      const {name,value}=e.target;
      setDoctordata({...doctordata,[name]:value});
-     if(name==="password"&& value.length<6)
+     if(name==="password"&& value.length<8)
       {
-       setPasserror("Password must contain 6 letters");
+       setPasserror("Password must contain 8 letters");
       }
-      else if(name==="password"&&value.length>=6){
+      else if(name==="password"&&value.length>=8){
        setPasserror("");
       }
-      if(name==="phone_number"&&value.length<10){
-       setPhnerror("phone number must contains 10 number");
-      }
-      else if(name==="phone_number"&&value.length>=10){
-       setPhnerror("");
-      }
+      if (name === "phone_number" && value.length !== 10) {
+        setPhnerror("Phone number must contain exactly 10 digits");
+    } else if (name === "phone_number" && value.length === 10) {
+        setPhnerror("");
+    }
   }
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(doctordata.password.length<6)
+     if(doctordata.password.length<8)
      {
         passvalid=true;
      }
-     passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
-      if(doctordata.phone_number.length<=10)
+     passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+      if(doctordata.phone_number.length!=10)
         {
            phnvalid=true;
         }
@@ -94,17 +93,17 @@ function Doctorsignup() {
           console.error('Error fetching districts:', error);
       }
   };
-
+ 
     return ( 
       <>
       <Header/>
-      <form onSubmit={onSubmit} className="container">
-        
-      <label className="label">Enter the name:</label>
-      <input type="text" className="input" name="name" onChange={handelChange}/><br />
+      <form onSubmit={onSubmit} className="doctor-sign-container">
+         <p className="doctor-sign-para">Doctorsignup Details</p>
+      <label className="doctor-sign-label">Enter the name:</label>
+      <input type="text" className="doctor-sign-input" name="name" onChange={handelChange}/><br />
       
-      <label className="label">Enter the state:</label><br />
-      <select value={doctordata.state} name="state" onChange={handelChange} className="input">
+      <label className=" doctor-sign-label">Enter the state:</label> 
+      <select value={doctordata.state} name="state" onChange={handelChange} className=" doctor-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -113,8 +112,8 @@ function Doctorsignup() {
                 ))}
             </select>
       <br />
-      <label className="label">Enter district name:</label><br />
-      <select value={doctordata.district} name="district" onChange={handelChange} className="input">
+      <label className="doctor-sign-label">Enter district name:</label> 
+      <select value={doctordata.district} name="district" onChange={handelChange} className=" doctor-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -124,17 +123,17 @@ function Doctorsignup() {
             </select>
      <br />
       
-      <label className="label" >Enter the phone number:</label>
-      <input type="text" className="input" name="phone_number" onChange={handelChange}/><br />
+      <label className="doctor-sign-label" >Enter the phone number:</label>
+      <input type="text" className=" doctor-sign-input" name="phone_number" onChange={handelChange}/><br />
       {phnerror&&<p>{phnerror}</p>}
-      <label className="label">Upload a PDF file:</label>
-      <input type="file" accept=".pdf" className="input" onChange={handelChange}/><br/>
-      <label className="label">Enter the emailid:</label>
-      <input type="email" className="input" name="Email_ID" onChange={handelChange}/><br />
-      <label className="label">Enter the password:</label>
-      <input type="text" className="input" name="password" onChange={handelChange}/><br />
+      <label className="doctor-sign-label">Upload a PDF file:</label>
+      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handelChange}/><br/>
+      <label className="doctor-sign-label">Enter the emailid:</label>
+      <input type="email" className="doctor-sign-input" name="Email_ID" onChange={handelChange}/><br />
+      <label className="doctor-sign-label">Enter the password:</label>
+      <input type="password" className="doctor-sign-input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
-      <button className="button">submit</button>
+      <button className="doctor-sign-button">submit</button>
     </form>
     </>
     );

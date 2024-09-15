@@ -19,7 +19,6 @@ function Login(){
 
 const handelSubmit =async(e)=>{
   e.preventDefault();
-  
   if(logit.password.length<6)
   {
       invalid=true;
@@ -39,6 +38,7 @@ const handelSubmit =async(e)=>{
         window.location.href=`/ddash?email=${logit.Email_ID}`;
       }
       else if(usertype==="doctor"){
+
         window.location.href=`/docdash?email=${logit.Email_ID}`;
         }
       else if(usertype==="farmer"){
@@ -55,19 +55,20 @@ const handelSubmit =async(e)=>{
   }
  
 }
-
+ 
   return(
       <>
       <Header/>
       <form onSubmit={handelSubmit}>
         <p id='hey-tag'>Hey {usertype} </p>
-        <div className="container">
-        <label className="label">Enter the {intake} </label>
-        <input type="text" className="input" name="Email_ID" required onChange={handleChange}/><br />
-        <label className="login-label">Enter the password</label>
-        <input type="password" className="input" name="password" onChange={handleChange}/><br />
+        <div className="Login-container">
+        <p className="login-headin">{usertype.replace(/^./, str => str.toUpperCase())} Login</p>
+        <label className="Login-label">Enter the {intake} </label>
+        <input type="text" className="Login-input" name="Email_ID" required onChange={handleChange}/><br />
+        <label className="Login-label">Enter the password</label>
+        <input type="password" className="Login-input" name="password" onChange={handleChange}/><br />
        { invalidtext && <p>{invalidtext}</p>}
-        <button className="button">Submit</button>
+        <button className="Login-button">Submit</button>
        
       </div>
       </form>
