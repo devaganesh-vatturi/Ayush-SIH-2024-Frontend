@@ -6,6 +6,7 @@ import Header from './Header';
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
+  const [token, settoken] = useState("");
   const params=useLocation();
   let value=new URLSearchParams(params.search);
   let usertype=value.get('value');
@@ -34,32 +35,34 @@ const handelSubmit =async(e)=>{
     const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
     if (response.data.success) {
       alert("Logged in successfully!");
+      settoken(response.data.token);
       if(usertype==="startup")
       {
         const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-        window.location.href = `/sdash?email=${encodedEmail}`;
+        window.location.href = `/sdash?email=${encodedEmail}?token=${token}`;
       }
       else if(usertype==="drugInspector")
       {
-        window.location.href=`/ddash?email=${logit.Email_ID}`;
+        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+        window.location.href=`/ddash?email=${encodedEmail}?token=${token}`;
       }
       else if(usertype==="doctor")
-        {
-        window.location.href=`/docdash?email=${logit.Email_ID}`;
+      {
+        const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+        window.location.href=`/docdash?email=${encodedEmail}?token=${token}`;
         
         }
       else if(usertype==="farmer")
           {
-            window.location.href=`/fardash?email=${logit.phone_number}`;
+           
+            window.location.href=`/fardash?phno=${logit.phone_number}?token=${token}`;
           }
     } 
   } 
   catch (error) {
-    if(usertype!=="drugInspector")
-    {
+   
     console.error('Error occurred:', error);
     alert("invalid login details , please try again");
-    }
   }
  
 }

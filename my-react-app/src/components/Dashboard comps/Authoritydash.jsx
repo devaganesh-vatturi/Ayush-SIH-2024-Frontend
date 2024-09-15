@@ -7,8 +7,33 @@ import '../styles/Authoritydash.css';
 export default function Druginsdash() {
      const [drugtab, Setdrugtab] = useState(1);
      const params= useLocation();
+     const [tokenvalidation, settokenvalidation] = useState();
    let values=new URLSearchParams(params.search);
    let email= values.get('email');
+   let token= values.get('token');
+   useEffect(()=>{
+    const fecthit = async(e)=>{
+        try{
+        const response= await axios.post('',email,token);
+        if(response.data.success)
+        {
+
+        }
+        else{
+            settokenvalidation(false);
+        }
+        }
+        catch(error)
+        {
+
+        }
+        fecthit();
+
+    }
+   },[]);
+   //    if(tokenvalidation==false){
+//     return(<p>Error 404</p>)
+//    }
     function gohome()
     {
         Setdrugtab(1);

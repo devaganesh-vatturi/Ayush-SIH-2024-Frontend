@@ -52,7 +52,7 @@ function Home()
            </div>
            <div className="home-main-drug">
                <img id="home-main-img" src={drugins}/>
-               <p>Drug Inspector</p>
+               <p>Authority</p>
                <button id="home-main-signin" onClick={godrug} >Sign Up</button>
                <button id="home-main-login" onClick={druginsLogin}>Login</button>
            </div>
