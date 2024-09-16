@@ -39,14 +39,24 @@ body{
    align-items: center;
     
 }
-.home-main-startup,.home-main-auth,.home-main-drug {
+/*.home-main-startup,.home-main-auth,.home-main-drug {
     display:flex;
     flex-direction: column;
     align-items: center;
     border:2px solid black;
     border-radius: 25px;
     height:350px;
-}
+     
+}  */
+.home-main-startup,.home-main-auth,.home-main-drug {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+    border-radius: 25px;
+    height:350px;
+    box-shadow: 0px 4px 10px  #094660; 
+} 
 #home-main-img{
     height: 150px;
     border-radius: 50%;
@@ -60,6 +70,7 @@ body{
     background-color: black;
     color:white;
     border-radius: 10px;
+    cursor: pointer;
 }
 #home-main-login
 {
@@ -71,6 +82,7 @@ body{
     border-radius: 10px;
     margin-top:10px;
     margin-bottom:20px;
+    cursor: pointer;
 }
 #gohometwo{
     background-color: black;
@@ -81,7 +93,13 @@ body{
     font-size:1.2rem;
     border-radius: 30px;
     cursor:pointer;
+    transition:  1s;
 }
+#gohometwo:hover{
+    color:rgb(255, 255, 255);
+    background-color: rgb(46, 192, 68);
+}
+
 .home-faq{
     color:black;
 }

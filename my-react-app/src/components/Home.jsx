@@ -1,5 +1,6 @@
 import './styles/Home.css';
 import startup from '../assets/startup.svg';
+import authori from '../assets/authority.svg';
 import drugins from '../assets/drugins.svg';
 import Header from './Header';
 import FAQ from './FAQs';
@@ -55,13 +56,13 @@ function Home()
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>
-               <p>Start up</p>
+               <p>Startup Applicant</p>
                <button id="home-main-signin" onClick={goStartup} >Sign Up</button>
                <button id="home-main-login" onClick={startupLogin}>Login</button>
            </div>
            <div className="home-main-auth">
-               <img id="home-main-img" src={drugins}/>
-               <p>Authority</p>
+               <img id="home-main-img" src={authori}/>
+               <p>Licensing Authority</p>
                <button id="home-main-signin" onClick={goauth} >Sign Up</button>
                <button id="home-main-login" onClick={authoriLogin}>Login</button>
            </div>
