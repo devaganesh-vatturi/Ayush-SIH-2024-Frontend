@@ -8,7 +8,7 @@ import '../styles/Authoritydash.css';
 import Footer from '../styles/Footer';
 import Logout from './Logout';
 
-export default function Druginsdash() {
+export default function Authoritydash() {
      const [drugtab, Setdrugtab] = useState(1);
      const params= useLocation();
      const [tokenvalidation, settokenvalidation] = useState();

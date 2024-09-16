@@ -1,15 +1,16 @@
 import React ,{useState,useEffect}from 'react'
 import "../styles/Inscommunication.css";
 import axios from 'axios';
-export default function Inscommunication() {
+export default function Inscommunication({email}) {
     const [isEnabled, setIsEnabled] = useState(false); 
     const [clicks, setClicks] = useState(false);
     const [feedback,setFeedback]=useState('');
 
     useEffect(()=>{
-      const response = axios.post("",);
+      const response = axios.post("/StartupFeedback-get",{email});
       setFeedback(response.feedback);
-      setIsEnabled(response.Finished);//finished is example varibale plz modify it.
+      const isnotifyResponse = axios.post("/StartupFeedback-get",{email});
+      setIsEnabled(response.isNotifyEligible);//finished is example varibale plz modify it.
     },[])
   
     const handleSubmit = (e) => {

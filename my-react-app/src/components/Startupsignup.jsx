@@ -89,7 +89,7 @@ function Startupsignup() {
       }
   phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
   try {
-    response = await axios.post("http://localhost:5002/api/startup-reg", startUpdata);
+    const response = await axios.post("http://localhost:5002/api/startup-reg", startUpdata);
   
     if (response.data.success) {
       alert("Successfully Signed Up");
