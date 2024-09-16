@@ -5,8 +5,11 @@ import { useEffect } from 'react';
 import Header from './Header';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
-    {name:"",email:"" ,password:"",district:"",state:""});
+    {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:"",OrderDate:"",State:"",district:"" });
+    const [passerror, setPasserror] = useState("");
+    const [phnerror,setPhnerror]=useState("");
     let invalid=false;
+    let phnvalid=false;
     useEffect( 
       ()=>{
         fetchDistricts();
@@ -47,6 +50,21 @@ function  Authoritysignup() {
       e.preventDefault();
       const{name,value}=e.target;
       setLicensedata({...Licensedata,[name]:value});
+
+      if(name==="password"&& value.length<8)
+        {
+         setPasserror("Password must contain 8 letters");
+        }
+        else if(name==="password"&&value.length>=8){
+         setPasserror("");
+        }
+
+        if (name === "mobile_no" && value.length !== 10) {
+          setPhnerror("Phone number must contain exactly 10 digits");
+      } else if (name === "phone_number" && value.length === 10) {
+          setPhnerror("");
+      }
+
     }
     const handleSubmit= async(e)=>
     {
@@ -56,7 +74,14 @@ function  Authoritysignup() {
           invalid=true;
           
         }
- 
+        invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+
+        if( Licensedata.mobile_no.length!=10)
+          {
+             phnvalid=true;
+          }
+     
+          phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         try{
         const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
         if(response.data.success)
@@ -103,9 +128,11 @@ function  Authoritysignup() {
           <p className=" authority-sign-para">Licensing Authority Registration Form</p>
       <label className=" authority-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
+      
       <label className="  authority-sign-label">Enter the Email:</label> 
       <input type="email" name="email" onChange={handleChange} className=" authority-sign-input" /><br />
-      <label className=" authority-sign-label">Enter the password:</label> 
+
+      <label className=" authority-sign-label">Enter the password:</label>  
       <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
 
       <ul className="password-checklist">
@@ -125,8 +152,28 @@ function  Authoritysignup() {
           Be between 8 and 30 characters long
         </li>
       </ul>
+      {passerror&&<p className="authority-sign-error">{passerror}</p>}
+
+      <label className=" authority-sign-label">Enter the  mobile no:</label>
+      <input type="number" name="mobile_no" onChange={handleChange} className=" authority-sign-input" /><br />
+      {phnerror&&<p className="authority-sign-error">{phnerror}</p>}
+
+      <label className=" authority-sign-label">Enter the Designation:</label> 
+      <input type="text" name="designation" onChange={handleChange} className=" authority-sign-input" /><br />
+
+      <label className=" authority-sign-label">Enter the Qualification: </label> 
+      <input type="text" name="Qualification" onChange={handleChange} className=" authority-sign-input" /><br />
+
+      <label className=" authority-sign-label">Enter the  OrderReferenceNo: </label> 
+      <input type="text" name="OrderReferenceNo" onChange={handleChange} className=" authority-sign-input" /><br />
+
+      <label className=" authority-sign-label">Enter the  OrderDate: </label> 
+      <input type="text" name="OrderDate" onChange={handleChange} className=" authority-sign-input" /><br />
+
+
+       
       <label className=" authority-sign-label">Enter the state:</label> 
-      <select value={Licensedata.state} name="state" onChange={handleChange} className=" authority-sign-input">
+      <select value={Licensedata.State} name="state" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -145,8 +192,7 @@ function  Authoritysignup() {
                 ))}
             </select>
      <br />
-     <label className=" authority-sign-label">Add pdf:</label> 
-     <input type="file" name="file" onChange={handleChange} className=" authority-sign-input" /><br />
+     
        
     <button className=" authority-sign-button">submit</button>
     </div>
@@ -157,3 +203,5 @@ function  Authoritysignup() {
 }
 
 export default  Authoritysignup;
+
+ 

@@ -1,12 +1,14 @@
 .start-up-container {
   max-width: 400px;
   margin: 40px auto;
+  
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+ 
 .start-up-para{
 margin-bottom: 20px;
 font-weight: bold ;
@@ -46,6 +48,7 @@ font-size: 30px;
   background-color: #013f01;
 }
 
+
 .invaliderror{
   font-size: 16px;
   margin: 5px 0;
@@ -57,6 +60,7 @@ font-size: 30px;
   background-color: #f8e9ea; /* Light red background */
   border-left: 5px solid #dc3545;
 }
+
 
 .password-checklist li {
   font-size: 16px;
@@ -96,5 +100,4 @@ font-size: 30px;
 
 .start-up-error{
   color:rgb(173, 23, 23)
-
 }

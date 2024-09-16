@@ -61,6 +61,11 @@ body{
     height: 150px;
     border-radius: 50%;
 }
+#home-main-img2{
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 #home-main-signin
 {
     border:none;
@@ -84,6 +89,7 @@ body{
     margin-bottom:20px;
     cursor: pointer;
 }
+ 
 #gohometwo{
     background-color: black;
     color:white;
