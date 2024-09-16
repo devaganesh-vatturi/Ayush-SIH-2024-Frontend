@@ -3,6 +3,7 @@ import PrintdrugList from './PrintdrugList';
 import '../styles/Drugindash.css';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Drugindash() {
   
@@ -74,9 +75,9 @@ useEffect(()=>{
     }
 },[]);
         
-if(tokenvalidation==false){
-    return(<p>Error 404</p>)
-   }
+// if(tokenvalidation==false){
+//     return(<p>Error 404</p>)
+//    }
 
    return (
     <>
