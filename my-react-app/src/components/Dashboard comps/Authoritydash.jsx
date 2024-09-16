@@ -5,6 +5,8 @@ import Header from '../Header';
 import { useLocation } from 'react-router-dom';
 
 import '../styles/Authoritydash.css';
+import Footer from '../styles/Footer';
+import Logout from './Logout';
 
 export default function Druginsdash() {
      const [drugtab, Setdrugtab] = useState(1);
@@ -77,12 +79,18 @@ export default function Druginsdash() {
     <Header/>
     <p className='drug-head'>Authority Desk!</p>
     <div className='drug-main'>
+        <div className='drug-main-first'>
         <p className="drug-nav" onClick={gohome}>Home</p>
         <p className="drug-nav" onClick={gonotification}>Notifications</p>
+        </div>
+        <div>
+        <Logout/> 
+        </div>
     </div>
    {
      drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) : (null)
    }
+   <Footer/>
     </>
   )
 }

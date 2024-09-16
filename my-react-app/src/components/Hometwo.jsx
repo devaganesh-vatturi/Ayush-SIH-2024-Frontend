@@ -4,6 +4,7 @@ import farmer1 from '../assets/farmer.svg';
 import Header from './Header';
 import FAQ from './FAQs';
 import Footer from './styles/Footer';
+import Gochatbot from './Gochatbot';
 function Home()
 {
     
@@ -95,9 +96,8 @@ function Home()
         <FAQ faqdata={farmerFaqData} who={"Ayush Farmer"} />
         <FAQ faqdata={doctorFaqData} who={"Ayush Doctor"} />
         </div>
-        <div className="home-two-chatbot">
-              <p>the chat bot button will appear here!</p>
-        </div>
+
+        <Gochatbot/>
         <Footer/>
         </>
     );

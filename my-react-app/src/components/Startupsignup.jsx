@@ -80,7 +80,7 @@ function Startupsignup() {
      if(startUpdata.password.length<8){
         passvalid=true;
      }
-     if(startUpdata.pinCode.length<=6){
+     if(startUpdata.pinCode.length<6){
          pinvalid=true;
       }
       pinvalid ? setPinerror("Pincode  must contain 6 letters") : setPinerror("");
