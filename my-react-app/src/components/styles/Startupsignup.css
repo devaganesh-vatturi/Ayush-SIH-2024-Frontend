@@ -45,3 +45,6 @@ font-size: 30px;
 .start-up-button:hover {
   background-color: #013f01;
 }
+.start-up-error{
+  color:rgb(173, 23, 23)
+}
