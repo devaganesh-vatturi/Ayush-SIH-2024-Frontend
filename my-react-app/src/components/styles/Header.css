@@ -21,17 +21,21 @@
 .home-img{
     
     background-image: url("./aushadi_logo.svg");
-    background-size:cover;
+    /* background-size:cover; */
+    background-size: cover; /* Ensures the whole image is visible */
+    background-repeat: no-repeat;
+    /* border:2px solid pink; */
     border-radius: 50%;
-    height: 99%;
-    width:100px;
+    aspect-ratio: 1 / 1;
+    height:90px;
+    width:90px;
     margin:10px;
 }
 .home-first{
     display:flex;
     flex-direction: row;
     align-items: center;
-    width:20vw;
+    width:40vw;
     height:100%;
 }
 .home-button{

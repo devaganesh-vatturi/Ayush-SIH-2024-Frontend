@@ -3,6 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
+import Footer from './styles/Footer';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
     {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:"",OrderDate:"",State:"",district:"" });
@@ -198,6 +199,7 @@ function  Authoritysignup() {
     </div>
    
     </form>
+    <Footer/>
     </>
     );
 }

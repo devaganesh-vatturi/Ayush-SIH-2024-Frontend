@@ -3,6 +3,7 @@ import React,{ useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
+import Footer from './styles/Footer';
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
@@ -62,7 +63,7 @@ const handelSubmit =async(e)=>{
   return(
       <>
       <Header/>
-      <form onSubmit={handelSubmit}>
+      <form id='login-form'onSubmit={handelSubmit}>
 
         <div className="Login-container">
         {usertype==="authority" ?  <p className="login-headin">{"Licensing Authority Login"}</p> : 
@@ -78,6 +79,7 @@ const handelSubmit =async(e)=>{
        
       </div>
       </form>
+      <Footer/>
       </>
     );
 }

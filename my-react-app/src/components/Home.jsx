@@ -4,6 +4,7 @@ import authori from '../assets/authority.svg';
 import drugins from '../assets/drugins.svg';
 import Header from './Header';
 import FAQ from './FAQs';
+import Footer from './styles/Footer';
 function Home()
 {
     let startupqr='startup';
@@ -80,6 +81,7 @@ function Home()
         <div className="home-chatbot">
               <p>the chat bot button will appear here!</p>
         </div>
+        <Footer/>
         </>
     );
 }

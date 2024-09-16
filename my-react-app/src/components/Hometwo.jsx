@@ -3,6 +3,7 @@ import doctor1 from '../assets/doctor.svg';
 import farmer1 from '../assets/farmer.svg';
 import Header from './Header';
 import FAQ from './FAQs';
+import Footer from './styles/Footer';
 function Home()
 {
     
@@ -97,6 +98,7 @@ function Home()
         <div className="home-two-chatbot">
               <p>the chat bot button will appear here!</p>
         </div>
+        <Footer/>
         </>
     );
 }

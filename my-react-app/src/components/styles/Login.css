@@ -13,7 +13,6 @@
   font-weight: bold;
   color: #333;
 }
-
 .Login-input {
   width: 80%;
   padding: 10px;
@@ -21,7 +20,9 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
+#login-form{
+  margin-bottom: 100px;
+}
 .Login-button {
   background-color: #058a0a;
   color: #fff;

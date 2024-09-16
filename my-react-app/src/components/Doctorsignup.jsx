@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
+import Footer from './styles/Footer';
 
 function Doctorsignup() {
   const [doctordata, setDoctordata] = useState(
@@ -137,6 +138,7 @@ function Doctorsignup() {
       {passerror&&<p className="doctor-sign-error">{passerror}</p>}
       <button className="doctor-sign-button">submit</button>
     </form>
+    <Footer/>
     </>
     );
 }
