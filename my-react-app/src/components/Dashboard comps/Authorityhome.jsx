@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PrintauthorList from './PrintauthorList';
+import axios from 'axios';
 
 import '../styles/Authorityhomee.css';
 
@@ -33,21 +34,21 @@ export default function Authorityhome({email}) {
                     const acceptedretrieved  = acceptedresponse.data.success;       
                     if (acceptedretrieved) {
                     console.log("pending startups exists ");
-                    setacceptedStartupData(acceptedresponse.data.assignedList);
+                    setacceptedStartupData(acceptedresponse.data.acceptedList);
                     }    
   
-                const rejectedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
+                const rejectedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-false'); // get isDrugInspectorAccepted or not
                 const rejectedretrieved  = rejectedresponse.data.success;       
                 if (rejectedretrieved) {
                 console.log("pending startups exists ");
-                setrejectedStartupData(rejectedresponse.data.assignedList);
+                setrejectedStartupData(rejectedresponse.data.rejectedList);
                 }    
 
-                const licensedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
+                const licensedresponse= await axios.get('http://localhost:5002/api/isLicensed-true'); // get isDrugInspectorAccepted or not
                 const licensedretrieved  = licensedresponse.data.success;       
                 if (licensedretrieved) {
                 console.log("pending startups exists ");
-                setlicensedStartupData(licensedresponse.data.assignedList);
+                setlicensedStartupData(licensedresponse.data.licensedList);
                 }    
            
        }catch (resp) {
@@ -61,7 +62,7 @@ export default function Authorityhome({email}) {
 
     }
   fetchit();
-  },);
+  },[]);
 
 
   return (
