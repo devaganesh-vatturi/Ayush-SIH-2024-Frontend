@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap'); */
 
 .home-head{
     display:flex;
     flex-direction:row;
     font-weight: bold;
-   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
     justify-content: space-between;
     color:black;
     height: 90px;

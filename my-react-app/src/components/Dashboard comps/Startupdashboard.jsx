@@ -9,6 +9,8 @@ import StartupApplication from './StartupApplication';
 import Header from '../Header';
 import Extrafeatures from './Extrafeatures';
 import PeerForum from './PeerForum';
+import Footer from '../styles/Footer';
+import Logout from './Logout';
 
 export default function Startupdashboard() {
     //1 is doctor
@@ -104,11 +106,15 @@ export default function Startupdashboard() {
     <div>
     <Header/>
     <div className='startup-dsh-head'>
-  
+    <div className='startup-dsh-head-first'>
     <p onClick={goStatus}>Status Tracking</p>
     <p onClick={goApplication}>Fill Aplication</p>
     <p onClick={goAyush}>Aayush 3.0</p>
     <p onClick={goPeerForum}>Peer Forum</p>
+    </div>
+    <div>
+    <Logout/>
+    </div>
     </div>
     <div >
      {
@@ -117,7 +123,9 @@ export default function Startupdashboard() {
                                     ( value ===3 ? (<Extrafeatures email={email} />) : 
                                             (value ===4 ? (<PeerForum email={email}/>) :  (null) ) ))
      }
+    
      </div>
+     <Footer/>
      </div>
   );
 }

@@ -5,6 +5,7 @@ import drugins from '../assets/drugins.svg';
 import Header from './Header';
 import FAQ from './FAQs';
 import Footer from './styles/Footer';
+import Gochatbot from './Gochatbot';
 function Home()
 {
     let startupqr='startup';
@@ -68,7 +69,7 @@ function Home()
                <button id="home-main-login" onClick={authoriLogin}>Login</button>
            </div>
            <div className="home-main-drug">
-               <img id="home-main-img" src={drugins}/>
+               <img id="home-main-img3" src={drugins}/>
                <p>Drug Inspector</p>
                <button id="home-main-signin" onClick={godrug} >Sign Up</button>
                <button id="home-main-login" onClick={drugLogin}>Login</button>
@@ -78,9 +79,7 @@ function Home()
         <div className="home-faq">
             <FAQ faqdata={StartupFaqData} who={"Ayush StartUps"} />
         </div>
-        <div className="home-chatbot">
-              <p>the chat bot button will appear here!</p>
-        </div>
+       <Gochatbot/>
         <Footer/>
         </>
     );

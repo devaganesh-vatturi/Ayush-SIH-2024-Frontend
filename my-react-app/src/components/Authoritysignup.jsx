@@ -60,9 +60,9 @@ function  Authoritysignup() {
          setPasserror("");
         }
 
-        if (name === "mobile_no" && value.length !== 10) {
+        if (name === "mobile_no" && value.length != 10) {
           setPhnerror("Phone number must contain exactly 10 digits");
-      } else if (name === "phone_number" && value.length === 10) {
+      } else if (name === "mobile_no" && value.length === 10) {
           setPhnerror("");
       }
 

@@ -3,6 +3,7 @@ import Filterstartup from './Filterstartup';
 import '../styles/Doctordash.css'
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
+import Logout from './Logout';
 export default function Doctordash() {
   const params= useLocation();
   let values=new URLSearchParams(params.search);
@@ -34,7 +35,14 @@ export default function Doctordash() {
   return (
     <>
     <Header/>
-    <p className='doctor-dash-head'>Doctor Dashboard</p>
+    <div className='doc-dash-main'>
+      <div className='doc-dash-doc'>  
+    <pre className='doctor-dash-head'>           Doctor Dashboard</pre>
+    </div> 
+    <div>
+    <Logout/>
+    </div>
+    </div>
     <Filterstartup name={'doctor'} email={email}/>
     </>
   )
