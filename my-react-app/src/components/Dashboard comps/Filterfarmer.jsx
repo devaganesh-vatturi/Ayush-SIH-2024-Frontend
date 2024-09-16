@@ -4,13 +4,13 @@ import PrintList from './PrintList.jsx';
 
 import '../styles/Filterfarmer.css';
 
-export default function Filterfarmer({farmerMatter}) {
+export default function Filterfarmer() {
   const [farmerDataList, setfarmerDataList] = useState([]); // initializing with empty list (expecting no farmers in the district)
 
   useEffect(()=>{  
     const fetchit =()=>{
-      console.log("farmer data : ",farmerMatter.farmerData);
-      setfarmerDataList(farmerMatter.farmerData);
+      console.log("fetching under construction : ");
+     
     }
     fetchit();
   },[]);

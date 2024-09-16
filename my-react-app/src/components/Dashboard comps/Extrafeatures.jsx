@@ -3,7 +3,7 @@ import Filterdoctor from './Filterdoctor';
 import Filterfarmer from './Filterfarmer';
 import '../styles/Extrafeatures.css';
 import Inscommunication from './Inscommunication';
-export default function Extrafeatures({email,farmerMatter}) {
+export default function Extrafeatures({email}) {
   const [screen, setScreen] = useState(1);
 
   function godoctor()
@@ -28,7 +28,7 @@ export default function Extrafeatures({email,farmerMatter}) {
        
     </div>
     {
-           screen ===1 ? (<Filterdoctor email={email}/>) : screen ===2 ? (<Filterfarmer farmerMatter={farmerMatter}/>) :screen ===3 ? 
+           screen ===1 ? (<Filterdoctor email={email}/>) : screen ===2 ? (<Filterfarmer />) :screen ===3 ? 
            (<Inscommunication email={email}/>):(null) 
        }
     </>

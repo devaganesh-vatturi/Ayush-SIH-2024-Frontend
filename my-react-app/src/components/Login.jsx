@@ -6,7 +6,7 @@ import Header from './Header';
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
-  const [token, settoken] = useState("");
+
   const params=useLocation();
   let value=new URLSearchParams(params.search);
   let usertype=value.get('value');
@@ -35,36 +35,37 @@ const handelSubmit =async(e)=>{
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
   try
   {
-      const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit);
+      const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit); 
       if (response.data.success) 
       {
+            const tokenrec = response.data.token;
             alert("Logged in successfully!");
-            settoken(response.data.token);
+            
             if(usertype==="startup")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href = `/sdash?email=${encodedEmail}&token=${token}`;
+              window.location.href = `/sdash?email=${encodedEmail}&token=${tokenrec}`;
             }
             else if(usertype==="Licensee Authority")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/adash?email=${encodedEmail}&token=${token}`;
+              window.location.href=`/adash?email=${encodedEmail}&token=${tokenrec}`;
             }
             else if(usertype==="doctor")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/docdash?email=${encodedEmail}&token=${token}`;
+              window.location.href=`/docdash?email=${encodedEmail}&token=${tokenrec}`;
               
             }
             else if(usertype==="drugInspector")
             {
               const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-              window.location.href=`/ddash?email=${encodedEmail}&token=${token}`;
+              window.location.href=`/ddash?email=${encodedEmail}&token=${tokenrec}`;
                   
             }
             else if(usertype==="farmer")
             { 
-                  window.location.href=`/fardash?phno=${logit.phone_number}&token=${token}`;
+                  window.location.href=`/fardash?phno=${logit.phone_number}&token=${tokenrec}`;
             }
       
          }else{
