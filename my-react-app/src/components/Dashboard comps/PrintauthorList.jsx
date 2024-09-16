@@ -71,7 +71,7 @@ function PrintauthorList({StartupData,type}){
 
   return (
     <div className="author-container">
-     
+
       { (startupDetails.length!==0 || typeof startupDetails === 'undefined') ? 
        startupDetails.map((item, index) => (
                             <div key={index} className="author-item">
