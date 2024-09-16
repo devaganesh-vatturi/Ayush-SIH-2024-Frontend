@@ -5,6 +5,10 @@ export default function Header() {
   {
     window.location.href='/chatbot';
   }
+  function gohome()
+  {
+    window.location.href='/';
+  }
   return (
   
     <div className="home-head">
@@ -12,7 +16,7 @@ export default function Header() {
       <div className='home-img'>
       </div>
       
-    <p className='home-name'>Aayush 2.0</p>
+    <p className='home-name' onClick={gohome}>Aayush 2.0</p>
     </div>
     <button className='home-button' onClick={gochatbot}>Chat Bot</button>
    </div>

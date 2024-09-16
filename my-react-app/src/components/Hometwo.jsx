@@ -6,15 +6,15 @@ import FAQ from './FAQs';
 function Home()
 {
     
-    let farmerqr='farmer';
-    let doctorqr='doctor';
+    let farmer='farmer';
+    let doctor='doctor';
     function farmerLogin()
     {
-        window.location.href = `/login?value=${farmerqr}`;
+        window.location.href = `/login?value=${farmer}`;
     }
      function doctorLogin()
     {
-        window.location.href = `/login?value=${doctorqr}`;
+        window.location.href = `/login?value=${doctor}`;
     }
 
     function gofarmer()
