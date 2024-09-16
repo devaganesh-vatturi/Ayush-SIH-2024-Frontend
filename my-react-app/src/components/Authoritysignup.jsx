@@ -17,7 +17,34 @@ function  Authoritysignup() {
           // empty the district list
           setDistrictsList([]);
            }
-      },[Licensedata.State]);
+      },[Licensedata.state]);
+
+      const [validations, setValidations] = useState({
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialChar: false,
+        length: false,
+      });
+    
+      useEffect(() => {
+        // Define regular expressions for each validation rule
+        const password = Licensedata.password;
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasDigit = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasValidLength = password.length >= 8 && password.length <= 30;
+    
+        // Update validation states based on regex tests
+        setValidations({
+          lowercase: hasLowercase,
+          uppercase: hasUppercase,
+          digit: hasDigit,
+          specialChar: hasSpecialChar,
+          length: hasValidLength,
+        });
+      }, [Licensedata.password]);
     const handleChange=(e)=>
     {
       e.preventDefault();
@@ -56,7 +83,7 @@ function  Authoritysignup() {
      
           phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         try{
-        const response= await axios.post("http://localhost:5002/api",Licensedata);
+        const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -107,6 +134,24 @@ function  Authoritysignup() {
 
       <label className=" authority-sign-label">Enter the password:</label>  
       <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
+
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
       {passerror&&<p className="authority-sign-error">{passerror}</p>}
 
       <label className=" authority-sign-label">Enter the  mobile no:</label>

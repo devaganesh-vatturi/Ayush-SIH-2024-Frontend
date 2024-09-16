@@ -31,8 +31,8 @@ export default function Inscommunication() {
    <>
    <div className='ins-cont'>
    <div className="ins-main">
-    <p className="ins-head">Communication with Drug Inspector</p>
-    <p className="ins-feed">Feedback::{feedback}</p>
+    <p className="ins-head">Communication with Licensing Authority</p>
+    <p className="ins-feed">Feedback:{feedback}</p>
     <p className="paragraph">Resend IE certificate properly</p>  
     <p className="paragraph">Reenter authorized GST number</p> 
 

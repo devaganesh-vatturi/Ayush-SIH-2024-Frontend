@@ -9,7 +9,7 @@ function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
     {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
       state:"",district:"",phone_number:null });
-  const [passerror, setPasserror] = useState("");
+
   const [pinerror,setPinerror]=useState("");
   const [phnerror,setPhnerror]=useState("");
   let passvalid=false;
@@ -76,45 +76,36 @@ function Startupsignup() {
 
   const onSubmit =async(e)=>{
      e.preventDefault();
-     if(startUpdata.password.length<8)
-     {
+     if(startUpdata.password.length<8){
         passvalid=true;
      }
-
-     passvalid ? setPasserror(`At least one lowercase letter
-                                At least one uppercase letter
-                              <h1>At least one digit </h1>
-                              At least one special character from the set
-                              Be between 8 and 30 characters long`) : setPasserror("");
-     if(startUpdata.pinCode.length<=6)
-      {
+     if(startUpdata.pinCode.length<=6){
          pinvalid=true;
       }
- 
       pinvalid ? setPinerror("Pincode  must contain 6 letters") : setPinerror("");
-      if(startUpdata.phone_number.length!=10)
-        {
+    if(startUpdata.phone_number.length!=10)  {
            phnvalid=true;
-        }
-   
-        phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
-     try{
-      console.log("bef axios");
-     const response = await axios.post("http://localhost:5002/api/startup-reg",startUpdata);
-     console.log("uyngaaaa - >>>>>",response.data.message);
-     if(response.data.success)
-     {
+      }
+  phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
+  try {
+    response = await axios.post("http://localhost:5002/api/startup-reg", startUpdata);
+  
+    if (response.data.success) {
       alert("Successfully Signed Up");
       window.location.href = `/login?value=${'startup'}`;
-     }
-     else{
-      alert("Invalid Details.Please try again!");
-     }
-     }
-     catch(error)
-     {
-      console.log("error is",error);
-     }
+    } else {
+      alert("Invalid Details. Please try again!");
+      throw response;
+    }
+  
+  } catch (resp) {
+    if (resp.response && resp.response.data) { // Logging the actual error message from the response
+      alert("Message: " + resp.response.data.message);
+    } else { // Fallback if the response doesn't contain the expected data
+      alert("An error occurred at backend. Server might be down.");
+    }
+    console.log("Error is", resp); // Log the full error object for debugging
+  }
 
 
   }
@@ -177,17 +168,20 @@ function Startupsignup() {
      <input type="text" className=" start-up-input" name="address" onChange={handelChange}/><br />
      <label className=" start-up-label">City :</label>
       <input type="text" className=" start-up-input" name="city" onChange={handelChange}/><br />
+
       <label className=" start-up-label">PinCode :</label>
       <input type="number" className=" start-up-input" name="pinCode" onChange={handelChange}/><br />
-      {pinerror&&<p className="start-up-error">{pinerror}</p>}
+      {pinerror&&<p className="invaliderror">{pinerror}</p>}
+      
       <label className=" start-up-label" >Contact number:</label>
       <input type="number" className=" start-up-input" name="phone_number" onChange={handelChange}/><br />
-      {phnerror&&<p className="start-up-error">{phnerror}</p>}
+      {phnerror&&<p className="invaliderror">{phnerror}</p>}
+      
       <label className=" start-up-label">Email Address :</label>
       <input type="email" className=" start-up-input" name="Email_ID" onChange={handelChange}/><br />
       <label className=" start-up-label">Password:</label>
       <input type="password" className=" start-up-input" name="password" onChange={handelChange}/><br />
-      {passerror&&<p>{passerror}</p>}
+      
       <ul className="password-checklist">
         <li className={validations.lowercase ? "valid" : "invalid"}>
           At least one lowercase letter

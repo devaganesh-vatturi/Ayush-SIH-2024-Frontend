@@ -1,26 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PrintauthorList from './PrintauthorList';
+
 export default function Authorityhome({email}) {
-    const pendingfaqData = [
-        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-      ];
-      const assignedfaqData = [
-        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-      ];
-      const acceptedfaqData = [
-        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-      ];
-      const licensedfaqData = [
-        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-      ];
-      const rejectedfaqData = [
-        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-      ];
-      useEffect(()=>{
+
+    const [pendingStartupData, setpendingStartupData ] = useState([]);
+    const  [ assignedStartupData, setassignedStartupData  ] = useState([]);
+    const [acceptedStartupData, setacceptedStartupData ] = useState([]);
+    const [licensedStartupData,setlicensedStartupData ] = useState([]);
+    const [rejectedStartupData,setrejectedStartupData ] = useState([]);
+
+
+      useEffect(()=>{   // retrieve those datas
          const fetchit= async(e)=>{
            try
            {
-                const pendingresponse= await axios.post('',email);
+            const pendingresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false'); // get isDrugInspectorAssigned or not
+                  const pendingretrieved  = response.data.success;       
+                  if (pendingretrieved) {
+                  console.log("pending startups exists ");
+                  setpendingStartupData(response.data.pendingList);
+                  }
                 const assignresponse= await axios.post('',email);
                 const acceptresponse= await axios.post('',email);
                 const licenseresponse= await axios.post('',email);
@@ -36,15 +35,15 @@ export default function Authorityhome({email}) {
   return (
   <>  <h1>StartupInformation</h1>
        <p>Pending</p>
-        < PrintauthorList faqData={pendingfaqData} type={'pending'}/>
+        < PrintauthorList StartupData={pendingStartupData} type={'pending'}/>
         <p>Assigned</p>
-        < PrintauthorList faqData={assignedfaqData}type={'assigned'} />
+        < PrintauthorList StartupData={assignedStartupData}type={'assigned'} />
         <p>Accepted</p>
-        < PrintauthorList faqData={acceptedfaqData}type={'accepted'} />
+        < PrintauthorList StartupData={acceptedStartupData}type={'accepted'} />
         <p>Licensed</p>
-        < PrintauthorList faqData={licensedfaqData} type={'licensed'}/>
+        < PrintauthorList StartupData={licensedStartupData} type={'licensed'}/>
         <p>Rejected</p>
-        < PrintauthorList faqData={rejectedfaqData} type={'rejected'}/>
+        < PrintauthorList StartupData={rejectedStartupData} type={'rejected'}/>
           
   </>
   )
