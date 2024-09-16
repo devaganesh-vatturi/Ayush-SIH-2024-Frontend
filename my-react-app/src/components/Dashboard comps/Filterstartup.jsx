@@ -21,14 +21,6 @@ export default function Filterstartup({name,email}) {
         {
           const response= await axios.post('http://localhost:5002/api/doctor-dashboard',email);
         }
-        else if(name='drug inspector')
-        {
-            const response= await axios.post('http://localhost:5002/api/',email);
-        }
-        else if(name='authority')
-        {
-              const response= await axios.post('http://localhost:5002/api/',email);
-        }
     }
     catch(error)
     {

@@ -116,18 +116,8 @@ function Druginsignup(){
                 ))}
             </select>
      <br />
-<<<<<<< HEAD
-      <label className="label">Enter Email:</label><br />
-      <input type="email" name="email" onChange={handleChange} className="input" />
-      <label className="label">Enter the password:</label>
-      <input type="password" name="password" onChange={handleChange} className="input" /><br />
-    {passerror&&<p>{passerror}</p>}
-    <button className="button">submit</button>
-=======
        
-       
-    <button className="Drug-sign-button">submit</button>
->>>>>>> 48fd3cd85be3a9a356531eac04808b1060fac926
+     <button className="Drug-sign-button">submit</button>
     </div>
    
     </form>
