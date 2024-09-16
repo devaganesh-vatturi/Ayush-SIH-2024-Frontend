@@ -120,8 +120,13 @@ function Startupsignup() {
       <>
       <Header/>
       <form onSubmit={onSubmit}>
-        <div className="start-up-container">
+    <div className="d"> 
+      <div className="d1"> 
           <p className="start-up-para">Startupsignup Details</p>
+      </div>
+    </div>
+        <div className="start-up-container">
+           
       <label className="start-up-label">Name of the Company/Firm :</label>
       <input type="text" className="start-up-input" name="companyName" onChange={handelChange}/><br />
       
