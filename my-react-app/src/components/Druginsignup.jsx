@@ -110,10 +110,8 @@ function Druginsignup(){
                 ))}
             </select>
      <br />
-      <label className="label">Enter crop name:</label><br />
-      <input type="text" name="crop_name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter phone number:</label><br />
-      <input type="number" name="email" onChange={handleChange} className="input" />
+      <label className="label">Enter Email:</label><br />
+      <input type="email" name="email" onChange={handleChange} className="input" />
       <label className="label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className="input" /><br />
     {passerror&&<p>{passerror}</p>}

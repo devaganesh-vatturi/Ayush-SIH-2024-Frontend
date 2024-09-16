@@ -41,7 +41,7 @@ function  Authoritysignup() {
         }
         invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
         try{
-        const response= await axios.post(" ",Licensedata);
+        const response= await axios.post("http://localhost:5002/api",Licensedata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
