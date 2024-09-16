@@ -15,12 +15,10 @@ export default function Startupdashboard() {
     //2 is farmer
     const [value, setvalue] = useState(1);
     const [tokenvalidation, settokenvalidation] = useState();
-    const [farmersNOTFound,setFarmersNOTFound] = useState(false);
-    const [farmerData,setFarmerdata] = useState([]); 
    const params= useLocation();
    let values=new URLSearchParams(params.search);
    let decemail= values.get('email');
-   console.log(decemail);
+//    console.log(decemail);
   let email= atob(decemail);
    if(!email.endsWith('@gmail.com'))
    {
@@ -29,41 +27,42 @@ export default function Startupdashboard() {
    let token= values.get('token');
 
    useEffect(()=>{
-    const fetch_it = async(e)=>{
-        console.log("vacha AAAAAAAAAAAA ");  
-        const response= await axios.post('http://localhost:5002/api/farmertab-in-startup-and-token',
-            JSON.stringify(decemail),{ headers: {
-                            'authorization': `Bearer ${token}`, 
-                            'Content-Type': 'application/json',
-                            }  }
-                        ).then(response => {
-                            console.log(response.data);
-                            if(response.data.tokenSuccess){
-                                console.log("JWT token is valid and true"); // for developer confirmation
-                                settokenvalidation(true);
-                                if(!response.data.farmerRetrievalSuccess){
-                                        console.log("there are no farmers in THAT district by startupdashboardjsx");
-                                        setFarmersNOTFound(true); // there are no farmers in THAT district
-                                }else{
-                                        // there ARE farmers in that district
-                                        console.log("there ARE farmers in that district");
-                                        setFarmerdata(response.data.Farmerslist);
-                                        console.log("there lsit : ", farmerData);
-                                    }
-                                }
-                        }).catch(error => {
-                            console.log("vacha BBBBBBBBB ");
-                            if(!response.data.tokenSuccess){
-                                    console.log("JWT token is not valid");
-                                    settokenvalidation(false);
-                                    alert("JWT token is invalid !");
-                                    // block the total website down !
-                            }
-                            console.error('Error Response:', error.response); // Log the full error response
-                            if (error.response && error.response.status === 403) {
-                                console.error('Access Forbidden: You may not have permission.');
-                            }
-                        });
+    const fetch_it = async(e)=>{;
+        try {
+            const response = await axios.post('http://localhost:5002/api/tokenverify', 
+                {token}, { // parsing the token as a JSON file
+                            headers: {
+                                'authorization': `Bearer ${token}`, 
+                                'Content-Type': 'application/json',
+                            } 
+                        }
+            );
+            const tokenSuccess  = response.data.tokenSuccess;
+            settokenvalidation(tokenSuccess);        
+            if (tokenSuccess) {
+                console.log("Token success:", tokenSuccess);
+                
+            } else if(tokenSuccess===false){
+                alert("token is false.. invalid entry into the portal");
+                // block the whole website down
+            }else {
+                console.log("TokenSuccess variable itself is not recieved from the Backend RESPONSE.");
+            }
+        } catch (error) {
+
+            if (error.response) {
+                // Server responded with a status code OUTSIDE of the 2xx range
+                console.error("Error Response Data:", error.response.data);
+                console.error("Error Response Status:", error.response.status);
+            } else if (error.request) {
+                // No response received from the server
+                console.error("No response received:", error.request);
+            } else {
+                // Something went wrong setting up the request
+                console.error("Request error:", error.message);
+            }
+        }
+        
                 }
         fetch_it();
        
@@ -114,7 +113,7 @@ export default function Startupdashboard() {
      {
         value ===1 ? (<Startuptrackpad email={email}/>) :
                 (value === 2 ? (<StartupApplication email={email}/>) :
-                                    ( value ===3 ? (<Extrafeatures email={email} farmerMatter={{farmersNOTFound,farmerData}}/>) : 
+                                    ( value ===3 ? (<Extrafeatures email={email} />) : 
                                             (value ===4 ? (<PeerForum email={email}/>) :  (null) ) ))
      }
      </div>
