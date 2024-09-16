@@ -1,12 +1,14 @@
 .start-up-container {
   max-width: 400px;
   margin: 40px auto;
+  
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+ 
 .start-up-para{
 margin-bottom: 20px;
 font-weight: bold ;
@@ -45,7 +47,7 @@ font-size: 30px;
 .start-up-button:hover {
   background-color: #013f01;
 }
-<<<<<<< HEAD
+ 
 
 .password-checklist li {
   font-size: 16px;
@@ -81,8 +83,8 @@ font-size: 30px;
 .start-up-input:focus {
   border-color: #007bff;
   outline: none;
-=======
+}
 .start-up-error{
   color:rgb(173, 23, 23)
->>>>>>> 761366aba9372f962d29243e3090c79aea684afb
+ 
 }

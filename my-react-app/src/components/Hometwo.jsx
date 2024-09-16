@@ -1,6 +1,6 @@
 import './styles/Hometwo.css';
-import doctor from '../assets/doctor.svg';
-import farmer from '../assets/farmer.svg';
+import doctor1 from '../assets/doctor.svg';
+import farmer1 from '../assets/farmer.svg';
 import Header from './Header';
 import FAQ from './FAQs';
 function Home()
@@ -78,13 +78,13 @@ function Home()
         <div className="home-two-main">
         
            <div className="home-two-farmer">
-           <img id="home-two-img" src={farmer}/>
+           <img id="home-two-img" src={farmer1}/>
                <p>Farmer</p>
                <button id="home-two-signin" onClick={gofarmer}>Sign Up</button>
                <button id="home-two-login" onClick={farmerLogin}>Login</button>
            </div>
            <div className="home-two-doctor">
-           <img id="home-two-img" src={doctor}/>
+           <img id="home-two-img" src={doctor1}/>
                <p>Doctor</p>
                <button id="home-two-signin" onClick={godoctor}>Sign Up</button>
                <button id="home-two-login" onClick={doctorLogin}>Login</button>
