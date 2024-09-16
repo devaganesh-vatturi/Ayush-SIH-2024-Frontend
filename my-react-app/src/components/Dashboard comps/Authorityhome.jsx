@@ -1,18 +1,25 @@
 import React from 'react'
-import PrintList from './PrintList';
+import PrintauthorList from './PrintauthorList';
 export default function Authorityhome() {
     const faqData = [
-        {name:"raju",Email:"raj@gmail.com",phone:"9045643891",district:"west godavari"},
-        {  name:"giri",Email:"giri@gmail.com",phone:" 87345445897",district:"krishna" },
-        {  name:"venu",Email:"venu@gmail.com",phone:"9947646747",district:" kadapa" },
-        {  name:"venkat",Email:"venkat@gmail.com",phone:"9848162013",district:"east godavari" },
+        {Email:"raj@gmail.com"},
+        {Email:"giri@gmail.com" },
+        {Email:"venu@gmail.com"},
+        {Email:"venkat@gmail.com"},
       ];
   return (
-  <>
-   {faqData.map((obj,index) => (
-        
-        <PrintList   name1={obj.name} Email1={obj.Email} phone1={obj.phone} district1= {obj.district} ></PrintList>
-             ))}
+  <>  <h1>StartupInformation</h1>
+       <p>Pending</p>
+        < PrintauthorList faqData={faqData} type={'pending'}/>
+        <p>Assigned</p>
+        < PrintauthorList faqData={faqData}type={'assigned'} />
+        <p>Accepted</p>
+        < PrintauthorList faqData={faqData}type={'accepted'} />
+        <p>Licensed</p>
+        < PrintauthorList faqData={faqData} type={'licensed'}/>
+        <p>Rejected</p>
+        < PrintauthorList faqData={faqData} type={'rejected'}/>
+          
   </>
   )
 }

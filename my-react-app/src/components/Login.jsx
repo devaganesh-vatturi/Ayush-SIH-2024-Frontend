@@ -91,7 +91,7 @@ const handelSubmit =async(e)=>{
           <input type="text" className="Login-input" name="Email_ID" required onChange={handleChange}/><br />
           <label className="Login-label">Enter the password</label>
           <input type="password" className="Login-input" name="password" onChange={handleChange}/><br />
-          { invalidtext && <p>{invalidtext}</p>}
+          { invalidtext && <p className="Login-error">{invalidtext}</p>}
           <button className="Login-button">Submit</button>
        
       </div>

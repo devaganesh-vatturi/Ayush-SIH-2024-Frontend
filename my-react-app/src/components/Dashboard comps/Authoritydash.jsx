@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Authorityhome from './Authorityhome';
 import Authoritynotification from './Authoritynotfication';
 import Header from '../Header';
@@ -45,7 +45,7 @@ export default function Druginsdash() {
   return (
     <>
     <Header/>
-    <p className='drug-head'>Drug Inspector Desk!</p>
+    <p className='drug-head'>Authority Desk!</p>
     <div className='drug-main'>
         <p className="drug-nav" onClick={gohome}>Home</p>
         <p className="drug-nav" onClick={gonotification}>Notifications</p>

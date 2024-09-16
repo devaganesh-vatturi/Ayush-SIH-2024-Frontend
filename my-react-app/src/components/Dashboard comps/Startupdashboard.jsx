@@ -44,6 +44,7 @@ export default function Startupdashboard() {
                 
             } else if(tokenSuccess===false){
                 alert("token is false.. invalid entry into the portal");
+                settokenvalidation(false);
                 // block the whole website down
             }else {
                 console.log("TokenSuccess variable itself is not recieved from the Backend RESPONSE.");
@@ -70,9 +71,9 @@ export default function Startupdashboard() {
             fetch_it();
         }
     },[]);
-//    if(tokenvalidation==false){
-//     return(<p>Error 404</p>)
-//    }
+   if(!tokenvalidation){
+    return(<h1>Error 404</h1>)
+   }
   
    console.log(email);  
    if(!email.endsWith('@gmail.com'))

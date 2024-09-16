@@ -50,4 +50,6 @@ font-size: 30px;
 .authority-sign-button:hover {
   background-color: #3e8e41;
 }
- 
+ .authority-sign-error{
+  color: red;
+ }

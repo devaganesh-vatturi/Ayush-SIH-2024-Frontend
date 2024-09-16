@@ -124,11 +124,11 @@ function Farmersignup(){
       <input type="text" name="crop_name" onChange={handleChange} className=" farmer-sign-input" /><br />
       <label className=" farmer-sign-label">Enter phone number:</label> 
       <input type="number" name="phone_number" onChange={handleChange} className=" farmer-sign-input" />
-      {phnerror&&<p>{phnerror}</p>}
+      {phnerror&&<p className="farmer-sign-error">{phnerror}</p>}
     
       <label className=" farmer-sign-label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className=" farmer-sign-input" /><br />
-    {passerror&&<p>{passerror}</p>}
+    {passerror&&<p className="farmer-sign-error">{passerror}</p>}
     <button className="farmer-sign-button">submit</button>
     </div>
    

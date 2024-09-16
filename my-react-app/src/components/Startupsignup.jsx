@@ -178,10 +178,10 @@ function Startupsignup() {
       <input type="text" className=" start-up-input" name="city" onChange={handelChange}/><br />
       <label className=" start-up-label">PinCode :</label>
       <input type="number" className=" start-up-input" name="pinCode" onChange={handelChange}/><br />
-      {pinerror&&<p>{pinerror}</p>}
+      {pinerror&&<p className="start-up-error">{pinerror}</p>}
       <label className=" start-up-label" >Contact number:</label>
       <input type="number" className=" start-up-input" name="phone_number" onChange={handelChange}/><br />
-      {phnerror&&<p>{phnerror}</p>}
+      {phnerror&&<p className="start-up-error">{phnerror}</p>}
       <label className=" start-up-label">Email Address :</label>
       <input type="email" className=" start-up-input" name="Email_ID" onChange={handelChange}/><br />
       <label className=" start-up-label">Password:</label>
@@ -204,6 +204,7 @@ function Startupsignup() {
           Be between 8 and 30 characters long
         </li>
       </ul>
+
       <button className="start-up-button">submit</button>
     </div>
    

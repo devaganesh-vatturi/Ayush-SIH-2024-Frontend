@@ -41,7 +41,7 @@ function  Authoritysignup() {
         }
         invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
         try{
-        const response= await axios.post(" ",Licensedata);
+        const response= await axios.post("http://localhost:5002/api",Licensedata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -90,7 +90,7 @@ function  Authoritysignup() {
       <input type="email" name="email" onChange={handleChange} className=" authority-sign-input" /><br />
       <label className=" authority-sign-label">Enter the password:</label> 
       <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
-      {passerror&&<p>{passerror}</p>}
+      {passerror&&<p className="authority-sign-error">{passerror}</p>}
       <label className=" authority-sign-label">Enter the state:</label> 
       <select value={Licensedata.state} name="state" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a state</option>

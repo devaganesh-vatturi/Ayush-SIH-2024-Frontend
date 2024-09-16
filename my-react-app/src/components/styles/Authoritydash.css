@@ -3,6 +3,7 @@
     font-size: 2rem;
     font-weight: bold;
     margin:10px;
+    color:black;
 }
 .drug-nav {
     cursor: pointer;
