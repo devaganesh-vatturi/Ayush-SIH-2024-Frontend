@@ -45,7 +45,18 @@ font-size: 30px;
 .start-up-button:hover {
   background-color: #013f01;
 }
-<<<<<<< HEAD
+
+.invaliderror{
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  color: #dc3545; /* Red */
+  background-color: #f8e9ea; /* Light red background */
+  border-left: 5px solid #dc3545;
+}
 
 .password-checklist li {
   font-size: 16px;
@@ -81,8 +92,9 @@ font-size: 30px;
 .start-up-input:focus {
   border-color: #007bff;
   outline: none;
-=======
+}
+
 .start-up-error{
   color:rgb(173, 23, 23)
->>>>>>> 761366aba9372f962d29243e3090c79aea684afb
+
 }

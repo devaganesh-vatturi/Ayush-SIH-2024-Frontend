@@ -14,9 +14,7 @@ export default function Drugindash() {
   let token= values.get('token');
   const [tokenvalidation, settokenvalidation] = useState(false);
   
-  const Data = [
-    {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-  ];
+  const [pendingStartups , setPendingStartups] = useState([]);
   
   useEffect(()=>{
     const fetch_it = async(e)=>{
