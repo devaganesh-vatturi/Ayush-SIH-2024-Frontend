@@ -83,7 +83,7 @@ function  Authoritysignup() {
       <Header/>
       <form onSubmit={handleSubmit}>
         <div className="authority-sign-container">
-          <p className=" authority-sign-para">Authority-sign-up Details</p>
+          <p className=" authority-sign-para">Licensing Authority Registration Form</p>
       <label className=" authority-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
       <label className="  authority-sign-label">Enter the Email:</label> 

@@ -7,8 +7,8 @@ import FAQ from './FAQs';
 function Home()
 {
     let startupqr='startup';
-    let druginspector='drugInspector';
-    let authority='Licensee Authority';
+    let druginspector='druginspector';
+    let authority='authority';
     function startupLogin()
     {
         window.location.href = `/login?value=${startupqr}`;

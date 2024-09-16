@@ -62,6 +62,44 @@ font-size: 30px;
 .start-up-button:hover {
   background-color: #013f01;
 }
+<<<<<<< HEAD
+
+.password-checklist li {
+  font-size: 16px;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.password-checklist li.valid {
+  color: #28a745; /* Green */
+  background-color: #e9f8ef; /* Light green background */
+  border-left: 5px solid #28a745;
+}
+
+.password-checklist li.invalid {
+  color: #dc3545; /* Red */
+  background-color: #f8e9ea; /* Light red background */
+  border-left: 5px solid #dc3545;
+}
+
+.start-up-input {
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.start-up-input:focus {
+  border-color: #007bff;
+  outline: none;
+=======
 .start-up-error{
   color:rgb(173, 23, 23)
+>>>>>>> 761366aba9372f962d29243e3090c79aea684afb
 }

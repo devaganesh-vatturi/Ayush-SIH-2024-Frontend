@@ -28,11 +28,11 @@ function App() {
     <Route path='/signupdrug' element={<Druginsignup/>}/>
     <Route path='/signupdoctor' element={<Doctorsignup/>}/>
     <Route path='/signupfarmer' element={<Farmersignup/>}/>
-    <Route path='/sdash' element={<Startupdashboard/>}/>
-    <Route path='/adash' element={<Authoritydash/>}/>
-    <Route path='/ddash' element={<Drugindash/>}/>
-    <Route path='/docdash' element={<Doctordash/>}/>
-    <Route path='/fardash' element={<Farmerdash/>}/>
+    <Route path='/startupdash' element={<Startupdashboard/>}/>
+    <Route path='/authoritydash' element={<Authoritydash/>}/>
+    <Route path='/druginspectordash' element={<Drugindash/>}/>
+    <Route path='/doctordash' element={<Doctordash/>}/>
+    <Route path='/farmerdash' element={<Farmerdash/>}/>
     <Route path='/chatbot' element={<AiChatBot/>}/>
    </Routes>
 
