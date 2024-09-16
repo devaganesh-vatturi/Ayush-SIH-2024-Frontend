@@ -1,5 +1,5 @@
 .Login-container {
-  max-width: 300px;
+  max-width: 30%;
   margin: 40px auto;
   padding: 40px;
   border: 1px solid #ccc;
@@ -15,7 +15,7 @@
 }
 
 .Login-input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -29,15 +29,13 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 60%;
 }
 
 .Login-button:hover {
   background-color: #3e8e41;
 }
 
-#hey-tag{
-  font-size: 2rem;
-}
 
 .login-headin{
 margin-bottom: 20px;
