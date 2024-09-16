@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PrintauthorList from './PrintauthorList';
 
+import '../styles/Authorityhomee.css';
+
 export default function Authorityhome({email}) {
 
     const [pendingStartupData, setpendingStartupData ] = useState([]);
@@ -10,39 +12,70 @@ export default function Authorityhome({email}) {
     const [rejectedStartupData,setrejectedStartupData ] = useState([]);
 
 
-      useEffect(()=>{   // retrieve those datas
+    useEffect(()=>{   // retrieve those datas
          const fetchit= async(e)=>{
-           try
-           {
-            const pendingresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false'); // get isDrugInspectorAssigned or not
-                  const pendingretrieved  = response.data.success;       
-                  if (pendingretrieved) {
-                  console.log("pending startups exists ");
-                  setpendingStartupData(response.data.pendingList);
-                  }
-                const assignresponse= await axios.post('',email);
-                const acceptresponse= await axios.post('',email);
-                const licenseresponse= await axios.post('',email);
-                const rejectresponse= await axios.post('',email);
-           }
-           catch(error)
-           {
+           try{
+                const pendingresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false'); // get isDrugInspectorAssigned or not
+                    const pendingretrieved  = pendingresponse.data.success;       
+                    if (pendingretrieved) {
+                    console.log("pending startups exists ");
+                    setpendingStartupData(pendingresponse.data.pendingList);
+                    }
 
-           }
-         }
-         fetchit();
-      },)
+                const assignedresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true'); // get isDrugInspectorAssigned or not
+                    const assignretrieved  = assignedresponse.data.success;       
+                    if (assignretrieved) {
+                    console.log("pending startups exists ");
+                    setassignedStartupData(assignedresponse.data.assignedList);
+                    }    
+                
+                const acceptedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
+                    const acceptedretrieved  = acceptedresponse.data.success;       
+                    if (acceptedretrieved) {
+                    console.log("pending startups exists ");
+                    setacceptedStartupData(acceptedresponse.data.assignedList);
+                    }    
+  
+                const rejectedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
+                const rejectedretrieved  = rejectedresponse.data.success;       
+                if (rejectedretrieved) {
+                console.log("pending startups exists ");
+                setrejectedStartupData(rejectedresponse.data.assignedList);
+                }    
+
+                const licensedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
+                const licensedretrieved  = licensedresponse.data.success;       
+                if (licensedretrieved) {
+                console.log("pending startups exists ");
+                setlicensedStartupData(licensedresponse.data.assignedList);
+                }    
+           
+       }catch (resp) {
+            if (resp.response && resp.response.data) { // Logging the actual error message from the response
+              alert("Message: " + resp.response.data.message);
+            } else { // Fallback if the response doesn't contain the expected data
+              alert("An error occurred at backend. Server might be down.");
+            }
+            console.log("Error is", resp); // Log the full error object for debugging
+          }
+
+    }
+  fetchit();
+  },);
+
+
   return (
-  <>  <h1>StartupInformation</h1>
-       <p>Pending</p>
+  <>  
+  <h1>StartupInformation</h1>
+       <p className='auth-hm'>Pending</p>
         < PrintauthorList StartupData={pendingStartupData} type={'pending'}/>
-        <p>Assigned</p>
+        <p className='auth-hm'>Assigned</p>
         < PrintauthorList StartupData={assignedStartupData}type={'assigned'} />
-        <p>Accepted</p>
+        <p className='auth-hm'>Accepted</p>
         < PrintauthorList StartupData={acceptedStartupData}type={'accepted'} />
-        <p>Licensed</p>
+        <p className='auth-hm'>Licensed</p>
         < PrintauthorList StartupData={licensedStartupData} type={'licensed'}/>
-        <p>Rejected</p>
+        <p className='auth-hm'>Rejected</p>
         < PrintauthorList StartupData={rejectedStartupData} type={'rejected'}/>
           
   </>

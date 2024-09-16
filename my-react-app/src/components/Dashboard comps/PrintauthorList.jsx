@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/PrintauthorList.css'; // Import the CSS file
 
-function PrintauthorList({faqData,type}){
+function PrintauthorList({StartupData,type}){
   const [visibleIndex, setVisibleIndex] = useState(null);
  const [maildata, setmaildata] = useState({
     Email: "sai@gmail.com",
@@ -35,7 +35,7 @@ const fetchit = async(index,email)=>{
 
   return (
     <div className="author-container">
-      {faqData.map((item, index) => (
+      {StartupData.map((item, index) => (
         <div key={index} className="author-item">
           <div 
             onClick={() =>{
