@@ -16,6 +16,14 @@ function Startupsignup() {
   let phnvalid=false;
   let pinvalid=false;
   
+  const [validations, setValidations] = useState({
+    lowercase: false,
+    uppercase: false,
+    digit: false,
+    specialChar: false,
+    length: false,
+  });
+
   useEffect( 
     ()=>{
       fetchDistricts();
@@ -25,17 +33,30 @@ function Startupsignup() {
          }
     },[startUpdata.state]);
   
+    useEffect(() => {
+      // Define regular expressions for each validation rule
+      const password = startUpdata.password;
+      const hasLowercase = /[a-z]/.test(password);
+      const hasUppercase = /[A-Z]/.test(password);
+      const hasDigit = /\d/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      const hasValidLength = password.length >= 8 && password.length <= 30;
+  
+      // Update validation states based on regex tests
+      setValidations({
+        lowercase: hasLowercase,
+        uppercase: hasUppercase,
+        digit: hasDigit,
+        specialChar: hasSpecialChar,
+        length: hasValidLength,
+      });
+    }, [startUpdata.password]);
+
     const handelChange=(e)=>{
      e.preventDefault();
      const {name,value}=e.target;
      setStartUpdata({...startUpdata,[name]:value});
-     if(name==="password"&& value.length<8)
-      {
-       setPasserror("Password must contain 8 letters");
-      }
-      else if(name==="password"&&value.length>=8){
-       setPasserror("");
-      }
+     
       if (name === "phone_number" && value.length !== 10) {
         setPhnerror("Phone number must contain exactly 10 digits");
     } else if (name === "phone_number" && value.length === 10) {
@@ -60,7 +81,11 @@ function Startupsignup() {
         passvalid=true;
      }
 
-     passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+     passvalid ? setPasserror(`At least one lowercase letter
+                                At least one uppercase letter
+                              <h1>At least one digit </h1>
+                              At least one special character from the set
+                              Be between 8 and 30 characters long`) : setPasserror("");
      if(startUpdata.pinCode.length<=6)
       {
          pinvalid=true;
@@ -72,9 +97,11 @@ function Startupsignup() {
            phnvalid=true;
         }
    
-        phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
+        phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
      try{
+      console.log("bef axios");
      const response = await axios.post("http://localhost:5002/api/startup-reg",startUpdata);
+     console.log("uyngaaaa - >>>>>",response.data.message);
      if(response.data.success)
      {
       alert("Successfully Signed Up");
@@ -160,6 +187,23 @@ function Startupsignup() {
       <label className=" start-up-label">Password:</label>
       <input type="password" className=" start-up-input" name="password" onChange={handelChange}/><br />
       {passerror&&<p>{passerror}</p>}
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
       <button className="start-up-button">submit</button>
     </div>
    
