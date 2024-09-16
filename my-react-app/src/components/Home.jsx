@@ -61,7 +61,7 @@ function Home()
                <button id="home-main-login" onClick={startupLogin}>Login</button>
            </div>
            <div className="home-main-auth">
-               <img id="home-main-img" src={authori}/>
+               <img id="home-main-img2" src={authori}/>
                <p>Licensing Authority</p>
                <button id="home-main-signin" onClick={goauth} >Sign Up</button>
                <button id="home-main-login" onClick={authoriLogin}>Login</button>
