@@ -11,7 +11,7 @@ function  Authoritysignup() {
     const [phnerror,setPhnerror]=useState("");
     let invalid=false;
     let phnvalid=false;
-    useEffect( 
+    useEffect(  // district handle
       ()=>{
         fetchDistricts();
         return ()=>{
@@ -28,7 +28,7 @@ function  Authoritysignup() {
         length: false,
       });
     
-      useEffect(() => {
+      useEffect(() => {  // password handle
         // Define regular expressions for each validation rule
         const password = Licensedata.password;
         const hasLowercase = /[a-z]/.test(password);
@@ -67,37 +67,39 @@ function  Authoritysignup() {
       }
 
     }
-    const handleSubmit= async(e)=>
-    {
+
+    const handleSubmit= async(e)=>{
         e.preventDefault();
         if(Licensedata.password.length<8)
-        {
           invalid=true;
-          
-        }
+  
         invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
 
         if( Licensedata.mobile_no.length!=10)
-          {
              phnvalid=true;
-          }
-     
-          phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
-        try{
-        const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
-        if(response.data.success)
-        {
-          alert("Successfully Signed in!");
-        }
-        else{
-          alert("Please Try again")
-        }
-      }
-      catch(error)
-      {
-        console.log("the error is",error);
-      }
+
+        phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
+      try{
+          const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
+    if (response.data.success) {
+      alert("Successfully Signed Up");
+      window.location.href = `/login?value=${'authority'}`;
+    } else {
+      alert("Invalid Details. Please try again!");
+      throw response;
     }
+  
+  } catch (resp) {
+    if (resp.response && resp.response.data) { // Logging the actual error message from the response
+      alert("Message: " + resp.response.data.message);
+    } else { // Fallback if the response doesn't contain the expected data
+      alert("An error occurred at backend. Server might be down.");
+    }
+    console.log("Error is", resp); // Log the full error object for debugging
+  }
+
+  }
+  
     const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
     const [districtsList, setDistrictsList] = useState([]);
     const fetchDistricts = async () => {
@@ -169,12 +171,12 @@ function  Authoritysignup() {
       <input type="text" name="OrderReferenceNo" onChange={handleChange} className=" authority-sign-input" /><br />
 
       <label className=" authority-sign-label">Enter the  OrderDate: </label> 
-      <input type="text" name="OrderDate" onChange={handleChange} className=" authority-sign-input" /><br />
+      <input type="date" name="OrderDate" onChange={handleChange} className=" authority-sign-input" /><br />
 
 
        
       <label className=" authority-sign-label">Enter the state:</label> 
-      <select value={Licensedata.State} name="state" onChange={handleChange} className=" authority-sign-input">
+      <select value={Licensedata.state} name="state" onChange={handleChange} className="authority-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>

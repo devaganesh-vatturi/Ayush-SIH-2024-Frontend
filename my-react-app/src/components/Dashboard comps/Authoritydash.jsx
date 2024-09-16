@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 import '../styles/Authoritydash.css';
 
-export default function Druginsdash() {
+export default function Authoritydash() {
      const [drugtab, Setdrugtab] = useState(1);
      const params= useLocation();
      const [tokenvalidation, settokenvalidation] = useState();
