@@ -1,4 +1,4 @@
-import './styles/Farmersignup.css';
+import './styles/Druginsignup.css';
 import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -87,11 +87,17 @@ function Druginsignup(){
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="container">
-      <label className="label">Enter the name:</label><br />
-      <input type="text" name="name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter the state:</label><br />
-      <select value={drugindata.state} name="state" onChange={handleChange} className="input">
+        <div className="Drug-sign-container">
+          <p className="Drug-sign-para">DrugInspector-signup Details</p>
+      <label className="Drug-sign-label">Enter the name:</label> 
+      <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
+      <label className=" Drug-sign-label">Enter Email:</label> 
+      <input type="email" name="email" onChange={handleChange} className=" Drug-sign-input" />
+      <label className=" Drug-sign-label">Enter the password:</label>
+      <input type="password" name="password" onChange={handleChange} className=" Drug-sign-input" /><br />
+    {passerror&&<p className="Drug-sign-error">{passerror}</p>}
+      <label className=" Drug-sign-label">Enter the state:</label> 
+      <select value={drugindata.state} name="state" onChange={handleChange} className=" Drug-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>
@@ -100,8 +106,8 @@ function Druginsignup(){
                 ))}
             </select>
       <br />
-      <label className="label">Enter district name:</label><br />
-      <select value={drugindata.district} name="district" onChange={handleChange} className="input">
+      <label className=" Drug-sign-label">Enter district name:</label> 
+      <select value={drugindata.district} name="district" onChange={handleChange} className=" Drug-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
                     <option key={index} value={district}>
@@ -110,14 +116,9 @@ function Druginsignup(){
                 ))}
             </select>
      <br />
-      <label className="label">Enter crop name:</label><br />
-      <input type="text" name="crop_name" onChange={handleChange} className="input" /><br />
-      <label className="label">Enter phone number:</label><br />
-      <input type="number" name="email" onChange={handleChange} className="input" />
-      <label className="label">Enter the password:</label>
-      <input type="password" name="password" onChange={handleChange} className="input" /><br />
-    {passerror&&<p>{passerror}</p>}
-    <button className="button">submit</button>
+       
+       
+    <button className="Drug-sign-button">submit</button>
     </div>
    
     </form>

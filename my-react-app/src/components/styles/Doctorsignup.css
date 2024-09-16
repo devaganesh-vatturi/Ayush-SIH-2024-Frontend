@@ -2,8 +2,8 @@
   max-width: 400px;
   margin: 40px auto;
   padding: 40px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #180e0e;
+  border-radius: 5px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
  
@@ -46,4 +46,10 @@
 
 .doctor-sign-button:hover {
   background-color: #3e8e41;
+}
+.Drug-sign-error{
+  color:red;
+}
+.doctor-sign-error{
+  color: red;
 }
