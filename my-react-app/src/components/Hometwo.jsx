@@ -1,4 +1,4 @@
-import './styles/Home.css';
+import './styles/Hometwo.css';
 import doctor from '../assets/doctor.svg';
 import farmer from '../assets/farmer.svg';
 import Header from './Header';
@@ -75,26 +75,26 @@ function Home()
     return(
         <>
     <Header/>
-        <div className="home-main">
+        <div className="home-two-main">
         
-           <div className="home-main-farmer">
-           <img id="home-main-img" src={farmer}/>
+           <div className="home-two-farmer">
+           <img id="home-two-img" src={farmer}/>
                <p>Farmer</p>
-               <button id="home-main-signin" onClick={gofarmer}>Sign Up</button>
-               <button id="home-main-login" onClick={farmerLogin}>Login</button>
+               <button id="home-two-signin" onClick={gofarmer}>Sign Up</button>
+               <button id="home-two-login" onClick={farmerLogin}>Login</button>
            </div>
-           <div className="home-main-doctor">
-           <img id="home-main-img" src={doctor}/>
+           <div className="home-two-doctor">
+           <img id="home-two-img" src={doctor}/>
                <p>Doctor</p>
-               <button id="home-main-signin" onClick={godoctor}>Sign Up</button>
-               <button id="home-main-login" onClick={doctorLogin}>Login</button>
+               <button id="home-two-signin" onClick={godoctor}>Sign Up</button>
+               <button id="home-two-login" onClick={doctorLogin}>Login</button>
            </div>
         </div>
-        <div className="home-faq">
+        <div className="home-two-faq">
         <FAQ faqdata={farmerFaqData} who={"Ayush Farmer"} />
         <FAQ faqdata={doctorFaqData} who={"Ayush Doctor"} />
         </div>
-        <div className="home-chatbot">
+        <div className="home-two-chatbot">
               <p>the chat bot button will appear here!</p>
         </div>
         </>

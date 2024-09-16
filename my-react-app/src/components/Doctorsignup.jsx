@@ -125,14 +125,14 @@ function Doctorsignup() {
       
       <label className="doctor-sign-label" >Enter the phone number:</label>
       <input type="text" className=" doctor-sign-input" name="phone_number" onChange={handelChange}/><br />
-      {phnerror&&<p>{phnerror}</p>}
+      {phnerror&&<p className="doctor-sign-error">{phnerror}</p>}
       <label className="doctor-sign-label">Upload a PDF file:</label>
       <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handelChange}/><br/>
       <label className="doctor-sign-label">Enter the emailid:</label>
       <input type="email" className="doctor-sign-input" name="Email_ID" onChange={handelChange}/><br />
       <label className="doctor-sign-label">Enter the password:</label>
       <input type="password" className="doctor-sign-input" name="password" onChange={handelChange}/><br />
-      {passerror&&<p>{passerror}</p>}
+      {passerror&&<p className="doctor-sign-error">{passerror}</p>}
       <button className="doctor-sign-button">submit</button>
     </form>
     </>
