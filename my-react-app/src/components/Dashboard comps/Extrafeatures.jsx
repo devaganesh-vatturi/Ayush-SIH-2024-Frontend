@@ -28,7 +28,7 @@ export default function Extrafeatures({email}) {
        
     </div>
     {
-           screen ===1 ? (<Filterdoctor email={email}/>) : screen ===2 ? (<Filterfarmer />) :screen ===3 ? 
+           screen ===1 ? (<Filterdoctor email={email}/>) : screen ===2 ? (<Filterfarmer email={email}/>) :screen ===3 ? 
            (<Inscommunication email={email}/>):(null) 
        }
     </>

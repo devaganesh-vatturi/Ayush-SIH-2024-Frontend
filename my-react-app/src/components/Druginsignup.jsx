@@ -14,8 +14,7 @@ function Druginsignup(){
     useEffect( 
       ()=>{
        fetchDistricts();
-        return ()=>{
-          // empty the district list
+        return ()=>{// empty the district list
           setDistrictsList([]);
            }
            
@@ -88,7 +87,7 @@ function Druginsignup(){
       <Header/>
       <form onSubmit={handleSubmit}>
         <div className="Drug-sign-container">
-          <p className="Drug-sign-para">DrugInspector-signup Details</p>
+          <p className="Drug-sign-para">Drugs Inspector Registration Form </p>
       <label className="Drug-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
       <label className=" Drug-sign-label">Enter Email:</label> 
@@ -115,9 +114,9 @@ function Druginsignup(){
                     </option>
                 ))}
             </select>
-     <br />
-       
-     <button className="Drug-sign-button">submit</button>
+     <br />      
+    <button className="Drug-sign-button">submit</button>
+
     </div>
    
     </form>
