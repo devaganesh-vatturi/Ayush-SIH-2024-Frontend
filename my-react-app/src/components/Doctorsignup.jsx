@@ -13,6 +13,7 @@ function Doctorsignup() {
     let passvalid=false;
     let phnvalid=false;
     let pinvalid=false;
+    let doctor='doctor';
   useEffect( 
     ()=>{
       fetchDistricts();
@@ -57,6 +58,7 @@ function Doctorsignup() {
      if(response.data.success)
      {
       alert("Successfully Signed Up");
+      window.location.href = `/login?value=${doctor}`;
      }
      else{
       alert("please try again!");

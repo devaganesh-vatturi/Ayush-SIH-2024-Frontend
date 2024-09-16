@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import Filterstartup from './Filterstartup';
 import '../styles/Farmerdash.css';
 import Header from '../Header';
@@ -6,7 +6,9 @@ import { useLocation } from 'react-router-dom';
 export default function Doctordash() {
   const params= useLocation();
   let values=new URLSearchParams(params.search);
-  let email= values.get('phno');
+  const [tokenvalidation, settokenvalidation] = useState();
+  let phno= values.get('phno');
+  console.log("phone number is ",phno)
   let token= values.get('token');
   useEffect(()=>{
     const fecthit = async(e)=>{
@@ -28,14 +30,14 @@ export default function Doctordash() {
 
     }
    },[]);
-      //    if(tokenvalidation==false){
-//     return(<p>Error 404</p>)
-//    }
+         if(tokenvalidation==false || phno===null ){
+    return(<h1 style={{textAlign:'center'}}>Error 404</h1>)
+   }
   return (
     <>
     <Header/>
     <p className='farmer-dash-head'>Farmer Dashboard</p>
-    <Filterstartup name={'farmer'} email={email}/>
+    <Filterstartup name={'farmer'} email={phno}/>
     </>
   )
 }
