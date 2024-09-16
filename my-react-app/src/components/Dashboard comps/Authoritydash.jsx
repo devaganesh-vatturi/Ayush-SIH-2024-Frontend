@@ -3,7 +3,9 @@ import Authorityhome from './Authorityhome';
 import Authoritynotification from './Authoritynotfication';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
+
 import '../styles/Authoritydash.css';
+
 export default function Druginsdash() {
      const [drugtab, Setdrugtab] = useState(1);
      const params= useLocation();
@@ -12,6 +14,7 @@ export default function Druginsdash() {
    let decemail= values.get('email');
    let email= atob(decemail);
    let token= values.get('token');
+   
    useEffect(()=>{
     const fecthit = async(e)=>{
         try{

@@ -10,7 +10,7 @@ export default function Filterfarmer({email}) {
   console.log(Email_ID);
   
   useEffect(()=>{  
-    const fetch_Farmers = async(e)=>{;
+    const fetch_Farmers = async(e)=>{
       try {
           const response = await axios.post('http://localhost:5002/api/farmertab-in-startup', 
                                        {Email_ID});
@@ -47,7 +47,7 @@ const render=()=>{
     </>
   }else{
     return <>
-   { farmerDataList.length ===1  ?<h1>There is 1 Ayush Farmer in your district </h1> :
+   { farmerDataList.length ===1  ?<h1>We found 1 Ayush Farmer in your district </h1> :
                <h1>There are {farmerDataList.length} Ayush farmers in your district</h1> }
      <br/>
     {farmerDataList.map((eachfarmer,index) => (

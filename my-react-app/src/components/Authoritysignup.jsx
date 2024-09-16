@@ -5,8 +5,7 @@ import { useEffect } from 'react';
 import Header from './Header';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
-    {name:"",email:"" ,password:"",district:"",state:"",pdf:""});
-    const [passerror, setPasserror] = useState("");
+    {name:"",email:"" ,password:"",district:"",state:""});
     let invalid=false;
     useEffect( 
       ()=>{
@@ -16,20 +15,38 @@ function  Authoritysignup() {
           setDistrictsList([]);
            }
       },[Licensedata.state]);
+
+      const [validations, setValidations] = useState({
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialChar: false,
+        length: false,
+      });
+    
+      useEffect(() => {
+        // Define regular expressions for each validation rule
+        const password = Licensedata.password;
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasDigit = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasValidLength = password.length >= 8 && password.length <= 30;
+    
+        // Update validation states based on regex tests
+        setValidations({
+          lowercase: hasLowercase,
+          uppercase: hasUppercase,
+          digit: hasDigit,
+          specialChar: hasSpecialChar,
+          length: hasValidLength,
+        });
+      }, [Licensedata.password]);
     const handleChange=(e)=>
     {
       e.preventDefault();
       const{name,value}=e.target;
       setLicensedata({...Licensedata,[name]:value});
-
-      if(name==="password"&& value.length<8)
-        {
-         setPasserror("Password must contain 8 letters");
-        }
-        else if(name==="password"&&value.length>=8){
-         setPasserror("");
-        }
-
     }
     const handleSubmit= async(e)=>
     {
@@ -39,9 +56,9 @@ function  Authoritysignup() {
           invalid=true;
           
         }
-        invalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+ 
         try{
-        const response= await axios.post("http://localhost:5002/api",Licensedata);
+        const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -90,7 +107,24 @@ function  Authoritysignup() {
       <input type="email" name="email" onChange={handleChange} className=" authority-sign-input" /><br />
       <label className=" authority-sign-label">Enter the password:</label> 
       <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
-      {passerror&&<p className="authority-sign-error">{passerror}</p>}
+
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
       <label className=" authority-sign-label">Enter the state:</label> 
       <select value={Licensedata.state} name="state" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a state</option>

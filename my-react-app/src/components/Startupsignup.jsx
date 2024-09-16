@@ -9,7 +9,7 @@ function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
     {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
       state:"",district:"",phone_number:null });
-  const [passerror, setPasserror] = useState("");
+
   const [pinerror,setPinerror]=useState("");
   const [phnerror,setPhnerror]=useState("");
   let passvalid=false;
@@ -81,11 +81,7 @@ function Startupsignup() {
         passvalid=true;
      }
 
-     passvalid ? setPasserror(`At least one lowercase letter
-                                At least one uppercase letter
-                              <h1>At least one digit </h1>
-                              At least one special character from the set
-                              Be between 8 and 30 characters long`) : setPasserror("");
+    
      if(startUpdata.pinCode.length<=6)
       {
          pinvalid=true;
@@ -99,9 +95,7 @@ function Startupsignup() {
    
         phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
      try{
-      console.log("bef axios");
      const response = await axios.post("http://localhost:5002/api/startup-reg",startUpdata);
-     console.log("uyngaaaa - >>>>>",response.data.message);
      if(response.data.success)
      {
       alert("Successfully Signed Up");
@@ -186,7 +180,7 @@ function Startupsignup() {
       <input type="email" className=" start-up-input" name="Email_ID" onChange={handelChange}/><br />
       <label className=" start-up-label">Password:</label>
       <input type="password" className=" start-up-input" name="password" onChange={handelChange}/><br />
-      {passerror&&<p>{passerror}</p>}
+      
       <ul className="password-checklist">
         <li className={validations.lowercase ? "valid" : "invalid"}>
           At least one lowercase letter
