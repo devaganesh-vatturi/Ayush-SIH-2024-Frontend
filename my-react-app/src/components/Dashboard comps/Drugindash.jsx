@@ -1,13 +1,18 @@
-import React,{useEffect} from 'react'
-import Filterstartup from './Filterstartup';
+import React,{useEffect,useState} from 'react';
+import PrintdrugList from './PrintdrugList';
 import '../styles/Drugindash.css';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
 export default function Drugindash() {
   const params= useLocation();
   let values=new URLSearchParams(params.search);
-  let email= values.get('email');
+  let decemail= values.get('email');
+  let email= atob(decemail);
   let token= values.get('token');
+  const [tokenvalidation, settokenvalidation] = useState();
+  const Data = [
+    {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+  ];
   useEffect(()=>{
     const fecthit = async(e)=>{
         try{
@@ -28,14 +33,14 @@ export default function Drugindash() {
 
     }
    },[]);
-      //    if(tokenvalidation==false){
-//     return(<p>Error 404</p>)
-//    }
+         if(tokenvalidation==false){
+    return(<p>Error 404</p>)
+   }
   return (
     <>
     <Header/>
     <p className='drug-dash-head'>DrugInspector Dashboard</p>
-    <Filterstartup name={'drug inspector'} email={email}/>
+    <PrintdrugList startupmails={Data}/>
     </>
   )
 }

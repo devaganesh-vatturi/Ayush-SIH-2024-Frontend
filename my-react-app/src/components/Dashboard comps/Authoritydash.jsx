@@ -9,7 +9,8 @@ export default function Druginsdash() {
      const params= useLocation();
      const [tokenvalidation, settokenvalidation] = useState();
    let values=new URLSearchParams(params.search);
-   let email= values.get('email');
+   let decemail= values.get('email');
+   let email= atob(decemail);
    let token= values.get('token');
    useEffect(()=>{
     const fecthit = async(e)=>{
@@ -31,9 +32,9 @@ export default function Druginsdash() {
 
     }
    },[]);
-   //    if(tokenvalidation==false){
-//     return(<p>Error 404</p>)
-//    }
+      if(tokenvalidation==false){
+    return(<p>Error 404</p>)
+   }
     function gohome()
     {
         Setdrugtab(1);
@@ -51,7 +52,7 @@ export default function Druginsdash() {
         <p className="drug-nav" onClick={gonotification}>Notifications</p>
     </div>
    {
-     drugtab === 1 ? (<Authorityhome/>) : drugtab === 2 ? (<Authoritynotification/>) : (null)
+     drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) : (null)
    }
     </>
   )

@@ -47,32 +47,6 @@ const handelSubmit =async(e)=>{
           }
             const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
             window.location.href = `/${usertype}dash?email=${encodedEmail}&token=${tokenrec}`;
-            // if(usertype==="startup")
-            // {
-            //   const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-            //   window.location.href = `/startupdash?email=${encodedEmail}&token=${tokenrec}`;
-            // }
-            // else if(usertype==="Licensee Authority")
-            // {
-            //   const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-            //   window.location.href=`/authoritydash?email=${encodedEmail}&token=${tokenrec}`;
-            // }
-            // else if(usertype==="doctor")
-            // {
-            //   const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-            //   window.location.href=`/doctordash?email=${encodedEmail}&token=${tokenrec}`;
-              
-            // }
-            // else if(usertype==="drugInspector")
-            // {
-            //   const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
-            //   window.location.href=`/druginspectordash?email=${encodedEmail}&token=${tokenrec}`;
-                  
-            // }
-            // else if(usertype==="farmer")
-            // { 
-            //       window.location.href=`/farmerdash?phno=${logit.phone_number}&token=${tokenrec}`;
-            // }
       
          }else{
         console.log("thrown message from backend : ",response.data.message);
@@ -91,7 +65,8 @@ const handelSubmit =async(e)=>{
       <form onSubmit={handelSubmit}>
 
         <div className="Login-container">
-        {usertype==="authority" ?  <p className="login-headin">{"Licensing " +usertype.replace(/^./, str => str.toUpperCase())} Login</p> :
+        {usertype==="authority" ?  <p className="login-headin">{"Licensing Authority Login"}</p> : 
+        usertype==="druginspector"? <p className="login-headin">{"Drug Inspector Login"}</p> :
           <p className="login-headin">{usertype.replace(/^./, str => str.toUpperCase())} Login</p>
         }
         <label className="Login-label">Enter the {intake} </label>
