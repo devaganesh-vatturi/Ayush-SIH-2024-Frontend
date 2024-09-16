@@ -12,7 +12,7 @@ function Farmersignup(){
     const [phnerror,setPhnerror]=useState("");
     let passvalid=false;
     let phnvalid=false;
-    
+    let farmer='farmer';
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -59,6 +59,7 @@ function Farmersignup(){
         if(response.data.success)
         {
           alert("Successfully Signed in!");
+          window.location.href = `/login?value=${farmer}`;
         }
         else{
           alert("Please Try again")

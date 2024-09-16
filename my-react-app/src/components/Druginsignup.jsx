@@ -24,11 +24,11 @@ function Druginsignup(){
       e.preventDefault();
       const{name,value}=e.target;
       setDrugindata({...drugindata,[name]:value});
-      if(name==="password"&& value.length<6)
+      if(name==="password"&& value.length<8)
         {
-         setPasserror("Password must contain 6 letters");
+         setPasserror("Password must contain 8 letters");
         }
-        else if(name==="password"&&value.length>=6){
+        else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
         if (name === "phone_number" && value.length !== 10) {
@@ -40,11 +40,11 @@ function Druginsignup(){
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
-        if(drugindata.password.length<6)
+        if(drugindata.password.length<8)
         {
           passvalid=true;
         }
-        passvalid ? setPasserror("Password must contain 6 letters") : setPasserror("");
+        passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
         try{
         const response= await axios.post("",drugindata);
         if(response.data.success)
