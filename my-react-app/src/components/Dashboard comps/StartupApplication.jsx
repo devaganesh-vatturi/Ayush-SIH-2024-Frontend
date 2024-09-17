@@ -152,39 +152,7 @@ function StartupSingup({email}) {
                     <label>1. Details of Manufacturer</label>
                     <label>(All fields Marked* are Mandatory)</label>
                 </div>
-                <div className="form-group">
-                    <label>(i) Name of the Company/Firm*</label>
-                    <input type="text" name="companyname" readOnly={!editing} value={startupdata.companyname} onChange={handleChange} placeholder="Name of the company/Firm.." />
-                </div>
-                <div className="form-group">
-                    <label>(ii) Address of Corporate Office</label>
-                    <label>Address Line</label>
-                    <input type="text" name="address"readOnly={!editing} value={startupdata.address} onChange={handleChange} placeholder="Enter Address Line" />
-                    <label>Village/Town/City</label>
-                    <input type="text" name="city"readOnly={!editing} onChange={handleChange} value={startupdata.city} placeholder="Enter name of village/town/city"/>
-                    <label>Pin Code</label>
-                    <input 
-                        type="text" 
-                        placeholder="Pin code of place" 
-                        name="pincode" 
-                        readOnly={!editing}
-                        value={startupdata.pincode}
-                        onChange={handleChange} 
-                    />
- {pincodeError && <p className="error">{pincodeError}</p>}
-                    <label>State</label>
-                    <select name="state"readOnly={!editing} value={startupdata.state} onChange={handleChange}>
-                        <option>-select-</option>
-                        <option value="ANDAMAN AND NICOBAR ISLAND">ANDAMAN AND NICOBAR ISLAND</option>
-                        <option value="ANDHRA PRADESH">ANDHRA PRADESH</option>
-                    </select>
-                    <label>District</label>
-                    <select name="district"readOnly={!editing} value={startupdata.district}  onChange={handleChange}>
-                        <option>- please-select-</option>
-                        <option value="NICOBARS">NICOBARS</option>
-                        <option value="we change">we change</option>
-                    </select>
-                </div>
+                
                
                 <div className="form-group">
                     <label>(v) PAN No. of the company/Firm</label>
