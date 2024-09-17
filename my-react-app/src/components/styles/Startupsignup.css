@@ -1,7 +1,18 @@
+.start-up-head1{
+  display: flex;
+  justify-content: center;
+ margin-top: 40px;
+}
+.start-up-head2{
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: gray;
+}
+
 .start-up-container {
   max-width: 400px;
   margin: 40px auto;
-  
+  margin-top: 0;
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -13,7 +24,7 @@
 margin-bottom: 20px;
 font-weight: bold ;
 font-size: 30px;
-  
+  margin-bottom: 0;
  text-align: center;
 }
 
@@ -28,8 +39,10 @@ font-size: 30px;
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
+   
   border: 1px solid #907676;
   border-radius: 5px;
+  margin-top: 0; 
 }
 
  
@@ -85,7 +98,8 @@ font-size: 30px;
 
 .start-up-input {
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 0;
+   
   width: 100%;
   font-size: 16px;
   border-radius: 5px;

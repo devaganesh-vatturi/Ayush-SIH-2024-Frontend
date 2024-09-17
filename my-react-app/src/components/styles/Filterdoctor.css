@@ -5,3 +5,6 @@
     margin:40px;
     color: rgb(6, 6, 87);
 } 
+.fil-doc-main{
+    min-height: 60vh;
+}

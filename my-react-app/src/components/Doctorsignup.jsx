@@ -100,8 +100,14 @@ function Doctorsignup() {
     return ( 
       <>
       <Header/>
+      <div className=" doctor-sign-head1">
+          <div className=" doctor-sign-head2">
+          <p className="doctor-sign-para">Doctorsignup Details</p>
+          </div>
+        </div>
       <form onSubmit={onSubmit} className="doctor-sign-container">
-         <p className="doctor-sign-para">Doctorsignup Details</p>
+       
+         
       <label className="doctor-sign-label">Enter the name:</label>
       <input type="text" className="doctor-sign-input" name="name" onChange={handelChange}/><br />
       

@@ -6,6 +6,7 @@ import Header from './Header';
 import FAQ from './FAQs';
 import Footer from './styles/Footer';
 import Gochatbot from './Gochatbot';
+import Images from './Images';
 function Home()
 {
     let startupqr='startup';
@@ -55,6 +56,7 @@ function Home()
     return(
         <>
        <Header/>
+       <Images/>
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>
