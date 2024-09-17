@@ -55,10 +55,10 @@ export default function Filterdoctor({email}) {
     }
   }
   return (
-    <> 
+    <div className='fil-doc-main'> 
     <p className='doctor-info'>Near By Ayush Doctors</p>
    
     {render()}
-   </>
+   </div>
   );
 }

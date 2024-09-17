@@ -75,6 +75,7 @@
   
   .trck-container {
     width: 70%;
+    min-height: 60vh;
     margin-left: 15%;
   }
   
