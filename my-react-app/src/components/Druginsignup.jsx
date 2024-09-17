@@ -20,6 +20,34 @@ function Druginsignup(){
            }
            
       },[drugindata.state]);
+
+      const [validations, setValidations] = useState({
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialChar: false,
+        length: false,
+      });
+    
+      useEffect(() => {  // password handle
+        // Define regular expressions for each validation rule
+        const password = drugindata.password;
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasDigit = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasValidLength = password.length >= 8 && password.length <= 30;
+    
+        // Update validation states based on regex tests
+        setValidations({
+          lowercase: hasLowercase,
+          uppercase: hasUppercase,
+          digit: hasDigit,
+          specialChar: hasSpecialChar,
+          length: hasValidLength,
+        });
+      }, [drugindata.password]);
+
     const handleChange=(e)=>
     {
       e.preventDefault();
@@ -100,6 +128,24 @@ function Druginsignup(){
       <input type="email" name="Email_ID" onChange={handleChange} className=" Drug-sign-input" />
       <label className=" Drug-sign-label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className=" Drug-sign-input" /><br />
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
+
     {passerror&&<p className="Drug-sign-error">{passerror}</p>}
       <label className=" Drug-sign-label">Enter the state:</label> 
       <select value={drugindata.state} name="state" onChange={handleChange} className=" Drug-sign-input">
