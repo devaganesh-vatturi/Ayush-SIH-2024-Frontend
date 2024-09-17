@@ -100,8 +100,14 @@ function Doctorsignup() {
     return ( 
       <>
       <Header/>
+      <div className=" doctor-sign-head1">
+          <div className=" doctor-sign-head2">
+          <p className="doctor-sign-para">Doctorsignup Details</p>
+          </div>
+        </div>
       <form onSubmit={onSubmit} className="doctor-sign-container">
-         <p className="doctor-sign-para">Doctorsignup Details</p>
+       
+         
       <label className="doctor-sign-label">Enter the name:</label>
       <input type="text" className="doctor-sign-input" name="name" onChange={handelChange}/><br />
       
@@ -129,7 +135,7 @@ function Doctorsignup() {
       <label className="doctor-sign-label" >Enter the phone number:</label>
       <input type="text" className=" doctor-sign-input" name="phone_number" onChange={handelChange}/><br />
       {phnerror&&<p className="doctor-sign-error">{phnerror}</p>}
-      <label className="doctor-sign-label">Upload a PDF file:</label>
+      <label className="doctor-sign-label">Upload your University Docterate Certificate :</label>
       <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handelChange}/><br/>
       <label className="doctor-sign-label">Enter the emailid:</label>
       <input type="email" className="doctor-sign-input" name="Email_ID" onChange={handelChange}/><br />

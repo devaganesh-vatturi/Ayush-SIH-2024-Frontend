@@ -6,7 +6,12 @@ import Header from './Header';
 import Footer from './styles/Footer';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
-    {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:"",OrderDate:"",State:"",district:"" });
+    {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:""
+      ,OrderDate:"",State:"",district:""});
+
+const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
+
+
     const [passerror, setPasserror] = useState("");
     const [phnerror,setPhnerror]=useState("");
     let invalid=false;
@@ -51,6 +56,7 @@ function  Authoritysignup() {
       e.preventDefault();
       const{name,value}=e.target;
       setLicensedata({...Licensedata,[name]:value});
+      
 
       if(name==="password"&& value.length<8)
         {
@@ -67,8 +73,13 @@ function  Authoritysignup() {
       }
 
     }
+// Handle file upload (for the PDF)
+const handleFileChange = (e) => {
+  setSelectedFile(e.target.files[0]); // Store the selected file in state
+};
 
-    const handleSubmit= async(e)=>{
+    const handleSubmit= async(e)=>
+      {
         e.preventDefault();
         if(Licensedata.password.length<8)
           invalid=true;
@@ -79,26 +90,46 @@ function  Authoritysignup() {
              phnvalid=true;
 
         phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
-      try{
-          const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
-    if (response.data.success) {
-      alert("Successfully Signed Up");
-      window.location.href = `/login?value=${'authority'}`;
-    } else {
-      alert("Invalid Details. Please try again!");
-      throw response;
-    }
-  
-  } catch (resp) {
-    if (resp.response && resp.response.data) { // Logging the actual error message from the response
-      alert("Message: " + resp.response.data.message);
-    } else { // Fallback if the response doesn't contain the expected data
-      alert("An error occurred at backend. Server might be down.");
-    }
-    console.log("Error is", resp); // Log the full error object for debugging
-  }
+      
+        // Prepare form data
+  const formData = new FormData();
 
+  // Append all form fields
+  formData.append("name", Licensedata.name);
+  formData.append("Email_ID", Licensedata.Email_ID);
+  formData.append("password", Licensedata.password);
+  formData.append("mobile_no", Licensedata.mobile_no);
+  formData.append("designation", Licensedata.designation);
+  formData.append("Qualification", Licensedata.Qualification);
+  formData.append("OrderReferenceNo", Licensedata.OrderReferenceNo);
+  formData.append("OrderDate", Licensedata.OrderDate);
+  formData.append("State", Licensedata.State);
+  formData.append("district", Licensedata.district);
+
+  // Append the PDF file (OrderPdfCopy)
+  formData.append("OrderPdfCopy", selectedFile); // Append the selected file
+
+  try {
+    const response = await axios.post(
+      "http://localhost:5002/api/licensingAuthority-reg",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    if (response.data.success) {
+      console.log("Successfully signed up!", response.data);
+    } else {
+      console.error("Signup failed", response.data);
+    }
+  } catch (error) {
+    console.error("Error during signup:", error);
   }
+};
+  
   
     const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
     const [districtsList, setDistrictsList] = useState([]);
@@ -127,8 +158,13 @@ function  Authoritysignup() {
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="authority-sign-container">
+      <div className="authority-sign-head1">
+          <div className="authority-sign-head2">
           <p className=" authority-sign-para">Licensing Authority Registration Form</p>
+          </div>
+        </div>
+        <div className="authority-sign-container">
+           
       <label className=" authority-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
       
@@ -185,7 +221,7 @@ function  Authoritysignup() {
                 ))}
             </select>
       <br />
-      <label className="Drug-sign-label">Enter district name:</label> 
+      <label className="authority-sign-label">Enter district name:</label> 
       <select value={Licensedata.district} name="district" onChange={handleChange} className=" authority-sign-input">
                 <option value="" disabled>Select a district</option>
                 {districtsList.map((district, index) => (
@@ -196,7 +232,14 @@ function  Authoritysignup() {
             </select>
      <br />
      
-       
+      {/* File upload input */}
+  <label>Upload a PDF file:</label>
+  <input
+    type="file"
+    accept=".pdf"
+    onChange={handleFileChange}
+    required />
+
     <button className=" authority-sign-button">submit</button>
     </div>
    

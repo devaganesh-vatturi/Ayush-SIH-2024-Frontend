@@ -7,16 +7,20 @@ export default function Inscommunication({email}) {
     const [feedback,setFeedback]=useState('');
 
     useEffect(()=>{
-      const response = axios.post("/StartupFeedback-get",{email});
+      const response = axios.post("http://localhost:5002/api/StartupFeedback-get",{email});
       setFeedback(response.feedback);
       const isnotifyResponse = axios.post("/StartupFeedback-get",{email});
-      setIsEnabled(response.isNotifyEligible);//finished is example varibale plz modify it.
+      setIsEnabled(isnotifyResponse.isNotifyEligible);//finished is example varibale plz modify it.
     },[])
   
     const handleSubmit = (e) => {
       e.preventDefault();
+      const NotificationMsgData=null;
+      const Startup_Email =email;
+      const response = axios.post("http://localhost:5002/api/LA-Notificationpost",{Startup_Email,NotificationMsgData});  
       setIsEnabled(false);
-      setClicks(false);   
+      setClicks(false);  
+
 
     };
   

@@ -1,6 +1,18 @@
+.Drug-sign-head1{
+  display: flex;
+  justify-content: center;
+ margin-top: 40px;
+}
+.Drug-sign-head2{
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: gray;
+}
+
 .Drug-sign-container {
     max-width: 400px;
     margin: 40px auto;
+    margin-top: 0;
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -11,7 +23,7 @@
   margin-bottom: 20px;
   font-weight: bold ;
   font-size: 30px;
-    
+    margin-bottom: 0;
    text-align: center;
  }
 

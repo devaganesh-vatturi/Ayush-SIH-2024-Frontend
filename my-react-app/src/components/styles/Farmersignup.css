@@ -44,9 +44,20 @@
     background-color: #3e8e41;
   }
   */
+  .farmer-sign-head1{
+    display: flex;
+    justify-content: center;
+   margin-top: 40px;
+  }
+  .farmer-sign-head2{
+      padding-left: 70px;
+      padding-right: 70px;
+      background-color: gray;
+  }
   .farmer-sign-container {
     max-width: 400px;
     margin: 40px auto;
+    margin-top: 0;
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,7 +68,7 @@
     margin-bottom: 20px;
   font-weight: bold ;
   font-size: 30px;
-    
+    margin-bottom: 0;
    text-align: center;
   }
 
