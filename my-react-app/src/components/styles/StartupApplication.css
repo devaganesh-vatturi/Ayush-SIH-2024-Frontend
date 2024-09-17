@@ -86,3 +86,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0056b3;
 }
+#captcha{
+  font-weight: bold;
+  font-size: 1.3rem;
+}

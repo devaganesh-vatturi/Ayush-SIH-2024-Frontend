@@ -6,7 +6,7 @@ import Image3 from '../assets/bannerimg4.jpg';
 import '../components/styles/Images.css'
 const Images = () => {
   // Array of imported images
-  const images = [Image3,Image1];
+  const images = [  Image3,Image1];
 
   // State to keep track of the current image index
   const [currentIndex, setCurrentIndex] = useState(0);

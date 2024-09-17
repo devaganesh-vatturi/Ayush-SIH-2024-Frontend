@@ -7,9 +7,30 @@
    font-weight:bold;
    font-size: 1.3rem;
    margin:10px;
+   cursor:pointer;
 }
 .startup-dsh-head{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
 }
+.startup-dsh-head-first p {
+   cursor: pointer;
+   padding: 10px 20px;
+   font-size: 16px;
+   color: #333;
+   border-bottom: 2px solid transparent; /* Default, no border */
+   transition: border-bottom 0.3s ease-in-out;
+ }
+ 
+ .startup-dsh-head-first p:hover {
+   border-bottom: 2px solid #ccc; /* Add border on hover */
+ }
+ 
+ /* Style for the active tab */
+ .active-tab {
+   border-bottom: 2px solid #007BFF; /* Active tab gets a blue border */
+   font-weight: bold; /* Optional: Make the active tab bold */
+   color: #007BFF;
+ }
+ 
