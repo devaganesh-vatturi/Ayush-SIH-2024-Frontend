@@ -23,6 +23,33 @@ function Doctorsignup() {
         setDistrictsList([]);
          }
     },[doctordata.state]);
+
+    const [validations, setValidations] = useState({
+      lowercase: false,
+      uppercase: false,
+      digit: false,
+      specialChar: false,
+      length: false,
+    });
+  
+    useEffect(() => {  // password handle
+      // Define regular expressions for each validation rule
+      const password = doctordata.password;
+      const hasLowercase = /[a-z]/.test(password);
+      const hasUppercase = /[A-Z]/.test(password);
+      const hasDigit = /\d/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      const hasValidLength = password.length >= 8 && password.length <= 30;
+  
+      // Update validation states based on regex tests
+      setValidations({
+        lowercase: hasLowercase,
+        uppercase: hasUppercase,
+        digit: hasDigit,
+        specialChar: hasSpecialChar,
+        length: hasValidLength,
+      });
+    }, [doctordata.password]);
   const handelChange=(e)=>{
      e.preventDefault();
      const {name,value}=e.target;
@@ -141,6 +168,25 @@ function Doctorsignup() {
       <input type="email" className="doctor-sign-input" name="Email_ID" onChange={handelChange}/><br />
       <label className="doctor-sign-label">Enter the password:</label>
       <input type="password" className="doctor-sign-input" name="password" onChange={handelChange}/><br />
+
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
+      
       {passerror&&<p className="doctor-sign-error">{passerror}</p>}
       <button className="doctor-sign-button">submit</button>
     </form>
