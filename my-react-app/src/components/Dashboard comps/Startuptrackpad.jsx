@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Startuptrackpad.css';
 
 const Startuptrackpad = ({email}) => {
-  const [currentStage, setCurrentStage] = useState(0); // Change this value to update the progress
+  const [currentStage, setCurrentStage] = useState(4); // Change this value to update the progress
 
   const stages = [
     { title: 'Stage 1: Application Submitted', description: 'Your application has been submitted.' },
