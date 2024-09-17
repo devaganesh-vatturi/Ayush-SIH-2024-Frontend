@@ -29,6 +29,9 @@
     font-weight: bold;
     margin: 0;
   }
+  .author-email{
+    font-size: 1.4rem;
+  }
   .author-details {
     padding: 10px;
     border-left: 4px solid #094660;
