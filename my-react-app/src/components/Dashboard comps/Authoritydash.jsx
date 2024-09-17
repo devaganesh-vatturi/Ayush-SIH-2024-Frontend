@@ -64,9 +64,9 @@ export default function Authoritydash() {
     }
 },[]);
 
-      if(tokenvalidation==false){
-    return(<p>Error 404</p>)
-   }
+//       if(tokenvalidation==false){
+//     return(<p>Error 404</p>)
+//    }
     function gohome()
     {
         Setdrugtab(1);
