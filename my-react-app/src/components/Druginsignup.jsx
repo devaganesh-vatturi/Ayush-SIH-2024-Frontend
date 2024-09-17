@@ -8,7 +8,7 @@ function Druginsignup(){
   const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
   const [districtsList, setDistrictsList] = useState([]);
   const [drugindata, setDrugindata] = useState(
-    {name:"",email:"",password:"",district:"",state:""});
+    {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:""});
     const [passerror, setPasserror] = useState("");
     let passvalid=false;
     
@@ -47,7 +47,7 @@ function Druginsignup(){
         }
         passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
         try{
-        const response= await axios.post("",drugindata);
+        const response= await axios.post("http://localhost:5002/api/drugInspector-reg",drugindata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -97,7 +97,7 @@ function Druginsignup(){
       <label className="Drug-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
       <label className=" Drug-sign-label">Enter Email:</label> 
-      <input type="email" name="email" onChange={handleChange} className=" Drug-sign-input" />
+      <input type="email" name="Email_ID" onChange={handleChange} className=" Drug-sign-input" />
       <label className=" Drug-sign-label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className=" Drug-sign-input" /><br />
     {passerror&&<p className="Drug-sign-error">{passerror}</p>}
@@ -121,6 +121,10 @@ function Druginsignup(){
                 ))}
             </select>
      <br />      
+     <label className="Drug-sign-label" >Enter the phone number:</label>
+     <input type="text" className=" Drug-sign-input" name="phone_number" onChange={handleChange}/><br />
+    
+    
     <button className="Drug-sign-button">submit</button>
 
     </div>
