@@ -27,7 +27,7 @@ export default function Startupdashboard() {
    return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
    }
    let token= values.get('token');
-
+   const [activeTab, setActiveTab] = useState('Status');
    useEffect(()=>{
     const fetch_it = async(e)=>{;
         try {
@@ -86,31 +86,35 @@ export default function Startupdashboard() {
     {
         e.preventDefault();
         setvalue(1);
+        setActiveTab('Status');
     }
     function goApplication(e)
     {
         e.preventDefault();
         setvalue(2);
+        setActiveTab('Application');
     }
     function goAyush(e)
     {
         e.preventDefault();
         setvalue(3);
+        setActiveTab('Ayush');
     }
     function goPeerForum(e)
     {
         e.preventDefault();
         setvalue(4);
+        setActiveTab('PeerForum');
     }
   return (
     <div>
     <Header/>
     <div className='startup-dsh-head'>
     <div className='startup-dsh-head-first'>
-    <p onClick={goStatus}>Status Tracking</p>
-    <p onClick={goApplication}>Fill Aplication</p>
-    <p onClick={goAyush}>Aayush 3.0</p>
-    <p onClick={goPeerForum}>Peer Forum</p>
+    <p className={activeTab === 'Status' ? 'active-tab' : ''} onClick={goStatus}>Status Tracking</p>
+    <p className={activeTab === 'Application' ? 'active-tab' : ''}  onClick={goApplication}>Fill Aplication</p>
+    <p  className={activeTab === 'Ayush' ? 'active-tab' : ''} onClick={goAyush}>Aayush 3.0</p>
+    <p   className={activeTab === 'PeerForum' ? 'active-tab' : ''} onClick={goPeerForum}>Peer Forum</p>
     </div>
     <div>
     <Logout/>

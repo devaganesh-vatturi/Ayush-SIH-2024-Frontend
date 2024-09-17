@@ -4,8 +4,8 @@ import axios from 'axios';
 function StartupSingup({email}) {
   //declaration of basic functions
   const [startupdata, setStartupdata] = useState({
-    companyname:"new",address:"new",city:"new",pincode:"789",state:"andhrapradesh",district:"east godavari",pan:"533212",gst:"bdrbf",
-     website:"bdher",cerno:"fbdfx",cdate:"dbdf",issueauthority:"fxt",iecode:"ssfnr",issuedate:"grbf",purpose:"vrehe"
+    companyname:"hhkji",address:"",city:"",pincode:"",state:"",district:"",pan:"",gst:"",
+     website:"",cerno:"",cdate:"",issueauthority:"",iecode:"",issuedate:"",purpose:""
   });
   console.log("the mail",email);//email from props
   function handleChange(e)
@@ -61,7 +61,7 @@ function StartupSingup({email}) {
   const handleCaptchaChange = (event) => {
     setUserCaptcha(event.target.value);
   };
-  function editit()
+  function  editit()
   {
     setEditing(true);
   }
@@ -143,10 +143,7 @@ function StartupSingup({email}) {
             <div className="header">
                 <p>Applicant Registration Form</p>
             </div>
-            <button className={`edit-button ${editing ? "editable" : ""}`} 
-            onClick={editit}
-            disabled={!startupdata.companyname}
-            >Edit</button>
+           
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>1. Details of Manufacturer</label>
@@ -218,14 +215,19 @@ function StartupSingup({email}) {
                     </select>
                 </div>
                 <div>
-                    <label id="ll32">Captcha</label>
-    <span id="captcha">{captcha}</span>
+                    <label id="ll32">Captcha</label><br/>
+    <span id="captcha">{captcha}</span><br/>
     <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
     <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
     {captchaError && <p className="error">{captchaError}</p>}
                       
                       
                 </div>
+                <br/>
+                <button className={`edit-button ${editing ? "editable" : ""}`} 
+            onClick={editit}
+            disabled={!startupdata.companyname}
+            >Edit</button><br/><br/>
                 <button type="submit">Submit</button>
             </form>
         </div>
