@@ -1,4 +1,4 @@
-/* 
+ /* 
 .slideshow-container {
     position: relative;
     width: 100vw; 
@@ -50,10 +50,15 @@
   }
    */
    /* Container for the slideshow */
+.image-main{
+  display: flex;
+  justify-content: center;
+}
 .slideshow-container {
     position: relative;
     width: 100vw; /* Full viewport width */
     height: 60vh; /* Full viewport height */
+    max-width: 1200px;
     margin-top:50px;
     overflow: hidden;
     display: flex;
