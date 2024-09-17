@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/PrintdrugList.css';
 
-function PrintauthorList({startupmails}){
-  
+function PrintdrugList({startupmails}){
+
   console.log("startups emails : ",startupmails);
   
   const [visibleIndex, setVisibleIndex] = useState(null);
@@ -18,7 +18,7 @@ const fetchit = async(email)=>{
       const Email_ID  =email;
         const response=await axios.post('http://localhost:5002/api/startup-basic',{Email_ID}); // we will pass email and it will return that startups details
         if(response.data.success){
-            setmaildatas(response.data.basicdata)
+            // setmaildatas(response.data.basicdata)
         }
     }
     catch(error)
@@ -78,4 +78,4 @@ const fetchit = async(email)=>{
   );
 }
 
-export default PrintauthorList;
+export default PrintdrugList;

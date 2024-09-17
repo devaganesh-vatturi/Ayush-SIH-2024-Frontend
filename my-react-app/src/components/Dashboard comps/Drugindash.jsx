@@ -6,7 +6,9 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Drugindash() {
-  
+    const  startUpEmails= [
+        {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+      ];
   const params= useLocation();
   let values=new URLSearchParams(params.search);
   let decemail= values.get('email');
@@ -16,7 +18,7 @@ export default function Drugindash() {
   const [tokenvalidation, settokenvalidation] = useState(false);
   
   const [pendingStartups , setPendingStartups] = useState([]); 
-  const [startUpEmails , setstartUpEmails] = useState([]);
+//   const [startUpEmails , setstartUpEmails] = useState([]);
   useEffect(()=>{
     const fetch_it = async(e)=>{
       try {
