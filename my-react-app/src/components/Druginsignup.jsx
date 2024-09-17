@@ -87,8 +87,13 @@ function Druginsignup(){
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="Drug-sign-container">
+      <div className=" Drug-sign-head1">
+          <div className=" Drug-sign-head2">
           <p className="Drug-sign-para">Drugs Inspector Registration Form </p>
+          </div>
+        </div>
+        <div className="Drug-sign-container">
+           
       <label className="Drug-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
       <label className=" Drug-sign-label">Enter Email:</label> 

@@ -158,8 +158,13 @@ const handleFileChange = (e) => {
       <>
       <Header/>
       <form onSubmit={handleSubmit}>
-        <div className="authority-sign-container">
+      <div className="authority-sign-head1">
+          <div className="authority-sign-head2">
           <p className=" authority-sign-para">Licensing Authority Registration Form</p>
+          </div>
+        </div>
+        <div className="authority-sign-container">
+           
       <label className=" authority-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
       

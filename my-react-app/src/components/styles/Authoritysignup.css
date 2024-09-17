@@ -1,6 +1,17 @@
+.authority-sign-head1{
+  display: flex;
+  justify-content: center;
+ margin-top: 40px;
+}
+.authority-sign-head2{
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: gray;
+}
 .authority-sign-container {
   max-width: 400px;
   margin: 40px auto;
+  margin-top: 0;
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -10,8 +21,8 @@
 .authority-sign-para{
 margin-bottom: 20px;
 font-weight: bold ;
-font-size: 30px;
-  
+font-size: 25px;
+  margin-bottom: 0;
  text-align: center;
 }
 
