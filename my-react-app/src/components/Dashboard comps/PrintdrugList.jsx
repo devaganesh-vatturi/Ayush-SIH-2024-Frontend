@@ -10,9 +10,10 @@ function PrintauthorList({startupmails}){
     state: "andhra",
     district: "godavari"
 });
-const fetchit = async(index,email)=>{
+const fetchit = async(email)=>{
     try{
-        const response=await axios.post('',email);
+      const Email_ID  =email;
+        const response=await axios.post('',{Email_ID}); // we will pass email and it will return that startups details
         if(response.success)
         {
             setmaildata()

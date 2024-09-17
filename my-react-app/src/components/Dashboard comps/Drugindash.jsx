@@ -15,8 +15,8 @@ export default function Drugindash() {
   let token= values.get('token');
   const [tokenvalidation, settokenvalidation] = useState(false);
   
-  const [pendingStartups , setPendingStartups] = useState([]);
-  
+  const [pendingStartups , setPendingStartups] = useState([]); 
+  const [startUpEmails , setstartUpEmails] = useState([]);
   useEffect(()=>{
     const fetch_it = async(e)=>{
       try {
@@ -65,8 +65,14 @@ export default function Drugindash() {
 
 
 useEffect(()=>{
-  const get_startups = async(e)=>{  // which are drug ins assigned true
-
+  const get_startups = async(e)=>{  // which are drug ins assigned true    /isDrugInspectorAssigned-true const assignedresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true'); // get isDrugInspectorAssigned or not
+    const assignedresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true'); // get isDrugInspectorAssigned or not
+    const assignretrieved  = assignedresponse.data.success;       
+    if (assignretrieved) {
+    console.log("pending startups exists ");
+    setstartUpEmails(assignedresponse.data.assignedList);
+    }    
+    assignedresponse();
         }
         get_startups();
    
@@ -83,7 +89,7 @@ useEffect(()=>{
     <>
     <Header/>
     <p className='drug-dash-head'>DrugInspector Dashboard</p>
-    <PrintdrugList startupmails={Data}/>
+    <PrintdrugList startupmails={startUpEmails}/>
     </>
   )
 }
