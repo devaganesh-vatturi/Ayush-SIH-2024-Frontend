@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import '../styles/PrintdrugList.css';
 
 function PrintauthorList({startupmails}){
+  
+  console.log("startups emails : ",startupmails);
+  
   const [visibleIndex, setVisibleIndex] = useState(null);
- const [maildata, setmaildata] = useState({
-   address: "10-1-2, vasa street, narsapuram, godavari, andhra",
+ const [maildatas, setmaildatas] = useState({
+   address: "10-1-2, vasa street, narsapuram, godavari",
     city: "narsapuram",
     pinCode: "534275",
     state: "andhra",
@@ -13,10 +16,9 @@ function PrintauthorList({startupmails}){
 const fetchit = async(email)=>{
     try{
       const Email_ID  =email;
-        const response=await axios.post('',{Email_ID}); // we will pass email and it will return that startups details
-        if(response.success)
-        {
-            setmaildata()
+        const response=await axios.post('http://localhost:5002/api/startup-basic',{Email_ID}); // we will pass email and it will return that startups details
+        if(response.data.success){
+            setmaildatas(response.data.basicdata)
         }
     }
     catch(error)
@@ -32,7 +34,8 @@ const fetchit = async(email)=>{
 
   return (
     <div className="Drugp-container">
-      {startupmails.map((item, index) => (
+      { startupmails.length===0 ? 
+             <h1> There are no Startups</h1> : startupmails.map((item, index) => (
         <div key={index} className="Drugp-item">
           <div 
             onClick={() =>{
@@ -49,11 +52,11 @@ const fetchit = async(email)=>{
             <div className="Drugp-details">
                <div className='Drugp-details-inner'>
              <div className='Drugp-details-b1'>
-                <p>Address: {maildata.address}</p>
-                <p>City: {maildata.city}</p>
-                <p>Pincode: {maildata.pinCode}</p>
-                <p>District: {maildata.district}</p>
-                <p>State: {maildata.state}</p>
+                <p>Address: {maildatas.address}</p>
+                <p>City: {maildatas.city}</p>
+                <p>Pincode: {maildatas.pinCode}</p>
+                <p>District: {maildatas.district}</p>
+                <p>State: {maildatas.state}</p>
                 </div>
                 </div>
                 <div className='Drugp-details-buttons'>
