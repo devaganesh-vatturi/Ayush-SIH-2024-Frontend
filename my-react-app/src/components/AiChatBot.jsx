@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import Header from './Header';
+import Footer from './styles/Footer';
 
 const systemMessage = {
   role: 'system',
@@ -66,6 +68,7 @@ function AiChatBot() {
   
   return (
     <div className="Appjsl">
+      <Header/>
       <div style={{ position: 'relative', height: '800px', width: '1500px' }}>
     
       <MainContainer>
@@ -82,6 +85,7 @@ function AiChatBot() {
           </ChatContainer>
         </MainContainer>
        </div>
+       <Footer/>
     </div> 
 
   );

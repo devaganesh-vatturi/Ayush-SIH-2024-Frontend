@@ -3,6 +3,8 @@ import '../styles/PrintauthorList.css'; // Import the CSS file
 
 function PrintauthorList({StartupData,type}){
   const [visibleIndex, setVisibleIndex] = useState(null);
+  const [rejected, setrejected] = useState(false);
+  const [feedback, setFeedback] = useState('');
  const [maildata, setmaildata] = useState({
     Email: "sai@gmail.com",
     PANno: "3YE83H894GF",
@@ -14,6 +16,21 @@ function PrintauthorList({StartupData,type}){
     IE_code: 83648374,
     IE_DOI: "02-05-2005"
 });
+function rejectclick(e)
+{
+  e.preventDefault();
+  setrejected(true);
+
+
+}
+const handleSubmit = () => {
+  alert(`Feedback Submitted: ${feedback}`);
+  setrejected(false);  // Hide the feedback form after submission
+  setFeedback('');     // Optionally clear the feedback after submission
+};
+const handleInputChange = (e) => {
+  setFeedback(e.target.value);  // Update the feedback state as the user types
+};
 const fetchit = async(index,email)=>{
     try{
         const response=await axios.post('',email);
@@ -66,16 +83,29 @@ const fetchit = async(index,email)=>{
                     </div>
                 </div>
                 <div className='author-details-buttons'>
-                    { type==='pending' &&<>
+                { type==='pending' &&<>
                 <button 
                 className='author-btn-assign'
                 onClick={() => alert(`Notification sent to drug inspector for ${item.name}`)}
               >
                Assign Drug Inspector
               </button>
-              <button className='author-btn-reject'>
+              <button className='author-btn-reject' onClick={rejectclick}>
                 Reject
               </button>
+              {rejected && (
+            <><br/>
+              <input 
+                type='text' 
+                name="feedback" 
+                id="feedback-inp"
+                placeholder='Enter feedback'
+                value={feedback}  // Bind the input value to the feedback state
+                onChange={handleInputChange}  // Update state when the input changes
+              />
+              <button onClick={handleSubmit} id="feed-submit">Submit</button>
+            </>
+          )}
               </>
                }
                {
