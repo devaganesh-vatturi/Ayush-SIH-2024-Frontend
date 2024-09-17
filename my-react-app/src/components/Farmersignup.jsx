@@ -23,6 +23,32 @@ function Farmersignup(){
            }
             
       },[farmerdata.state]);
+      const [validations, setValidations] = useState({
+        lowercase: false,
+        uppercase: false,
+        digit: false,
+        specialChar: false,
+        length: false,
+      });
+    
+      useEffect(() => {  // password handle
+        // Define regular expressions for each validation rule
+        const password = farmerdata.password;
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasDigit = /\d/.test(password);
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        const hasValidLength = password.length >= 8 && password.length <= 30;
+    
+        // Update validation states based on regex tests
+        setValidations({
+          lowercase: hasLowercase,
+          uppercase: hasUppercase,
+          digit: hasDigit,
+          specialChar: hasSpecialChar,
+          length: hasValidLength,
+        });
+      }, [farmerdata.password]);
     const handleChange=(e)=>
     {
       e.preventDefault();
@@ -135,6 +161,23 @@ function Farmersignup(){
     
       <label className=" farmer-sign-label">Enter the password:</label>
       <input type="password" name="password" onChange={handleChange} className=" farmer-sign-input" /><br />
+      <ul className="password-checklist">
+        <li className={validations.lowercase ? "valid" : "invalid"}>
+          At least one lowercase letter
+        </li>
+        <li className={validations.uppercase ? "valid" : "invalid"}>
+          At least one uppercase letter
+        </li>
+        <li className={validations.digit ? "valid" : "invalid"}>
+          At least one digit
+        </li>
+        <li className={validations.specialChar ? "valid" : "invalid"}>
+          At least one special character from the set
+        </li>
+        <li className={validations.length ? "valid" : "invalid"}>
+          Be between 8 and 30 characters long
+        </li>
+      </ul>
     {passerror&&<p className="farmer-sign-error">{passerror}</p>}
     <button className="farmer-sign-button">submit</button>
     </div>

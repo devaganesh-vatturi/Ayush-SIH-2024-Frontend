@@ -6,3 +6,7 @@
 .drug-noti-head{
     min-height: 60vh;
 }
+.drug-noti-head li{
+    list-style-type:none;
+    font-size: 2rem;
+}
