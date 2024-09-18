@@ -15,26 +15,26 @@ function StartupSingup({email}) {
     setStartupdata({...startupdata,[name]:value});
     
   }
-  useEffect(()=>{
-     const fetchit = async(e)=>{
-      try{
-        const response = await axios.post('',email);
-      }
-      catch(error)
-      {
-        console.log(error);
-      }
-      if(response.data.success)
-      {
-        setFormData(() => ({
-          ...response.data.data,  // Spread the incoming data
-        }));
+  // useEffect(()=>{
+  //    const fetchit = async(e)=>{
+  //     try{
+  //       const response = await axios.post('',email);
+  //     }
+  //     catch(error)
+  //     {
+  //       console.log(error);
+  //     }
+  //     if(response.data.success)
+  //     {
+  //       setFormData(() => ({
+  //         ...response.data.data,  // Spread the incoming data
+  //       }));
 
-      }
+  //     }
       
-     }
-     fetchit();
-  },[])
+  //    }
+  //    fetchit();
+  // },[])
   //declaration of features
   let isValid = true;
   const [panError, setPanError] = useState('');

@@ -7,26 +7,26 @@ import '../styles/Authorityhomee.css';
 export default function Authorityhome({email}) {
 
 
-    // const [pendingStartupData, setpendingStartupData ] = useState([]);
-    // const  [ assignedStartupData, setassignedStartupData  ] = useState([]);
-    // const [acceptedStartupData, setacceptedStartupData ] = useState([]);
-    // const [licensedStartupData,setlicensedStartupData ] = useState([]);
-    // const [rejectedStartupData,setrejectedStartupData ] = useState([]);
-    const pendingfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
-    const assignedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
-    const acceptedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
-    const licensedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
-    const rejectedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
+    const [pendingStartupData, setpendingStartupData ] = useState([]);
+    const  [ assignedStartupData, setassignedStartupData  ] = useState([]);
+    const [acceptedStartupData, setacceptedStartupData ] = useState([]);
+    const [licensedStartupData,setlicensedStartupData ] = useState([]);
+    const [rejectedStartupData,setrejectedStartupData ] = useState([]);
+    // const pendingfaqData = [
+    //   {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    // ];
+    // const assignedfaqData = [
+    //   {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    // ];
+    // const acceptedfaqData = [
+    //   {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    // ];
+    // const licensedfaqData = [
+    //   {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    // ];
+    // const rejectedfaqData = [
+    //   {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    // ];
 
     useEffect(()=>{   // retrieve those datas
          const fetchit= async(e)=>{
@@ -84,15 +84,15 @@ export default function Authorityhome({email}) {
   <>  
   <h1>StartupInformation</h1>
        <p className='auth-hm'>Pending</p>
-        < PrintauthorList StartupData={pendingfaqData} type={'pending'}/>
+        < PrintauthorList StartupData={pendingStartupData} type={'pending'}/>
         <p className='auth-hm'>Assigned</p>
-        < PrintauthorList StartupData={assignedfaqData}type={'assigned'} />
+        < PrintauthorList StartupData={assignedStartupData}type={'assigned'} />
         <p className='auth-hm'>Accepted</p>
-        < PrintauthorList StartupData={acceptedfaqData}type={'accepted'} />
+        < PrintauthorList StartupData={acceptedStartupData}type={'accepted'} />
         <p className='auth-hm'>Licensed</p>
-        < PrintauthorList StartupData={licensedfaqData} type={'licensed'}/>
+        < PrintauthorList StartupData={licensedStartupData} type={'licensed'}/>
         <p className='auth-hm'>Rejected</p>
-        < PrintauthorList StartupData={rejectedfaqData} type={'rejected'}/>
+        < PrintauthorList StartupData={rejectedStartupData} type={'rejected'}/>
           
   </>
   )

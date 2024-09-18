@@ -29,7 +29,7 @@ export default function Startupdashboard() {
    let token= values.get('token');
    const [activeTab, setActiveTab] = useState('Status');
    useEffect(()=>{
-    const fetch_it = async(e)=>{;
+    const fetch_it = async(e)=>{
         try {
             const response = await axios.post('http://localhost:5002/api/tokenverify', 
                 {token}, { // parsing the token as a JSON file
@@ -82,54 +82,75 @@ export default function Startupdashboard() {
    {
    return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
    }
-    function goStatus(e)
+    function goStatus()
     {
-        e.preventDefault();
+       
         setvalue(1);
-        setActiveTab('Status');
+       
     }
-    function goApplication(e)
+    function goApplication()
     {
-        e.preventDefault();
+        
         setvalue(2);
-        setActiveTab('Application');
+      
     }
-    function goAyush(e)
+    function goAyush()
     {
-        e.preventDefault();
+       
         setvalue(3);
-        setActiveTab('Ayush');
+      
     }
-    function goPeerForum(e)
+    function goPeerForum()
     {
-        e.preventDefault();
+        
         setvalue(4);
-        setActiveTab('PeerForum');
+      
     }
   return (
     <div>
     <Header/>
     <div className='startup-dsh-head'>
-    <div className='startup-dsh-head-first'>
-    <p className={activeTab === 'Status' ? 'active-tab' : ''} onClick={goStatus}>Status Tracking</p>
-    <p className={activeTab === 'Application' ? 'active-tab' : ''}  onClick={goApplication}>Fill Aplication</p>
-    <p  className={activeTab === 'Ayush' ? 'active-tab' : ''} onClick={goAyush}>Aayush 3.0</p>
-    <p   className={activeTab === 'PeerForum' ? 'active-tab' : ''} onClick={goPeerForum}>Peer Forum</p>
+        <div className='startup-dsh-head-first'>
+            <p 
+                className={activeTab === 'Status' ? 'active-tab' : ''} 
+                onClick={() => { goStatus(); setActiveTab('Status'); }}
+            >
+                Status Tracking
+            </p>
+            <p 
+                className={activeTab === 'Application' ? 'active-tab' : ''} 
+                onClick={() => { goApplication(); setActiveTab('Application'); }}
+            >
+                Fill Application
+            </p>
+            <p 
+                className={activeTab === 'Ayush' ? 'active-tab' : ''} 
+                onClick={() => { goAyush(); setActiveTab('Ayush'); }}
+            >
+                Aayush 3.0
+            </p>
+            <p 
+                className={activeTab === 'PeerForum' ? 'active-tab' : ''} 
+                onClick={() => { goPeerForum(); setActiveTab('PeerForum'); }}
+            >
+                Peer Forum
+            </p>
+        </div>
+        <div>
+            <Logout/>
+        </div>
     </div>
     <div>
-    <Logout/>
+        {value === 1 ? (<Startuptrackpad email={email} />) :
+            (value === 2 ? (<StartupApplication email={email} />) :
+                (value === 3 ? (<Extrafeatures email={email} />) :
+                    (value === 4 ? (<PeerForum email={email} />) : (null))
+                )
+            )
+        }
     </div>
-    </div>
-    <div >
-     {
-        value ===1 ? (<Startuptrackpad email={email}/>) :
-                (value === 2 ? (<StartupApplication email={email}/>) :
-                                    ( value ===3 ? (<Extrafeatures email={email} />) : 
-                                            (value ===4 ? (<PeerForum email={email}/>) :  (null) ) ))
-     }
-    
-     </div>
-     <Footer/>
-     </div>
+    <Footer/>
+</div>
+
   );
 }
