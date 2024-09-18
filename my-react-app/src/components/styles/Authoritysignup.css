@@ -8,6 +8,10 @@
     padding-right: 30px;
     background-color: gray;
 }
+
+#authority-sign-id{
+  padding-top: 100px;
+}
 .authority-sign-container {
   max-width: 400px;
   margin: 40px auto;
