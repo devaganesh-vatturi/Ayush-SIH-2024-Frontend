@@ -4,7 +4,7 @@ import authori from '../assets/authority.svg';
 import drugins from '../assets/drugins.svg';
 import Header from './Header';
 import FAQ from './FAQs';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 import Gochatbot from './Gochatbot';
 import Images from './Images';
 function Home()
@@ -54,7 +54,7 @@ function Home()
         { question: "What support is provided by the Ministry of AYUSH to startups?", answer: "The Ministry of AYUSH provides a variety of support mechanisms, including mentorship, incubation support, and financial assistance for startups focusing on traditional medicine and wellness." },
       ];
     return(
-        <>
+        <div className='the-home'>
        <Header/>
        <Images/>
         <div className="home-main">
@@ -83,7 +83,7 @@ function Home()
         </div>
        <Gochatbot/>
         <Footer/>
-        </>
+        </div>
     );
 }
 export default Home;

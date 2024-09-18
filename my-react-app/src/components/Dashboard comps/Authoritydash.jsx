@@ -4,9 +4,8 @@ import Authoritynotification from './Authoritynotfication';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-
 import '../styles/Authoritydash.css';
-import Footer from '../styles/Footer';
+import Footer from './Footer';
 import Logout from './Logout';
 
 export default function Authoritydash() {
@@ -78,6 +77,7 @@ export default function Authoritydash() {
   return (
     <>
     <Header/>
+    <div id="authority-dash-id"> 
     <p className='drug-head'>Authority Desk!</p>
     <div className='drug-main'>
         <div className='drug-main-first'>
@@ -87,6 +87,7 @@ export default function Authoritydash() {
         <div>
         <Logout/> 
         </div>
+    </div>
     </div>
    {
      drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) : (null)

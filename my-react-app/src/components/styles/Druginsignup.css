@@ -9,6 +9,9 @@
     background-color: gray;
 }
 
+#Drug-sign-id{
+  padding-top: 100px;
+}
 .Drug-sign-container {
     max-width: 400px;
     margin: 40px auto;

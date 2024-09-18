@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
     {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:""
@@ -159,7 +159,7 @@ const handleFileChange = (e) => {
     return (
       <>
       <Header/>
-      <form onSubmit={handleSubmit}>
+      <form id="authority-sign-id" onSubmit={handleSubmit}>
       <div className="authority-sign-head1">
           <div className="authority-sign-head2">
           <p className=" authority-sign-para">Licensing Authority Registration Form</p>

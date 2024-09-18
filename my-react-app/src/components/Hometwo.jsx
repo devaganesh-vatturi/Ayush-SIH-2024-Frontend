@@ -3,8 +3,9 @@ import doctor1 from '../assets/doctor.svg';
 import farmer1 from '../assets/farmer.svg';
 import Header from './Header';
 import FAQ from './FAQs';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 import Gochatbot from './Gochatbot';
+import Images from './Images';
 function Home()
 {
     
@@ -77,6 +78,7 @@ function Home()
     return(
         <>
     <Header/>
+    <Images/>
         <div className="home-two-main">
         
            <div className="home-two-farmer">

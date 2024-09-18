@@ -18,7 +18,7 @@ export default function Header() {
       
     <p className='home-name' onClick={gohome}>Aayush 2.0</p>
     </div>
-    <button className='home-button' onClick={gochatbot}>Chat Bot</button>
+    <button className='heads-button' onClick={gochatbot}>Chat Bot</button>
    </div>
    
   )

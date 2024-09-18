@@ -4,7 +4,7 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 
 function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
@@ -138,7 +138,7 @@ function Startupsignup() {
     return ( 
       <>
       <Header/>
-      <form onSubmit={onSubmit}>
+      <form id="startup-form" onSubmit={onSubmit}>
         <div className="start-up-head1">
           <div className="start-up-head2">
           <p className="start-up-para">Startupsignup Details</p>

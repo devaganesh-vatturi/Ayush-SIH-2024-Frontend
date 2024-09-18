@@ -9,7 +9,7 @@ import StartupApplication from './StartupApplication';
 import Header from '../Header';
 import Extrafeatures from './Extrafeatures';
 import PeerForum from './PeerForum';
-import Footer from '../styles/Footer';
+import Footer from './Footer';
 import Logout from './Logout';
 
 export default function Startupdashboard() {

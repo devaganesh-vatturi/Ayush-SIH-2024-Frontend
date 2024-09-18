@@ -9,22 +9,26 @@
     color:black;
     height:90px;
     align-items: center;
+    position: fixed;
+    width: 99vw;
     font-weight: 400;
-    background-color: #094660;
+    background-color:rgba(14,78,165,1) ;
+    z-index:2;
 }
 .home-name{
-   
-    background-color: #094660;   
+
+ 
     color:white;
-    font-size: 50px;
+    font-size: 2rem;
+    cursor: pointer;
 }
 .home-img{
     
-    background-image: url("./aushadi_logo.svg");
+    /* background-image: url("./aushadi_logo.svg"); */
     /* background-size:cover; */
     background-size: cover; /* Ensures the whole image is visible */
     background-repeat: no-repeat;
-    /* border:2px solid pink; */
+    border:2px solid pink;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     height:90px;
@@ -38,6 +42,13 @@
     width:40vw;
     height:100%;
 }
-.home-button{
-  border:2px solid black;
+.heads-button{
+  background-color:rgba(135, 206, 235, 1);
+  margin-right:30px;
+  height: 50px;
+  width:80px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
 }

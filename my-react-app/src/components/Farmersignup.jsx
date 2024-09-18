@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 function Farmersignup(){
   const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
   const [districtsList, setDistrictsList] = useState([]);
@@ -123,7 +123,7 @@ function Farmersignup(){
     return (
       <>
       <Header/>
-      <form onSubmit={handleSubmit}>
+      <form id="farmer-sign-id" onSubmit={handleSubmit}>
       <div className=" farmer-sign-head1">
           <div className=" farmer-sign-head2">
           <p className="farmer-sign-para">Farmer Registration Form</p>

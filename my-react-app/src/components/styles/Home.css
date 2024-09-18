@@ -13,26 +13,17 @@ body{
     color:black;
     align-items: center;
 }
-.home-head p{
-    font-size:1.5rem;
+.thehome{
+ 
 }
-.home-head button{
-    border:none;
-    background-color: aqua;
-    border-radius:5px;
-    width:90px;
-    font-weight:bold;
-    height: 50px;
-    margin-right:10px;
-}
-/* main section */
 .home-main{
-    min-height: 500px;         
+    min-height: 400px;         
     max-height: 1000px;
     margin-top:10px;
     display:grid;
    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-   gap:15px;
+   position:relative;
+   bottom:20px;
    justify-content: center;
    color:black;
    justify-items: center;
@@ -88,7 +79,7 @@ body{
     height:50px;
     font-weight: bold;
     /* background-color: black; */
-    background-color: #094660;
+    background-color: rgba(14,78,165,1);
     color:white;
     border-radius: 10px;
     cursor: pointer;
@@ -114,7 +105,7 @@ body{
     background-color: black;
 }
 #gohometwo{
-    background-color:#094660;
+    background-color:rgba(14,78,165,1);
     color:white;
     width:300px;
     height:50px;
