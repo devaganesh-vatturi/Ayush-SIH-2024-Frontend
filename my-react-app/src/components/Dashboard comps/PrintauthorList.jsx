@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 import '../styles/PrintauthorList.css'; // Import the CSS file
 import axios from 'axios';
 
-function PrintauthorList({StartupData,type}){
+function PrintauthorList({StartupEmails,type}){
   const [visibleIndex, setVisibleIndex] = useState(null);
   const [rejected, setrejected] = useState(false);
   const [feedback, setFeedback] = useState('');
- const [maildata, setmaildata] = useState({
-    Email: "sai@gmail.com",
-    PANno: "3YE83H894GF",
-    GSTno: "BF8E84T38R8",
-    websiteAddress: "www.saitech.com",
-    certificateNo: 645658738,
-    CompanyDOI: "02-06-2005",
-    IssuuingAuthority: "saisaisai",
-    IE_code: 83648374,
-    IE_DOI: "02-05-2005"
-});
+  const [basicStartupDetail, setBasicStartupDetail] = useState([]); // Store details as an array
+//   {
+//     Email: "sai@gmail.com",
+//     PANno: "3YE83H894GF",
+//     GSTno: "BF8E84T38R8",
+//     websiteAddress: "www.saitech.com",
+//     certificateNo: 645658738,
+//     CompanyDOI: "02-06-2005",
+//     IssuuingAuthority: "saisaisai",
+//     IE_code: 83648374,
+//     IE_DOI: "02-05-2005"
+// });
 
 useEffect(()=>{ // to LOAD only email and names (basic data) on the basic display tabs
   console.log("calleddd sounsndsni");
