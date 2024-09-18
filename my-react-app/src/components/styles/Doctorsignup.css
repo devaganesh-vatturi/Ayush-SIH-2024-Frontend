@@ -7,12 +7,13 @@
     padding-left: 106px;
     padding-right: 106px;
     background-color: gray;
+    width:570px;
 }
 #doctor-sign-id{
   padding-top: 100px;
 }
 .doctor-sign-container {
-  max-width: 400px;
+  width: 700px;
   margin: 40px auto;
   margin-top: 0 ;
   padding: 40px;
@@ -67,3 +68,59 @@
 .doctor-sign-error{
   color: red;
 }
+/* Styles for verify buttons */
+.verify-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white; /* Ensures text is visible on colored backgrounds */
+}
+
+/* Background color changes for buttons based on state */
+
+/* Background black (for null state) */
+.bg-black {
+  background-color: black;
+}
+
+/* Background green (for true state) */
+.bg-green {
+  background-color: green;
+}
+
+/* Background red (for false state) */
+.bg-red {
+  background-color: red;
+}
+
+/* Styles for submit button */
+
+/* Submit button transparent when disabled */
+
+/* Submit button when active */
+.bg-black {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.doc-sign-submit-btn {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: black;
+  color:white;
+}
+.error-text{
+  color:red;
+}
+#success-text{
+  color:green;
+}
+

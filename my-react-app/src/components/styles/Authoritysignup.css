@@ -6,14 +6,15 @@
 .authority-sign-head2{
     padding-left: 30px;
     padding-right: 30px;
+    width:720px;
     background-color: gray;
 }
 
 #authority-sign-id{
-  padding-top: 100px;
+  padding-top: 150px;
 }
 .authority-sign-container {
-  max-width: 400px;
+  width: 700px;
   margin: 40px auto;
   margin-top: 0;
   padding: 40px;
