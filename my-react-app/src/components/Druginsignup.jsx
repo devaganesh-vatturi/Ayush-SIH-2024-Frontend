@@ -11,7 +11,10 @@ function Druginsignup(){
     {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:""});
     const [passerror, setPasserror] = useState("");
     let passvalid=false;
-    
+    const [quality, setQuality] = useState(null);
+    const [guidelines, setGuidelines] = useState(null);
+    const [errors, setErrors] = useState({ quality: false, guidelines: false });
+    const [pdfissubmited, setpdfissubmited] = useState();
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -60,12 +63,12 @@ function Druginsignup(){
         else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
-        if (name === "phone_number" && value.length !== 10) {
-          setPhnerror("Phone number must contain exactly 10 digits");
-      } else if (name === "phone_number" && value.length === 10) {
-          setPhnerror("");
+      //   if (name === "phone_number" && value.length !== 10) {
+      //     setPhnerror("Phone number must contain exactly 10 digits");
+      // } else if (name === "phone_number" && value.length === 10) {
+      //     setPhnerror("");
       }
-    }
+    
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
@@ -109,7 +112,37 @@ function Druginsignup(){
           console.error('Error fetching districts:', error);
       }
     }
+    function checkQuality()
+    {
+       console.log("quality checking here");
+      let response =true;
+     setQuality(response);
+     console.log("quality is",quality);
+    }
+    function checkGuidelines()
+    {
+      console.log("guidlines check here");
+     let responses =true;
+     console.log(responses);
+    setGuidelines(responses);
+    }
+    function pdfSubmit()
+    {
+       if(!quality)
+       {
+        setErrors((prev) => ({ ...prev, quality: true }));
+       }
+       if(!guidelines)
+        {
+          setErrors((prev) => ({ ...prev, guidelines: true }));
+        }
+        if(quality&&guidelines)
+        {
+          console.log("u can send pdf");
+          setpdfissubmited(true);
   
+        }
+    }
 
     return (
       <>
@@ -123,7 +156,33 @@ function Druginsignup(){
         <div className="Drug-sign-container">
            
       <label className="Drug-sign-label">Enter the name:</label> 
-      <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" /><br />
+      <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" />
+      <label className="doctor-sign-label">Upload your University Docterate Certificate :</label>
+      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handleChange}/>
+      <button
+        onClick={checkQuality}
+        className={`verify-btn ${quality === null ? "bg-black" : quality ? "bg-green" : "bg-red"}`}
+      >
+        Verify quality {quality === null ? "" : quality ? "✔" : "✖"}
+      </button>
+
+      {/* Verify Guidelines Button */}
+      <button
+        onClick={checkGuidelines}
+        className={`verify-btn ${guidelines === null ? "bg-black" : guidelines ? "bg-green" : "bg-red"}`}
+      >
+        Verify Guidelines {guidelines === null ? "" : guidelines ? "✔" : "✖"}
+      </button>
+      <button
+        className={`doc-sign-submit-btn`}
+        // disabled={!(quality && guidelines)}
+        onClick={pdfSubmit}
+      >
+        Submit
+      </button>
+      {errors.quality && <p className="error-text">Please verify quality.</p>}
+      {errors.guidelines && <p className="error-text">Please verify guidelines.</p>}
+      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}
       <label className=" Drug-sign-label">Enter Email:</label> 
       <input type="email" name="Email_ID" onChange={handleChange} className=" Drug-sign-input" />
       <label className=" Drug-sign-label">Enter the password:</label>

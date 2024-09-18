@@ -11,6 +11,11 @@ function Doctorsignup() {
     const [passerror, setPasserror] = useState("");
     const [pinerror,setPinerror]=useState("");
     const [phnerror,setPhnerror]=useState("");
+   const [quality, setQuality] = useState(null);
+   const [guidelines, setGuidelines] = useState(null);
+   const [errors, setErrors] = useState({ quality: false, guidelines: false });
+   const [pdfissubmited, setpdfissubmited] = useState();
+    let result=true;
     let passvalid=false;
     let phnvalid=false;
     let pinvalid=false;
@@ -123,7 +128,37 @@ function Doctorsignup() {
           console.error('Error fetching districts:', error);
       }
   };
- 
+  function checkQuality()
+  {
+     console.log("quality checking here");
+    let response =true;
+   setQuality(response);
+   console.log("quality is",quality);
+  }
+  function checkGuidelines()
+  {
+    console.log("guidlines check here");
+   let responses =true;
+   console.log(responses);
+  setGuidelines(responses);
+  }
+  function pdfSubmit()
+  {
+     if(!quality)
+     {
+      setErrors((prev) => ({ ...prev, quality: true }));
+     }
+     if(!guidelines)
+      {
+        setErrors((prev) => ({ ...prev, guidelines: true }));
+      }
+      if(quality&&guidelines)
+      {
+        console.log("u can send pdf");
+        setpdfissubmited(true);
+
+      }
+  }
     return ( 
       <>
       <Header/>
@@ -164,7 +199,31 @@ function Doctorsignup() {
       <input type="text" className=" doctor-sign-input" name="phone_number" onChange={handelChange}/><br />
       {phnerror&&<p className="doctor-sign-error">{phnerror}</p>}
       <label className="doctor-sign-label">Upload your University Docterate Certificate :</label>
-      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handelChange}/><br/>
+      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handelChange}/>
+      <button
+        onClick={checkQuality}
+        className={`verify-btn ${quality === null ? "bg-black" : quality ? "bg-green" : "bg-red"}`}
+      >
+        Verify quality {quality === null ? "" : quality ? "✔" : "✖"}
+      </button>
+
+      {/* Verify Guidelines Button */}
+      <button
+        onClick={checkGuidelines}
+        className={`verify-btn ${guidelines === null ? "bg-black" : guidelines ? "bg-green" : "bg-red"}`}
+      >
+        Verify Guidelines {guidelines === null ? "" : guidelines ? "✔" : "✖"}
+      </button>
+      <button
+        className={`doc-sign-submit-btn`}
+        // disabled={!(quality && guidelines)}
+        onClick={pdfSubmit}
+      >
+        Submit
+      </button>
+      {errors.quality && <p className="error-text">Please verify quality.</p>}
+      {errors.guidelines && <p className="error-text">Please verify guidelines.</p>}
+      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}
       <label className="doctor-sign-label">Enter the emailid:</label>
       <input type="email" className="doctor-sign-input" name="Email_ID" onChange={handelChange}/><br />
       <label className="doctor-sign-label">Enter the password:</label>

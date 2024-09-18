@@ -23,6 +23,7 @@
 #login-form{
   margin-bottom: 100px;
   padding-top: 60px;
+  min-height: 70vh;
 }
 .Login-button {
   background-color: #058a0a;
