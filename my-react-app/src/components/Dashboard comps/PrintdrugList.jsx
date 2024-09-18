@@ -1,78 +1,97 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/PrintdrugList.css';
+import axios from 'axios';
 
-function PrintauthorList({startupmails}){
+function PrintdrugList({ startupmails }) {
+
   const [visibleIndex, setVisibleIndex] = useState(null);
- const [maildata, setmaildata] = useState({
-   address: "10-1-2, vasa street, narsapuram, godavari, andhra",
-    city: "narsapuram",
-    pinCode: "534275",
-    state: "andhra",
-    district: "godavari"
-});
-const fetchit = async(email)=>{
-    try{
-      const Email_ID  =email;
-        const response=await axios.post('',{Email_ID}); // we will pass email and it will return that startups details
-        if(response.success)
-        {
-            setmaildata()
-        }
+  const [basicStartupDetail, setBasicStartupDetail] = useState([]); // Store details as an array
+
+  // Fetch details for a single startup
+  const fetchbasicdetails = async (email) => {
+    try {
+      console.log("Fetching details for: ", email);
+      const response = await axios.post('http://localhost:5002/api/startup-basic', { Email_ID: email }); 
+      if (response.data.success) {
+        return response.data.basicdata; // Return the fetched details
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+      return null; // Return null if there's an error
     }
-    catch(error)
-    {
-        console.log(error);
-    }
-}
-  // Toggle the visibility of additional info (phone and district)
-  const toggleDetails = (index,email) => {
-    setVisibleIndex(visibleIndex === index ? null : index);
-    console.log(email);
   };
+
+  // Toggle the visibility of additional info
+  const toggleDetails = (index) => {
+    setVisibleIndex(visibleIndex === index ? null : index);
+  };
+
+  // Fetch details for all emails and store in state
+  const getDetailsAll = async () => {
+    const allDetails = [];
+    for (let eachobj of startupmails) {
+      const details = await fetchbasicdetails(eachobj.Email_ID); // Fetch details for each email
+      if (details) {
+        allDetails.push(details); // Push fetched details into array
+      }
+    }
+    setBasicStartupDetail(allDetails); // Set all fetched details in state
+  };
+
+  // Fetch all startup details when component mounts
+  useEffect(() => {
+    getDetailsAll();
+  }, [startupmails]);
 
   return (
     <div className="Drugp-container">
-      {startupmails.map((item, index) => (
-        <div key={index} className="Drugp-item">
-          <div 
-            onClick={() =>{
-                fetchit(index,item.Email);
-                 toggleDetails(index,item.Email);
-                            
-            }} 
-            className="Drugp-header"
-          >
-            <p className="Drugp-name">{item.name}</p>
-            <p className="Drugp-email">{item.Email}</p>
-          </div>
-          {visibleIndex === index && (
-            <div className="Drugp-details">
-               <div className='Drugp-details-inner'>
-             <div className='Drugp-details-b1'>
-                <p>Address: {maildata.address}</p>
-                <p>City: {maildata.city}</p>
-                <p>Pincode: {maildata.pinCode}</p>
-                <p>District: {maildata.district}</p>
-                <p>State: {maildata.state}</p>
-                </div>
+      {startupmails.map((eachemailobj, index) => {
+        const details = basicStartupDetail[index]; // Fetch the details based on the index
+
+        return (
+          <div key={index} className="Drugp-item">
+            <div
+              onClick={() => toggleDetails(index)}
+              className="Drugp-header"
+            >
+              <p className="Drugp-name"> 
+                {details ? details.companyName : 'Loading...'} 
+              </p>
+              <p className="Drugp-email">
+                {eachemailobj.Email_ID}
+              </p>
+            </div>
+
+            {/* Render details if visible */}
+            {visibleIndex === index && details && (
+              <div className="Drugp-details">
+                <div className='Drugp-details-inner'>
+                  <div className='Drugp-details-b1'>
+                    <p>Address: {details.address}</p>
+                    <p>City: {details.city}</p>
+                    <p>Pincode: {details.pinCode}</p>
+                    <p>District: {details.district}</p>
+                    <p>State: {details.state}</p>
+                  </div>
                 </div>
                 <div className='Drugp-details-buttons'>
-                <button 
-                className='Drugp-btn-assign'
-                onClick={() => alert(`Notification sent to drug inspector for ${item.name}`)}
-              >
-               Accept
-              </button>
-              <button className='Drugp-btn-reject'>
-                Reject
-              </button>
+                  <button 
+                    className='Drugp-btn-assign'
+                    onClick={() => alert(`Notification sent to drug inspector`)}
+                  >
+                    Accept
+                  </button>
+                  <button className='Drugp-btn-reject'>
+                    Reject
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+            )}
+          </div>
+        ); // Close return block for this item
+      })} {/* Close the .map() function */}
+    </div> // Close Drugp-container div
   );
-}
+} // Close PrintdrugList component
 
-export default PrintauthorList;
+export default PrintdrugList;

@@ -6,18 +6,39 @@ export default function Inscommunication({email}) {
     const [clicks, setClicks] = useState(false);
     const [feedback,setFeedback]=useState('');
 
-    useEffect(()=>{
-      const response = axios.post("http://localhost:5002/api/StartupFeedback-get",{email});
-      setFeedback(response.feedback);
-      const isnotifyResponse = axios.post("/StartupFeedback-get",{email});
-      setIsEnabled(isnotifyResponse.isNotifyEligible);//finished is example varibale plz modify it.
+    useEffect( ()=>{
+     const getit =async()=>{
+       try{
+        console.log("the start");
+        const Email = email;
+      const response = await axios.post("http://localhost:5002/api/StartupFeedback-get",{Email});
+      setFeedback(response.data.feedback);
+      console.log("enableeeeeeeeeeeee \n\n\n\n ",isEnabled);  
+      const Email_ID = email;
+      const isnotifyResponse = await axios.post("http://localhost:5002/api/isNotifyEligible",{Email_ID});
+      console.log("enableeeeeeeeeeeee  ",isEnabled);  
+      setIsEnabled(isnotifyResponse.data.success);//finished is example varibale plz modify it.
+    console.log("enableeeeeeeeeeeee  ",isEnabled);  
+    }
+    catch(error){
+        console.log(error);
+      }
+    }
+    getit();
+
     },[])
   
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
       e.preventDefault();
-      const NotificationMsgData=null;
+      const NotificationMsgData=e.target.elements.sendmail.value;
+      // console.log(NotificationMsgData)
       const Startup_Email =email;
-      const response = axios.post("http://localhost:5002/api/LA-Notificationpost",{Startup_Email,NotificationMsgData});  
+      const response =await axios.post("http://localhost:5002/api/LA-Notificationpost",{Startup_Email,NotificationMsgData}); 
+      if(response.data.success){
+        alert("Successfully notified the licensing authority !");
+      } else{
+        alert("Failed to notify the licensing authority !");
+      }
       setIsEnabled(false);
       setClicks(false);  
 
@@ -25,12 +46,10 @@ export default function Inscommunication({email}) {
     };
   
     function isclicked() {
-      if (!isEnabled) {
-        setClicks(true);
-        setIsEnabled(true);
-      }
-      console.log(clicks);
-      console.log(isEnabled);
+    if(isEnabled)
+    {
+      setClicks(true);
+    }
     }
   return (
    <>
@@ -51,8 +70,8 @@ export default function Inscommunication({email}) {
 
     {isEnabled && clicks && (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="What do you wanna say to the inspector ?" className="input-field" />
-            <button type="submit" className="submit-button">Submit</button>
+            <input type="text" name="sendmail" placeholder="What do you wanna say to the inspector ?" className="input-field" />
+            <button type="submit"  className="submit-button">Submit</button>
         </form>
     )}
 </div>

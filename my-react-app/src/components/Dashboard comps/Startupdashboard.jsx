@@ -29,7 +29,7 @@ export default function Startupdashboard() {
    let token= values.get('token');
    const [activeTab, setActiveTab] = useState('Status');
    useEffect(()=>{
-    const fetch_it = async(e)=>{;
+    const fetch_it = async(e)=>{
         try {
             const response = await axios.post('http://localhost:5002/api/tokenverify', 
                 {token}, { // parsing the token as a JSON file

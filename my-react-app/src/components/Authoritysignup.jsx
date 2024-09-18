@@ -23,7 +23,7 @@ const [selectedFile, setSelectedFile] = useState(null); // State to store the se
           // empty the district list
           setDistrictsList([]);
            }
-      },[Licensedata.state]);
+      },[Licensedata.State]);
 
       const [validations, setValidations] = useState({
         lowercase: false,
@@ -93,33 +93,17 @@ const handleFileChange = (e) => {
       
         // Prepare form data
   const formData = new FormData();
-
-  // Append all form fields
-  formData.append("name", Licensedata.name);
-  formData.append("Email_ID", Licensedata.Email_ID);
-  formData.append("password", Licensedata.password);
-  formData.append("mobile_no", Licensedata.mobile_no);
-  formData.append("designation", Licensedata.designation);
-  formData.append("Qualification", Licensedata.Qualification);
-  formData.append("OrderReferenceNo", Licensedata.OrderReferenceNo);
-  formData.append("OrderDate", Licensedata.OrderDate);
-  formData.append("State", Licensedata.State);
-  formData.append("district", Licensedata.district);
-
   // Append the PDF file (OrderPdfCopy)
-  formData.append("OrderPdfCopy", selectedFile); // Append the selected file
-
+  formData.append("pdf", selectedFile); // Append the selected file
+  formData.append("Email_ID",Licensedata.Email_ID)
   try {
-    const response = await axios.post(
-      "http://localhost:5002/api/licensingAuthority-reg",
+    const response = await axios.post("http://localhost:5002/api/upload-pdf",
       formData,
       {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-      }
-    );
-
+      } );
     if (response.data.success) {
       console.log("Successfully signed up!", response.data);
     } else {
@@ -128,6 +112,24 @@ const handleFileChange = (e) => {
   } catch (error) {
     console.error("Error during signup:", error);
   }
+
+  try{
+    console.log(Licensedata.Email_ID);
+    
+    const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
+    if(response.data.success)
+    {
+      alert("Successfully Signed in!");
+      window.location.href = `/login?value=${"authority"}`;
+    }
+    else{
+      alert("Please Try again")
+    }
+  }
+  catch (error) {
+   console.log(error);
+}
+
 };
   
   
@@ -140,7 +142,7 @@ const handleFileChange = (e) => {
               headers: {
                   'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ stateName : Licensedata.state}),
+              body: JSON.stringify({ stateName : Licensedata.State}),
           });
 
           if (!response.ok) {
@@ -169,8 +171,8 @@ const handleFileChange = (e) => {
       <input type="text" name="name" onChange={handleChange} className=" authority-sign-input" /><br />
       
       <label className="  authority-sign-label">Enter the Email:</label> 
-      <input type="email" name="email" onChange={handleChange} className=" authority-sign-input" /><br />
-
+      <input type="email" name="Email_ID" onChange={handleChange} className=" authority-sign-input" /><br />
+      <p>{Licensedata.Email_ID}</p>
       <label className=" authority-sign-label">Enter the password:</label>  
       <input type="password" name="password" onChange={handleChange} className=" authority-sign-input" /><br />
 
@@ -212,7 +214,7 @@ const handleFileChange = (e) => {
 
        
       <label className=" authority-sign-label">Enter the state:</label> 
-      <select value={Licensedata.state} name="state" onChange={handleChange} className="authority-sign-input">
+      <select value={Licensedata.State} name="State" onChange={handleChange} className="authority-sign-input">
                 <option value="" disabled>Select a state</option>
                 {indian_states.map((state, index) => (
                     <option key={index} value={state}>

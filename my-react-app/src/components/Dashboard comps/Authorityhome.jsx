@@ -7,93 +7,156 @@ import '../styles/Authorityhomee.css';
 export default function Authorityhome({email}) {
 
 
-    // const [pendingStartupData, setpendingStartupData ] = useState([]);
-    // const  [ assignedStartupData, setassignedStartupData  ] = useState([]);
-    // const [acceptedStartupData, setacceptedStartupData ] = useState([]);
-    // const [licensedStartupData,setlicensedStartupData ] = useState([]);
-    // const [rejectedStartupData,setrejectedStartupData ] = useState([]);
-    const pendingfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" }
-    ];
-    const assignedfaqData = [
-    {Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
-    const acceptedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" }
-    ];
-    const licensedfaqData = [
-     {Email:"giri@gmail.com" },{Email:"venu@gmail.com"},
-    ];
-    const rejectedfaqData = [
-      {Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
-    ];
+    const [pendingStartupEmails, setpendingStartupEmails ] = useState([]);
+    const  [ assignedStartupEmails, setassignedStartupEmails  ] = useState([]);
+    const [acceptedStartupEmails, setacceptedStartupEmails ] = useState([]);
+    const [licensedStartupEmails,setlicensedStartupEmails ] = useState([]);
+    const [rejectedStartupEmails,setrejectedStartupEmails ] = useState([]);
 
-    useEffect(()=>{   // retrieve those datas
-         const fetchit= async(e)=>{
-           try{
-                const pendingresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false'); // get isDrugInspectorAssigned or not
-                    const pendingretrieved  = pendingresponse.data.success;       
-                    if (pendingretrieved) {
-                    console.log("pending startups exists ");
-                    setpendingStartupData(pendingresponse.data.pendingList);
-                    }
-
-                const assignedresponse = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true'); // get isDrugInspectorAssigned or not
-                    const assignretrieved  = assignedresponse.data.success;       
-                    if (assignretrieved) {
-                    console.log("pending startups exists ");
-                    setassignedStartupData(assignedresponse.data.assignedList);
-                    }    
-                
-                const acceptedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true'); // get isDrugInspectorAccepted or not
-                    const acceptedretrieved  = acceptedresponse.data.success;       
-                    if (acceptedretrieved) {
-                    console.log("pending startups exists ");
-                    setacceptedStartupData(acceptedresponse.data.acceptedList);
-                    }    
-  
-                const rejectedresponse= await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-false'); // get isDrugInspectorAccepted or not
-                const rejectedretrieved  = rejectedresponse.data.success;       
-                if (rejectedretrieved) {
-                console.log("pending startups exists ");
-                setrejectedStartupData(rejectedresponse.data.rejectedList);
-                }    
-
-                const licensedresponse= await axios.get('http://localhost:5002/api/isLicensed-true'); // get isDrugInspectorAccepted or not
-                const licensedretrieved  = licensedresponse.data.success;       
-                if (licensedretrieved) {
-                console.log("pending startups exists ");
-                setlicensedStartupData(licensedresponse.data.licensedList);
-                }    
-           
-       }catch (resp) {
-            if (resp.response && resp.response.data) { // Logging the actual error message from the response
-              alert("Message: " + resp.response.data.message);
-            } else { // Fallback if the response doesn't contain the expected data
-              alert("An error occurred at backend. Server might be down.");
-            }
-            console.log("Error is", resp); // Log the full error object for debugging
+    useEffect(() => { // pending
+      const fetchpendingEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false');
+          if(response.data.success && response.data.pendingList.length > 0) {
+            setpendingStartupEmails(response.data.pendingList);
+          } else {
+            setpendingStartupEmails([]); // Set to empty if no emails found
           }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setpendingStartupEmails([]);
+        }
+      };
+  
+      fetchpendingEmails();
+    }, []); 
 
-    }
-  fetchit();
-  },[]);
+    useEffect(() => { // assigned
+      const fetchassignedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-ture');
+          if(response.data.success && response.data.assignedList.length > 0) {
+            setassignedStartupEmails(response.data.assignedList);
+          } else {
+            setassignedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setassignedStartupEmails([]);
+        } 
+      };
+  
+      fetchassignedEmails();
+    }, []); 
 
+    useEffect(() => { // accepted
+      const fetchacceptedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true');
+          if(response.data.success && response.data.acceptedList.length > 0) {
+            setacceptedStartupEmails(response.data.acceptedList);
+          } else {
+            setacceptedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setacceptedStartupEmails([]);
+        } 
+      };
+  
+      fetchacceptedEmails();
+    }, []); 
+
+    useEffect(() => { // rejected
+      const fetchrejectedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          if(response.data.success && response.data.rejectedList.length > 0) {
+            setrejectedStartupEmails(response.data.rejectedList);
+          } else {
+            setrejectedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setrejectedStartupEmails([]);
+        } 
+      };
+  
+      fetchrejectedEmails();
+    }, []); 
+
+    useEffect(() => { // licensed
+      const fetchlicensedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          if(response.data.success && response.data.licensedList.length > 0) {
+            setlicensedStartupEmails(response.data.licensedList);
+          } else {
+            setlicensedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setlicensedStartupEmails([]);
+        } 
+      };
+  
+      fetchlicensedEmails();
+    }, []); 
 
   return (
   <>  
   <h1>StartupInformation</h1>
        <p className='auth-hm'>Pending</p>
-        < PrintauthorList StartupData={pendingfaqData} type={'pending'}/>
+        <div>
+     { pendingStartupEmails.length === 0 ? (
+        <h1>No emails found</h1>
+      ):(
+        < PrintauthorList StartupEmails={pendingStartupEmails} 
+        type={'pending'}/>
+      )
+      }
+    </div>
         <p className='auth-hm'>Assigned</p>
-        < PrintauthorList StartupData={assignedfaqData}type={'assigned'} />
+        <div>
+     { assignedStartupEmails.length === 0 ? (
+        <h1>No emails found</h1>
+      ):(
+        < PrintauthorList StartupEmails={assignedStartupEmails} 
+        type={'assigned'}/>
+      )
+      }
+    </div>
         <p className='auth-hm'>Accepted</p>
-        < PrintauthorList StartupData={acceptedfaqData}type={'accepted'} />
+        <div>
+     { acceptedStartupEmails.length === 0 ? (
+        <h1>No emails found</h1>
+      ):(
+        < PrintauthorList StartupEmails={acceptedStartupEmails} 
+        type={'accepted'}/>
+      )
+      }
+    </div>
         <p className='auth-hm'>Licensed</p>
-        < PrintauthorList StartupData={licensedfaqData} type={'licensed'}/>
+
+        <div>
+     { licensedStartupEmails.length === 0 ? (
+        <h1>No emails found</h1>
+      ):(
+        < PrintauthorList StartupEmails={licensedStartupEmails} 
+        type={'licensed'}/>
+      )
+      }
+    </div>
         <p className='auth-hm'>Rejected</p>
-        < PrintauthorList StartupData={rejectedfaqData} type={'rejected'}/>
-          
+        <div>
+     { rejectedStartupEmails.length === 0 ? (
+        <h1>No emails found</h1>
+      ):(
+        < PrintauthorList StartupEmails={rejectedStartupEmails} 
+        type={'rejected'}/>
+      )
+      }
+    </div>
   </>
   )
 }
