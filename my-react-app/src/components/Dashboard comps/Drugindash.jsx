@@ -88,7 +88,9 @@ useEffect(()=>{
    return (
     <>
     <Header/>
+    <div id="drug-dash-id"> 
     <p className='drug-dash-head'>DrugInspector Dashboard</p>
+    </div>
     <PrintdrugList startupmails={startUpEmails}/>
     </>
   )

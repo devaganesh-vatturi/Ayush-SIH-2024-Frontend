@@ -127,6 +127,7 @@ function Doctorsignup() {
     return ( 
       <>
       <Header/>
+      <div id="doctor-sign-id"> 
       <div className=" doctor-sign-head1">
           <div className=" doctor-sign-head2">
           <p className="doctor-sign-para">Doctorsignup Details</p>
@@ -190,6 +191,7 @@ function Doctorsignup() {
       {passerror&&<p className="doctor-sign-error">{passerror}</p>}
       <button className="doctor-sign-button">submit</button>
     </form>
+    </div>
     <Footer/>
     </>
     );

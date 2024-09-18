@@ -77,6 +77,7 @@ export default function Authoritydash() {
   return (
     <>
     <Header/>
+    <div id="authority-dash-id"> 
     <p className='drug-head'>Authority Desk!</p>
     <div className='drug-main'>
         <div className='drug-main-first'>
@@ -86,6 +87,7 @@ export default function Authoritydash() {
         <div>
         <Logout/> 
         </div>
+    </div>
     </div>
    {
      drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) : (null)

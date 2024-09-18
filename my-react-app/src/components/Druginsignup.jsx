@@ -114,7 +114,7 @@ function Druginsignup(){
     return (
       <>
       <Header/>
-      <form onSubmit={handleSubmit}>
+      <form id="Drug-sign-id" onSubmit={handleSubmit}>
       <div className=" Drug-sign-head1">
           <div className=" Drug-sign-head2">
           <p className="Drug-sign-para">Drugs Inspector Registration Form </p>
