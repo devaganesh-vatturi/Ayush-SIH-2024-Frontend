@@ -138,7 +138,7 @@ function Startupsignup() {
     return ( 
       <>
       <Header/>
-      <form onSubmit={onSubmit}>
+      <form id="startup-form" onSubmit={onSubmit}>
         <div className="start-up-head1">
           <div className="start-up-head2">
           <p className="start-up-para">Startupsignup Details</p>

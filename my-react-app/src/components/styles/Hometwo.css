@@ -23,7 +23,7 @@ body{
     margin-top:10px;
     display:grid;
     position: relative;
-    bottom: 50px;
+    bottom: 40px;
    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
    gap:15px;
    justify-content: center;

@@ -8,9 +8,13 @@
     padding-right: 100px;
     background-color: gray;
 }
+#startup-form{
+   padding-top:100px;
+}
+
 
 .start-up-container {
-  max-width: 400px;
+  width: 600px;
   margin: 40px auto;
   margin-top: 0;
   padding: 40px;
@@ -23,6 +27,8 @@
 .start-up-para{
 margin-bottom: 20px;
 font-weight: bold ;
+  width:460px;
+  padding:10px;
 font-size: 30px;
   margin-bottom: 0;
  text-align: center;
