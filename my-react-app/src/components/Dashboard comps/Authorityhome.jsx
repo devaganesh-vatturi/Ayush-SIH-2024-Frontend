@@ -13,19 +13,19 @@ export default function Authorityhome({email}) {
     // const [licensedStartupData,setlicensedStartupData ] = useState([]);
     // const [rejectedStartupData,setrejectedStartupData ] = useState([]);
     const pendingfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" }
     ];
     const assignedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+    {Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
     ];
     const acceptedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" }
     ];
     const licensedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+     {Email:"giri@gmail.com" },{Email:"venu@gmail.com"},
     ];
     const rejectedfaqData = [
-      {Email:"raj@gmail.com"},{Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
+      {Email:"giri@gmail.com" },{Email:"venu@gmail.com"},{Email:"venkat@gmail.com"},
     ];
 
     useEffect(()=>{   // retrieve those datas

@@ -1,7 +1,5 @@
-import React from 'react'
 import '../styles/Footer.css';
-import Logout from '../Dashboard comps/Logout';
-export default function Footer() {
+function Footer() {
   return (
     <div className='footer'>
     <p id='footer-description'>License Portal for Ayurveda, Yoga & Naturopathy, Unani, Siddha, and Homoeopathy</p>
@@ -11,3 +9,4 @@ export default function Footer() {
    
   )
 }
+export default Footer;

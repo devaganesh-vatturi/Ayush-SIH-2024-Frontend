@@ -4,9 +4,8 @@ import Authoritynotification from './Authoritynotfication';
 import Header from '../Header';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-
 import '../styles/Authoritydash.css';
-import Footer from '../styles/Footer';
+import Footer from './Footer';
 import Logout from './Logout';
 
 export default function Authoritydash() {

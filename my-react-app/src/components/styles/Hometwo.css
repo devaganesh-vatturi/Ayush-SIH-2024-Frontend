@@ -16,24 +16,14 @@ body{
     transform:scale(1.05);
     cursor: pointer;
 }
-.home-head p{
-    font-size:1.5rem;
-}
-.home-head button{
-    border:none;
-    background-color: aqua;
-    border-radius:5px;
-    width:90px;
-    font-weight:bold;
-    height: 50px;
-    margin-right:10px;
-}
 /* main section */
 .home-two-main{
     min-height: 500px;         
     max-height: 1000px;
     margin-top:10px;
     display:grid;
+    position: relative;
+    bottom: 50px;
    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
    gap:15px;
    justify-content: center;

@@ -3,7 +3,7 @@ import React,{ useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");

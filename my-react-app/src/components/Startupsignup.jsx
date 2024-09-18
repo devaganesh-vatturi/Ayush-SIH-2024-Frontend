@@ -4,7 +4,7 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
-import Footer from './styles/Footer';
+import Footer from './Dashboard comps/Footer';
 
 function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
