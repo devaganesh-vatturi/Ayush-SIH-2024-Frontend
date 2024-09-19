@@ -16,7 +16,7 @@ export default function Header() {
       <div className='home-img'>
       </div>
       
-    <p className='home-name' onClick={gohome}>Aayush 2.0</p>
+    <p className='home-name' onClick={gohome}>Ayush 2.0</p>
     </div>
     <button className='heads-button' onClick={gochatbot}>Chat Bot</button>
    </div>

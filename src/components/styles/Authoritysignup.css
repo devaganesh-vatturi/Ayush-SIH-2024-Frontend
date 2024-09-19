@@ -9,10 +9,6 @@
     width:720px;
     background-color: gray;
 }
-
-#authority-sign-id{
-  padding-top: 150px;
-}
 .authority-sign-container {
   width: 700px;
   margin: 40px auto;
@@ -69,3 +65,16 @@ font-size: 25px;
  .authority-sign-error{
   color: red;
  }
+.author-flex{
+  display: flex;
+  flex-direction: row;
+  padding-top: 90px;
+}
+#author-pic{
+  height:90vh;
+  width:25vw;
+  position: fixed;
+}
+#authority-sign-id{
+  padding-left: 600px;
+}

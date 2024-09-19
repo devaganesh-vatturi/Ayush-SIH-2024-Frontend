@@ -1,12 +1,14 @@
 .Login-container {
-  max-width: 30%;
+  width:30vw;
   margin: 40px auto;
   padding: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.login-total{
+  height:100%;
+}
 .Login-label {
   display: block;
   margin-bottom: 0;
@@ -49,4 +51,17 @@ font-size: 3rem;
 }
 .Login-error{
    color:red;
+}
+.login-flex{
+  display: flex;
+  flex-direction: row;
+  padding-top: 90px;
+}
+#login-form{
+   padding-left:600px;
+}
+#login-img{
+  height:90vh;
+  width:25vw;
+  position: fixed;
 }

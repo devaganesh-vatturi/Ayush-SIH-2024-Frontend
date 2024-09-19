@@ -1,12 +1,9 @@
-.image-mainss{
-  display: flex;
-  justify-content: center;
-}
+
 .slideshow-container {
     position: relative;
     width: 100vw; /* Full viewport width */
     height: 60vh; /* Full viewport height */
-    padding-top:100px;
+    padding-top:90px;
     overflow: hidden;
     display: flex;
     justify-content: center;

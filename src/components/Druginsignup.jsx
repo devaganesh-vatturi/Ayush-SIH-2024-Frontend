@@ -3,6 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
+import drugpic from '../assets/logindrug.jpg';
 // import Footer from './Dashboard comps/Footer';
 function Druginsignup(){
   const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
@@ -147,6 +148,8 @@ function Druginsignup(){
     return (
       <>
       <Header/>
+      <div className='drug-flex'>
+        <img src={drugpic} id="drug-pic"/>
       <form id="Drug-sign-id" onSubmit={handleSubmit}>
       <div className=" Drug-sign-head1">
           <div className=" Drug-sign-head2">
@@ -236,6 +239,7 @@ function Druginsignup(){
    
     </form>
     {/* <Footer/> */}
+    </div>
     </>
     );
 }
