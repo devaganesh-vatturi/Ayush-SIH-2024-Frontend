@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Dashboard comps/Footer';
+import authorpic from '../assets/loginauthority.jpg';
 function  Authoritysignup() {
   const [Licensedata, setLicensedata] = useState(
     {name:"",Email_ID:"" ,password:"",mobile_no:"",designation:"", Qualification:"",OrderReferenceNo:""
@@ -158,7 +159,10 @@ const handleFileChange = (e) => {
 
     return (
       <>
+
       <Header/>
+      <div className='author-flex'>
+        <img src={authorpic} id="author-pic"/>
       <form id="authority-sign-id" onSubmit={handleSubmit}>
       <div className="authority-sign-head1">
           <div className="authority-sign-head2">
@@ -246,7 +250,7 @@ const handleFileChange = (e) => {
     </div>
    
     </form>
-    <Footer/>
+    </div>
     </>
     );
 }

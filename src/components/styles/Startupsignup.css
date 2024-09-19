@@ -8,9 +8,6 @@
     padding-right: 100px;
     background-color: gray;
 }
-#startup-form{
-   padding-top:100px;
-}
 
 
 .start-up-container {
@@ -120,4 +117,17 @@ font-size: 30px;
 
 .start-up-error{
   color:rgb(173, 23, 23)
+}
+.start-flex{
+  display: flex;
+  flex-direction: row;
+  padding-top: 90px;
+}
+#start-pic-id{
+  height:90vh;
+  width:25vw;
+  position: fixed;
+}
+#startup-form{
+  padding-left: 650px;
 }

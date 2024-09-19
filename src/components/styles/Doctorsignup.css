@@ -9,9 +9,6 @@
     background-color: gray;
     width:570px;
 }
-#doctor-sign-id{
-  padding-top: 100px;
-}
 .doctor-sign-container {
   width: 700px;
   margin: 40px auto;
@@ -123,4 +120,16 @@
 #success-text{
   color:green;
 }
-
+#doctor-pic{
+  height:90vh;
+  width:25vw;
+  position: fixed;
+}
+.doctor-flex{
+  display: flex;
+  flex-direction: row;
+  padding-top: 90px;
+}
+#doctor-sign-id{
+  padding-left: 600px;
+}

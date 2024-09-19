@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Dashboard comps/Footer';
-
+import startuppic from '../assets/loginstartup.jpg';
 function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
     {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
@@ -138,6 +138,8 @@ function Startupsignup() {
     return ( 
       <>
       <Header/>
+      <div className='start-flex'>
+        <img src={startuppic} id='start-pic-id'/>
       <form id="startup-form" onSubmit={onSubmit}>
         <div className="start-up-head1">
           <div className="start-up-head2">
@@ -210,7 +212,7 @@ function Startupsignup() {
     </div>
    
     </form>
-    <Footer/>
+    </div>
     </>
     );
 }

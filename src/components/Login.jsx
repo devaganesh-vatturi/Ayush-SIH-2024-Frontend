@@ -1,13 +1,17 @@
 import './styles/Login.css';
-import React,{ useState } from 'react';
+import React,{ useState,useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
-import Footer from './Dashboard comps/Footer';
+import doctorpic from '../assets/logindoctor.jpg';
+import startuppic from '../assets/loginstartup.jpg';
+import farmerpic from '../assets/loginfarmer.jpg';
+import drugpic from '../assets/logindrug.jpg';
+import authorpic from '../assets/loginauthority.jpg';
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
-
+  const [replacepic, setreplacepic] = useState();
   const params=useLocation();
   let value=new URLSearchParams(params.search);
   let usertype=value.get('value');
@@ -59,10 +63,24 @@ const handelSubmit =async(e)=>{
   }
  
 }
- 
+useEffect(() => {
+  
+ if(usertype==='doctor')
+   setreplacepic(doctorpic);
+ else if(usertype==='druginspector') 
+   setreplacepic(drugpic);
+ else if(usertype==='farmer') 
+   setreplacepic(farmerpic);
+  else if(usertype==='authority')
+    setreplacepic(authorpic);
+ else if(usertype==='startup')
+    setreplacepic(startuppic); 
+}, []);
   return(
-      <>
+      <div className='login-total'>
       <Header/>
+      <div className='login-flex'>
+        <img src={replacepic} id='login-img'/>
       <form id='login-form'onSubmit={handelSubmit}>
 
         <div className="Login-container">
@@ -79,8 +97,9 @@ const handelSubmit =async(e)=>{
        
       </div>
       </form>
-      <Footer/>
-      </>
+      </div>
+
+      </div>
     );
 }
 export default Login;

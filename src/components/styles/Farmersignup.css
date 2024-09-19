@@ -10,9 +10,6 @@
       width:640px;
   }
 
-  #farmer-sign-id{
-    padding-top: 100px;
-  }
   .farmer-sign-container {
     width: 700px;
     margin: 40px auto;
@@ -70,4 +67,18 @@
    .farmer-sign-error{
     color:red;
    }
+   .farmer-flex{
+      display: flex;
+      flex-direction: row;
+      padding-top: 90px;
+   }
+   #farmer-login-pic{
+    height:90vh;
+    width:30vw;
+    position: fixed;
+   }
+   #farmer-sign-id{
+    padding-left: 600px;
+   }
+   
   

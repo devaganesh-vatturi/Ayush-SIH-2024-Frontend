@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Dashboard comps/Footer';
-
+import doctorpic from '../assets/logindoctor.jpg';
 function Doctorsignup() {
   const [doctordata, setDoctordata] = useState(
     {name:"",Email_ID:"",password:"",district:"",state:"",phone_number:"" });
@@ -162,6 +162,8 @@ function Doctorsignup() {
     return ( 
       <>
       <Header/>
+      <div className='doctor-flex'>
+        <img src={doctorpic} id="doctor-pic"/>
       <div id="doctor-sign-id"> 
       <div className=" doctor-sign-head1">
           <div className=" doctor-sign-head2">
@@ -251,7 +253,8 @@ function Doctorsignup() {
       <button className="doctor-sign-button">submit</button>
     </form>
     </div>
-    <Footer/>
+    </div>
+
     </>
     );
 }

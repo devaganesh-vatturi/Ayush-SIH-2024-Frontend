@@ -3,6 +3,7 @@ import React,{ useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
+import drugpic from '../assets/logindrug.jpg';
 // import Footer from './Dashboard comps/Footer';
 
 function Druginsignup(){
@@ -231,6 +232,8 @@ const handleFileChange = (e) => {
     return (
       <>
       <Header/>
+      <div className='drug-flex'>
+        <img src={drugpic} id="drug-pic"/>
       <form id="Drug-sign-id" onSubmit={handleSubmit}>
       <div className=" Drug-sign-head1">
           <div className=" Drug-sign-head2">
@@ -320,6 +323,7 @@ const handleFileChange = (e) => {
    
     </form>
     {/* <Footer/> */}
+    </div>
     </>
     );
 }
