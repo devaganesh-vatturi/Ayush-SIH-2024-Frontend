@@ -4,7 +4,9 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 // import Footer from './Dashboard comps/Footer';
+
 function Druginsignup(){
+
   const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
   const [districtsList, setDistrictsList] = useState([]);
   const [drugindata, setDrugindata] = useState(
@@ -15,6 +17,9 @@ function Druginsignup(){
     const [guidelines, setGuidelines] = useState(null);
     const [errors, setErrors] = useState({ quality: false, guidelines: false });
     const [pdfissubmited, setpdfissubmited] = useState();
+  
+    const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
+
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -69,6 +74,53 @@ function Druginsignup(){
       //     setPhnerror("");
       }
     
+          const  doVerifyQuality = async(formData)=>
+        {
+          try {
+            const response = await axios.post("http://localhost:5002/api/quality-check",
+              formData,
+              {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              } );
+            if (response.data.success) {
+              console.log("verified true quaility! ");
+              return true; // return it
+            } else {
+              console.error("Signup failed", response.data);
+              return false;
+            }
+          } catch (error) {
+            console.error("Error during signup:", error);
+          }
+        } 
+
+        const  doVerifyGuidlines = async(formData)=>
+          {
+            try {
+              const response = await axios.post("http://localhost:5002/api/guideline-check",
+                formData,
+                {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                } );
+              if (response.data.success) {
+                console.log("verified true quaility! ");
+                return true; // return it
+              } else {
+                console.error("Signup failed", response.data);
+                return false;
+              }
+            } catch (error) {
+              console.error("Error during signup:", error);
+            }
+          } 
+// Handle file upload (for the PDF)
+const handleFileChange = (e) => {
+  setSelectedFile(e.target.files[0]); // Store the selected file in state
+};
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
@@ -77,6 +129,38 @@ function Druginsignup(){
           passvalid=true;
         }
         passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+
+
+        // Prepare form data
+  const formData = new FormData();
+  // Append the PDF file (OrderPdfCopy)
+  formData.append("pdf", selectedFile); // Append the selected file
+
+  const isGoodQuality = await doVerifyQuality(formData);
+
+  const isFollowedGuidelines = await doVerifyGuidlines(formData);
+
+  formData.append("Email_ID",drugindata.Email_ID)
+  
+
+  try {
+    const response = await axios.post("http://localhost:5002/api/upload-pdf",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      } );
+    if (response.data.success) {
+      console.log("Successfully signed up!", response.data);
+    } else { 
+      console.error("Signup failed", response.data);
+    }
+  } catch (error) {
+    console.error("Error during signup:", error);
+  }
+
+
         try{
         const response= await axios.post("http://localhost:5002/api/drugInspector-reg",drugindata);
         if(response.data.success)
@@ -157,8 +241,8 @@ function Druginsignup(){
            
       <label className="Drug-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" />
-      <label className="doctor-sign-label">Upload your University Docterate Certificate :</label>
-      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handleChange}/>
+      <label className="doctor-sign-label">Upload your Allotment Letter :</label>
+      <input type="file" accept=".pdf" className=" Drug-sign-input" onChange={handleFileChange}/>
       <button
         onClick={checkQuality}
         className={`verify-btn ${quality === null ? "bg-black" : quality ? "bg-green" : "bg-red"}`}

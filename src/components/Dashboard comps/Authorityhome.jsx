@@ -34,7 +34,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // assigned
       const fetchassignedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-ture');
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true');
           if(response.data.success && response.data.assignedList.length > 0) {
             setassignedStartupEmails(response.data.assignedList);
           } else {
@@ -70,7 +70,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // rejected
       const fetchrejectedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorRejected-true');
           if(response.data.success && response.data.rejectedList.length > 0) {
             setrejectedStartupEmails(response.data.rejectedList);
           } else {
@@ -88,7 +88,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // licensed
       const fetchlicensedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          const response = await axios.get('http://localhost:5002/api/isLicensed-true');
           if(response.data.success && response.data.licensedList.length > 0) {
             setlicensedStartupEmails(response.data.licensedList);
           } else {
@@ -111,7 +111,7 @@ export default function Authorityhome({email}) {
      { pendingStartupEmails.length === 0 ? (
         <h1>No emails found</h1>
       ):(
-        < PrintauthorList StartupEmails={pendingStartupEmails} 
+        < PrintauthorList startupmails={pendingStartupEmails} 
         type={'pending'}/>
       )
       }
@@ -121,7 +121,7 @@ export default function Authorityhome({email}) {
      { assignedStartupEmails.length === 0 ? (
         <h1>No emails found</h1>
       ):(
-        < PrintauthorList StartupEmails={assignedStartupEmails} 
+        < PrintauthorList startupmails={assignedStartupEmails} 
         type={'assigned'}/>
       )
       }
@@ -131,7 +131,7 @@ export default function Authorityhome({email}) {
      { acceptedStartupEmails.length === 0 ? (
         <h1>No emails found</h1>
       ):(
-        < PrintauthorList StartupEmails={acceptedStartupEmails} 
+        < PrintauthorList startupmails={acceptedStartupEmails} 
         type={'accepted'}/>
       )
       }
@@ -142,7 +142,7 @@ export default function Authorityhome({email}) {
      { licensedStartupEmails.length === 0 ? (
         <h1>No emails found</h1>
       ):(
-        < PrintauthorList StartupEmails={licensedStartupEmails} 
+        < PrintauthorList startupmails={licensedStartupEmails} 
         type={'licensed'}/>
       )
       }
@@ -152,7 +152,7 @@ export default function Authorityhome({email}) {
      { rejectedStartupEmails.length === 0 ? (
         <h1>No emails found</h1>
       ):(
-        < PrintauthorList StartupEmails={rejectedStartupEmails} 
+        < PrintauthorList startupmails={rejectedStartupEmails} 
         type={'rejected'}/>
       )
       }
