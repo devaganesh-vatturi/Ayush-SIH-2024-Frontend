@@ -3,7 +3,7 @@ function Footer() {
   return (
     <div className='footer'>
     <p id='footer-description'>License Portal for Ayurveda, Yoga & Naturopathy, Unani, Siddha, and Homoeopathy</p>
-    <p> &copy; All rights reserved Code Commandos Team</p>
+    <p> &copy; 2024 Team Code Commandoes </p>
    
     </div>
    

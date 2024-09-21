@@ -54,7 +54,7 @@ function Home()
         { question: "What support is provided by the Ministry of AYUSH to startups?", answer: "The Ministry of AYUSH provides a variety of support mechanisms, including mentorship, incubation support, and financial assistance for startups focusing on traditional medicine and wellness." },
       ];
 
-      
+
     return(
         <div className='the-home'>
        <Header/>
@@ -62,19 +62,19 @@ function Home()
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>
-               <p>Startup Applicant</p>
+               <p id="type-title">Startup Applicant</p>
                <button id="home-main-signin" onClick={goStartup} >Sign Up</button>
                <button id="home-main-login" onClick={startupLogin}>Login</button>
            </div>
            <div className="home-main-auth">
                <img id="home-main-img2" src={authori}/>
-               <p>Licensing Authority</p>
+               <p id="type-title">Licensing Authority</p>
                <button id="home-main-signin" onClick={goauth} >Sign Up</button>
                <button id="home-main-login" onClick={authoriLogin}>Login</button>
            </div>
            <div className="home-main-drug">
                <img id="home-main-img3" src={drugins}/>
-               <p>Drug Inspector</p>
+               <p id="type-title">Drug Inspector</p>
                <button id="home-main-signin" onClick={godrug} >Sign Up</button>
                <button id="home-main-login" onClick={drugLogin}>Login</button>
            </div>

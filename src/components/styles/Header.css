@@ -18,21 +18,22 @@
 .home-name{
 
  
-    color:white;
+    color:rgb(215, 215, 215);
     font-size: 2rem;
     cursor: pointer;
+    font-family: 'Cust-Atmospheric';
 }
 .home-img{
     
-    /* background-image: url("./aushadi_logo.svg"); */
+    background-image: url("./aushadi_logo.svg");
     /* background-size:cover; */
     background-size: cover; /* Ensures the whole image is visible */
     background-repeat: no-repeat;
     border:2px solid pink;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
-    height:90px;
-    width:90px;
+    height:85%;
+    width:80px;
     margin:10px;
 }
 .home-first{

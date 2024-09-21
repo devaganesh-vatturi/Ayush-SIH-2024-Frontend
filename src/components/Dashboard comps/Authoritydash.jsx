@@ -78,7 +78,7 @@ export default function Authoritydash() {
     <>
     <Header/>
     <div id="authority-dash-id"> 
-    <p className='drug-head'>Authority Desk!</p>
+    <p className='drug-head'>Licensing Authority Dashboard</p>
     <div className='drug-main'>
         <div className='drug-main-first'>
         <p className="drug-nav" onClick={gohome}>Home</p>

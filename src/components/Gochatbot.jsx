@@ -7,9 +7,9 @@ export default function Gochatbot() {
     }
   return (
     <div className="home-chatbot">
-              <p>Have more questions than our FAQs ?</p>
-              <button onClick={goaichat}>Click Here</button>
-              <p>to chat with our AI chatbot.</p>
+              <p>Have more questions than our FAQs ? Ask our</p>
+              <button onClick={goaichat}>Ai ChatBot</button>
+              {/* <p>to chat with our AI chatbot.</p> */}
         </div>
   )
 }
