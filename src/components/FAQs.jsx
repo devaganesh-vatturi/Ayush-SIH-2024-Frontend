@@ -11,8 +11,12 @@ const FAQ = (props) => {
     setVisibleAnswerIndex(visibleAnswerIndex === index ? null : index);
   };
 
+  const gradientstyle = {
+    background: 'linear-gradient(109.6deg, rgb(26, 185, 230) 11.3%, rgb(67, 93, 198) 69.9%)',
+  };
+
   return (
-    <div className="faq-container">
+    <div className="faq-container" style={gradientstyle}>
       <h1>Frequently Asked Questions - {props.who}</h1>
       {faqData.map((item, index) => (
         <div key={index}>
