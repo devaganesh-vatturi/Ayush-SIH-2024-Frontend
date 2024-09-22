@@ -6,8 +6,12 @@ function PrintdrugList({ startupmails }) {
 
   const [visibleIndex, setVisibleIndex] = useState(null);
   const [basicStartupDetail, setBasicStartupDetail] = useState([]); // Store details as an array
-
+  const [rejected, setrejected] = useState(false);
+  const [feedback, setFeedback] = useState('');
   // Fetch details for a single startup
+  const handleInputChange = (e) => {
+    setFeedback(e.target.value);  // Update the feedback state as the user types
+  };
   const fetchbasicdetails = async (email) => {
     try {
       console.log("Fetching details for: ", email);
@@ -37,7 +41,13 @@ function PrintdrugList({ startupmails }) {
     }
     setBasicStartupDetail(allDetails); // Set all fetched details in state
   };
-
+  function rejectclick(e)
+  {
+    e.preventDefault();
+    setrejected(true);
+  
+  
+  }
   // Fetch all startup details when component mounts
   useEffect(() => {
     getDetailsAll();
@@ -81,9 +91,22 @@ function PrintdrugList({ startupmails }) {
                   >
                     Accept
                   </button>
-                  <button className='Drugp-btn-reject'>
+                  <button className='Drugp-btn-reject' onClick={rejectclick}>
                     Reject
                   </button>
+                  {rejected && (
+            <><br/>
+              <input 
+                type='text' 
+                name="feedback" 
+                id="feedback-inp"
+                placeholder='Enter feedback'
+                value={feedback}  // Bind the input value to the feedback state
+                onChange={handleInputChange}  // Update state when the input changes
+              />
+              <button onClick={handleSubmit} id="feed-submit">Submit</button>
+            </>
+          )}
                 </div>
               </div>
             )}
