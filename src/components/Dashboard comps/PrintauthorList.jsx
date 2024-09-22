@@ -15,7 +15,9 @@ const fetchfulldetails = async (email) => {
     console.log("Fetching details for: ", email);
     const response = await axios.post('http://localhost:5002/api/startup-dash-retrieval', { Email_ID: email }); 
     if (response.data.success) {
-      return response.data.data; // Return the fetched details
+      console.log("AAAAAAA",response.data.data[0]);
+      
+      return response.data.data[0]; // Return the fetched details
     }
   } catch (error) {
     console.log("Error: ", error);
@@ -47,6 +49,7 @@ const handleInputChange = (e) => {
         allDetails.push(details); // Push fetched details into array
       }
     }
+    console.log(allDetails);
     setfullStartupDetail(allDetails); // Set all fetched details in state
   };
 
@@ -58,7 +61,7 @@ const handleInputChange = (e) => {
   // Toggle the visibility of additional info (phone and district)
   const toggleDetails = (index,email) => {
     setVisibleIndex(visibleIndex === index ? null : index);
-    console.log(email);
+
   };
 
   return (

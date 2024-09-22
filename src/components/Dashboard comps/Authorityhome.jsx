@@ -16,7 +16,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // pending
       const fetchpendingEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-false');
+          const response = await axios.get('http://localhost:5002/api/isfilledapplication-false');
           if(response.data.success && response.data.pendingList.length > 0) {
             setpendingStartupEmails(response.data.pendingList);
           } else {
