@@ -13,8 +13,10 @@ export default function Header() {
   
     <div className="home-head">
       <div className='home-first'>
+        <div className='outer-img'>
       <div className='home-img'>
         
+      </div>
       </div>
       
     <p className='home-name' onClick={gohome}>Ayush 2.0</p>
