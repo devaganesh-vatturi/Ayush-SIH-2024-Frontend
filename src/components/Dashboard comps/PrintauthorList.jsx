@@ -27,13 +27,18 @@ const fetchfulldetails = async (email) => {
 
 function rejectclick(e)
 {
+  console.log('clicked on reject');
   e.preventDefault();
   setrejected(true);
-
-
 }
-const handleSubmit = () => {
-  alert(`Feedback Submitted: ${feedback}`);
+function approveClick(presentmail)
+{
+   console.log(`you can approve ${presentmail}`);
+}
+
+const handleSubmit = (presentmail) => {
+  console.log(`Feedback Submitted: ${feedback} you can reject ${presentmail}`);
+
   setrejected(false);  // Hide the feedback form after submission
   setFeedback('');     // Optionally clear the feedback after submission
 };
@@ -63,6 +68,10 @@ const handleInputChange = (e) => {
     setVisibleIndex(visibleIndex === index ? null : index);
 
   };
+  function pendingAssign(presentmail)
+  {
+    console.log("you can assign drug inspector",presentmail);
+  }
 
   return (
           <div className="author-container">
@@ -101,7 +110,7 @@ const handleInputChange = (e) => {
                                               <>
                                                 <button 
                                                   className='author-btn-assign'
-                                                  onClick={() => alert(`Notification sent to drug inspector`)}
+                                                  onClick={()=>{pendingAssign(eachemailobj.Email_ID)}}
                                                 >
                                                   Assign Drug Inspector
                                                 </button>
@@ -120,7 +129,7 @@ const handleInputChange = (e) => {
                                                       value={feedback}  // Bind the input value to the feedback state
                                                       onChange={handleInputChange}  // Update state when the input changes
                                                     />
-                                                    <button onClick={handleSubmit} id="feed-submit">Submit</button>
+                                                    <button onClick={()=>{handleSubmit(eachemailobj.Email_ID)}} id="feed-submit" >Submit</button>
                                                   </>
                                                 )}
                                               </>
@@ -128,7 +137,7 @@ const handleInputChange = (e) => {
                               
                                             {type === 'accepted' && (
                                               <>
-                                                <button className='author-btn-approve'>
+                                                <button className='author-btn-approve' onClick={()=>{approveClick(eachemailobj.Email_ID)}}>
                                                   Approve License
                                                 </button>
                                               </>
