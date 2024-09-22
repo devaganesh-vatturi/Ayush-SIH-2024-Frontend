@@ -5,20 +5,23 @@ import '../styles/Startuptrackpad.css';
 const Startuptrackpad = ({email}) => {
   const [currentStage, setCurrentStage] = useState(-2); // Change this value to update the progress
   const [statusInfo, setStatusInfo] = useState({
-    Email_ID: "",
-    FilledApplication: false,
-    FilledAplicationAccepted: false,
-    isDrugInspectorAssigned: false,
-    isDrugInspectorAccepted: false,
-    isLicensed: false,
+    Email_ID:"",  // startup s email
+    FilledApplication : false,
+	AplicationAccepted : false, // (for frontend : if accepted is false the whole stuff should get RED from here to END.)
+	ApplicationRejected :false, // if accepted is true then rejected is 100% gonna become false(as it is being initiated with the false value it will be untouched as the drug insp is already pressed accept)
+										// VICE VERSA	
+	isDrugInspectorAssigned: false,
+	isDrugInspectorAccepted : false, // (for frontend : if accepted is false the whole stuff should get RED from here to end)
+	isDrugInspectorRejected : false,
+	isLicensed: false
   });
   
   const stages = [
     { title: 'Stage 1: Application Submitted', description: 'Your application has been submitted.' },
-    { title: 'Stage 2: Application Accepted', description: 'Your application has been Accepted' },
-    { title: 'Stage 3: DrugInspector Assigned', description: 'Nearby Drug inspector is assigned' },
+    { title: 'Stage 2: Application Accepted', description: 'Your application has been Accepted by Licensing authority' },
+    { title: 'Stage 3: DrugInspector Assigned', description: 'Nearby Drug inspector is assigned for your company' },
     { title: 'Stage 4: DrugInspector Accepted', description: 'Drug inspector verified and Accepted' },
-    { title: 'Stage 5: License Approved', description: 'Your License has been issued.' },
+    { title: 'Stage 5: License Approved', description: 'Congratulations.Your License has been issued.' },
   ];
   
   useEffect(() => {
@@ -52,24 +55,26 @@ const Startuptrackpad = ({email}) => {
     const update_currentStage = () => {
       if (!statusInfo) return;
   
-      if (statusInfo.FilledAplicationAccepted) {
-        if (statusInfo.isDrugInspectorAssigned) {
-          if (statusInfo.isDrugInspectorAccepted) {
-            if (statusInfo.isLicensed) {
-              setCurrentStage(5);
-            } else {
-              setCurrentStage(4);
-            }
-          } else {
-            setCurrentStage(3);
-          }
+      // If the application is rejected, set the current stage to -1 (negative for red) to signify cancellation
+      if (statusInfo.ApplicationRejected) {
+        setCurrentStage(-2); // Rejected before drug inspector assigned
+      } else if (statusInfo.isDrugInspectorRejected) {
+        setCurrentStage(-4); // Rejected by drug inspector
+      } else if (statusInfo.AplicationAccepted) {
+        // Continue with normal accepted stages
+        if (statusInfo.isLicensed) {
+          setCurrentStage(5); // License approved
+        } else if (statusInfo.isDrugInspectorAccepted) {
+          setCurrentStage(4); // Drug inspector accepted
+        } else if (statusInfo.isDrugInspectorAssigned) {
+          setCurrentStage(3); // Drug inspector assigned
         } else {
-          setCurrentStage(2);
+          setCurrentStage(2); // Application accepted
         }
       } else if (statusInfo.FilledApplication) {
-        setCurrentStage(1);
+        setCurrentStage(1); // Application submitted
       } else {
-        setCurrentStage(0);
+        setCurrentStage(0); // No application filled yet
       }
     };
   
