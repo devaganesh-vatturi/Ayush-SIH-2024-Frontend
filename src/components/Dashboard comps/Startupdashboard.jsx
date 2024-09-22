@@ -77,7 +77,7 @@ export default function Startupdashboard() {
     return(<h1>Error 404</h1>)
    }
   
-   console.log(email);  
+//    console.log(email);  
    if(!email.endsWith('@gmail.com'))
    {
    return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
@@ -127,7 +127,7 @@ export default function Startupdashboard() {
                 className={activeTab === 'Ayush' ? 'active-tab' : ''} 
                 onClick={() => { goAyush(); setActiveTab('Ayush'); }}
             >
-                Aayush 3.0
+                Ayush Ecosystem 
             </p>
             <p 
                 className={activeTab === 'PeerForum' ? 'active-tab' : ''} 
