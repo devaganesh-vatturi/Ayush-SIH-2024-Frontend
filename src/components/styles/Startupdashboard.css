@@ -12,6 +12,7 @@
    display: flex;
    flex-direction: row;
    justify-content: space-between;
+   padding-top: 100px;
 }
 /* .startup-dsh-head-first p {
    cursor: pointer;
@@ -41,6 +42,5 @@
     margin-right: 20px; /* Add space between the tabs if needed */
     padding-bottom: 5px; /* To align the tabs correctly */
 }
-
 
 

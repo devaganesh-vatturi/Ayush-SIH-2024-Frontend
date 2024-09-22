@@ -1,7 +1,15 @@
 .auth-hm{
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.3rem;
     font-weight: bold;
     margin:40px;
     color: rgb(6, 6, 87);
+}
+
+.sect-container{
+    text-align: center;
+}
+h1{
+    color: rgb(44, 44, 44);
+    font-size: 1.5rem;
 }

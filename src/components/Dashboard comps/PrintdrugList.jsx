@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/PrintdrugList.css';
 import axios from 'axios';
 
-function PrintdrugList({ startupmails }) {
+function PrintdrugList({ startupmails }) { 
 
   const [visibleIndex, setVisibleIndex] = useState(null);
   const [basicStartupDetail, setBasicStartupDetail] = useState([]); // Store details as an array

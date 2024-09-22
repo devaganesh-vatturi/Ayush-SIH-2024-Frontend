@@ -10,7 +10,7 @@
     height:90px;
     align-items: center;
     position: fixed;
-    width: 99vw;
+    width: 100vw;
     font-weight: 400;
     background-color:rgba(14,78,165,1) ;
     z-index:2;
@@ -18,22 +18,23 @@
 .home-name{
 
  
-    color:white;
-    font-size: 2rem;
+    color:rgb(255, 255, 255);
+    font-size: 1.8rem;
     cursor: pointer;
+    font-family: 'Cust-Atmospheric';
 }
 .home-img{
     
-    /* background-image: url("./aushadi_logo.svg"); */
+    background-image: url("./ayush_logo.png");
     /* background-size:cover; */
     background-size: cover; /* Ensures the whole image is visible */
     background-repeat: no-repeat;
-    border:2px solid pink;
+    border:2px white;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
-    height:90px;
-    width:90px;
-    margin:10px;
+    height:80%;
+    width:75px;
+
 }
 .home-first{
     display:flex;
@@ -51,4 +52,12 @@
   border: none;
   font-weight: bold;
   cursor: pointer;
+}
+.outer-img{
+    height:85%;
+    width:82px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    margin:10px;
+    border-radius: 55%;
 }

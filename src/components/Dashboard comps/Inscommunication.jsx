@@ -4,22 +4,26 @@ import axios from 'axios';
 export default function Inscommunication({email}) {
     const [isEnabled, setIsEnabled] = useState(false); 
     const [clicks, setClicks] = useState(false);
-    const [feedback,setFeedback]=useState('');
+    const [feedback,setFeedback]=useState([]);
 
     useEffect( ()=>{
      const getit =async()=>{
        try{
-        console.log("the start");
-        const Email = email;
-      const response = await axios.post("http://localhost:5002/api/StartupFeedback-get",{Email});
-      setFeedback(response.data.feedback);
-      console.log("enableeeeeeeeeeeee \n\n\n\n ",isEnabled);  
-      const Email_ID = email;
-      const isnotifyResponse = await axios.post("http://localhost:5002/api/isNotifyEligible",{Email_ID});
-      console.log("enableeeeeeeeeeeee  ",isEnabled);  
-      setIsEnabled(isnotifyResponse.data.success);//finished is example varibale plz modify it.
-    console.log("enableeeeeeeeeeeee  ",isEnabled);  
-    }
+            console.log("the start");
+            const Email = email;
+          const response = await axios.post("http://localhost:5002/api/startup-feedback-get",{Email});
+          setFeedback(response.data.data);
+
+      }
+      catch(error){
+          console.log(error);
+        }
+      try{
+              const Startup_Email = email;
+              const isnotifyResponse = await axios.post("http://localhost:5002/api/is-notify-eligible",{Startup_Email});
+              setIsEnabled(isnotifyResponse.data.success);//finished is example varibale plz modify it.
+            console.log("enableeeeeeeeeeeee  ",isnotifyResponse.data.success);  
+        }
     catch(error){
         console.log(error);
       }
@@ -36,18 +40,19 @@ export default function Inscommunication({email}) {
       const response =await axios.post("http://localhost:5002/api/LA-Notificationpost",{Startup_Email,NotificationMsgData}); 
       if(response.data.success){
         alert("Successfully notified the licensing authority !");
+        setIsEnabled(false);
+      setClicks(false); 
       } else{
         alert("Failed to notify the licensing authority !");
       }
-      setIsEnabled(false);
-      setClicks(false);  
-
-
+       
     };
   
     function isclicked() {
     if(isEnabled)
     {
+      console.log("clicked");
+      
       setClicks(true);
     }
     }
@@ -57,11 +62,19 @@ export default function Inscommunication({email}) {
    <div className="ins-main">
     <p className="ins-head">Communication with Licensing Authority</p>
     <p className="ins-feed">Feedback:{feedback}</p>
-    <p className="paragraph">Resend IE certificate properly</p>  
-    <p className="paragraph">Reenter authorized GST number</p> 
-
+     
+     { feedback.length===0 ? <p className="paragraph"> There are no feedbacks yet. </p>
+                          : <ol>{
+                            feedback.map((each_feedback, index) => (
+                              <li key={index} className="paragraph">
+                                {each_feedback}
+                              </li>
+                            ))
+                          
+                          } </ol>
+    }
     <button
-        disabled={isEnabled}
+        disabled={!isEnabled}
         className={`toggle-button ${isEnabled ? "active" : "inactive"}`}
         onClick={isclicked}
     >
@@ -74,6 +87,8 @@ export default function Inscommunication({email}) {
             <button type="submit"  className="submit-button">Submit</button>
         </form>
     )}
+
+   { isEnabled ? null: <p style={{color:"blue",fontSize:"1.4rem"}}> Hey You have used your chance.<br></br>You can't send your next Notification till next 2 days</p> }
 </div>
 </div>
  </>

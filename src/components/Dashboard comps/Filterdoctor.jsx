@@ -36,7 +36,7 @@ export default function Filterdoctor({email}) {
   },[]);
 
   const render=()=>{
-    console.log("data isssssssssssssssssssss : ",doctorData);
+    // console.log("data isssssssssssssssssssss : ",doctorData);
     if(doctorData.length===0){
       return<>
       <h1 className='no-f-datafound'> There are no Ayush Doctors in your District.</h1>

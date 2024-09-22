@@ -5,7 +5,7 @@
     --secondary-color: #0000001d;
     --background-color: #f0f8ff;
     --text-color:white;
-    --hover-color: #0062cc;
+    --hover-color: #0050a5;
     --accent-color: #4fc3f7;
   }
   
@@ -13,12 +13,11 @@
   .faq-container {
     margin: 40px auto;
     max-width: 800px;
-    background:linear-gradient(109.6deg, rgb(26, 185, 230) 11.3%, rgb(67, 93, 198)69.9%);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     padding: 30px;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'SourceSansPro';
   }
   
   .faq-container h1 {
@@ -37,9 +36,9 @@
     color: white;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
     padding: 15px;
-    font-size: 22px;
-    font-weight: bold;
-    background: var(--secondary-color);
+    font-size: 1.3rem;
+    /* font-weight: bold; */
+    background: rgba(0, 0, 0, 0.332);
     border-radius: 10px;
     margin: 10px 0;
     transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;

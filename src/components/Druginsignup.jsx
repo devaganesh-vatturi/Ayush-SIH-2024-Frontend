@@ -4,7 +4,10 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import Header from './Header';
 import drugpic from '../assets/logindrug.jpg';
+// import Footer from './Dashboard comps/Footer';
+
 function Druginsignup(){
+
   const indian_states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh (UT)", "Chhattisgarh", "Dadra and Nagar Haveli (UT)", "Daman and Diu (UT)", "Delhi (NCT)", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep (UT)", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry (UT)", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal"];
   const [districtsList, setDistrictsList] = useState([]);
   const [drugindata, setDrugindata] = useState(
@@ -14,8 +17,10 @@ function Druginsignup(){
     const [quality, setQuality] = useState(null);
     const [guidelines, setGuidelines] = useState(null);
     const [errors, setErrors] = useState({ quality: false, guidelines: false });
-    const [successed, setsuccessed] = useState({ quality: false, guidelines: false });
     const [pdfissubmited, setpdfissubmited] = useState();
+  
+    const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
+
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -64,8 +69,59 @@ function Druginsignup(){
         else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
+      //   if (name === "phone_number" && value.length !== 10) {
+      //     setPhnerror("Phone number must contain exactly 10 digits");
+      // } else if (name === "phone_number" && value.length === 10) {
+      //     setPhnerror("");
       }
     
+          const  doVerifyQuality = async(formData)=>
+        {
+          try {
+            const response = await axios.post("http://localhost:5002/api/quality-check",
+              formData,
+              {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              } );
+            if (response.data.success) {
+              console.log("verified true quaility! ");
+              return true; // return it
+            } else {
+              console.error("Signup failed", response.data);
+              return false;
+            }
+          } catch (error) {
+            console.error("Error during signup:", error);
+          }
+        } 
+
+        const  doVerifyGuidlines = async(formData)=>
+          {
+            try {
+              const response = await axios.post("http://localhost:5002/api/guideline-check",
+                formData,
+                {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                } );
+              if (response.data.success) {
+                console.log("verified true quaility! ");
+                return true; // return it
+              } else {
+                console.error("Signup failed", response.data);
+                return false;
+              }
+            } catch (error) {
+              console.error("Error during signup:", error);
+            }
+          } 
+// Handle file upload (for the PDF)
+const handleFileChange = (e) => {
+  setSelectedFile(e.target.files[0]); // Store the selected file in state
+};
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
@@ -74,6 +130,38 @@ function Druginsignup(){
           passvalid=true;
         }
         passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
+
+
+        // Prepare form data
+  const formData = new FormData();
+  // Append the PDF file (OrderPdfCopy)
+  formData.append("pdf", selectedFile); // Append the selected file
+
+  const isGoodQuality = await doVerifyQuality(formData);
+
+  const isFollowedGuidelines = await doVerifyGuidlines(formData);
+
+  formData.append("Email_ID",drugindata.Email_ID)
+  
+
+  try {
+    const response = await axios.post("http://localhost:5002/api/upload-pdf",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      } );
+    if (response.data.success) {
+      console.log("Successfully signed up!", response.data);
+    } else { 
+      console.error("Signup failed", response.data);
+    }
+  } catch (error) {
+    console.error("Error during signup:", error);
+  }
+
+
         try{
         const response= await axios.post("http://localhost:5002/api/drugInspector-reg",drugindata);
         if(response.data.success)
@@ -87,20 +175,6 @@ function Druginsignup(){
       catch (error) {
         console.log(error);
     }
-    if(!quality)
-      {
-       setErrors((prev) => ({ ...prev, quality: true }));
-      }
-      if(!guidelines)
-       {
-         setErrors((prev) => ({ ...prev, guidelines: true }));
-       }
-       if(quality&&guidelines)
-       {
-         console.log("u can send pdf");
-         setpdfissubmited(true);
- 
-       }
   }
    
     const fetchDistricts = async () => {
@@ -123,6 +197,38 @@ function Druginsignup(){
           console.error('Error fetching districts:', error);
       }
     }
+    function checkQuality()
+    {
+       console.log("quality checking here");
+      let response =true;
+     setQuality(response);
+     console.log("quality is",quality);
+    }
+    function checkGuidelines()
+    {
+      console.log("guidlines check here");
+     let responses =true;
+     console.log(responses);
+    setGuidelines(responses);
+    }
+    function pdfSubmit()
+    {
+       if(!quality)
+       {
+        setErrors((prev) => ({ ...prev, quality: true }));
+       }
+       if(!guidelines)
+        {
+          setErrors((prev) => ({ ...prev, guidelines: true }));
+        }
+        if(quality&&guidelines)
+        {
+          console.log("u can send pdf");
+          setpdfissubmited(true);
+  
+        }
+    }
+
     return (
       <>
       <Header/>
@@ -138,8 +244,32 @@ function Druginsignup(){
            
       <label className="Drug-sign-label">Enter the name:</label> 
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" />
-      <label className="doctor-sign-label">Upload your University Docterate Certificate :</label>
-      <input type="file" accept=".pdf" className=" doctor-sign-input" onChange={handleChange}/>
+      <label className="doctor-sign-label">Upload your Allotment Letter :</label>
+      <input type="file" accept=".pdf" className=" Drug-sign-input" onChange={handleFileChange}/>
+      <button
+        onClick={checkQuality}
+        className={`verify-btn ${quality === null ? "bg-black" : quality ? "bg-green" : "bg-red"}`}
+      >
+        Verify quality {quality === null ? "" : quality ? "✔" : "✖"}
+      </button>
+
+      {/* Verify Guidelines Button */}
+      <button
+        onClick={checkGuidelines}
+        className={`verify-btn ${guidelines === null ? "bg-black" : guidelines ? "bg-green" : "bg-red"}`}
+      >
+        Verify Guidelines {guidelines === null ? "" : guidelines ? "✔" : "✖"}
+      </button>
+      <button
+        className={`doc-sign-submit-btn`}
+        // disabled={!(quality && guidelines)}
+        onClick={pdfSubmit}
+      >
+        Submit
+      </button>
+      {errors.quality && <p className="error-text">Please verify quality.</p>}
+      {errors.guidelines && <p className="error-text">Please verify guidelines.</p>}
+      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}
       <label className=" Drug-sign-label">Enter Email:</label> 
       <input type="email" name="Email_ID" onChange={handleChange} className=" Drug-sign-input" />
       <label className=" Drug-sign-label">Enter the password:</label>
@@ -185,18 +315,14 @@ function Druginsignup(){
      <br />      
      <label className="Drug-sign-label" >Enter the phone number:</label>
      <input type="text" className=" Drug-sign-input" name="phone_number" onChange={handleChange}/><br />
-     <label className='Drug-sign-label'>PDF Quality status:</label>
-     {successed.quality && <p className="success-text">PDF successfully attained quality</p>}
-     {errors.quality && <p className="error-text">PDF not attained the quality</p>}
-     <label className="Drug-sign-label">PDF guidelines status:</label>
-     {successed.guidelines && <p className="success-text">PDF successfully attained Guidlines</p>}
-      {errors.guidelines && <p className="error-text">PDF not followed the guidelines</p>}
-      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}
+    
+    
     <button className="Drug-sign-button">submit</button>
 
     </div>
    
-    </form> 
+    </form>
+    {/* <Footer/> */}
     </div>
     </>
     );

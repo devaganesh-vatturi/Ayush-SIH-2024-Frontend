@@ -34,7 +34,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // assigned
       const fetchassignedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-ture');
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true');
           if(response.data.success && response.data.assignedList.length > 0) {
             setassignedStartupEmails(response.data.assignedList);
           } else {
@@ -70,7 +70,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // rejected
       const fetchrejectedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          const response = await axios.get('http://localhost:5002/api/isDrugInspectorRejected-true');
           if(response.data.success && response.data.rejectedList.length > 0) {
             setrejectedStartupEmails(response.data.rejectedList);
           } else {
@@ -88,7 +88,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // licensed
       const fetchlicensedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAcce---------------------------ted-true');
+          const response = await axios.get('http://localhost:5002/api/isLicensed-true');
           if(response.data.success && response.data.licensedList.length > 0) {
             setlicensedStartupEmails(response.data.licensedList);
           } else {
@@ -105,58 +105,71 @@ export default function Authorityhome({email}) {
 
   return (
   <>  
-  <h1>StartupInformation</h1>
-       <p className='auth-hm'>Pending</p>
-        <div>
-     { pendingStartupEmails.length === 0 ? (
-        <h1>No emails found</h1>
-      ):(
-        < PrintauthorList StartupEmails={pendingStartupEmails} 
-        type={'pending'}/>
-      )
-      }
-    </div>
-        <p className='auth-hm'>Assigned</p>
-        <div>
-     { assignedStartupEmails.length === 0 ? (
-        <h1>No emails found</h1>
-      ):(
-        < PrintauthorList StartupEmails={assignedStartupEmails} 
-        type={'assigned'}/>
-      )
-      }
-    </div>
-        <p className='auth-hm'>Accepted</p>
-        <div>
-     { acceptedStartupEmails.length === 0 ? (
-        <h1>No emails found</h1>
-      ):(
-        < PrintauthorList StartupEmails={acceptedStartupEmails} 
-        type={'accepted'}/>
-      )
-      }
-    </div>
-        <p className='auth-hm'>Licensed</p>
+      <div className='sect-container'>
+            <p className='auth-hm'>Pending Startups</p>
+            <div>
+                { pendingStartupEmails.length === 0 ? (
+                    <h1>No Startups found</h1>
+                  ):(
+                    < PrintauthorList startupmails={pendingStartupEmails} 
+                    type={'pending'}/>
+                  )
+                  }
+            </div>
+      </div>
+        <div className='sect-container'>
+              <p className='auth-hm'>Drug Inspector Assigned Startups</p>
+              <div>
+                    { assignedStartupEmails.length === 0 ? (
+                        <h1>No Startups found</h1>
+                      ):(
+                        < PrintauthorList startupmails={assignedStartupEmails} 
+                        type={'assigned'}/>
+                      )
+                      }
+              </div>
+        </div>
 
-        <div>
-     { licensedStartupEmails.length === 0 ? (
-        <h1>No emails found</h1>
-      ):(
-        < PrintauthorList StartupEmails={licensedStartupEmails} 
-        type={'licensed'}/>
-      )
-      }
-    </div>
-        <p className='auth-hm'>Rejected</p>
-        <div>
-     { rejectedStartupEmails.length === 0 ? (
-        <h1>No emails found</h1>
-      ):(
-        < PrintauthorList StartupEmails={rejectedStartupEmails} 
-        type={'rejected'}/>
-      )
-      }
-    </div>
+        <div className='sect-container'>
+              <p className='auth-hm'>Accepted Startups</p>
+              <div>
+                  { acceptedStartupEmails.length === 0 ? (
+                      <h1>No Startups found</h1>
+                    ):(
+                      < PrintauthorList startupmails={acceptedStartupEmails} 
+                      type={'accepted'}/>
+                    )
+                    }
+              </div>
+        </div>
+
+        <div className='sect-container'>
+            <p className='auth-hm'>Rejected Startups</p>
+            <div>
+                { rejectedStartupEmails.length === 0 ? (
+                    <h1>No Startups found</h1>
+                  ):(
+                    < PrintauthorList startupmails={rejectedStartupEmails} 
+                    type={'rejected'}/>
+                  )
+                  }
+            </div>
+        </div>
+
+        <div className='sect-container'>
+            <p className='auth-hm'>Licensed Startups</p>
+            <div>
+                { licensedStartupEmails.length === 0 ? (
+                    <h1>No Startups found</h1>
+                  ):(
+                    < PrintauthorList startupmails={licensedStartupEmails} 
+                    type={'licensed'}/>
+                  )
+                  }
+            </div>
+        </div>
+
+        
   </>
   )
 }
