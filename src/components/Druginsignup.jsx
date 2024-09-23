@@ -137,7 +137,7 @@ const handleFileChange = (e) => {
   // Append the PDF file (OrderPdfCopy)
   formData.append("pdf", selectedFile); // Append the selected file
 
-  const isGoodQuality = await doVerifyQuality(formData);
+  // const isGoodQuality = await doVerifyQuality(formData);
 
   const isFollowedGuidelines = await doVerifyGuidlines(formData);
 
@@ -154,6 +154,7 @@ const handleFileChange = (e) => {
       } );
     if (response.data.success) {
       console.log("Successfully signed up!", response.data);
+      alert("successfully registered");
     } else { 
       console.error("Signup failed", response.data);
     }

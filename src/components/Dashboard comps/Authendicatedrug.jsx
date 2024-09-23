@@ -1,8 +1,11 @@
 import React, { useEffect,useState } from 'react'
 import '../styles/Authendicatedrug.css';
 import axios from 'axios';
+import PdfViewer from './PDFViewer';
+
 export default function Authendicatedrug({email}) {
-    const [visibleIndex, setVisibleIndex] = useState(null);
+
+  const [visibleIndex, setVisibleIndex] = useState(null);
     const [pendingDrugEmails, setPendingDrugEmails ]=useState([]);
 
     useEffect(() => { // fetch pending
@@ -78,6 +81,7 @@ state "andhra pradesh"
                     <p>Phone no: {details.phone_number}</p>
                     <p>District: {details.district}</p>
                     <p>State: {details.state}</p>
+                    {/* <PdfViewer email_prop={details.Email_ID} /> */}
                   </div>
                 </div>
                 <div className='Drugp-details-buttons'>
