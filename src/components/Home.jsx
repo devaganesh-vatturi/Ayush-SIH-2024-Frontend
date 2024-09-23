@@ -1,6 +1,6 @@
 import './styles/Home.css';
 import startup from '../assets/startup.svg';
-import authori from '../assets/authority.svg';
+import authori from '../assets/lauthority.jpg';
 import drugins from '../assets/drugins.svg';
 import Header from './Header';
 import FAQ from './FAQs';

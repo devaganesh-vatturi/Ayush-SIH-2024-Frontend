@@ -37,9 +37,14 @@ body{
     }
 }
 .home-main div:hover{
-    background-color: rgb(235, 235, 235);
+    /* background-color: rgb(235, 235, 235); */
+    background-color:  rgb(20, 103, 219);
      transform:scale(1.1);
      cursor: pointer;
+    color:white;
+}
+.home-main div:hover #home-main-signin{
+    background-color: black;
 }
 .home-main-startup,.home-main-auth,.home-main-drug {
     display:flex;
@@ -58,8 +63,9 @@ body{
     border-radius: 50%;
 }
 #home-main-img2{
-    height: 120px;
+    height: 140px;
     margin-top: 20px;
+    border-radius: 50%;
     margin-bottom: 20px;
 }
 #home-main-img3{
