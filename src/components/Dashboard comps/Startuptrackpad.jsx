@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../styles/Startuptrackpad.css';
 
 const Startuptrackpad = ({email}) => {
-  const [currentStage, setCurrentStage] = useState(-2); // Change this value to update the progress
+  const [currentStage, setCurrentStage] = useState(0); // Change this value to update the progress
   const [statusInfo, setStatusInfo] = useState({
     Email_ID:"",  // startup s email
     FilledApplication : false,

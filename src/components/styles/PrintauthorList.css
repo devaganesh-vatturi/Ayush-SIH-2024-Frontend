@@ -12,16 +12,17 @@
   }
   
   .author-header {
-    background-color: #094660;
+    /* background-color: #094660; */
+    background-color: rgb(17, 66, 133) ;
     border: 1px solid #ddd;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     height:10vh;
   }
   .author-header:hover{
-    background-color: #1b8cbc;
-    color:black;
+    background-color: rgb(4, 25, 60);
+    color:rgb(255, 255, 255);
   }
   
   

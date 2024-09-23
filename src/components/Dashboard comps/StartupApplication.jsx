@@ -12,7 +12,7 @@ function StartupSingup({ email }) {
     IssuuingAuthority:"",IE_code:"",IE_DOI:"" });
 
   const [originalData, setOriginalData] = useState({});
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState();
   const [userExists, setUserExists] = useState(false); // Flag to track if the user data exists
 
   // Captcha handling
@@ -57,10 +57,10 @@ function StartupSingup({ email }) {
             IE_DOI: fetchedData.IE_DOI || "",
           }); // Store original data to COMPARE LATER
           setUserExists(true); // Set flag to indicate that user data exists
-          setEditing(true);
+          setEditing(false);
         } else {
           setUserExists(false);
-          setEditing(false);
+          setEditing(true);
         }
       } catch (error) {
         console.log('Error fetching user data:', error);
