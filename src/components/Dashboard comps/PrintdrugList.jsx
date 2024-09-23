@@ -48,6 +48,17 @@ function PrintdrugList({ startupmails }) {
   
   
   }
+  
+const handleSubmit = (presentmail) => {
+  console.log(`Feedback Submitted: ${feedback} you can reject ${presentmail}`);
+
+  setrejected(false);  // Hide the feedback form after submission
+  setFeedback('');     // Optionally clear the feedback after submission
+};
+  function acceptstartup(presentmail)
+  {
+    console.log("you can assign drug inspector",presentmail);
+  }
   // Fetch all startup details when component mounts
   useEffect(() => {
     getDetailsAll();
@@ -87,7 +98,7 @@ function PrintdrugList({ startupmails }) {
                 <div className='Drugp-details-buttons'>
                   <button 
                     className='Drugp-btn-assign'
-                    onClick={() => alert(`Notification sent to drug inspector`)}
+                    onClick={()=>{acceptstartup(eachemailobj.Email_ID)}}
                   >
                     Accept
                   </button>
@@ -104,7 +115,7 @@ function PrintdrugList({ startupmails }) {
                 value={feedback}  // Bind the input value to the feedback state
                 onChange={handleInputChange}  // Update state when the input changes
               />
-              <button onClick={handleSubmit} id="feed-submit">Submit</button>
+              <button onClick={()=>{handleSubmit(eachemailobj.Email_ID)}} id="feed-submit">Submit</button>
             </>
           )}
                 </div>

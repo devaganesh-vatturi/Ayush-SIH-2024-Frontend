@@ -7,6 +7,7 @@ import axios from 'axios';
 import '../styles/Authoritydash.css';
 import Footer from './Footer';
 import Logout from './Logout';
+import Authendicatedrug from './Authendicatedrug';
 
 export default function Authoritydash() {
      const [drugtab, Setdrugtab] = useState(1);
@@ -74,6 +75,10 @@ export default function Authoritydash() {
     {
         Setdrugtab(2);
     }
+    function goauthendicate()
+    {
+        Setdrugtab(3);
+    }
   return (
     <>
     <Header/>
@@ -83,6 +88,7 @@ export default function Authoritydash() {
         <div className='drug-main-first'>
         <p className="drug-nav" onClick={gohome}>Home</p>
         <p className="drug-nav" onClick={gonotification}>Notifications</p>
+        <p className="drug-nav" onClick={goauthendicate}>Authendicate Drug Inscpector</p>
         </div>
         <div>
         <Logout/> 
@@ -90,7 +96,8 @@ export default function Authoritydash() {
     </div>
     </div>
    {
-     drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) : (null)
+     drugtab === 1 ? (<Authorityhome email={email}/>) : drugtab === 2 ? (<Authoritynotification email={email}/>) :
+     drugtab === 3 ? (<Authendicatedrug email={email}/>) : (null)
    }
    <Footer/>
     </>
