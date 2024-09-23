@@ -12,6 +12,7 @@ export default function Authorityhome({email}) {
     const [acceptedStartupEmails, setacceptedStartupEmails ] = useState([]);
     const [licensedStartupEmails,setlicensedStartupEmails ] = useState([]);
     const [rejectedStartupEmails,setrejectedStartupEmails ] = useState([]);
+    const [LArejectedStartupEmails,setLArejectedStartupEmails ] = useState([]);
 
     useEffect(() => { // pending
       const fetchpendingEmails = async () => {
@@ -103,6 +104,23 @@ export default function Authorityhome({email}) {
       fetchlicensedEmails();
     }, []); 
 
+    useEffect(() => { // licensed
+      const fetchlicensedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isLArejected');
+          if(response.data.success && response.data.datal.length > 0) {
+            setLArejectedStartupEmails(response.data.datal);
+          } else {
+            setLArejectedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setLArejectedStartupEmails([]);
+        } 
+      };
+  
+      fetchlicensedEmails();
+    }, []);
   return (
   <>  
       <div className='sect-container'>
@@ -112,6 +130,18 @@ export default function Authorityhome({email}) {
                     <h1>No Startups found</h1>
                   ):(
                     < PrintauthorList startupmails={pendingStartupEmails} 
+                    type={'pending'}/>
+                  )
+                  }
+            </div>
+      </div>
+      <div className='sect-container'>
+            <p className='auth-hm'>Rejected Startups</p>
+            <div>
+                { LArejectedStartupEmails.length === 0 ? (
+                    <h1>No Startups found</h1>
+                  ):(
+                    < PrintauthorList startupmails={LArejectedStartupEmails} 
                     type={'pending'}/>
                   )
                   }
@@ -131,7 +161,7 @@ export default function Authorityhome({email}) {
         </div>
 
         <div className='sect-container'>
-              <p className='auth-hm'>Accepted Startups</p>
+              <p className='auth-hm'>Drug Inspector Accepted Startups</p>
               <div>
                   { acceptedStartupEmails.length === 0 ? (
                       <h1>No Startups found</h1>
@@ -144,7 +174,7 @@ export default function Authorityhome({email}) {
         </div>
 
         <div className='sect-container'>
-            <p className='auth-hm'>Rejected Startups</p>
+            <p className='auth-hm'>Drug Inspector Rejected Startups</p>
             <div>
                 { rejectedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
