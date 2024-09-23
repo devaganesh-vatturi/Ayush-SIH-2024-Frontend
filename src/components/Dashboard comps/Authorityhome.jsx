@@ -125,6 +125,8 @@ export default function Authorityhome({email}) {
   <>  
       <div className='sect-container'>
             <p className='auth-hm'>Pending Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> You Can now Assign the drug inspectors for below startups</p>
+            <br/>
             <div>
                 { pendingStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
@@ -137,6 +139,8 @@ export default function Authorityhome({email}) {
       </div>
       <div className='sect-container'>
             <p className='auth-hm'>Rejected Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> Startups those got rejected during application verification</p>
+            <br/>
             <div>
                 { LArejectedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
@@ -149,6 +153,8 @@ export default function Authorityhome({email}) {
       </div>
         <div className='sect-container'>
               <p className='auth-hm'>Drug Inspector Assigned Startups</p>
+              <p style={{fontSize:"1.5rem",color:"blue"}}> Waiting for drug inspectors chemical verification and acceptance.</p>
+            <br/>
               <div>
                     { assignedStartupEmails.length === 0 ? (
                         <h1>No Startups found</h1>
@@ -162,6 +168,8 @@ export default function Authorityhome({email}) {
 
         <div className='sect-container'>
               <p className='auth-hm'>Drug Inspector Accepted Startups</p>
+              <p style={{fontSize:"1.5rem",color:"blue"}}> Chemically verified and Accepted by Drug inspector.</p>
+              <br/>
               <div>
                   { acceptedStartupEmails.length === 0 ? (
                       <h1>No Startups found</h1>
@@ -175,6 +183,8 @@ export default function Authorityhome({email}) {
 
         <div className='sect-container'>
             <p className='auth-hm'>Drug Inspector Rejected Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> Rejected by Drug inspector due to presence of harmful chemicals.</p>
+            <br/>
             <div>
                 { rejectedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
@@ -188,6 +198,8 @@ export default function Authorityhome({email}) {
 
         <div className='sect-container'>
             <p className='auth-hm'>Licensed Startups</p>
+            <p style={{fontSize:"1.5rem",color:"green"}}> Successfully Licensed Startups.</p>
+            <br/>
             <div>
                 { licensedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>

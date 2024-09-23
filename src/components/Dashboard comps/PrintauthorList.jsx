@@ -32,9 +32,19 @@ function rejectclick(e)
   setrejected(true);
   
 }
-function approveClick(presentmail)
+async function approveClick(presentmail)
 {
-   console.log(`you can approve ${presentmail}`);
+   console.log(`you can approve license to ${presentmail}`);
+   try {
+    const response = await axios.post('http://localhost:5002/api/make-it-licensed', { Email_ID: presentmail }); 
+    if (response.data.success) {
+      console.log("success licensed");
+    }else{
+      console.log("failure licensed");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
 }
 
 const handleSubmit = async(presentmail) => {
