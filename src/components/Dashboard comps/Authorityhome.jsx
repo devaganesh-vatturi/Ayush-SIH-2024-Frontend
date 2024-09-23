@@ -12,6 +12,7 @@ export default function Authorityhome({email}) {
     const [acceptedStartupEmails, setacceptedStartupEmails ] = useState([]);
     const [licensedStartupEmails,setlicensedStartupEmails ] = useState([]);
     const [rejectedStartupEmails,setrejectedStartupEmails ] = useState([]);
+    const [LArejectedStartupEmails,setLArejectedStartupEmails ] = useState([]);
 
     useEffect(() => { // pending
       const fetchpendingEmails = async () => {
@@ -103,10 +104,29 @@ export default function Authorityhome({email}) {
       fetchlicensedEmails();
     }, []); 
 
+    useEffect(() => { // licensed
+      const fetchlicensedEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/isLArejected');
+          if(response.data.success && response.data.datal.length > 0) {
+            setLArejectedStartupEmails(response.data.datal);
+          } else {
+            setLArejectedStartupEmails([]); // Set to empty if no emails found
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setLArejectedStartupEmails([]);
+        } 
+      };
+  
+      fetchlicensedEmails();
+    }, []);
   return (
   <>  
       <div className='sect-container'>
             <p className='auth-hm'>Pending Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> You Can now Assign the drug inspectors for below startups</p>
+            <br/>
             <div>
                 { pendingStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
@@ -117,8 +137,24 @@ export default function Authorityhome({email}) {
                   }
             </div>
       </div>
+      <div className='sect-container'>
+            <p className='auth-hm'>Rejected Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> Startups those got rejected during application verification</p>
+            <br/>
+            <div>
+                { LArejectedStartupEmails.length === 0 ? (
+                    <h1>No Startups found</h1>
+                  ):(
+                    < PrintauthorList startupmails={LArejectedStartupEmails} 
+                    type={'pending'}/>
+                  )
+                  }
+            </div>
+      </div>
         <div className='sect-container'>
               <p className='auth-hm'>Drug Inspector Assigned Startups</p>
+              <p style={{fontSize:"1.5rem",color:"blue"}}> Waiting for drug inspectors chemical verification and acceptance.</p>
+            <br/>
               <div>
                     { assignedStartupEmails.length === 0 ? (
                         <h1>No Startups found</h1>
@@ -131,7 +167,9 @@ export default function Authorityhome({email}) {
         </div>
 
         <div className='sect-container'>
-              <p className='auth-hm'>Accepted Startups</p>
+              <p className='auth-hm'>Drug Inspector Accepted Startups</p>
+              <p style={{fontSize:"1.5rem",color:"blue"}}> Chemically verified and Accepted by Drug inspector.</p>
+              <br/>
               <div>
                   { acceptedStartupEmails.length === 0 ? (
                       <h1>No Startups found</h1>
@@ -144,7 +182,9 @@ export default function Authorityhome({email}) {
         </div>
 
         <div className='sect-container'>
-            <p className='auth-hm'>Rejected Startups</p>
+            <p className='auth-hm'>Drug Inspector Rejected Startups</p>
+            <p style={{fontSize:"1.5rem",color:"blue"}}> Rejected by Drug inspector due to presence of harmful chemicals.</p>
+            <br/>
             <div>
                 { rejectedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>
@@ -158,6 +198,8 @@ export default function Authorityhome({email}) {
 
         <div className='sect-container'>
             <p className='auth-hm'>Licensed Startups</p>
+            <p style={{fontSize:"1.5rem",color:"green"}}> Successfully Licensed Startups.</p>
+            <br/>
             <div>
                 { licensedStartupEmails.length === 0 ? (
                     <h1>No Startups found</h1>

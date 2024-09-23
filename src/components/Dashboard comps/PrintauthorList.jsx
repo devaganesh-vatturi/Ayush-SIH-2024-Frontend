@@ -15,7 +15,7 @@ const fetchfulldetails = async (email) => {
     console.log("Fetching details for: ", email);
     const response = await axios.post('http://localhost:5002/api/startup-dash-retrieval', { Email_ID: email }); 
     if (response.data.success) {
-      console.log("AAAAAAA",response.data.data[0]);
+      // console.log("AAAAAAA",response.data.data[0]);
       
       return response.data.data[0]; // Return the fetched details
     }
@@ -30,17 +30,50 @@ function rejectclick(e)
   console.log('clicked on reject');
   e.preventDefault();
   setrejected(true);
+  
 }
-function approveClick(presentmail)
+async function approveClick(presentmail)
 {
-   console.log(`you can approve ${presentmail}`);
+   console.log(`you can approve license to ${presentmail}`);
+   try {
+    const response = await axios.post('http://localhost:5002/api/make-it-licensed', { Email_ID: presentmail }); 
+    if (response.data.success) {
+      console.log("success licensed");
+    }else{
+      console.log("failure licensed");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
 }
 
-const handleSubmit = (presentmail) => {
+const handleSubmit = async(presentmail) => {
   console.log(`Feedback Submitted: ${feedback} you can reject ${presentmail}`);
-
   setrejected(false);  // Hide the feedback form after submission
   setFeedback('');     // Optionally clear the feedback after submission
+  try {
+    const response = await axios.post('http://localhost:5002/api/make-it-LArejected', { Email_ID: presentmail }); 
+    if (response.data.success) {
+      console.log("success rejected");
+    }else{
+      console.log("failure rejection");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+
+  try {
+    const response = await axios.post('http://localhost:5002/api/startup-feedback-post', { Email: presentmail , feedback:feedback }); 
+    if (response.data.success) {
+      console.log("successfully feedback sent");
+    }else{
+      console.log("failure feedback sending");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+  
+
 };
 const handleInputChange = (e) => {
   setFeedback(e.target.value);  // Update the feedback state as the user types
@@ -68,9 +101,20 @@ const handleInputChange = (e) => {
     setVisibleIndex(visibleIndex === index ? null : index);
 
   };
-  function pendingAssign(presentmail)
+  async function pendingAssign(presentmail)
   {
-    console.log("you can assign drug inspector",presentmail);
+    console.log("you can assign drug inspector",presentmail); // /make-it-assign  Email_ID
+    try {
+      const response = await axios.post('http://localhost:5002/api/make-it-assign', { Email_ID: presentmail }); 
+      if (response.data.success) {
+        console.log("success pending assign");
+      }else{
+        console.log("failure pending assin");
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+
   }
 
   return (

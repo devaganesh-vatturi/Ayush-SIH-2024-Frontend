@@ -1,65 +1,81 @@
 import React, { useEffect,useState } from 'react'
 import '../styles/Authendicatedrug.css';
+import axios from 'axios';
 export default function Authendicatedrug({email}) {
     const [visibleIndex, setVisibleIndex] = useState(null);
-    useEffect(()=>{
-        const fetchit = async(e)=>{
-       try{
-        const data= await axios.post('',email);
-       }
-       catch(error)
-       {
-        console.log(error);
-       }
-       
-        }
-        fetchit();
-    },[])
-    function Acceptdrug(presentmail)
-    {
-      console.log("you can accept drug inspector",presentmail);
-    }
-    function rejectclick(e)
-{
-  console.log('clicked on reject');
-  e.preventDefault();
-  setrejected(true);
-}
-const handleInputChange = (e) => {
-    setFeedback(e.target.value);  // Update the feedback state as the user types
-  };
-const handleSubmit = (presentmail) => {
-    console.log(`Feedback Submitted: ${feedback} you can reject ${presentmail}`);
+    const [pendingDrugEmails, setPendingDrugEmails ]=useState([]);
+
+    useEffect(() => { // fetch pending
+      const fetchpendingEmails = async () => {
+        try {
+          const response = await axios.get('http://localhost:5002/api/pending-to-permision');
+          if(response.data.success) {
+            console.log("seee ",...response.data.datad);
+            // {...response.data.data}[0]
+            setPendingDrugEmails([...response.data.datad]);
+          }else{
+            console.log("some error while fetching pending drug ins list");
+          }
+        } catch (error) {
+          console.error('Error fetching emails:', error);
+          setPendingDrugEmails([]);
+        } 
+      };
   
-    setrejected(false);  // Hide the feedback form after submission
-    setFeedback('');     // Optionally clear the feedback after submission
-  };
+      fetchpendingEmails();
+    }, []);
+   async function Acceptdrug(presentmail)
+    {
+      console.log("you can accept drug inspector",presentmail); // /grant-permission-to-druginspector Email_ID
+      try {
+        const response = await axios.post('http://localhost:5002/api/grant-permission-to-druginspector', { Email_ID: presentmail }); 
+        if (response.data.success) {
+          console.log("success granted permit");
+        }else{
+          console.log("failure to grant permit");
+        }
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+
+    }
+
       // Toggle the visibility of additional info
   const toggleDetails = (index) => {
     setVisibleIndex(visibleIndex === index ? null : index);
   };
- const newmails=["devaganesh@gmail.com","devavatturi@gmail.com"];
+ 
   return (
     <>
-    <p>List of drug inspectors to get Approved</p>
-    {newmails.map((eachemailobj, index) => {
-        const details = basicStartupDetail[index]; // Fetch the details based on the index
-
+    <div style={{height:"50vh"}}>
+    <p style={{fontSize:"1.5rem"}}>List of drug inspectors to get Approved</p>
+    {pendingDrugEmails.map((eachemailobj, index) => {
+        const details = eachemailobj; // Fetch the details based on the index\
+        console.log("dettt    ",eachemailobj);
+        /*
+        Email_ID saivenkatkallepalli@gmail.com"
+district "West Godavari"
+name "Drug Inspector"
+phone_number 8803434888
+state "andhra pradesh" 
+        */
+        
         return (
           <div key={index} className="Drugp-item">
             <div
               onClick={() => toggleDetails(index)}
               className="Drugp-header"
             >
-            <p>Email:{}</p>
+               <p style={{color:"white"}}>Name: {details.name}</p> 
+            <p style={{color:"white"}}>Email:{details.Email_ID}</p> 
             </div>
 
             {visibleIndex === index && details && (
               <div className="Drugp-details">
                 <div className='Drugp-details-inner'>
                   <div className='Drugp-details-b1'>
-                    <p>Name: {details.address}</p>
-                    <p>Phone no: {details.phno}</p>
+                    
+                    <p>Phone no: {details.phone_number}</p>
                     <p>District: {details.district}</p>
                     <p>State: {details.state}</p>
                   </div>
@@ -71,28 +87,14 @@ const handleSubmit = (presentmail) => {
                   >
                     Accept
                   </button>
-                  <button className='Drugp-btn-reject' onClick={rejectclick}>
-                    Reject
-                  </button>
-                  {rejected && (
-            <><br/>
-              <input 
-                type='text' 
-                name="feedback" 
-                id="feedback-inp"
-                placeholder='Enter feedback'
-                value={feedback}  // Bind the input value to the feedback state
-                onChange={handleInputChange}  // Update state when the input changes
-              />
-              <button onClick={()=>{handleSubmit(eachemailobj.Email_ID)}} id="feed-submit">Submit</button>
-            </>
-          )}
+  
                 </div>
               </div>
             )}
           </div>
         ); 
       })}
+      </div>
     </>
   )
 }

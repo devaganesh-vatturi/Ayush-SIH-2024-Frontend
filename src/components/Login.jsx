@@ -53,8 +53,9 @@ const handelSubmit =async(e)=>{
             const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
             window.location.href = `/${usertype}dash?email=${encodedEmail}&token=${tokenrec}`;
       
-         }else{
+    }else{
         console.log("thrown message from backend : ",response.data.message);
+        alert("thrown message from backend : "+response.data.message);
         }
   
     } catch (error) {

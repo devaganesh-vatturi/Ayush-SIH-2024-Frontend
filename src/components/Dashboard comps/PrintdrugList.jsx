@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function PrintdrugList({ startupmails }) { 
 
+  const [reload, setReload]=("");
   const [visibleIndex, setVisibleIndex] = useState(null);
   const [basicStartupDetail, setBasicStartupDetail] = useState([]); // Store details as an array
   const [rejected, setrejected] = useState(false);
@@ -21,7 +22,7 @@ function PrintdrugList({ startupmails }) {
       }
     } catch (error) {
       console.log("Error: ", error);
-      return null; // Return null if there's an error
+      return null; // Return null if there's an error 
     }
   };
 
@@ -49,15 +50,49 @@ function PrintdrugList({ startupmails }) {
   
   }
   
-const handleSubmit = (presentmail) => {
+const handleSubmit = async(presentmail) => {
   console.log(`Feedback Submitted: ${feedback} you can reject ${presentmail}`);
 
   setrejected(false);  // Hide the feedback form after submission
   setFeedback('');     // Optionally clear the feedback after submission
+
+  try {
+    const response = await axios.post('http://localhost:5002/api/make-it-rejected', { Email_ID: presentmail }); 
+    if (response.data.success) {
+      console.log("success rejected");
+    }else{
+      console.log("failure rejection");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+
+  try {
+    const response = await axios.post('http://localhost:5002/api/startup-feedback-post', { Email: presentmail , feedback:feedback }); 
+    if (response.data.success) {
+      console.log("successfully feedback sent");
+    }else{
+      console.log("failure feedback sending");
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+  
+
 };
-  function acceptstartup(presentmail)
+ async function acceptstartup(presentmail)
   {
     console.log("you can assign drug inspector",presentmail);
+    try {
+      const response = await axios.post('http://localhost:5002/api/make-it-accepted', { Email_ID: presentmail }); 
+      if (response.data.success) {
+        console.log("success accepting");
+      }else{
+        console.log("failure accepting");
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   }
   // Fetch all startup details when component mounts
   useEffect(() => {
