@@ -122,8 +122,8 @@ export default function Authorityhome({email}) {
       fetchlicensedEmails();
     }, []);
   return (
-  <>  
-      <div className='sect-container'>
+  <div className='auth-total'>  
+      <div className='sect-container'>  
             <p className='auth-hm'>Pending Startups</p>
             <p style={{fontSize:"1.5rem",color:"blue"}}> You Can now Assign the drug inspectors for below startups</p>
             <br/>
@@ -212,6 +212,6 @@ export default function Authorityhome({email}) {
         </div>
 
         
-  </>
+  </div>
   )
 }
