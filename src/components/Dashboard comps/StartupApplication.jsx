@@ -60,7 +60,7 @@ function StartupSingup({ email }) {
           setEditing(true);
         } else {
           setUserExists(false);
-          setEditing(false);
+          setEditing(true);
         }
       } catch (error) {
         console.log('Error fetching user data:', error);
