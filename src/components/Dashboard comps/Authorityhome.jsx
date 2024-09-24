@@ -146,7 +146,7 @@ export default function Authorityhome({email}) {
                     <h1>No Startups found</h1>
                   ):(
                     < PrintauthorList startupmails={LArejectedStartupEmails} 
-                    type={'pending'}/>
+                    type={'rejected'}/>
                   )
                   }
             </div>

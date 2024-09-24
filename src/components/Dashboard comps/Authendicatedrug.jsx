@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import '../styles/Authendicatedrug.css';
 import axios from 'axios';
-import PdfViewer from './PDFViewer';
 
 export default function Authendicatedrug({email}) {
 

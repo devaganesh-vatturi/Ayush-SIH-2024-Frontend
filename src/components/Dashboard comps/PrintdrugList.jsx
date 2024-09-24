@@ -77,7 +77,7 @@ const handleSubmit = async(presentmail) => {
   } catch (error) {
     console.log("Error: ", error);
   }
-  
+  window.location.reload();
 
 };
  async function acceptstartup(presentmail)
@@ -93,6 +93,7 @@ const handleSubmit = async(presentmail) => {
     } catch (error) {
       console.log("Error: ", error);
     }
+    window.location.reload();
   }
   // Fetch all startup details when component mounts
   useEffect(() => {

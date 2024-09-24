@@ -42,6 +42,7 @@ async function approveClick(presentmail)
     }else{
       console.log("failure licensed");
     }
+    window.location.reload();
   } catch (error) {
     console.log("Error: ", error);
   }
@@ -72,7 +73,7 @@ const handleSubmit = async(presentmail) => {
   } catch (error) {
     console.log("Error: ", error);
   }
-  
+  window.location.reload();
 
 };
 const handleInputChange = (e) => {
@@ -111,6 +112,7 @@ const handleInputChange = (e) => {
       }else{
         console.log("failure pending assin");
       }
+      window.location.reload();
     } catch (error) {
       console.log("Error: ", error);
     }

@@ -145,6 +145,7 @@ function StartupSingup({ email }) {
                         alert('Error in submission. Please try again.');
                       }
               }
+              window.location.reload();
       } catch (error) {
         console.log('Error in form submission:', error);
       }
