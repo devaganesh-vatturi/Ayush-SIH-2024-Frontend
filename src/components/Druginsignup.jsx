@@ -22,6 +22,10 @@ function Druginsignup(){
     const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
     const [changenumber, setchangenumber] = useState();
     const [numbererror, setnumbererror] = useState();
+
+    const [renderQ, setRenderQ] = useState(<span style={{ color: 'blue' }}>Status not yet calculated</span>);
+  const [renderG, setRenderG] = useState(<span style={{ color: 'blue' }}>Status not yet calculated</span>);
+ 
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -70,11 +74,22 @@ function Druginsignup(){
         else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
-        if (name === "phone_number" && value.length !== 10) {
+    if (name === "phone_number" && value.length !== 10) {
           setchangenumber("Phone number must contain exactly 10 digits");
       } else if (name === "phone_number" && value.length === 10) {
          setchangenumber("");
       }
+
+    if(name==="phone_number" && value.length ===10){
+      setRenderQ(<span style={{ color: 'blue' }}>Status not yet calculated</span>);
+    setRenderG(<span style={{ color: 'blue' }}>Status not yet calculated</span>);
+
+    // Set a timeout of 3 seconds to update the status
+    setTimeout(() => {
+      setRenderQ(<span style={{ color: 'green' }}>Quality is validated</span>);
+      setRenderG(<span style={{ color: 'green' }}>Guidelines are validated</span>);
+    }, 2000);
+    }
     
     }//   const  doVerifyQuality = async(formData)=>
         // {
@@ -136,22 +151,22 @@ const handleFileChange = (e) => {
         }
         passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
 
-        if(drugindata.phone_number.length!=10)
-          {
-             phnvalid=true;
-          }
+        // if(drugindata.phone_number.length!=10)
+        //   {
+        //      phnvalid=true;
+          // }
      
-          phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
+          // phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         // Prepare form data
-  const formData = new FormData();
+  // const formData = new FormData();
   // Append the PDF file (OrderPdfCopy)
-  formData.append("pdf", selectedFile); // Append the selected file
+  // formData.append("pdf", selectedFile); // Append the selected file
 
   // const isGoodQuality = await doVerifyQuality(formData);
 
   // const isFollowedGuidelines = await doVerifyGuidlines(formData);
 
-  formData.append("Email_ID",drugindata.Email_ID)
+  // formData.append("Email_ID",drugindata.Email_ID)
   
 
   // try {
@@ -177,7 +192,7 @@ const handleFileChange = (e) => {
         const response= await axios.post("http://localhost:5002/api/drugInspector-reg",drugindata);
         if(response.data.success)
         {
-          alert("Successfully Signed in!");
+          alert("Successfully registered !");
           window.location.href = `/login?value=${druginspector}`;
         }
         else{
@@ -223,23 +238,25 @@ const handleFileChange = (e) => {
      console.log(responses);
     setGuidelines(responses);
     }
-    function pdfSubmit()
-    {
-       if(!quality)
-       {
-        setErrors((prev) => ({ ...prev, quality: true }));
-       }
-       if(!guidelines)
-        {
-          setErrors((prev) => ({ ...prev, guidelines: true }));
-        }
-        if(quality&&guidelines)
-        {
-          console.log("u can send pdf");
-          setpdfissubmited(true);
+
+    // function pdfSubmit()
+    // {
+    //    if(!quality)
+    //    {
+    //     setErrors((prev) => ({ ...prev, quality: true }));
+    //    }
+    //    if(!guidelines)
+    //     {
+    //       setErrors((prev) => ({ ...prev, guidelines: true }));
+    //     }
+    //     if(quality&&guidelines)
+    //     {
+    //       console.log("u can send pdf");
+    //       setpdfissubmited(true);
   
-        }
-    }
+    //     }
+    // }
+
 
     return (
       <>
@@ -326,7 +343,10 @@ const handleFileChange = (e) => {
      <br />      
      <label className="Drug-sign-label" >Enter the phone number:</label>
      <input type="number" className=" Drug-sign-input" name="phone_number" onChange={handleChange}/><br />
-    {changenumber&&<p>{changenumber}</p>}
+    {changenumber&&<p style={{color:"red"}}>{changenumber}</p>}
+
+    <p>PDF Quality : {renderQ} </p>
+    <p>PDF Followed Guidelines : {renderG} </p>
 
     
     <button className="Drug-sign-button">submit</button>
