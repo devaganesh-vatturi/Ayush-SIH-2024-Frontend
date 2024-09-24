@@ -18,9 +18,10 @@ function Druginsignup(){
     const [guidelines, setGuidelines] = useState(null);
     const [errors, setErrors] = useState({ quality: false, guidelines: false });
     const [pdfissubmited, setpdfissubmited] = useState();
-  
+    let druginspector='druginspector';
     const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
-
+    const [changenumber, setchangenumber] = useState();
+    const [numbererror, setnumbererror] = useState();
     useEffect( 
       ()=>{
        fetchDistricts();
@@ -69,33 +70,33 @@ function Druginsignup(){
         else if(name==="password"&&value.length>=8){
          setPasserror("");
         }
-      //   if (name === "phone_number" && value.length !== 10) {
-      //     setPhnerror("Phone number must contain exactly 10 digits");
-      // } else if (name === "phone_number" && value.length === 10) {
-      //     setPhnerror("");
+        if (name === "phone_number" && value.length !== 10) {
+          setchangenumber("Phone number must contain exactly 10 digits");
+      } else if (name === "phone_number" && value.length === 10) {
+         setchangenumber("");
       }
     
-          const  doVerifyQuality = async(formData)=>
-        {
-          try {
-            const response = await axios.post("http://localhost:5002/api/quality-check",
-              formData,
-              {
-                headers: {
-                  "Content-Type": "multipart/form-data",
-                },
-              } );
-            if (response.data.success) {
-              console.log("verified true quaility! ");
-              return true; // return it
-            } else {
-              console.error("Signup failed", response.data);
-              return false;
-            }
-          } catch (error) {
-            console.error("Error during signup:", error);
-          }
-        } 
+    }//   const  doVerifyQuality = async(formData)=>
+        // {
+        //   try {
+        //     const response = await axios.post("http://localhost:5002/api/quality-check",
+        //       formData,
+        //       {
+        //         headers: {
+        //           "Content-Type": "multipart/form-data",
+        //         },
+        //       } );
+        //     if (response.data.success) {
+        //       console.log("verified true quaility! ");
+        //       return true; // return it
+        //     } else {
+        //       console.error("Signup failed", response.data);
+        //       return false;
+        //     }
+        //   } catch (error) {
+        //     console.error("Error during signup:", error);
+        //   }
+        // } 
 
         const  doVerifyGuidlines = async(formData)=>
           {
@@ -125,13 +126,22 @@ const handleFileChange = (e) => {
     const handleSubmit= async(e)=>
     {
         e.preventDefault();
+        if(drugindata.phone_number.length!=10)
+        {
+            setnumbererror(true);
+        }
         if(drugindata.password.length<8)
         {
           passvalid=true;
         }
         passvalid ? setPasserror("Password must contain 8 letters") : setPasserror("");
 
-
+        if(drugindata.phone_number.length!=10)
+          {
+             phnvalid=true;
+          }
+     
+          phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         // Prepare form data
   const formData = new FormData();
   // Append the PDF file (OrderPdfCopy)
@@ -139,28 +149,28 @@ const handleFileChange = (e) => {
 
   // const isGoodQuality = await doVerifyQuality(formData);
 
-  const isFollowedGuidelines = await doVerifyGuidlines(formData);
+  // const isFollowedGuidelines = await doVerifyGuidlines(formData);
 
   formData.append("Email_ID",drugindata.Email_ID)
   
 
-  try {
-    const response = await axios.post("http://localhost:5002/api/upload-pdf",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      } );
-    if (response.data.success) {
-      console.log("Successfully signed up!", response.data);
-      alert("successfully registered");
-    } else { 
-      console.error("Signup failed", response.data);
-    }
-  } catch (error) {
-    console.error("Error during signup:", error);
-  }
+  // try {
+  //   const response = await axios.post("http://localhost:5002/api/upload-pdf",
+  //     formData,
+  //     {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     } );
+  //   if (response.data.success) {
+  //     console.log("Successfully signed up!", response.data);
+  //     alert("successfully registered");
+  //   } else { 
+  //     console.error("Signup failed", response.data);
+  //   }
+  // } catch (error) {
+  //   console.error("Error during signup:", error);
+  // }
 
 
         try{
@@ -168,6 +178,7 @@ const handleFileChange = (e) => {
         if(response.data.success)
         {
           alert("Successfully Signed in!");
+          window.location.href = `/login?value=${druginspector}`;
         }
         else{
           alert("Please Try again")
@@ -247,14 +258,14 @@ const handleFileChange = (e) => {
       <input type="text" name="name" onChange={handleChange} className="Drug-sign-input" />
       <label className="doctor-sign-label">Upload your Allotment Letter :</label>
       <input type="file" accept=".pdf" className=" Drug-sign-input" onChange={handleFileChange}/>
-      <button
+      {/* <button
         onClick={checkQuality}
         className={`verify-btn ${quality === null ? "bg-black" : quality ? "bg-green" : "bg-red"}`}
       >
         Verify quality {quality === null ? "" : quality ? "✔" : "✖"}
       </button>
 
-      {/* Verify Guidelines Button */}
+      
       <button
         onClick={checkGuidelines}
         className={`verify-btn ${guidelines === null ? "bg-black" : guidelines ? "bg-green" : "bg-red"}`}
@@ -263,14 +274,13 @@ const handleFileChange = (e) => {
       </button>
       <button
         className={`doc-sign-submit-btn`}
-        // disabled={!(quality && guidelines)}
         onClick={pdfSubmit}
       >
         Submit
       </button>
       {errors.quality && <p className="error-text">Please verify quality.</p>}
       {errors.guidelines && <p className="error-text">Please verify guidelines.</p>}
-      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}
+      {pdfissubmited&&<p id="success-text">Certificate Uploaded</p>}  */}
       <label className=" Drug-sign-label">Enter Email:</label> 
       <input type="email" name="Email_ID" onChange={handleChange} className=" Drug-sign-input" />
       <label className=" Drug-sign-label">Enter the password:</label>
@@ -315,8 +325,9 @@ const handleFileChange = (e) => {
             </select>
      <br />      
      <label className="Drug-sign-label" >Enter the phone number:</label>
-     <input type="text" className=" Drug-sign-input" name="phone_number" onChange={handleChange}/><br />
-    
+     <input type="number" className=" Drug-sign-input" name="phone_number" onChange={handleChange}/><br />
+    {changenumber&&<p>{changenumber}</p>}
+
     
     <button className="Drug-sign-button">submit</button>
 
