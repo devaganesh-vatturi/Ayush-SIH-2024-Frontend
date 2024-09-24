@@ -68,7 +68,7 @@ const handleSubmit = async(presentmail) => {
     if (response.data.success) {
       console.log("successfully feedback sent");
     }else{
-      console.log("failure feedback sending");
+      console.log("failure feedback sending",response.data.message);
     }
   } catch (error) {
     console.log("Error: ", error);
@@ -175,7 +175,7 @@ const handleInputChange = (e) => {
                                                       value={feedback}  // Bind the input value to the feedback state
                                                       onChange={handleInputChange}  // Update state when the input changes
                                                     />
-                                                    <button onClick={()=>{handleSubmit(eachemailobj.Email_ID)}} id="feed-submit" >Submit</button>
+                                                    <button onClick={()=>{handleSubmit(eachemailobj.Email_ID)}} id="feed-submit" >Submit the Feedback</button>
                                                   </>
                                                 )}
                                               </>
