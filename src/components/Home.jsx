@@ -53,12 +53,19 @@ function Home()
         { question: "What are the tax benefits for AYUSH startups?", answer: "AYUSH startups may be eligible for tax benefits under the Startup India initiative and specific tax exemptions related to health and wellness sectors." },
         { question: "What support is provided by the Ministry of AYUSH to startups?", answer: "The Ministry of AYUSH provides a variety of support mechanisms, including mentorship, incubation support, and financial assistance for startups focusing on traditional medicine and wellness." },
       ];
-
+      const handleRedirect = () => {
+        window.open("https://youtu.be/lLrq8nG4U1c?si=kVBeRfZGTUcHGd5K", "_blank");
+      };
 
     return(
         <div className='the-home'>
        <Header/>
        <Images/>
+       <center>
+            
+
+      <center><button id="ytlink" onClick={handleRedirect}>  Click here to watch the demo video</button></center>
+    </center>
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>
