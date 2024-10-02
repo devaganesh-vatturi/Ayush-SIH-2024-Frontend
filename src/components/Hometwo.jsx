@@ -6,7 +6,7 @@ import FAQ from './FAQs';
 import Footer from './Dashboard comps/Footer';
 import Gochatbot from './Gochatbot';
 import Images from './Images';
-function Home()
+function Home() 
 {
     
     let farmer='farmer';
@@ -83,13 +83,13 @@ function Home()
         
            <div className="home-two-farmer">
            <img id="home-two-img" src={farmer1}/>
-               <p>Farmer</p>
+               <p id="type-title">Farmer</p>
                <button id="home-two-signin" onClick={gofarmer}>Sign Up</button>
                <button id="home-two-login" onClick={farmerLogin}>Login</button>
            </div>
            <div className="home-two-doctor">
            <img id="home-two-img" src={doctor1}/>
-               <p>Doctor</p>
+               <p id="type-title">Doctor</p>
                <button id="home-two-signin" onClick={godoctor}>Sign Up</button>
                <button id="home-two-login" onClick={doctorLogin}>Login</button>
            </div>
