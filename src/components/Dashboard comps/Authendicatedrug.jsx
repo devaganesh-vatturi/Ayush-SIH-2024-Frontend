@@ -47,9 +47,9 @@ export default function Authendicatedrug({email}) {
     setVisibleIndex(visibleIndex === index ? null : index);
   };
  
-  return (
+  return (  
     <>
-    <div style={{height:"50vh"}}>
+    <div className='drug-au-main'>
     <p style={{fontSize:"1.5rem"}}>List of drug inspectors to get Approved</p>
     {pendingDrugEmails.map((eachemailobj, index) => {
         const details = eachemailobj; // Fetch the details based on the index\
@@ -63,19 +63,19 @@ state "andhra pradesh"
         */
         
         return (
-          <div key={index} className="Drugp-item">
+          <div key={index} className="Druga-item">
             <div
               onClick={() => toggleDetails(index)}
-              className="Drugp-header"
+              className="Druga-header"
             >
                <p style={{color:"white"}}>Name: {details.name}</p> 
             <p style={{color:"white"}}>Email:{details.Email_ID}</p> 
             </div>
 
             {visibleIndex === index && details && (
-              <div className="Drugp-details">
-                <div className='Drugp-details-inner'>
-                  <div className='Drugp-details-b1'>
+              <div className="Druga-details">
+                <div className='Druga-details-inner'>
+                  <div className='Druga-details-b1'>
                     
                     <p>Phone no: {details.phone_number}</p>
                     <p>District: {details.district}</p>
@@ -83,9 +83,9 @@ state "andhra pradesh"
                     {/* <PdfViewer email_prop={details.Email_ID} /> */}
                   </div>
                 </div>
-                <div className='Drugp-details-buttons'>
+                <div className='Druga-details-buttons'>
                   <button 
-                    className='Drugp-btn-assign'
+                    className='Druga-btn-assign'
                     onClick={() =>{ Acceptdrug(eachemailobj.Email_ID)}}
                   >
                     Accept

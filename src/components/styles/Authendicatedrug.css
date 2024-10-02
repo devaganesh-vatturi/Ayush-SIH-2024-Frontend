@@ -1,35 +1,43 @@
 
-.Drugp-container {
+.Druga-container {
     max-width: 50vw;
     margin: 0 auto;
     font-family: Arial, sans-serif;
     color:rgb(255, 255, 255);
   }
   
-  .Drugp-item {
+  .Druga-item {
     margin-bottom: 15px;
-    
+  
+    width:50vw;
+  }
+  .drug-au-main
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
   }
   
-  .Drugp-header {
-    background-color: #094660;
+  .Druga-header {
+    background-color: rgb(17, 66, 133) ;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     height:10vh;
   }
-  .Drugp-header:hover{
-    background-color: #59a1c0;
+  .Druga-header:hover{
+    background-color: rgb(4, 25, 60);
     color:black;
   }
   
   
-  .Drugp-name {
+  .Druga-name {
     font-weight: bold;
     margin: 0;
   }
-  .Drugp-details {
+  .Druga-details {
     padding: 10px;
     border-left: 4px solid #094660;
     border-right: 4px solid #094660;
@@ -37,11 +45,11 @@
     border-radius: 5px;
     color:rgb(0, 0, 0);
   }
-  #Drugp-head{
+  #Druga-head{
     color:black;
     text-align: center;
   }
-  .Drugp-btn-assign,.Drugp-btn-approve,.Drugp-btn-reject{
+  .Druga-btn-assign,.Druga-btn-approve,.Druga-btn-reject{
     padding: 8px 12px;
     
     color: #fff;
@@ -50,22 +58,22 @@
     cursor: pointer;
     margin-top: 10px;
   }
-  .Drugp-btn-approve{
+  .Druga-btn-approve{
    background-color: #10aa22;
   }
-  .Drugp-btn-reject{
+  .Druga-btn-reject{
     margin-left:10px;
    background-color: red;
   }
   
-  .Drugp-btn-assign{
+  .Druga-btn-assign{
     background-color: #10aa22;
   }
   
-  .Drugp-btn:hover {
+  .Druga-btn:hover {
     background-color: #0056b3;
   }
-  .Drugp-details-inner{
+  .Druga-details-inner{
     display:flex;
     flex-direction: row;
     justify-content: space-between;

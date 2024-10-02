@@ -12,7 +12,7 @@
   }
   
   .Drugp-header {
-    background-color: #094660;
+    background-color: rgb(17, 66, 133) ;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
@@ -20,8 +20,8 @@
     height:10vh;
   }
   .Drugp-header:hover{
-    background-color: #59a1c0;
-    color:black;
+    background-color: rgb(4, 25, 60);
+    color:white;
   }
   
   

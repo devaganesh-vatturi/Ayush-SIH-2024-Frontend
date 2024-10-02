@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Dashboard comps/Footer';
 
+import MarkdownDisplay from './MarkDownDisplay';
 import { useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
@@ -53,7 +54,8 @@ function AiChatBot() {
       });
   
       const data = await response.json();
-  
+
+      // const testing = `<MarkdownDisplay data={data.data} />`;
       setMessages([...chatMessages, {
         message: data.data,
         sender: 'Assistant',
@@ -66,8 +68,10 @@ function AiChatBot() {
   }
 
   return (
+    <>
+    <Header/>
     <div className="gipp">
-      <div style={{ position: 'relative', height: '95vh', width: '98vw' }}>
+      <div style={{ position: 'relative', height: '75vh', width: '98vw',paddingTop:'100px' }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
@@ -83,6 +87,8 @@ function AiChatBot() {
         </MainContainer>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 
