@@ -62,9 +62,9 @@ function Home()
        <Header/>
        <Images/>
        <center>
-      <p onClick={handleRedirect} style={{ cursor: 'pointer', color: 'blue', fontSize:'1.3rem' }}>
-        Click here to watch the demo video
-      </p>
+            
+
+      <center><button id="ytlink" onClick={handleRedirect}>  Click here to watch the demo video</button></center>
     </center>
         <div className="home-main">
            <div className="home-main-startup">

@@ -92,3 +92,8 @@ body{
 .home-two-chatbot{
     color:black;
 }
+
+#type-title{
+    font-family: 'RobotoMono-Bold';
+    font-size: 1.3rem;
+}
