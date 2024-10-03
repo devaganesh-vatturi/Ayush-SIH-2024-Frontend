@@ -11,7 +11,7 @@ export default function Filterdoctor({email}) {
   useEffect( ()=>{
     const fetch_Doctors = async(e)=>{
       try {
-          const response = await axios.post('http://localhost:5002/api/doctertab-in-startup', 
+          const response = await axios.post('https://ayush-sih-backend.vercel.app/api/doctertab-in-startup', 
                                        {Email_ID});
           const doctersExist  = response.data.DoctorRetrievalSuccess;       
           if (doctersExist) {

@@ -15,12 +15,12 @@ export default function Filterstartup({name,email}) {
     try{
       if(name='farmer')
         {
-      const response=await axios.post('http://localhost:5002/api/farmer-dashboard',email);
+      const response=await axios.post('https://ayush-sih-backend.vercel.app/api/farmer-dashboard',email);
       //variable name is email but it contains phone number in case of farmer
         }
         else if(name='doctor')
         { 
-          const response= await axios.post('http://localhost:5002/api/doctor-dashboard',email);
+          const response= await axios.post('https://ayush-sih-backend.vercel.app/api/doctor-dashboard',email);
         }
         if(response.success)
         {

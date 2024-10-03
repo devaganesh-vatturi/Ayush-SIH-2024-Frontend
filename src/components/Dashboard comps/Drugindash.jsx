@@ -22,7 +22,7 @@ export default function Drugindash() {
   useEffect(()=>{  // token verification
     const fetch_it = async(e)=>{
       try {
-        const response = await axios.post('http://localhost:5002/api/tokenverify', 
+        const response = await axios.post('https://ayush-sih-backend.vercel.app/api/tokenverify', 
             {email}, { // parsing the token as a JSON file
                         headers: {
                             'authorization': `Bearer ${token}`, 
@@ -68,7 +68,7 @@ export default function Drugindash() {
 useEffect(() => {
     const fetchEmails = async () => {
       try {
-        const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true');
+        const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isDrugInspectorAssigned-true');
         if(response.data.success && response.data.assignedList.length > 0) {
           setpendingEmails(response.data.assignedList);
         } else {

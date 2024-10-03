@@ -98,7 +98,7 @@ const handleFileChange = (e) => {
   formData.append("pdf", selectedFile); // Append the selected file
   formData.append("Email_ID",Licensedata.Email_ID)
   try {
-    const response = await axios.post("http://localhost:5002/api/upload-pdf",
+    const response = await axios.post("https://ayush-sih-backend.vercel.app/api/upload-pdf",
       formData,
       {
         headers: {
@@ -117,7 +117,7 @@ const handleFileChange = (e) => {
   try{
     console.log(Licensedata.Email_ID);
     
-    const response= await axios.post("http://localhost:5002/api/licensingAuthority-reg",Licensedata);
+    const response= await axios.post("https://ayush-sih-backend.vercel.app/api/licensingAuthority-reg",Licensedata);
     if(response.data.success)
     {
       alert("Successfully Signed in!");
@@ -138,7 +138,7 @@ const handleFileChange = (e) => {
     const [districtsList, setDistrictsList] = useState([]);
     const fetchDistricts = async () => {
       try {
-          const response = await fetch('http://localhost:5002/api/districts', {
+          const response = await fetch('https://ayush-sih-backend.vercel.app/api/districts', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ export default function Filterfarmer({email}) {
   useEffect(()=>{  
     const fetch_Farmers = async(e)=>{
       try {
-          const response = await axios.post('http://localhost:5002/api/farmertab-in-startup', 
+          const response = await axios.post('https://ayush-sih-backend.vercel.app/api/farmertab-in-startup', 
                                        {Email_ID});
           const farmersExist  = response.data.farmerRetrievalSuccess;       
           if (farmersExist) {

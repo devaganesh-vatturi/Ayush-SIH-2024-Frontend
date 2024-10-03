@@ -89,7 +89,7 @@ function Startupsignup() {
       }
   phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
   try {
-    const response = await axios.post("http://localhost:5002/api/startup-reg", startUpdata);
+    const response = await axios.post("https://ayush-sih-backend.vercel.app/api/startup-reg", startUpdata);
   
     if (response.data.success) {
       alert("Successfully Signed Up");
@@ -116,7 +116,7 @@ function Startupsignup() {
     
   const fetchDistricts = async () => {
       try {
-          const response = await fetch('http://localhost:5002/api/districts', {
+          const response = await fetch('https://ayush-sih-backend.vercel.app/api/districts', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
