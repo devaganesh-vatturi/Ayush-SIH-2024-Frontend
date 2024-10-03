@@ -40,7 +40,9 @@ const handelSubmit =async(e)=>{
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
   try
   {
-      const response = await axios.post(`https://ayush-sih-backend.vercel.app/api/${usertype}-login`, logit); 
+      const response = await axios.post(`https://ayush-sih-backend.vercel.app/api/${usertype}-login`, logit, {
+        withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
+      }); 
       if (response.data.success) 
       {
             const tokenrec = response.data.token;
@@ -51,6 +53,7 @@ const handelSubmit =async(e)=>{
                return null;
           }
             const encodedEmail = btoa(logit.Email_ID); // Encode the email using Base64
+            console.log("encodedEmail ",encodedEmail,"token rec",tokenrec);
             window.location.href = `/${usertype}dash?email=${encodedEmail}&token=${tokenrec}`;
       
     }else{
