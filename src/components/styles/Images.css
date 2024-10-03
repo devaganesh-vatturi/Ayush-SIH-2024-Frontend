@@ -1,6 +1,6 @@
 .slideshow-container {
     position: relative;
-    width: 100vw; /* Full viewport width */
+    width: 100%; /* Full viewport width */
     height: 60vh; /* Full viewport height */
     padding-top:90px;
     overflow: hidden;
