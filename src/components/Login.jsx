@@ -40,7 +40,7 @@ const handelSubmit =async(e)=>{
     setLogit({phone_number:logit.Email_ID, password:logit.password}); // changing the req.body backend recievers feild name in-according to the farmer
   try
   {
-      const response = await axios.post(`http://localhost:5002/api/${usertype}-login`, logit); 
+      const response = await axios.post(`https://ayush-sih-backend.vercel.app/api/${usertype}-login`, logit); 
       if (response.data.success) 
       {
             const tokenrec = response.data.token;
