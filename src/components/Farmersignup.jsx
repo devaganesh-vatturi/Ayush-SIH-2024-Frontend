@@ -83,7 +83,7 @@ function Farmersignup(){
        
             phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         try{
-        const response= await axios.post("http://localhost:5002/api/farmer-reg",farmerdata);
+        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/farmer-reg",farmerdata);
         if(response.data.success)
         {
           alert("Successfully Signed in!");
@@ -101,7 +101,7 @@ function Farmersignup(){
    
     const fetchDistricts = async () => {
       try {
-          const response = await fetch('http://localhost:5002/api/districts', {
+          const response = await fetch('https://ayush-sih-backend.vercel.app/api/districts', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

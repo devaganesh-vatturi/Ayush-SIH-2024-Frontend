@@ -11,7 +11,7 @@ export default function Authoritynotification({email}) {
   useEffect(() => { // pending
     const getNotifications = async () => {
       try {
-        const response = await axios.post('http://localhost:5002/api/LA-NotificationGet',{Startup_Email :email});
+        const response = await axios.post('https://ayush-sih-backend.vercel.app/api/LA-NotificationGet',{Startup_Email :email});
         if(response.data.success) {
           console.log(...response.data.NotificationData);
           setnotifications([...response.data.NotificationData]);

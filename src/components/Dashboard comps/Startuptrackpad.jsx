@@ -28,7 +28,7 @@ const Startuptrackpad = ({email}) => {
     const fetch_status = async () => {
       try {
         const Startup_Email = email;
-        const response = await axios.post('http://localhost:5002/api/status-trackpad', { Startup_Email });
+        const response = await axios.post('https://ayush-sih-backend.vercel.app/api/status-trackpad', { Startup_Email });
         const isSuccess = response.data.success;
         if (isSuccess) {
           const recieved = response.data.statusInfo;

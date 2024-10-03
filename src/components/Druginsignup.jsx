@@ -116,7 +116,7 @@ function Druginsignup(){
         const  doVerifyGuidlines = async(formData)=>
           {
             try {
-              const response = await axios.post("http://localhost:5002/api/guideline-check",
+              const response = await axios.post("https://ayush-sih-backend.vercel.app/api/guideline-check",
                 formData,
                 {
                   headers: {
@@ -189,7 +189,7 @@ const handleFileChange = (e) => {
 
 
         try{
-        const response= await axios.post("http://localhost:5002/api/drugInspector-reg",drugindata);
+        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/drugInspector-reg",drugindata);
         if(response.data.success)
         {
           alert("Successfully registered !");
@@ -206,7 +206,7 @@ const handleFileChange = (e) => {
    
     const fetchDistricts = async () => {
       try {
-          const response = await fetch('http://localhost:5002/api/districts', {
+          const response = await fetch('https://ayush-sih-backend.vercel.app/api/districts', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',

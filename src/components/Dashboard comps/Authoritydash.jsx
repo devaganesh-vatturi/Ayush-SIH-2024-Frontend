@@ -21,7 +21,7 @@ export default function Authoritydash() {
    useEffect(()=>{     // parsing the token
      const fetch_it = async(e)=>{
       try {
-        const response = await axios.post('http://localhost:5002/api/tokenverify', 
+        const response = await axios.post('https://ayush-sih-backend.vercel.app/api/tokenverify', 
             {email}, { // parsing the token as a JSON file
                         headers: {
                             'authorization': `Bearer ${token}`, 

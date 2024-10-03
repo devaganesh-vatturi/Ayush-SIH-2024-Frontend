@@ -17,7 +17,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // pending
       const fetchpendingEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isfilledapplication-false');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isfilledapplication-false');
           if(response.data.success && response.data.pendingList.length > 0) {
             setpendingStartupEmails(response.data.pendingList);
           } else {
@@ -35,7 +35,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // assigned
       const fetchassignedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAssigned-true');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isDrugInspectorAssigned-true');
           if(response.data.success && response.data.assignedList.length > 0) {
             setassignedStartupEmails(response.data.assignedList);
           } else {
@@ -53,7 +53,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // accepted
       const fetchacceptedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorAccepted-true');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isDrugInspectorAccepted-true');
           if(response.data.success && response.data.acceptedList.length > 0) {
             setacceptedStartupEmails(response.data.acceptedList);
           } else {
@@ -71,7 +71,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // rejected
       const fetchrejectedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isDrugInspectorRejected-true');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isDrugInspectorRejected-true');
           if(response.data.success && response.data.rejectedList.length > 0) {
             setrejectedStartupEmails(response.data.rejectedList);
           } else {
@@ -89,7 +89,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // licensed
       const fetchlicensedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isLicensed-true');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isLicensed-true');
           if(response.data.success && response.data.licensedList.length > 0) {
             setlicensedStartupEmails(response.data.licensedList);
           } else {
@@ -107,7 +107,7 @@ export default function Authorityhome({email}) {
     useEffect(() => { // licensed
       const fetchlicensedEmails = async () => {
         try {
-          const response = await axios.get('http://localhost:5002/api/isLArejected');
+          const response = await axios.get('https://ayush-sih-backend.vercel.app/api/isLArejected');
           if(response.data.success && response.data.datal.length > 0) {
             setLArejectedStartupEmails(response.data.datal);
           } else {

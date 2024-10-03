@@ -29,7 +29,7 @@ function StartupSingup({ email }) {
     const fetchUserData = async () => {
       try {
         const Email_ID = email;
-        const response = await axios.post('http://localhost:5002/api/startup-dash-retrieval', { Email_ID });
+        const response = await axios.post('https://ayush-sih-backend.vercel.app/api/startup-dash-retrieval', { Email_ID });
         if (response.data.success) {
           const fetchedData ={...response.data.data}[0];  // 4d thinking
           // Ensure all fields are populated properly
@@ -128,7 +128,7 @@ function StartupSingup({ email }) {
                         }
                       });
                       if (Object.keys(updatedFields).length > 0) {
-                        const response = await axios.put(`http://localhost:5002/api/update-fill-application/${email}`, updatedFields);
+                        const response = await axios.put(`https://ayush-sih-backend.vercel.app/api/update-fill-application/${email}`, updatedFields);
                         if (response.data.success) {
                             alert('Data updated successfully!');
                           }
@@ -138,7 +138,7 @@ function StartupSingup({ email }) {
 
               } else {
                       // Create and POST for new user data
-                      const response = await axios.post('http://localhost:5002/api/startup-dash-post-fillapplication', startupdata);
+                      const response = await axios.post('https://ayush-sih-backend.vercel.app/api/startup-dash-post-fillapplication', startupdata);
                       if (response.data.success) {
                         alert('Successfully Filled the application');
                       } else {
