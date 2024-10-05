@@ -89,7 +89,9 @@ function Startupsignup() {
       }
   phnvalid ? setPhnerror("Phone nuber  must contain 10 Numbers") : setPhnerror("");
   try {
-    const response = await axios.post("https://ayush-sih-backend.vercel.app/api/startup-reg", startUpdata);
+    const response = await axios.post("https://ayush-sih-backend.vercel.app/api/startup-reg", startUpdata,{
+      withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
+    });
   
     if (response.data.success) {
       alert("Successfully Signed Up");

@@ -83,7 +83,9 @@ function Farmersignup(){
        
             phnvalid ? setPhnerror("Phone number  must contain 10 Numbers") : setPhnerror("");
         try{
-        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/farmer-reg",farmerdata);
+        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/farmer-reg",farmerdata,{
+          withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
+        });
         if(response.data.success)
         {
           alert("Successfully Signed in!");
