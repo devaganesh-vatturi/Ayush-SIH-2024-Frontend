@@ -82,13 +82,13 @@ function Home()
         <div className="home-two-main">
         
            <div className="home-two-farmer">
-           <img id="home-two-img" src={farmer1}/>
+           <img id="home-two-img1" src={farmer1}/>
                <p id="type-title">Farmer</p>
                <button id="home-two-signin" onClick={gofarmer}>Sign Up</button>
                <button id="home-two-login" onClick={farmerLogin}>Login</button>
            </div>
            <div className="home-two-doctor">
-           <img id="home-two-img" src={doctor1}/>
+           <img id="home-two-img2" src={doctor1}/>
                <p id="type-title">Doctor</p>
                <button id="home-two-signin" onClick={godoctor}>Sign Up</button>
                <button id="home-two-login" onClick={doctorLogin}>Login</button>
