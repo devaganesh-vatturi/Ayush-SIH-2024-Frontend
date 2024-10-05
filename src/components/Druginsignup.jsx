@@ -189,7 +189,9 @@ const handleFileChange = (e) => {
 
 
         try{
-        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/drugInspector-reg",drugindata);
+        const response= await axios.post("https://ayush-sih-backend.vercel.app/api/drugInspector-reg",drugindata,{
+          withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
+        });
         if(response.data.success)
         {
           alert("Successfully registered !");

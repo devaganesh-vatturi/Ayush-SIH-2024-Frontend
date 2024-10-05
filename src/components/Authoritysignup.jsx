@@ -117,7 +117,9 @@ const handleFileChange = (e) => {
   try{
     console.log(Licensedata.Email_ID);
     
-    const response= await axios.post("https://ayush-sih-backend.vercel.app/api/licensingAuthority-reg",Licensedata);
+    const response= await axios.post("https://ayush-sih-backend.vercel.app/api/licensingAuthority-reg",Licensedata,{
+      withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
+    });
     if(response.data.success)
     {
       alert("Successfully Signed in!");
