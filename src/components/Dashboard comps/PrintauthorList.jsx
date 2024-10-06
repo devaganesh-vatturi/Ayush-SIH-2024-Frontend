@@ -6,10 +6,9 @@ function PrintauthorList({startupmails,type}){
 
   const [visibleIndex, setVisibleIndex] = useState(null);
   const [rejected, setrejected] = useState(false);
+  const [basicStartupDetail, setBasicStartupDetail] = useState([]); 
   const [feedback, setFeedback] = useState('');
   const [fullStartupDetail, setfullStartupDetail] = useState([]); // Store details as an array
-//   {//     Email: "sai@gmail.com",//     PANno: "3YE83H894GF",//     GSTno: "BF8E84T38R8",//     websiteAddress: "www.saitech.com",//     certificateNo: 645658738,//     CompanyDOI: "02-06-2005",
-//     IssuuingAuthority: "saisaisai",//     IE_code: 83648374,//     IE_DOI: "02-05-2005"// });
 const fetchfulldetails = async (email) => {
   try {
     console.log("Fetching details for: ", email);
@@ -24,7 +23,28 @@ const fetchfulldetails = async (email) => {
     return null; // Return null if there's an error
   }
 };
-
+const fetchbasicdetails = async (email) => {
+  try {
+    console.log("Fetching details for: ", email);
+    const response = await axios.post('https://ayush-sih-backend.vercel.app/api/startup-basic', { Email_ID: email }); 
+    if (response.data.success) {
+      return response.data.basicdata; // Return the fetched details
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+    return null; // Return null if there's an error 
+  }
+};
+const getDetailsAlll = async () => {
+  const allDetails = [];
+  for (let eachobj of startupmails) {
+    const details = await fetchbasicdetails(eachobj.Email_ID); // Fetch details for each email
+    if (details) {
+      allDetails.push(details); // Push fetched details into array
+    }
+  }
+  setBasicStartupDetail(allDetails); // Set all fetched details in state
+};
 function rejectclick(e)
 {
   console.log('clicked on reject');
@@ -95,6 +115,7 @@ const handleInputChange = (e) => {
   // Fetch all startup details when component mounts
   useEffect(() => {
     getDetailsAll();
+    getDetailsAlll();
   }, [startupmails]);
 
   // Toggle the visibility of additional info (phone and district)
@@ -122,14 +143,15 @@ const handleInputChange = (e) => {
   return (
           <div className="author-container">
                   {startupmails.map((eachemailobj, index) => {
-                          const details = fullStartupDetail[index]; // Fetch the details based on the index
+                          const details = fullStartupDetail[index];
+                          const company = basicStartupDetail[index];  // Fetch the details based on the index
                           return (
                                     <div key={index} className="author-item">
                                       <div 
                                         onClick={() => toggleDetails(index)} 
                                         className="author-header"
                                       >
-                                        <p className="author-name"> {details ? details.companyName : 'Loading...'} </p>
+                                        <p className="author-name"> {company ? company.companyName : 'Loading...'} </p>
                                         <p className="author-email">{eachemailobj.Email_ID}</p>
                                       </div>
                               
