@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/StartupApplication.css';
 import axios from 'axios';
-
+import refreshIcon from '../styles/refresh.svg';
 function StartupSingup({ email }) {
 
   const cn_email = email || "not passed";
@@ -230,11 +230,24 @@ function makeiteditable(){
                     <label style={{fontSize:'1.5rem'}} >4. Purpose of Applying*</label>
                     <label > <span style={{color:"blue"}}>{userExists ? "EXISTING" : "NEW" } </span> (automatic detection) </label>
                 </div>
+
                 <div>
                     <label id="ll32">Captcha</label><br/>
-                  <span id="captcha">{captcha}</span><br/>
-                  <button id="captcha-regenerate" onClick={generateCaptcha}>Regenerate</button>
-                  <input id="li20" type="text" placeholder="Enter captcha" value={userCaptcha} onChange={handleCaptchaChange} />
+                    
+                    <div className="cap-cont" > 
+                        <span id="captcha">{captcha+"  "}</span>
+                   </div>          
+                        
+                    <button id="captcha-regenerate" onClick={generateCaptcha}> 
+                          <div style={{ backgroundImage: `url(${refreshIcon})`, width: '35px', height: '35px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div> 
+                    </button>
+                   
+
+                  <br/>
+                  <input id="li20" 
+                  type="text" placeholder="Enter captcha" value={userCaptcha} 
+                  className="bluish-input" onChange={handleCaptchaChange} />
+                  <br/>
                   {captchaError && <p className="error">{captchaError}</p>}       
                 </div>
                 <br/>
