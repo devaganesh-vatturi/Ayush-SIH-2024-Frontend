@@ -73,9 +73,9 @@ export default function Startupdashboard() {
             fetch_it();
         }
     },[]);
-   if(!tokenvalidation){
-    return(<h1>Error 404</h1>)
-   }
+//    if(!tokenvalidation){
+//     return(<h1>Error 404</h1>)
+//    }
   
 //    console.log(email);  
    if(!email.endsWith('@gmail.com'))
@@ -109,8 +109,11 @@ export default function Startupdashboard() {
   return (
     <div>
     <Header/>
-    <div className='startup-dsh-head'>
-        <div className='startup-dsh-head-first'>
+    <div style={{paddingTop:"100px"}}><p className='sttup-head'>Startup Dashboard</p></div>
+    
+    <div className='startup-dsh-nav-bar'>
+    
+        <div className='startup-dsh-nav-left'>
             <p 
                 className={activeTab === 'Status' ? 'active-tab' : ''} 
                 onClick={() => { goStatus(); setActiveTab('Status'); }}
@@ -136,7 +139,7 @@ export default function Startupdashboard() {
                 Peer Forum
             </p>
         </div>
-        <div>
+        <div style={{paddingLeft:"70vh",alignItems:"center",paddingTop:"10px"}}>
             <Logout/>
         </div>
     </div>

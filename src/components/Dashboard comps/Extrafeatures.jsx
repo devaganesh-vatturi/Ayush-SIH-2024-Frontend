@@ -22,9 +22,9 @@ export default function Extrafeatures({email}) {
   
     <>
     <div className='extra-head'>
-        <p className='nav-link' onClick={godoctor}>Doctors Info</p>
-        <p className='nav-link' onClick={gofarmer}>Farmers Info</p>
-        <p className='nav-link' onClick={goinspector}>License Authority</p>
+        <p className={screen === 1 ? 'active-tab-eco' : ''}  onClick={godoctor}>Doctors Info</p>
+        <p className={screen === 2 ? 'active-tab-eco' : ''}  onClick={gofarmer}>Farmers Info</p>
+        <p className={screen === 3 ? 'active-tab-eco' : ''}  onClick={goinspector}>License Authority</p>
        
     </div>
     {

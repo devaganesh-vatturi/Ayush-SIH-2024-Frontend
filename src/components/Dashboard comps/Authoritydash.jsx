@@ -86,9 +86,9 @@ export default function Authoritydash() {
     <p className='drug-head'>Licensing Authority Dashboard</p>
     <div className='drug-main'>
         <div className='drug-main-first'>
-        <p className="drug-nav" onClick={gohome}>Home</p>
-        <p className="drug-nav" onClick={gonotification}>Notifications</p>
-        <p className="drug-nav" onClick={goauthendicate}>Authendicate Drug Inscpector</p>
+            <p className={drugtab === 1 ? 'active-tabauth' : ''}  onClick={gohome}>Home</p>
+            <p className={drugtab === 2 ? 'active-tabauth' : ''} onClick={gonotification}>Notifications</p>
+            <p className={drugtab === 3 ? 'active-tabauth' : ''} onClick={goauthendicate}>Authendicate Drug Inscpector</p>
         </div>
         <div>
         <Logout/> 
