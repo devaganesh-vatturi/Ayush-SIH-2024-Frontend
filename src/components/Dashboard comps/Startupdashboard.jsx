@@ -22,10 +22,6 @@ export default function Startupdashboard() {
    let decemail= values.get('email');
 //    console.log(decemail);
   let email= atob(decemail);
-   if(!email.endsWith('@gmail.com'))
-   {
-   return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
-   }
    let token= values.get('token');
    const [activeTab, setActiveTab] = useState('Status');
    useEffect(()=>{
