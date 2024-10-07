@@ -37,8 +37,10 @@ export default function Authendicatedrug({email}) {
         }); 
         if (response.data.success) {
           console.log("success granted permit");
+          alert("success granted permit");
         }else{
           console.log("failure to grant permit");
+          alert("failure to grant permit");
         }
       } catch (error) {
         console.log("Error: ", error);

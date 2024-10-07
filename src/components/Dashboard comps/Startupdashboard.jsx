@@ -11,6 +11,7 @@ import Extrafeatures from './Extrafeatures';
 import PeerForum from './PeerForum';
 import Footer from './Footer';
 import Logout from './Logout';
+import YourProfile from './YourProfile';
 
 export default function Startupdashboard() {
     //1 is doctor
@@ -22,10 +23,6 @@ export default function Startupdashboard() {
    let decemail= values.get('email');
 //    console.log(decemail);
   let email= atob(decemail);
-   if(!email.endsWith('@gmail.com'))
-   {
-   return( <h1 style={{ textAlign: 'center' }}>Email Should be valid</h1>);
-   }
    let token= values.get('token');
    const [activeTab, setActiveTab] = useState('Status');
    useEffect(()=>{
@@ -106,6 +103,9 @@ export default function Startupdashboard() {
         setvalue(4);
       
     }
+    function goYourProfile(){
+        setvalue(5);
+    }
   return (
     <div>
     <Header/>
@@ -138,8 +138,14 @@ export default function Startupdashboard() {
             >
                 Peer Forum
             </p>
+            <p 
+                className={activeTab === 'YourProfile' ? 'active-tab' : ''} 
+                onClick={() => { goYourProfile(); setActiveTab('YourProfile'); }}
+            >
+                Your Profile
+            </p>
         </div>
-        <div style={{paddingLeft:"70vh",alignItems:"center",paddingTop:"10px"}}>
+        <div className='startup-dsh-nav-right'>
             <Logout/>
         </div>
     </div>
@@ -147,7 +153,9 @@ export default function Startupdashboard() {
         {value === 1 ? (<Startuptrackpad email={email} />) :
             (value === 2 ? (<StartupApplication email={email} />) :
                 (value === 3 ? (<Extrafeatures email={email} />) :
-                    (value === 4 ? (<PeerForum email={email} />) : (null))
+                    (value === 4 ? (<PeerForum email={email} />) : 
+                        (value === 5 ? (<YourProfile email={email} />) : (null))
+                    )
                 )
             )
         }
