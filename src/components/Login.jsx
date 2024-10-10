@@ -8,10 +8,15 @@ import startuppic from '../assets/loginstartup.jpg';
 import farmerpic from '../assets/loginfarmer.jpg';
 import drugpic from '../assets/logindrug.jpg';
 import authorpic from '../assets/loginauthority.jpg';
+
+import LoadingPage from './LoadingPage';
+
 function Login(){
   const [logit, setLogit] = useState({Email_ID:"  ",password:""});
   const [invalidtext, setInvalidtext] = useState("");
   const [replacepic, setreplacepic] = useState();
+const [bringTheLoadingPage,setBringTheLoadingPage ]=useState(false);
+
   const params=useLocation();
   let value=new URLSearchParams(params.search);
   let usertype=value.get('value');
@@ -30,6 +35,7 @@ function Login(){
 };
 
 const handelSubmit =async(e)=>{
+  setBringTheLoadingPage(true);
   e.preventDefault();
   if(logit.password.length<8)
   {
@@ -57,11 +63,13 @@ const handelSubmit =async(e)=>{
             window.location.href = `/${usertype}dash?email=${encodedEmail}&token=${tokenrec}`;
       
     }else{
+      setBringTheLoadingPage(false);
         console.log("thrown message from backend : ",response.data.message);
         alert("thrown message from backend : "+response.data.message);
         }
   
     } catch (error) {
+      setBringTheLoadingPage(false);
     console.error('Error occurred:', error);
     alert("invalid login details , please try again");
   }
@@ -83,6 +91,12 @@ useEffect(() => {
   return(
       <div className='login-total'>
       <Header/>
+
+      { bringTheLoadingPage ? (
+        <LoadingPage text={"Loading..."}/>
+      ):(
+        // <PrintdrugList startupmails={pendingemails}/>
+
       <div className='login-flex'>
         <img src={replacepic} id='login-img'/>
       <form id='login-form'onSubmit={handelSubmit}>
@@ -102,7 +116,8 @@ useEffect(() => {
       </div>
       </form>
       </div>
-
+      )
+      }
       </div>
     );
 }
