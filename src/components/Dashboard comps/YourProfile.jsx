@@ -39,28 +39,31 @@ const YourProfile = ({ email }) => {
   return (
     <>
       <center>
-    <div className="tot-cont">
-    <div className="container">
-      <div className="profilecircle">{email[0]}</div>{" "}
-      {/* Add the container class */}
-      {errorMessage && <p className="error">{errorMessage}</p>}{" "}
-      {/* Error styling */}
-      {startupData ? (
-        <div className="startupdata">
-          <p className="companyname">{startupData.companyName}</p>
-          <p id="yrprofile"> {startupData.Email_ID}</p>
-          <p id="yrprofile">Address: {startupData.address}</p>
-          <p id="yrprofile">City: {startupData.city}</p>
-          <p id="yrprofile">State: {startupData.state}</p>
-          <p id="yrprofile">District: {startupData.district}</p>
-          <p id="yrprofile">Pin Code: {startupData.pinCode}</p>
-          <p id="yrprofile">Phone Number: {startupData.phone_number}</p>
+        <div className="tot-cont">
+              <div className="container">
+                          <div className="profilecircle">{email[0]}
+                          </div>{" "}
+              
+                          {/* {errorMessage && <p className="error">{errorMessage}</p>}{" "} */}
+
+                      <div className="startupdata">
+                                      {startupData ? (
+                                          <div >
+                                                <p className="companyname">{startupData.companyName}</p>
+                                                <p id="yrprofile"> {startupData.Email_ID}</p>
+                                                <p id="yrprofile">Address: {startupData.address}</p>
+                                                <p id="yrprofile">City: {startupData.city}</p>
+                                                <p id="yrprofile">State: {startupData.state}</p>
+                                                <p id="yrprofile">District: {startupData.district}</p>
+                                                <p id="yrprofile">Pin Code: {startupData.pinCode}</p>
+                                                <p id="yrprofile">Phone Number: {startupData.phone_number}</p>
+                                          </div >
+                                      ) : (
+                                        <p id="yrprofile" >No data available.</p>
+                                      )}
+                        </div>
+              </div>
         </div>
-      ) : (
-        <p id="yrprofile" >No data available.</p>
-      )}
-    </div>
-    </div>
     </center>
     </>
   );
