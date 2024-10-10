@@ -149,7 +149,7 @@ export default function Startupdashboard() {
             <Logout/>
         </div>
     </div>
-    <div>
+    <div className='all-tab-cont'>
         {value === 1 ? (<Startuptrackpad email={email} />) :
             (value === 2 ? (<StartupApplication email={email} />) :
                 (value === 3 ? (<Extrafeatures email={email} />) :
