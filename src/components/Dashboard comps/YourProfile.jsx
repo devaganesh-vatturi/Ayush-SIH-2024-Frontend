@@ -37,6 +37,9 @@ const YourProfile = ({ email }) => {
   }, []); // Empty dependency array to run once on mount
 
   return (
+    <>
+      <center>
+    <div className="tot-cont">
     <div className="container">
       <div className="profilecircle">{email[0]}</div>{" "}
       {/* Add the container class */}
@@ -57,6 +60,9 @@ const YourProfile = ({ email }) => {
         <p id="yrprofile" >No data available.</p>
       )}
     </div>
+    </div>
+    </center>
+    </>
   );
 };
 
