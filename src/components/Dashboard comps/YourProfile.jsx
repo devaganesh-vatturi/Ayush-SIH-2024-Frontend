@@ -45,16 +45,16 @@ const YourProfile = ({ email }) => {
       {startupData ? (
         <div className="startupdata">
           <p className="companyname">{startupData.companyName}</p>
-          <p> {startupData.Email_ID}</p>
-          <p>Address: {startupData.address}</p>
-          <p>City: {startupData.city}</p>
-          <p>State: {startupData.state}</p>
-          <p>District: {startupData.district}</p>
-          <p>Pin Code: {startupData.pinCode}</p>
-          <p>Phone Number: {startupData.phone_number}</p>
+          <p id="yrprofile"> {startupData.Email_ID}</p>
+          <p id="yrprofile">Address: {startupData.address}</p>
+          <p id="yrprofile">City: {startupData.city}</p>
+          <p id="yrprofile">State: {startupData.state}</p>
+          <p id="yrprofile">District: {startupData.district}</p>
+          <p id="yrprofile">Pin Code: {startupData.pinCode}</p>
+          <p id="yrprofile">Phone Number: {startupData.phone_number}</p>
         </div>
       ) : (
-        <p>No data available.</p>
+        <p id="yrprofile" >No data available.</p>
       )}
     </div>
   );

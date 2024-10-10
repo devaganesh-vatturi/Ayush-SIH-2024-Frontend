@@ -1,8 +1,8 @@
-/* .container {
+ .container {
   border: 5px solid black;
   padding-left: 200px;
   padding-right: 200px;
-  padding-top: 50px;
+  padding-top: 300px;   /* padding to cover profile circle */
   padding-bottom: 50px;
   border-radius: 70px;
   background-color: #3b8be0;
@@ -16,7 +16,7 @@
   background-color: #2a75bd;
 }
 
-p {
+#yrprofile {
   font-size: 25px;
   color: black;
   font-weight: 300;
@@ -58,4 +58,4 @@ p {
 .companyname {
   font-size: 3.5rem;
   padding: 2%;
-} */
+} 

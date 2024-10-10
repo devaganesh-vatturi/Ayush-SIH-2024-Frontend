@@ -94,9 +94,10 @@ useEffect(() => {
       <div className='login-total'>
       <Header/>
 
-      { bringTheLoadingPage ? (
-        <LoadingPage text={"Loading..."}/>
-      ):(
+  { bringTheLoadingPage ? (
+    <LoadingPage text={"Loading..."}/>
+  ):(
+
       <div className='login-flex'>
         <img src={replacepic} id='login-img'/>
       <form id='login-form'onSubmit={handelSubmit}>
