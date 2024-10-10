@@ -8,7 +8,7 @@ function Translate() {
 
     const handleTranslate = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/translate', {
+            const response = await axios.post('/translate', {
                 text: text,
                 targetLanguage: language,
             });

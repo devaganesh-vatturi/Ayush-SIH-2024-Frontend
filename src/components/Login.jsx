@@ -35,7 +35,7 @@ const [bringTheLoadingPage,setBringTheLoadingPage ]=useState(false);
 };
 
 const handelSubmit =async(e)=>{
-  setBringTheLoadingPage(true);
+  setBringTheLoadingPage(true); // made true
   e.preventDefault();
   if(logit.password.length<8)
   {
@@ -49,9 +49,11 @@ const handelSubmit =async(e)=>{
       const response = await axios.post(`https://ayush-sih-backend.vercel.app/api/${usertype}-login`, logit, {
         withCredentials: true,  // Ensures cookies or sessions are included in cross-origin requests
       }); 
+      // setBringTheLoadingPage(false);   this global false setting  is not working for some reason.
       if (response.data.success) 
       {
             const tokenrec = response.data.token;
+            setBringTheLoadingPage(false);
             alert("Logged in successfully!");
             if(usertype==="farmer")
           { 
@@ -95,8 +97,6 @@ useEffect(() => {
       { bringTheLoadingPage ? (
         <LoadingPage text={"Loading..."}/>
       ):(
-        // <PrintdrugList startupmails={pendingemails}/>
-
       <div className='login-flex'>
         <img src={replacepic} id='login-img'/>
       <form id='login-form'onSubmit={handelSubmit}>
