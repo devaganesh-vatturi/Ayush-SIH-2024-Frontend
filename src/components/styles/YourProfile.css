@@ -1,1 +1,61 @@
-/*     put css content here    */ 
+.container {
+  border: 5px solid black;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 70px;
+  background-color: #3b8be0;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for hover effects */
+}
+
+.container:hover {
+  transform: translateY(-20px); /* Slight lift effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Add black shadow on hover */
+  background-color: #2a75bd; /* Slightly darker background color on hover */
+}
+
+p {
+  font-size: 25px;
+  color: black;
+  font-weight: 300;
+  font-family: bold;
+  font-size: 30px;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin: 20px;
+  justify-content: space-between;
+}
+
+.profilecircle {
+  border-radius: 50%;
+  background-color: #a1c1e2;
+  height: 220px;
+  width: 220px;
+  position: absolute;
+  top: -75px; /* Move half of the circle's height upwards */
+  right: 50%; /* Adjust positioning relative to the container */
+  transform: translateX(50%); /* Shift it back to balance it */
+  border: 2px solid black;
+  text-align: center;
+  font-size: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: bold;
+  transition: transform 0.3s ease; /*Transition for the hover effect*/
+}
+
+.container:hover .profilecircle {
+  transform: translateX(50%) scale(1.05); /* Slight scaling of the circle on hover */
+}
+
+.startupdata {
+  padding-top: 80px;
+}
+
+.companyname {
+  font-size: 3.5rem;
+  padding: 2%;
+}
