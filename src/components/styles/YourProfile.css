@@ -57,6 +57,7 @@
 .startupdata {
   /* padding-top: 80px; */
   margin-top: 7vw;
+  overflow: auto;
 }
 
 .companyname {
