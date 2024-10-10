@@ -94,7 +94,7 @@ function Druginsignup(){
     }//   const  doVerifyQuality = async(formData)=>
         // {
         //   try {
-        //     const response = await axios.post("http://localhost:5002/api/quality-check",
+        //     const response = await axios.post("/api/quality-check",
         //       formData,
         //       {
         //         headers: {
@@ -170,7 +170,7 @@ const handleFileChange = (e) => {
   
 
   // try {
-  //   const response = await axios.post("http://localhost:5002/api/upload-pdf",
+  //   const response = await axios.post("/api/upload-pdf",
   //     formData,
   //     {
   //       headers: {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../components/YourProfile.css";
+import "../styles/YourProfile.css";
 
 const YourProfile = ({ email }) => {
   const [startupData, setStartupData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const fetchStartupData = () => {
-    fetch("http://localhost:5002/api/startup-basic", {
+    fetch("https://ayush-sih-backend.vercel.app/api/startup-basic", {
       method: "POST", // Using POST to send email in the body
       headers: {
         "Content-Type": "application/json",

@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Dashboard comps/Footer';
 import startuppic from '../assets/loginstartup.jpg';
+import LoadingPage from './LoadingPage';
+
 function Startupsignup() {
   const [startUpdata, setStartUpdata] = useState(
     {Email_ID:"",password:"",companyName : "",address : "",city:"",pinCode:null,
@@ -13,6 +15,7 @@ function Startupsignup() {
 
   const [pinerror,setPinerror]=useState("");
   const [phnerror,setPhnerror]=useState("");
+  const [bringTheLoadingPage,setBringTheLoadingPage ]=useState(false);
   let passvalid=false;
   let phnvalid=false;
   let pinvalid=false;
@@ -76,6 +79,7 @@ function Startupsignup() {
   }
 
   const onSubmit =async(e)=>{
+    setBringTheLoadingPage(true);
      e.preventDefault();
      if(startUpdata.password.length<8){
         passvalid=true;
@@ -94,17 +98,21 @@ function Startupsignup() {
     });
   
     if (response.data.success) {
+      setBringTheLoadingPage(false);
       alert("Successfully Signed Up");
       window.location.href = `/login?value=${'startup'}`;
     } else {
+      setBringTheLoadingPage(false);
       alert("Invalid Details. Please try again!");
       throw response;
     }
   
   } catch (resp) {
     if (resp.response && resp.response.data) { // Logging the actual error message from the response
+      setBringTheLoadingPage(false);
       alert("Message: " + resp.response.data.message);
     } else { // Fallback if the response doesn't contain the expected data
+      setBringTheLoadingPage(false);
       alert("An error occurred at backend. Server might be down.");
     }
     console.log("Error is", resp); // Log the full error object for debugging
@@ -140,6 +148,10 @@ function Startupsignup() {
     return ( 
       <>
       <Header/>
+
+  { bringTheLoadingPage ? (
+    <LoadingPage text={"submitting your data..."}/>
+  ):(
       <div className='start-flex'>
         <img src={startuppic} id='start-pic-id'/>
       <form id="startup-form" onSubmit={onSubmit}>
@@ -215,6 +227,8 @@ function Startupsignup() {
    
     </form>
     </div>
+    )
+  }
     </>
     );
 }
