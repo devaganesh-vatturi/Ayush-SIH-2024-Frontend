@@ -21,10 +21,10 @@
 }
 
 #yrprofile {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: black;
-  font-weight: 300;
-  font-family: bold;
+  /* font-weight: 300;
+  font-family: bold; */
   /* padding-left: 100px;
   padding-right: 100px; */
   margin: 10px;
@@ -64,3 +64,6 @@
   font-size: 2rem;
   padding: 2%;
 } 
+.yrpdata{
+  width:80%;
+}
