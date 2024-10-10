@@ -48,7 +48,7 @@ const YourProfile = ({ email }) => {
 
                       <div className="startupdata">
                                       {startupData ? (
-                                          <div >
+                                          <div className="yrpdata">
                                                 <p className="companyname">{startupData.companyName}</p>
                                                 <p id="yrprofile"> {startupData.Email_ID}</p>
                                                 <p id="yrprofile">Address: {startupData.address}</p>
