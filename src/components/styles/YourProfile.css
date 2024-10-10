@@ -6,8 +6,6 @@
 
 .container {
   border: 5px solid black;
-  padding-left: 200px;
-  padding-right: 200px;
   padding-top: 20px;   /* padding to cover profile circle */
   padding-bottom: 50px;
   border-radius: 70px;
@@ -23,14 +21,13 @@
 }
 
 #yrprofile {
-  font-size: 25px;
+  font-size: 1rem;
   color: black;
   font-weight: 300;
   font-family: bold;
-  font-size: 30px;
-  padding-left: 100px;
-  padding-right: 100px;
-  margin: 20px;
+  /* padding-left: 100px;
+  padding-right: 100px; */
+  margin: 10px;
   justify-content: space-between;
 }
 
@@ -59,10 +56,10 @@
 
 .startupdata {
   /* padding-top: 80px; */
-  margin-top: 10VW;
+  margin-top: 7vw;
 }
 
 .companyname {
-  font-size: 3.5rem;
+  font-size: 2rem;
   padding: 2%;
 } 
