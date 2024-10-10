@@ -1,7 +1,7 @@
 .tot-cont{
   margin-top: 12vh;
   height: 50vh;
-  width: 70vw;
+  width: 45vw;
 }
 
 .container {
@@ -12,6 +12,7 @@
   background-color: #3b8be0;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  margin-top: 50px;
 }
 
 .container:hover {
@@ -21,7 +22,7 @@
 }
 
 #yrprofile {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: black;
   /* font-weight: 300;
   font-family: bold; */
@@ -34,8 +35,8 @@
 .profilecircle {
   border-radius: 50%;
   background-color: #a1c1e2;
-  height: 15vw;
-  width: 15vw;
+  height: 11vw;
+  width: 11vw;
   position: absolute;
   top: -75px; 
   right: 50%; 
@@ -61,7 +62,7 @@
 }
 
 .companyname {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 2%;
 } 
 .yrpdata{
