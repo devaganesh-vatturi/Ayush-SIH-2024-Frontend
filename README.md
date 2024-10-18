@@ -11,7 +11,7 @@ Youtube video link - https://youtu.be/xhUgSmbFr04?si=9wthmnhEHAW4D3Za
 
 
 ## Contributors
--  [@chaitanya-kadali](https://github.com/chaitanya-kadali) ( Myself, Team Lead, Full Stack Contributor )
+-  [@chaitanya-kadali](https://github.com/chaitanya-kadali) ( Team Lead, Full Stack Contributor )
 - [@devaganesh-vatturi](https://github.com/devaganesh-vatturi) ( Main Frontend Contributor )
 - [@SaiVenkat](https://github.com/Saivenkat135) ( Backend Contributor )
 - [@SaiNagendraThota](https://github.com/sainagendrathota) ( Frontend Contributor )
