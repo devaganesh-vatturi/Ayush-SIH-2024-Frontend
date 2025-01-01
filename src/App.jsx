@@ -14,6 +14,8 @@ import AiChatBot from './components/AiChatBot.jsx';
 import Authoritysignup from './components/Authoritysignup.jsx'
 import Druginsignup from './components/Druginsignup.jsx';
 import Drugindash from './components/Dashboard comps/Drugindash.jsx';
+import AboutUs from './components/AboutUs.jsx';
+import Header from './components/Header.jsx';
 function App() {
     return (
      <>
@@ -33,6 +35,7 @@ function App() {
     <Route path='/doctordash' element={<Doctordash/>}/>
     <Route path='/farmerdash' element={<Farmerdash/>}/>
     <Route path='/chatbot' element={<AiChatBot/>}/>
+    <Route path='/aboutus' element={ <div> <Header/>  <AboutUs/> </div> }/>
    </Routes>
 
    </BrowserRouter>  
