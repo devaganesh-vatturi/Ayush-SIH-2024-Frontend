@@ -48,9 +48,9 @@ function AboutUs (){
                         <p>  
                             <ul id="listo"> 
                                 <li> 🔐 Secure authentication system with password hashing. </li>
-                                <li> 📄 PDF validation system for quality and compliance.</li>   
+                                <li> 📄 PDF validation for quality & compliance.</li>   
                                 <li> Optimized data storage with MongoDB Atlas </li>    
-                                <li> Developed secured Token sessions by express js </li> 
+                                <li> Developed secured Token sessions</li> 
                             </ul>
                         </p>
                     </div>
@@ -61,7 +61,7 @@ function AboutUs (){
                             <ul id="listo"> 
                                 <li> Built sign-up forms and  Dashboard for doctor</li>   
                                 <li> Implemented phone no validations, pin validations </li>    
-                                <li> Implemented FAQs </li> 
+                                <li> Implemented FAQs and styled some components</li> 
                             </ul>
                         </p>
                     </div>
@@ -77,7 +77,7 @@ function AboutUs (){
                         </p>
                     </div>
                     <div className="developer-card">
-                        <h3>Prasanna kada</h3>
+                        <h3>Lakshmi Prasanna kada</h3>
                         <h3 id='role-abt' > (Frontend) </h3>
                         <p> 
                             <ul id="listo"> 

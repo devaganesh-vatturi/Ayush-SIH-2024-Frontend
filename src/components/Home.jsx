@@ -65,12 +65,10 @@ function Home()
        <Header/>
        <Images/>
 
-        <center>
             <div className='rec-butns'>
                 <button id="ytlink" onClick={handleRedirect}>  Click here to watch the demo video</button>
                 <button id="about-us" onClick={handleAbout}>  About developers</button>
             </div>
-        </center>
     
         <div className="home-main">
            <div className="home-main-startup">
