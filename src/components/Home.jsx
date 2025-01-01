@@ -56,16 +56,22 @@ function Home()
       const handleRedirect = () => {
         window.open("https://youtu.be/lLrq8nG4U1c?si=kVBeRfZGTUcHGd5K", "_blank");
       };
+      const handleAbout= () => {
+        window.location.href='/aboutus';
+      }
 
     return(
         <div className='the-home'>
        <Header/>
        <Images/>
-       <center>
-            
 
-      <center><button id="ytlink" onClick={handleRedirect}>  Click here to watch the demo video</button></center>
-    </center>
+        <center>
+            <div className='rec-butns'>
+                <button id="ytlink" onClick={handleRedirect}>  Click here to watch the demo video</button>
+                <button id="about-us" onClick={handleAbout}>  About developers</button>
+            </div>
+        </center>
+    
         <div className="home-main">
            <div className="home-main-startup">
                <img id="home-main-img" src={startup}/>
