@@ -1,4 +1,5 @@
-import './styles/AboutUs.css'; 
+import './styles/AboutUs.css';
+import TwitterProfile from './TwitterProfile';
 
 function AboutUs (){
     return (
@@ -19,15 +20,18 @@ function AboutUs (){
                         <h3 id='role-abt' > (Team Lead , Full stack) </h3>
                         <p> 
                             <ul id="listo"> 
-                                <li> 🌍 Made complete System design </li>
+                                <li>🌍 Made Complete System design </li>
                                 <li>🤖 Developed the AI chatbot </li>
                                 <li>📊 Integrated the email API </li>
-                                <li>📝 Implemented editable forms, status tracker.</li>
+                                <li>✔️ Implemented status tracker <span style={{ color: 'rgb(32, 129, 248)'}}> (backend)</span></li>
                                 <li>Connected frontend-backend components. </li>
+                                <li>🎯 Prediction feature <span style={{ color: 'rgb(32, 129, 248)'}}> (frontend)</span>  </li>
+                                <li>Drug inspector dashboard <span style={{ color: 'rgb(32, 129, 248)'}}> (frontend)</span> </li>
                                 <li>Hosted this platform on Vercel. </li>
-                                <li>🎯 Developed the Prediction feature and loading animation </li>
                             </ul>
+                           
                         </p>
+                       <div style={{padding: '15px'}}> <TwitterProfile userId={"Chaitanya_947"} /> </div> 
                     </div>
 
                     <div className="developer-card">
@@ -35,35 +39,47 @@ function AboutUs (){
                         <h3 id='role-abt' > (Frontend) </h3>
                         <p> 
                             <ul id="listo">
-                                <li> Led the frontend team to build appealing interface </li>
-                                <li> Contributed to token sessions </li>
-                                <li> ✅ implemented hashing-based frontend validation for login </li>
-                                <li> Styled all components for a seamless UI. </li> 
+                                <li> Led the frontend team to build interface </li> 
+                                <li>📝 Implemented editable forms, ✔️ status tracker <span style={{ color: 'rgb(32, 129, 248)'}}> (frontend)</span></li>
+                                <li>🌍 Contributed to System design </li>
+                                <li> implemented the token sessions</li>
+                                <li> Styled all components for a seamless UI. </li>
+                                <li>Developed startup dashboard</li>
+                                <li>Implemented the CAPTCHA Verification</li>
                             </ul>
                         </p>
+                        <div style={{padding: '15px'}}> <TwitterProfile userId={"DevaGanesh1909"} /> </div> 
                     </div>
                     <div className="developer-card">
                         <h3>Sai Venkat Kallepalli  </h3>
                         <h3 id='role-abt' > (Backend) </h3>
                         <p>  
                             <ul id="listo"> 
-                                <li> 🔐 Secure authentication system with password hashing. </li>
+                                <li> 🔐 Secure authentication system with password hashing</li>
                                 <li> 📄 PDF validation for quality & compliance.</li>   
                                 <li> Optimized data storage with MongoDB Atlas </li>    
-                                <li> Developed secured Token sessions</li> 
+                                <li> 📝 Implemented editable forms </li> 
+                                <li>Implemented secured Token sessions</li>
+                                <li> Developed backend for user registration and login authentication </li> 
+                                <li>Implemented efficient MongoDB queries</li>
                             </ul>
                         </p>
+                        
+                        <div style={{padding: '15px'}}> <TwitterProfile userId={"SaiVenkat__135"} /> </div> 
                     </div>
                     <div className="developer-card">
                         <h3>Ram Sai Kolli</h3>
                         <h3 id='role-abt' > (Frontend) </h3>
                         <p>
                             <ul id="listo"> 
-                                <li> Built sign-up forms and  Dashboard for doctor</li>   
-                                <li> Implemented phone no validations, pin validations </li>    
-                                <li> Implemented FAQs and styled some components</li> 
+                                <li> sign-up forms & Dashboard for doctor</li>   
+                                <li> Developed image slide show for Home page</li>    
+                                <li> Implemented FAQs and styled some components</li>
+                                <li> Implemented phone no. & pin validations </li>
                             </ul>
                         </p>
+                        
+                        <div style={{padding: '15px'}}> <TwitterProfile userId={"Ram_kolli369"} /> </div> 
                     </div>
                     <div className="developer-card">
                         <h3>Sai Nagendra Thota </h3>
@@ -72,9 +88,10 @@ function AboutUs (){
                             <ul id="listo"> 
                                 <li> Built farmer dashboard</li>   
                                 <li> implemented password validations </li>    
-                                <li> Provided valuable insights during the feature development process  </li> 
+                                <li> Provided valuable ideas during the features development  </li> 
                             </ul>
                         </p>
+                        <p style={{ padding:'25px'}}> <span style={{ color: 'rgb(32, 129, 248)', padding:'0px'}}> mail </span> : sainagendra236@gmail.com</p>
                     </div>
                     <div className="developer-card">
                         <h3>Lakshmi Prasanna kada</h3>
@@ -83,9 +100,10 @@ function AboutUs (){
                             <ul id="listo"> 
                                 <li> contributed to FAQs</li>   
                                 <li> styled login and signup pages </li>    
-                                <li> Helped with documentation  </li> 
+                                <li> Helped with documentation  </li>
                             </ul>
                         </p>
+                        <p style={{ padding:'25px'}}> <span style={{ color: 'rgb(32, 129, 248)', padding:'0px'}}> mail </span> : klnvprasanna@gmail.com</p>
                     </div>
                 </div>
             </section>
