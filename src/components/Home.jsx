@@ -54,7 +54,7 @@ function Home()
         { question: "What support is provided by the Ministry of AYUSH to startups?", answer: "The Ministry of AYUSH provides a variety of support mechanisms, including mentorship, incubation support, and financial assistance for startups focusing on traditional medicine and wellness." },
       ];
       const handleRedirect = () => {
-        window.open("https://youtu.be/lLrq8nG4U1c?si=kVBeRfZGTUcHGd5K", "_blank");
+        window.open("https://youtu.be/xhUgSmbFr04?si=MoL-oZIVOOOL1hkJ", "_blank");
       };
       const handleAbout= () => {
         window.location.href='/aboutus';
